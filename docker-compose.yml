@@ -1,0 +1,17 @@
+services:
+  app:
+    image: ghcr.io/davic80/munecos-kawaii:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+    expose:
+      - "8934"
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - app
