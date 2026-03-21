@@ -976,27 +976,6 @@ function buildPanel() {
         body.appendChild(colorRow);
       }
 
-      // Scale slider for this sub-category
-      if (sub.scaleField) {
-        const curVal = doll[sub.scaleField] || 0;
-        const scaleRow = document.createElement('div');
-        scaleRow.className = 'scale-row';
-        scaleRow.innerHTML = `
-          <label>Tamaño</label>
-          <input type="range" min="-50" max="50" step="1" value="${curVal}" id="scl-${sub.cat}"/>
-          <span class="scale-val" id="scl-val-${sub.cat}">${curVal > 0 ? '+' : ''}${curVal}%</span>`;
-        const inp = scaleRow.querySelector('input');
-        const lbl = scaleRow.querySelector('.scale-val');
-        inp.addEventListener('input', e => {
-          const v = parseInt(e.target.value, 10);
-          doll[sub.scaleField] = v;
-          lbl.textContent = `${v > 0 ? '+' : ''}${v}%`;
-          saveCollection();
-          renderDoll(document.getElementById('doll-layers'), doll);
-        });
-        body.appendChild(scaleRow);
-      }
-
       // Item grid
       const grid = document.createElement('div');
       grid.className = 'item-grid';
@@ -1017,6 +996,28 @@ function buildPanel() {
       });
 
       body.appendChild(grid);
+
+      // Scale slider for this sub-category (below the item grid)
+      if (sub.scaleField) {
+        const curVal = doll[sub.scaleField] || 0;
+        const scaleRow = document.createElement('div');
+        scaleRow.className = 'scale-row';
+        scaleRow.innerHTML = `
+          <span class="scale-icon">⤢</span>
+          <label>Tamaño</label>
+          <input type="range" min="-50" max="50" step="1" value="${curVal}" id="scl-${sub.cat}"/>
+          <span class="scale-val" id="scl-val-${sub.cat}">${curVal > 0 ? '+' : ''}${curVal}%</span>`;
+        const inp = scaleRow.querySelector('input');
+        const lbl = scaleRow.querySelector('.scale-val');
+        inp.addEventListener('input', e => {
+          const v = parseInt(e.target.value, 10);
+          doll[sub.scaleField] = v;
+          lbl.textContent = `${v > 0 ? '+' : ''}${v}%`;
+          saveCollection();
+          renderDoll(document.getElementById('doll-layers'), doll);
+        });
+        body.appendChild(scaleRow);
+      }
     });
 
     acc.appendChild(hdr);
@@ -1114,17 +1115,109 @@ function buildPreviewSvg(cat, value, d) {
 function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
 /* ---------- INIT ---------- */
+// ===== EXPORT PNG =====
+function exportPng() {
+  const btn = document.getElementById('btn-save');
+  btn.textContent = 'Exportando...';
+  btn.disabled = true;
+
+  // Get the SVG element from the doll layers
+  const svgEl = document.querySelector('#doll-layers svg');
+  if (!svgEl) {
+    btn.textContent = 'Guardar PNG';
+    btn.disabled = false;
+    return;
+  }
+
+  const SIZE = 480; // 2× the viewBox width for a crisp export
+  const clone = svgEl.cloneNode(true);
+  clone.setAttribute('width', SIZE);
+  clone.setAttribute('height', Math.round(SIZE * 340 / 240));
+  clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+  // Inline the background color so the PNG isn't transparent
+  const bgColor = doll.bgColor || '#1a2a4a';
+  const bgDark = darken(bgColor, 20);
+  const bgRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+  bgRect.setAttribute('width', '240');
+  bgRect.setAttribute('height', '340');
+  bgRect.setAttribute('fill', bgColor);
+  clone.insertBefore(bgRect, clone.firstChild);
+
+  const svgStr = new XMLSerializer().serializeToString(clone);
+  const svgBlob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(svgBlob);
+
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width  = SIZE;
+    canvas.height = Math.round(SIZE * 340 / 240);
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    URL.revokeObjectURL(url);
+
+    canvas.toBlob(blob => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `${(doll.name || 'muneco').replace(/\s+/g, '_')}.png`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+      btn.textContent = '¡Descargado!';
+      btn.disabled = false;
+      setTimeout(() => btn.textContent = 'Guardar PNG', 2000);
+    }, 'image/png');
+  };
+  img.onerror = () => {
+    URL.revokeObjectURL(url);
+    btn.textContent = 'Guardar PNG';
+    btn.disabled = false;
+  };
+  img.src = url;
+}
+
 // ===== URL SHARING =====
+function copyToClipboard(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text).then(() => true).catch(() => false);
+  }
+  return new Promise(resolve => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch (_) {}
+    document.body.removeChild(ta);
+    resolve(ok);
+  });
+}
+
+function showToast(msg, isError) {
+  let toast = document.getElementById('toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.className = 'toast' + (isError ? ' toast-error' : '') + ' show';
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
 function shareDoll() {
   const json = JSON.stringify(doll);
   const compressed = LZString.compressToEncodedURIComponent(json);
   const url = `${location.origin}${location.pathname}#d=${compressed}`;
-  const btn = document.getElementById('btn-share');
-  navigator.clipboard.writeText(url).then(() => {
-    btn.textContent = '¡Copiado!';
-    setTimeout(() => btn.textContent = 'Compartir 🔗', 2000);
-  }).catch(() => {
-    prompt('Copia esta URL:', url);
+  copyToClipboard(url).then(ok => {
+    if (ok) {
+      showToast('¡URL copiada al portapapeles! 🔗');
+    } else {
+      prompt('Copia esta URL:', url);
+    }
   });
 }
 
@@ -1160,13 +1253,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSlotTabs();
   });
 
-  // Save button
-  document.getElementById('btn-save').addEventListener('click', () => {
-    saveCollection();
-    const btn = document.getElementById('btn-save');
-    btn.textContent = 'Guardado!';
-    setTimeout(() => btn.textContent = 'Guardar', 1500);
-  });
+  // Save/export PNG button
+  document.getElementById('btn-save').addEventListener('click', exportPng);
 
   // Share button
   document.getElementById('btn-share').addEventListener('click', shareDoll);

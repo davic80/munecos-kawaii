@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.4.0] - 2026-03-21
+
+### Added
+- **Exportar PNG** — el botón "Guardar PNG" exporta el muñeco actual como imagen PNG descargable (480×680 px, fondo incluido) usando `XMLSerializer` + `<canvas>`
+- **Toast de confirmación** — "Compartir" muestra ahora una notificación flotante "¡URL copiada!" en lugar de solo cambiar el texto del botón
+
+### Fixed
+- **Sliders de Tamaño** — movidos debajo del grid de items de cada subsección, con separador visual y icono ⤢, para que sean fáciles de encontrar y usar
+- **Compartir — portapapeles robusto** — usa `navigator.clipboard` con fallback a `document.execCommand('copy')` (textarea trick) para funcionar en HTTP y navegadores sin permiso `clipboard-write`
+- **Estilo btn-share** — homogeneizado al estilo del resto de botones del header (color plano `--accent2` en lugar de gradiente azul)
+
+---
+
 ## [1.3.0] - 2026-03-21
 
 ### Added

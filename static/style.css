@@ -141,7 +141,7 @@ header h1 {
 
 /* ===== SHARE BUTTON ===== */
 .btn-share {
-  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  background: var(--accent2);
   color: #fff;
   border: none;
   border-radius: var(--radius);
@@ -153,6 +153,31 @@ header h1 {
   white-space: nowrap;
 }
 .btn-share:hover { opacity: 0.85; }
+
+/* ===== TOAST NOTIFICATION ===== */
+.toast {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--accent2);
+  border-radius: var(--radius);
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 9999;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.toast.toast-error { border-color: var(--accent); }
 
 /* ===== MAIN LAYOUT ===== */
 .main {
@@ -264,8 +289,15 @@ header h1 {
 .scale-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 4px 0 6px;
+  gap: 6px;
+  padding: 6px 4px 8px;
+  margin-top: 4px;
+  border-top: 1px solid var(--border);
+}
+.scale-icon {
+  font-size: 0.85rem;
+  color: var(--accent2);
+  flex-shrink: 0;
 }
 .scale-row label { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; }
 .scale-row input[type="range"] {
