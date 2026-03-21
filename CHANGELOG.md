@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.0] - 2026-03-21
+
+### Added
+- **URL sharing** — "Compartir 🔗" button in the header generates a shareable link with the current doll state compressed via LZString into the URL hash (`#d=...`); URL is copied to clipboard (falls back to a prompt on HTTP)
+- **Load from URL hash** — opening a shared link auto-loads the encoded doll into the active slot before rendering, then cleans the hash from the address bar
+
+### Fixed
+- **Ravenclaw scarf** secondary color corrected from `#946b2d` (gold/brown) to `#aaaaaa` (silver), matching house colours
+
+---
+
 ## [1.2.0] - 2026-03-21
 
 ### Added

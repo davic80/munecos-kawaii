@@ -352,7 +352,7 @@ const BELTS = {
 const HP_HOUSES = {
   gryffindor: { c1: '#740001', c2: '#d3a625', name: 'Gryffindor' },
   slytherin:  { c1: '#1a472a', c2: '#aaaaaa', name: 'Slytherin' },
-  ravenclaw:  { c1: '#0e1a40', c2: '#946b2d', name: 'Ravenclaw' },
+  ravenclaw:  { c1: '#0e1a40', c2: '#aaaaaa', name: 'Ravenclaw' },
   hufflepuff: { c1: '#ecb939', c2: '#372e29', name: 'Hufflepuff' },
 };
 
@@ -1114,6 +1114,34 @@ function buildPreviewSvg(cat, value, d) {
 function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
 /* ---------- INIT ---------- */
+// ===== URL SHARING =====
+function shareDoll() {
+  const json = JSON.stringify(doll);
+  const compressed = LZString.compressToEncodedURIComponent(json);
+  const url = `${location.origin}${location.pathname}#d=${compressed}`;
+  const btn = document.getElementById('btn-share');
+  navigator.clipboard.writeText(url).then(() => {
+    btn.textContent = '¡Copiado!';
+    setTimeout(() => btn.textContent = 'Compartir 🔗', 2000);
+  }).catch(() => {
+    prompt('Copia esta URL:', url);
+  });
+}
+
+function loadFromHash() {
+  const hash = location.hash;
+  if (!hash.startsWith('#d=')) return false;
+  try {
+    const json = LZString.decompressFromEncodedURIComponent(hash.slice(3));
+    const loaded = JSON.parse(json);
+    Object.assign(collection[activeSlot], defaultDoll(activeSlot), loaded);
+    doll = collection[activeSlot];
+    saveCollection();
+    history.replaceState(null, '', location.pathname);
+    return true;
+  } catch (_) { return false; }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // Build slot tabs
   const slotsEl = document.getElementById('slots');
@@ -1139,6 +1167,9 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.textContent = 'Guardado!';
     setTimeout(() => btn.textContent = 'Guardar', 1500);
   });
+
+  // Share button
+  document.getElementById('btn-share').addEventListener('click', shareDoll);
 
   // Reset button
   document.getElementById('btn-reset').addEventListener('click', () => {
@@ -1194,6 +1225,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Drag & drop
   initDragDrop();
+
+  // Load from URL hash if present
+  loadFromHash();
 
   // Build left panel
   buildPanel();
