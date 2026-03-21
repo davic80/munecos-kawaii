@@ -27,28 +27,37 @@ body {
 
 /* ===== FOOTER ===== */
 .footer-bar {
-  height: 30px;
+  height: 26px;
   flex-shrink: 0;
   background: var(--surface);
   border-top: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
-  font-size: 0.7rem;
+  text-align: center;
+  gap: 0.5rem;
+  font-size: 0.6rem;
   color: var(--text-muted);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
 }
-.footer-sep { color: var(--border); }
-.footer-version { color: var(--text-muted); }
+.footer-sep { color: var(--border); opacity: 0.7; }
+.footer-version {
+  color: var(--bg);
+  background: var(--accent);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+}
 .footer-link,
 .footer-donate {
   color: var(--text-muted);
   text-decoration: none;
   transition: color 0.15s;
 }
-.footer-link:hover,
-.footer-donate:hover { color: var(--accent2); }
+.footer-link:hover { color: var(--accent2); }
+.footer-donate:hover { color: var(--accent); }
 
 @media (max-width: 480px) {
   .footer-bar { display: none; }

@@ -40,11 +40,11 @@ function svgBase(gender, skin) {
   }
 
   <!-- HEAD (big funko) -->
-  <ellipse cx="120" cy="112" rx="82" ry="90" fill="${skin}"/>
+  <ellipse cx="120" cy="112" rx="70" ry="77" fill="${skin}"/>
 
   <!-- CHEEKS -->
-  <ellipse cx="68" cy="138" rx="16" ry="10" fill="rgba(255,160,160,0.35)"/>
-  <ellipse cx="172" cy="138" rx="16" ry="10" fill="rgba(255,160,160,0.35)"/>
+  <ellipse cx="74" cy="136" rx="14" ry="9" fill="rgba(255,160,160,0.35)"/>
+  <ellipse cx="166" cy="136" rx="14" ry="9" fill="rgba(255,160,160,0.35)"/>
   `;
 }
 
@@ -159,20 +159,20 @@ const SHOES = {
 // ---- HATS ----
 const HATS = {
   beanie: (c) => `
-    <path d="M42,84 Q40,28 120,24 Q200,28 198,84 Z" fill="${c}"/>
-    <rect x="36" y="78" width="168" height="18" rx="9" fill="${darken(c,15)}"/>`,
+    <path d="M52,80 Q50,26 120,22 Q190,26 188,80 Z" fill="${c}"/>
+    <rect x="44" y="74" width="152" height="16" rx="8" fill="${darken(c,15)}"/>`,
   wizard: (c) => `
-    <path d="M120,2 L82,90 L158,90 Z" fill="${c}"/>
-    <ellipse cx="120" cy="90" rx="52" ry="13" fill="${darken(c,10)}"/>
-    <path d="M96,52 Q120,40 144,52" fill="none" stroke="#f5c518" stroke-width="2.5"/>`,
+    <path d="M120,-8 L84,78 L156,78 Z" fill="${c}"/>
+    <ellipse cx="120" cy="78" rx="48" ry="12" fill="${darken(c,10)}"/>
+    <path d="M98,40 Q120,28 142,40" fill="none" stroke="#f5c518" stroke-width="2.5"/>`,
   beret: (c) => `
-    <ellipse cx="120" cy="44" rx="68" ry="28" fill="${c}"/>
-    <circle cx="148" cy="28" r="7" fill="${darken(c,18)}"/>
-    <rect x="58" y="60" width="124" height="12" rx="6" fill="${darken(c,10)}"/>`,
+    <ellipse cx="120" cy="40" rx="66" ry="26" fill="${c}"/>
+    <circle cx="148" cy="24" r="6" fill="${darken(c,18)}"/>
+    <rect x="60" y="54" width="120" height="11" rx="5.5" fill="${darken(c,10)}"/>`,
   cap: (c) => `
-    <path d="M52,84 Q50,40 120,36 Q190,40 188,84 Z" fill="${c}"/>
-    <rect x="46" y="78" width="148" height="14" rx="7" fill="${darken(c,12)}"/>
-    <rect x="28" y="84" width="106" height="12" rx="6" fill="${darken(c,8)}"/>`,
+    <path d="M56,78 Q54,34 120,30 Q186,34 184,78 Z" fill="${c}"/>
+    <rect x="50" y="72" width="140" height="13" rx="6.5" fill="${darken(c,12)}"/>
+    <rect x="30" y="78" width="100" height="11" rx="5.5" fill="${darken(c,8)}"/>`,
 };
 
 // ---- CAPES / COATS ----
@@ -226,20 +226,20 @@ function svgScarf(house) {
   const { c1, c2 } = HP_HOUSES[house];
   return `
     <!-- scarf base around neck -->
-    <rect x="90" y="156" width="60" height="16" rx="8" fill="${c1}"/>
+    <rect x="90" y="180" width="60" height="16" rx="8" fill="${c1}"/>
     <!-- stripes -->
-    <rect x="96" y="156" width="8" height="16" rx="0" fill="${c2}"/>
-    <rect x="112" y="156" width="8" height="16" fill="${c2}"/>
-    <rect x="128" y="156" width="8" height="16" fill="${c2}"/>
+    <rect x="96" y="180" width="8" height="16" rx="0" fill="${c2}"/>
+    <rect x="112" y="180" width="8" height="16" fill="${c2}"/>
+    <rect x="128" y="180" width="8" height="16" fill="${c2}"/>
     <!-- hanging end left -->
-    <rect x="92" y="168" width="18" height="42" rx="6" fill="${c1}"/>
-    <rect x="94" y="168" width="6" height="42" rx="3" fill="${c2}"/>
-    <rect x="102" y="168" width="6" height="42" rx="3" fill="${c1}"/>
+    <rect x="92" y="192" width="18" height="44" rx="6" fill="${c1}"/>
+    <rect x="94" y="192" width="6" height="44" rx="3" fill="${c2}"/>
+    <rect x="102" y="192" width="6" height="44" rx="3" fill="${c1}"/>
     <!-- fringe -->
-    <line x1="93" y1="208" x2="91" y2="216" stroke="${c2}" stroke-width="2"/>
-    <line x1="97" y1="208" x2="95" y2="216" stroke="${c2}" stroke-width="2"/>
-    <line x1="101" y1="208" x2="99" y2="216" stroke="${c2}" stroke-width="2"/>
-    <line x1="105" y1="208" x2="103" y2="216" stroke="${c2}" stroke-width="2"/>`;
+    <line x1="93" y1="234" x2="91" y2="242" stroke="${c2}" stroke-width="2"/>
+    <line x1="97" y1="234" x2="95" y2="242" stroke="${c2}" stroke-width="2"/>
+    <line x1="101" y1="234" x2="99" y2="242" stroke="${c2}" stroke-width="2"/>
+    <line x1="105" y1="234" x2="103" y2="242" stroke="${c2}" stroke-width="2"/>`;
 }
 
 // ---- HP WANDS ----
@@ -266,6 +266,79 @@ const WANDS = {
       <path d="M0,0 Q6,20 3,40 Q0,60 2,80" fill="none" stroke="#8b7355" stroke-width="6" stroke-linecap="round"/>
       <ellipse cx="0" cy="0" rx="7" ry="5" fill="#6b5a3e"/>
     </g>`,
+};
+
+// ---- HAIR ----
+// Head: cx=120 cy=112 rx=70 ry=77 → top≈35, sides≈50/190, bottom≈189
+const HAIR = {
+  // Harry Potter — messy short spikes
+  harry: (c) => `
+    <ellipse cx="120" cy="60" rx="68" ry="34" fill="${c}"/>
+    <path d="M52,75 Q48,42 62,34 Q72,26 80,38" fill="${c}"/>
+    <path d="M188,75 Q194,50 182,36 Q170,24 160,38" fill="${c}"/>
+    <path d="M88,35 Q86,22 96,18 Q108,14 110,28" fill="${c}"/>
+    <path d="M110,32 Q112,16 122,14 Q134,12 132,28" fill="${c}"/>
+    <path d="M132,34 Q136,18 148,20 Q158,24 152,36" fill="${c}"/>
+    <path d="M152,42 Q160,28 170,32 Q178,38 168,48" fill="${c}"/>`,
+  // Hermione — long bushy/wavy
+  hermione: (c) => `
+    <ellipse cx="120" cy="58" rx="70" ry="32" fill="${c}"/>
+    <path d="M50,72 Q38,90 40,130 Q42,160 50,178" fill="none" stroke="${c}" stroke-width="22" stroke-linecap="round"/>
+    <path d="M190,72 Q202,90 200,130 Q198,160 188,178" fill="none" stroke="${c}" stroke-width="22" stroke-linecap="round"/>
+    <path d="M50,72 Q44,110 46,150 Q48,172 52,188" fill="none" stroke="${c}" stroke-width="10" stroke-linecap="round" opacity="0.6"/>
+    <path d="M190,72 Q196,110 194,150 Q192,172 186,188" fill="none" stroke="${c}" stroke-width="10" stroke-linecap="round" opacity="0.6"/>`,
+  // Ron — straight medium, side parted
+  ron: (c) => `
+    <ellipse cx="120" cy="58" rx="68" ry="30" fill="${c}"/>
+    <path d="M52,68 Q50,80 52,100 Q54,120 58,140" fill="none" stroke="${c}" stroke-width="18" stroke-linecap="round"/>
+    <path d="M188,68 Q190,80 188,100 Q186,120 182,140" fill="none" stroke="${c}" stroke-width="18" stroke-linecap="round"/>
+    <rect x="52" y="44" width="30" height="26" rx="6" fill="${c}"/>`,
+  // Draco — slicked back, neat
+  draco: (c) => `
+    <ellipse cx="120" cy="52" rx="68" ry="24" fill="${c}"/>
+    <rect x="52" y="44" width="136" height="20" rx="6" fill="${c}"/>
+    <path d="M52,56 Q54,48 72,44 Q120,36 168,44 Q186,48 188,56" fill="${c}" stroke="${c}" stroke-width="2"/>`,
+  // Short spiky — punk unisex
+  short_spiky: (c) => `
+    <ellipse cx="120" cy="56" rx="68" ry="28" fill="${c}"/>
+    <path d="M72,44 Q68,28 78,24 Q86,20 88,36" fill="${c}"/>
+    <path d="M92,38 Q90,20 102,16 Q114,12 112,32" fill="${c}"/>
+    <path d="M112,36 Q114,18 126,16 Q138,16 134,34" fill="${c}"/>
+    <path d="M134,38 Q138,22 150,22 Q160,24 156,40" fill="${c}"/>
+    <path d="M154,44 Q160,30 170,32 Q178,36 172,50" fill="${c}"/>`,
+  // Long straight — past shoulders
+  long_straight: (c) => `
+    <ellipse cx="120" cy="56" rx="68" ry="28" fill="${c}"/>
+    <rect x="50" y="56" width="22" height="140" rx="11" fill="${c}"/>
+    <rect x="168" y="56" width="22" height="140" rx="11" fill="${c}"/>
+    <rect x="52" y="36" width="136" height="26" rx="8" fill="${c}"/>`,
+  // Curly — big afro-style
+  curly: (c) => `
+    <ellipse cx="120" cy="72" rx="78" ry="48" fill="${c}"/>
+    <ellipse cx="64" cy="88" rx="24" ry="22" fill="${c}"/>
+    <ellipse cx="176" cy="88" rx="24" ry="22" fill="${c}"/>
+    <ellipse cx="86" cy="46" rx="22" ry="20" fill="${c}"/>
+    <ellipse cx="154" cy="46" rx="22" ry="20" fill="${c}"/>
+    <ellipse cx="120" cy="38" rx="26" ry="18" fill="${c}"/>`,
+  // Double buns — kawaii
+  buns: (c) => `
+    <ellipse cx="120" cy="60" rx="62" ry="26" fill="${c}"/>
+    <circle cx="72" cy="44" r="22" fill="${c}"/>
+    <circle cx="168" cy="44" r="22" fill="${c}"/>
+    <rect x="58" y="52" width="124" height="18" rx="4" fill="${c}"/>`,
+  // Ponytail — high
+  ponytail: (c) => `
+    <ellipse cx="120" cy="58" rx="68" ry="28" fill="${c}"/>
+    <ellipse cx="120" cy="36" rx="18" ry="14" fill="${c}"/>
+    <path d="M112,36 Q106,20 114,0 Q120,-8 126,0 Q134,20 128,36" fill="${c}"/>
+    <rect x="52" y="44" width="136" height="20" rx="6" fill="${c}"/>`,
+  // Bob — chin-length
+  bob: (c) => `
+    <ellipse cx="120" cy="58" rx="68" ry="28" fill="${c}"/>
+    <rect x="50" y="56" width="22" height="80" rx="11" fill="${c}"/>
+    <rect x="168" y="56" width="22" height="80" rx="11" fill="${c}"/>
+    <rect x="52" y="36" width="136" height="26" rx="8" fill="${c}"/>
+    <rect x="50" y="128" width="140" height="10" rx="5" fill="${c}"/>`,
 };
 
 /* ---------- COLOR HELPERS ---------- */
@@ -300,6 +373,7 @@ function defaultDoll(idx) {
     cape: null, capeColor: '#1e1e1e',
     glasses: null, glassesColor: '#222222',
     belt: null, beltColor: '#8b4513',
+    hair: null, hairColor: '#3d2b1f',
     scarf: null,
     wand: null,
   };
@@ -329,6 +403,7 @@ let doll = collection[activeSlot];
 function renderDoll(container, d) {
   const parts = [];
   parts.push(svgBase(d.gender, d.skin));
+  if (d.hair) parts.push((HAIR[d.hair] || (() => ''))(d.hairColor || '#3d2b1f'));
   if (d.brows) parts.push(BROWS[d.brows] || '');
   if (d.eyes) parts.push((EYES[d.eyes] || EYES.round)(d.eyeColor));
   if (d.nose) parts.push(NOSES[d.nose] || '');
@@ -369,6 +444,7 @@ const CATEGORY_FIELD_MAP = {
   brows: 'brows',
   nose: 'nose',
   mouth: 'mouth',
+  hair: 'hair',
   top: 'top',
   bottom: 'bottom',
   shoes: 'shoes',
@@ -526,6 +602,10 @@ function buildPanel() {
           label: 'Boca', cat: 'mouth',
           items: Object.keys(MOUTHS).map(k => ({ value: k, label: k })),
         },
+        {
+          label: 'Pelo', cat: 'hair', colorField: 'hairColor',
+          items: Object.keys(HAIR).map(k => ({ value: k, label: k })),
+        },
       ],
     },
     {
@@ -659,6 +739,12 @@ function buildPreviewSvg(cat, value, d) {
     case 'mouth':
       inner = `<svg viewBox="90 150 60 40" xmlns="http://www.w3.org/2000/svg">${MOUTHS[value]||''}</svg>`;
       return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
+    case 'hair': {
+      const fn = HAIR[value];
+      inner = fn ? fn(d.hairColor || '#3d2b1f') : '';
+      inner = `<svg viewBox="34 10 172 110" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+      return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
+    }
     case 'top': {
       const fn = TOPS[value];
       inner = fn ? fn(d.topColor || '#e94560', d.gender) : '';

@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.1] - 2026-03-21
+
+### Added
+- **Hair** — 10 styles with per-item color picker (Harry, Hermione, Ron, Draco-inspired + short_spiky, long_straight, curly, buns, ponytail, bob)
+- **README.md** — simple project overview with live URL, features, local dev instructions and Docker image info
+
+### Fixed
+- **Head size** reduced 15% (`rx 82→70`, `ry 90→77`) for better Funko proportions
+- **Scarf** repositioned from mouth level (`y=156`) to neck zone (`y=180`) — now wraps correctly between head and body
+- **Hats** raised ~12px — brims now sit above the eyebrows instead of at eye level
+- **Footer** centered, smaller font (`0.6rem`), version badge styled with accent color to match page theme
+
+---
+
 ## [1.0.0] - 2026-03-21
 
 ### Added
@@ -55,3 +69,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Doll drop zone with animated highlight on drag-over
 - Responsive layout (panel hidden on small screens)
 - Footer bar with version number, GitHub link, and donation link
+
