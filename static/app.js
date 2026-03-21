@@ -159,20 +159,20 @@ const SHOES = {
 // ---- HATS ----
 const HATS = {
   beanie: (c) => `
-    <path d="M40,106 Q40,50 120,46 Q200,50 200,106 Z" fill="${c}"/>
-    <rect x="36" y="102" width="168" height="18" rx="9" fill="${darken(c,15)}"/>`,
+    <path d="M42,84 Q40,28 120,24 Q200,28 198,84 Z" fill="${c}"/>
+    <rect x="36" y="78" width="168" height="18" rx="9" fill="${darken(c,15)}"/>`,
   wizard: (c) => `
-    <path d="M120,6 L80,110 L160,110 Z" fill="${c}"/>
-    <ellipse cx="120" cy="110" rx="50" ry="12" fill="${darken(c,10)}"/>
-    <path d="M96,68 Q120,56 144,68" fill="none" stroke="#f5c518" stroke-width="2.5"/>`,
+    <path d="M120,2 L82,90 L158,90 Z" fill="${c}"/>
+    <ellipse cx="120" cy="90" rx="52" ry="13" fill="${darken(c,10)}"/>
+    <path d="M96,52 Q120,40 144,52" fill="none" stroke="#f5c518" stroke-width="2.5"/>`,
   beret: (c) => `
-    <ellipse cx="120" cy="64" rx="68" ry="28" fill="${c}"/>
-    <circle cx="148" cy="48" r="7" fill="${darken(c,18)}"/>
-    <rect x="60" y="82" width="120" height="12" rx="6" fill="${darken(c,10)}"/>`,
+    <ellipse cx="120" cy="44" rx="68" ry="28" fill="${c}"/>
+    <circle cx="148" cy="28" r="7" fill="${darken(c,18)}"/>
+    <rect x="58" y="60" width="124" height="12" rx="6" fill="${darken(c,10)}"/>`,
   cap: (c) => `
-    <path d="M50,106 Q50,62 120,58 Q190,62 190,106 Z" fill="${c}"/>
-    <rect x="46" y="100" width="148" height="14" rx="7" fill="${darken(c,12)}"/>
-    <rect x="30" y="106" width="100" height="12" rx="6" fill="${darken(c,8)}"/>`,
+    <path d="M52,84 Q50,40 120,36 Q190,40 188,84 Z" fill="${c}"/>
+    <rect x="46" y="78" width="148" height="14" rx="7" fill="${darken(c,12)}"/>
+    <rect x="28" y="84" width="106" height="12" rx="6" fill="${darken(c,8)}"/>`,
 };
 
 // ---- CAPES / COATS ----
@@ -226,20 +226,20 @@ function svgScarf(house) {
   const { c1, c2 } = HP_HOUSES[house];
   return `
     <!-- scarf base around neck -->
-    <rect x="90" y="170" width="60" height="16" rx="8" fill="${c1}"/>
+    <rect x="90" y="156" width="60" height="16" rx="8" fill="${c1}"/>
     <!-- stripes -->
-    <rect x="96" y="170" width="8" height="16" rx="0" fill="${c2}"/>
-    <rect x="112" y="170" width="8" height="16" fill="${c2}"/>
-    <rect x="128" y="170" width="8" height="16" fill="${c2}"/>
+    <rect x="96" y="156" width="8" height="16" rx="0" fill="${c2}"/>
+    <rect x="112" y="156" width="8" height="16" fill="${c2}"/>
+    <rect x="128" y="156" width="8" height="16" fill="${c2}"/>
     <!-- hanging end left -->
-    <rect x="92" y="182" width="18" height="40" rx="6" fill="${c1}"/>
-    <rect x="94" y="182" width="6" height="40" rx="3" fill="${c2}"/>
-    <rect x="102" y="182" width="6" height="40" rx="3" fill="${c1}"/>
+    <rect x="92" y="168" width="18" height="42" rx="6" fill="${c1}"/>
+    <rect x="94" y="168" width="6" height="42" rx="3" fill="${c2}"/>
+    <rect x="102" y="168" width="6" height="42" rx="3" fill="${c1}"/>
     <!-- fringe -->
-    <line x1="93" y1="220" x2="91" y2="228" stroke="${c2}" stroke-width="2"/>
-    <line x1="97" y1="220" x2="95" y2="228" stroke="${c2}" stroke-width="2"/>
-    <line x1="101" y1="220" x2="99" y2="228" stroke="${c2}" stroke-width="2"/>
-    <line x1="105" y1="220" x2="103" y2="228" stroke="${c2}" stroke-width="2"/>`;
+    <line x1="93" y1="208" x2="91" y2="216" stroke="${c2}" stroke-width="2"/>
+    <line x1="97" y1="208" x2="95" y2="216" stroke="${c2}" stroke-width="2"/>
+    <line x1="101" y1="208" x2="99" y2="216" stroke="${c2}" stroke-width="2"/>
+    <line x1="105" y1="208" x2="103" y2="216" stroke="${c2}" stroke-width="2"/>`;
 }
 
 // ---- HP WANDS ----
