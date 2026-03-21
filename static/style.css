@@ -245,6 +245,28 @@ header h1 {
   padding: 1px;
 }
 
+/* ===== SCALE SLIDER ROW ===== */
+.scale-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0 6px;
+}
+.scale-row label { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; }
+.scale-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--accent);
+  height: 4px;
+  cursor: pointer;
+}
+.scale-val {
+  font-size: 0.7rem;
+  color: var(--accent);
+  min-width: 32px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
 /* ===== CENTER CANVAS ===== */
 .canvas-area {
   flex: 1;

@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.0] - 2026-03-21
+
+### Added
+- **Eyes** × 4 new styles → 9 total: `sparkle` (anime glints), `sleepy` (drooping lid), `pixel` (3×3 retro grid), `teary` (teardrop kawaii)
+- **Eyebrows** × 3 new styles → 7 total: `thin` (fine 90s arch), `bushy` (thick natural), `raised` (skeptical asymmetric)
+- **Hair** × 8 new styles → 18 total: `side_ponytail`, `braids`, `pixie`, `wavy_long`, `top_knot`, `mohawk`, `twin_tails`, `undercut`
+- **Scale sliders** for every item category (-50% to +50%) — each panel section now shows a "Tamaño" range slider that scales the element via SVG transform around its natural center point
+- **Background color picker** in the right panel — per-doll color saved in localStorage, renders as a radial gradient on the canvas background
+
+### Changed
+- `renderDoll()` now wraps every layer in `scaleWrap()` for per-category scaling
+- `defaultDoll()` includes 13 new `*Scale` fields (all default 0) and `bgColor: '#1a2a4a'`
+- `syncRightPanel()` now syncs the `#bg-color` input when switching slots
+
+---
+
+## [1.1.0] - 2026-03-21
+
+### Added
+- **Hats** × 2 new styles → 6 total: `crown`, `top_hat`
+- **Wands** × 4 new styles → 8 total: `vine`, `phoenix`, `unicorn`, `oak`
+- **Tops** × 4 new styles → 8 total: `striped`, `dress`, `jacket`, `uniform`
+- **Glasses** × 4 new styles → 6 total: `cat_eye`, `aviator`, `hp_round`, `sunglasses`
+
+### Fixed
+- **Wands** reoriented to originate from doll's right hand (`translate(196,256) rotate(-38)`) pointing upward
+- **Hats** raised further ~10px (brim bottoms now ~y=79)
+
+---
+
 ## [1.0.1] - 2026-03-21
 
 ### Added
