@@ -170,6 +170,14 @@ const BROWS = {
   raised: (c) => `
     <path d="M74,100 Q88,90 102,100" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
     <path d="M138,94 Q152,86 166,96" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
+  // Worried — inner ends raised, outer ends dropped
+  worried: (c) => `
+    <path d="M74,100 Q82,90 102,96" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+    <path d="M138,96 Q158,90 166,100" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
+  // Cross — both brows angled sharply inward/down, scowling
+  cross: (c) => `
+    <path d="M74,94 Q88,102 102,100" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+    <path d="M138,100 Q152,102 166,94" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
 };
 
 // ---- NOSE ----
@@ -180,6 +188,22 @@ const NOSES = {
     <ellipse cx="116" cy="142" rx="3" ry="2" fill="rgba(0,0,0,0.12)"/>
     <ellipse cx="124" cy="142" rx="3" ry="2" fill="rgba(0,0,0,0.12)"/>`,
   heart: `<text x="120" y="148" font-size="14" text-anchor="middle" fill="rgba(0,0,0,0.22)">♥</text>`,
+  // Cat — two tiny close dots, cat-style
+  cat: `
+    <circle cx="116" cy="142" r="2.5" fill="rgba(0,0,0,0.22)"/>
+    <circle cx="124" cy="142" r="2.5" fill="rgba(0,0,0,0.22)"/>`,
+  // Pig — upturned oval with two nostrils
+  pig: `
+    <ellipse cx="120" cy="143" rx="9" ry="6" fill="rgba(0,0,0,0.1)" stroke="rgba(0,0,0,0.18)" stroke-width="1.5"/>
+    <circle cx="116" cy="144" r="2.5" fill="rgba(0,0,0,0.18)"/>
+    <circle cx="124" cy="144" r="2.5" fill="rgba(0,0,0,0.18)"/>`,
+  // Freckles — scattered dots across nose bridge
+  freckles: `
+    <circle cx="109" cy="144" r="2" fill="rgba(180,100,60,0.45)"/>
+    <circle cx="116" cy="141" r="1.8" fill="rgba(180,100,60,0.4)"/>
+    <circle cx="124" cy="141" r="1.8" fill="rgba(180,100,60,0.4)"/>
+    <circle cx="131" cy="144" r="2" fill="rgba(180,100,60,0.45)"/>
+    <circle cx="120" cy="143" r="1.5" fill="rgba(180,100,60,0.3)"/>`,
 };
 
 // ---- MOUTH ----
@@ -190,6 +214,18 @@ const MOUTHS = {
   uwu: `
     <path d="M102,162 Q112,174 120,162" fill="none" stroke="#c0645a" stroke-width="3" stroke-linecap="round"/>
     <path d="M120,162 Q128,174 138,162" fill="none" stroke="#c0645a" stroke-width="3" stroke-linecap="round"/>`,
+  // Grin — wide open smile showing teeth
+  grin: `
+    <path d="M96,160 Q120,180 144,160" fill="#c0645a" stroke="#c0645a" stroke-width="2" stroke-linecap="round"/>
+    <path d="M96,160 Q120,165 144,160" fill="white" stroke="none"/>
+    <line x1="108" y1="160" x2="108" y2="165" stroke="#c0645a" stroke-width="1.5"/>
+    <line x1="120" y1="160" x2="120" y2="165" stroke="#c0645a" stroke-width="1.5"/>
+    <line x1="132" y1="160" x2="132" y2="165" stroke="#c0645a" stroke-width="1.5"/>`,
+  // Cat mouth — W-shape
+  cat_mouth: `
+    <path d="M104,164 Q112,172 120,164" fill="none" stroke="#c0645a" stroke-width="3" stroke-linecap="round"/>
+    <path d="M120,164 Q128,172 136,164" fill="none" stroke="#c0645a" stroke-width="3" stroke-linecap="round"/>
+    <line x1="120" y1="162" x2="120" y2="156" stroke="#c0645a" stroke-width="2" stroke-linecap="round"/>`,
 };
 
 // ---- TOPS (shirts) ----
@@ -224,6 +260,11 @@ const TOPS = {
     <line x1="120" y1="216" x2="120" y2="286" stroke="${darken(c,20)}" stroke-width="3"/>
     <rect x="86" y="242" width="10" height="6" rx="2" fill="${darken(c,30)}"/>
     <rect x="86" y="256" width="10" height="6" rx="2" fill="${darken(c,30)}"/>`,
+  // Vest — unisex sleeveless V-neck chaleco
+  vest: (c, _g) => `
+    <path d="M90,196 L86,218 L86,284 Q120,292 154,284 L154,218 L150,196 L138,204 Q130,196 120,196 Q110,196 102,204 Z" fill="${c}"/>
+    <path d="M102,204 Q108,220 120,224 Q132,220 138,204 Q130,196 120,196 Q110,196 102,204 Z" fill="${darken(c,16)}"/>
+    <rect x="116" y="224" width="8" height="60" rx="2" fill="${darken(c,10)}"/>`,
 };
 
 // ---- BOTTOMS ----
@@ -235,6 +276,22 @@ const BOTTOMS = {
   shorts: (c, gender) => gender === 'girl'
     ? `<path d="M84,282 L84,310 Q100,316 112,310 L118,296 L122,296 L128,310 Q140,316 156,310 L156,282 Z" fill="${c}"/>`
     : `<path d="M80,280 L80,312 Q98,318 112,312 L119,298 L121,298 L128,312 Q142,318 160,312 L160,280 Z" fill="${c}"/>`,
+  // Leggings — slim fitted tapered to ankle
+  leggings: (c, _g) => `
+    <path d="M84,282 L82,338 Q96,342 110,338 L118,302 L122,302 L130,338 Q144,342 158,338 L156,282 Z" fill="${c}"/>
+    <rect x="82" y="334" width="28" height="6" rx="3" fill="${darken(c,14)}"/>
+    <rect x="130" y="334" width="28" height="6" rx="3" fill="${darken(c,14)}"/>`,
+  // Mini skirt — short flared
+  skirt_mini: (c, _g) => `
+    <path d="M82,282 Q80,306 120,312 Q160,306 158,282 Z" fill="${c}"/>
+    <path d="M80,306 Q82,314 120,318 Q158,314 160,306 Q120,312 80,306 Z" fill="${darken(c,10)}"/>`,
+  // Joggers — relaxed tapered with ribbed cuffs
+  joggers: (c, _g) => `
+    <path d="M80,282 L80,328 Q98,336 112,328 L119,302 L121,302 L128,328 Q142,336 160,328 L160,282 Z" fill="${c}"/>
+    <rect x="80" y="324" width="32" height="10" rx="4" fill="${darken(c,12)}"/>
+    <rect x="128" y="324" width="32" height="10" rx="4" fill="${darken(c,12)}"/>
+    <line x1="80" y1="328" x2="112" y2="328" stroke="${darken(c,20)}" stroke-width="1.5"/>
+    <line x1="128" y1="328" x2="160" y2="328" stroke="${darken(c,20)}" stroke-width="1.5"/>`,
 };
 
 // ---- SHOES ----
@@ -254,6 +311,26 @@ const SHOES = {
     <ellipse cx="143" cy="335" rx="22" ry="6" fill="${c}"/>
     <line x1="82" y1="328" x2="112" y2="328" stroke="${darken(c,25)}" stroke-width="3"/>
     <line x1="130" y1="328" x2="160" y2="328" stroke="${darken(c,25)}" stroke-width="3"/>`,
+  // Heel — high-heel silhouette
+  heel: (c) => `
+    <path d="M78,328 Q80,338 100,338 Q116,338 118,328 L118,322 Q100,320 78,328 Z" fill="${c}"/>
+    <path d="M126,328 Q128,338 148,338 Q164,338 166,328 L166,322 Q148,320 126,328 Z" fill="${c}"/>
+    <rect x="78" y="328" width="6" height="14" rx="3" fill="${darken(c,20)}"/>
+    <rect x="126" y="328" width="6" height="14" rx="3" fill="${darken(c,20)}"/>`,
+  // Knee-high boot
+  boot_high: (c) => `
+    <rect x="80" y="296" width="30" height="42" rx="6" fill="${c}"/>
+    <rect x="128" y="296" width="30" height="42" rx="6" fill="${c}"/>
+    <ellipse cx="95" cy="337" rx="19" ry="6" fill="${darken(c,15)}"/>
+    <ellipse cx="143" cy="337" rx="19" ry="6" fill="${darken(c,15)}"/>
+    <rect x="80" y="308" width="30" height="4" rx="2" fill="${darken(c,10)}"/>
+    <rect x="128" y="308" width="30" height="4" rx="2" fill="${darken(c,10)}"/>`,
+  // Slipper / loafer — flat round
+  slipper: (c) => `
+    <ellipse cx="97" cy="334" rx="22" ry="8" fill="${c}"/>
+    <ellipse cx="143" cy="334" rx="22" ry="8" fill="${c}"/>
+    <path d="M76,330 Q88,322 118,328" fill="none" stroke="${darken(c,18)}" stroke-width="3" stroke-linecap="round"/>
+    <path d="M124,328 Q154,322 166,330" fill="none" stroke="${darken(c,18)}" stroke-width="3" stroke-linecap="round"/>`,
 };
 
 // ---- HATS ----
@@ -296,6 +373,12 @@ const CAPES = {
     <path d="M58,196 L36,296 Q56,318 80,308 L80,196 Z" fill="${c}"/>
     <path d="M182,196 L204,296 Q184,318 160,308 L160,196 Z" fill="${c}"/>
     <path d="M80,196 L80,308 Q120,318 160,308 L160,196 Z" fill="${darken(c,6)}"/>`,
+  // Poncho — symmetrical draped sides, no lapels, rounded hem
+  poncho: (c) => `
+    <path d="M56,200 Q50,240 54,290 Q72,306 88,298 L88,200 Z" fill="${c}"/>
+    <path d="M184,200 Q190,240 186,290 Q168,306 152,298 L152,200 Z" fill="${c}"/>
+    <path d="M88,200 L88,298 Q120,308 152,298 L152,200 Q136,194 120,192 Q104,194 88,200 Z" fill="${darken(c,8)}"/>
+    <path d="M88,200 Q104,206 120,206 Q136,206 152,200 Q136,194 120,192 Q104,194 88,200 Z" fill="${darken(c,16)}"/>`,
 };
 
 // ---- GLASSES ----
@@ -346,6 +429,13 @@ const BELTS = {
   wide: (c) => `
     <rect x="74" y="270" width="92" height="14" rx="5" fill="${c}"/>
     <rect x="114" y="268" width="12" height="18" rx="3" fill="${darken(c,20)}"/>`,
+  // Suspenders — two diagonal straps from shoulders crossing at chest
+  suspenders: (c) => `
+    <path d="M96,200 L112,278" fill="none" stroke="${c}" stroke-width="5" stroke-linecap="round"/>
+    <path d="M144,200 L128,278" fill="none" stroke="${c}" stroke-width="5" stroke-linecap="round"/>
+    <rect x="108" y="270" width="24" height="8" rx="3" fill="${c}"/>
+    <rect x="92" y="196" width="12" height="8" rx="3" fill="${darken(c,15)}"/>
+    <rect x="136" y="196" width="12" height="8" rx="3" fill="${darken(c,15)}"/>`,
 };
 
 // ---- HP SCARVES ----
@@ -374,6 +464,30 @@ function svgScarf(house) {
     <line x1="97" y1="234" x2="95" y2="242" stroke="${c2}" stroke-width="2"/>
     <line x1="101" y1="234" x2="99" y2="242" stroke="${c2}" stroke-width="2"/>
     <line x1="105" y1="234" x2="103" y2="242" stroke="${c2}" stroke-width="2"/>`;
+}
+
+// ---- FREE SCARVES ----
+const SCARF2_STYLES = ['solid', 'diagonal'];
+
+function svgScarf2(style, c1, c2) {
+  if (style === 'solid') {
+    return `
+    <rect x="88" y="178" width="64" height="18" rx="9" fill="${c1}"/>
+    <rect x="88" y="188" width="64" height="8" rx="4" fill="${c1}" opacity="0.7"/>`;
+  }
+  if (style === 'diagonal') {
+    return `
+    <rect x="88" y="178" width="64" height="18" rx="9" fill="${c1}"/>
+    <clipPath id="scarf2-clip"><rect x="88" y="178" width="64" height="18" rx="9"/></clipPath>
+    <g clip-path="url(#scarf2-clip)">
+      <line x1="94" y1="174" x2="84" y2="200" stroke="${c2}" stroke-width="7" stroke-linecap="butt"/>
+      <line x1="108" y1="174" x2="98" y2="200" stroke="${c2}" stroke-width="7" stroke-linecap="butt"/>
+      <line x1="122" y1="174" x2="112" y2="200" stroke="${c2}" stroke-width="7" stroke-linecap="butt"/>
+      <line x1="136" y1="174" x2="126" y2="200" stroke="${c2}" stroke-width="7" stroke-linecap="butt"/>
+      <line x1="150" y1="174" x2="140" y2="200" stroke="${c2}" stroke-width="7" stroke-linecap="butt"/>
+    </g>`;
+  }
+  return '';
 }
 
 // ---- HP WANDS ----
@@ -426,6 +540,15 @@ const WANDS = {
       <circle cx="-2" cy="-28" r="4" fill="#4a2e14"/>
       <circle cx="2" cy="-56" r="3.5" fill="#4a2e14"/>
       <ellipse cx="0" cy="-80" rx="7" ry="5" fill="#3a2010"/>
+    </g>`,
+  // Crystal — angular faceted crystal tip
+  crystal: `
+    <g transform="translate(196,256) rotate(-38)">
+      <rect x="-3" y="-68" width="6" height="68" rx="3" fill="#c8b8e8"/>
+      <polygon points="0,-84 -7,-68 7,-68" fill="#a990d8"/>
+      <polygon points="0,-84 -7,-68 0,-72" fill="#d4c8f0"/>
+      <polygon points="0,-84 7,-68 0,-72" fill="#b8a4e0"/>
+      <line x1="-3" y1="-68" x2="-3" y2="-16" stroke="#d4c8f0" stroke-width="1" opacity="0.6"/>
     </g>`,
 };
 
@@ -647,6 +770,7 @@ function defaultDoll(idx) {
     belt: null, beltColor: '#8b4513',
     hair: null, hairColor: '#3d2b1f',
     scarf: null,
+    scarf2: null, scarf2Color: '#e94560', scarf2Color2: '#ffffff',
     wand: null,
     bgColor: '#1a2a4a',
     browColor: '#5a3a1a',
@@ -701,6 +825,7 @@ function renderDoll(container, d) {
   if (d.glasses) parts.push(sc('glasses', (GLASSES[d.glasses] || (() => ''))(d.glassesColor)));
   if (d.belt)    parts.push(sc('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor)));
   if (d.scarf)   parts.push(svgScarf(d.scarf));
+  if (d.scarf2)  parts.push(svgScarf2(d.scarf2, d.scarf2Color || '#e94560', d.scarf2Color2 || '#ffffff'));
   if (d.wand)    parts.push(sc('wand',    WANDS[d.wand]    || ''));
 
   container.innerHTML = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg">${parts.join('\n')}</svg>`;
@@ -739,6 +864,7 @@ const CATEGORY_FIELD_MAP = {
   glasses: 'glasses',
   belt: 'belt',
   scarf: 'scarf',
+  scarf2: 'scarf2',
   wand: 'wand',
 };
 
@@ -875,7 +1001,7 @@ function buildPanel() {
           ],
         },
         {
-          label: 'Ojos', cat: 'eyes', colorField: 'eyeColor', colorField2: 'lashColor', colorField2Label: 'Pestañas', scaleField: 'eyesScale',
+          label: 'Ojos', cat: 'eyes', colorField: 'eyeColor', colorFieldLabel: 'Color ojos', colorField2: 'lashColor', colorField2Label: 'Color pestañas', scaleField: 'eyesScale',
           items: Object.keys(EYES).map(k => ({ value: k, label: k })),
         },
         {
@@ -925,6 +1051,12 @@ function buildPanel() {
           items: Object.keys(HP_HOUSES).map(k => ({ value: k, label: HP_HOUSES[k].name })),
         },
         {
+          label: 'Bufanda libre', cat: 'scarf2',
+          colorField: 'scarf2Color', colorFieldLabel: 'Color 1',
+          colorField2: 'scarf2Color2', colorField2Label: 'Color 2',
+          items: SCARF2_STYLES.map(k => ({ value: k, label: k })),
+        },
+        {
           label: 'Varita', cat: 'wand', scaleField: 'wandScale',
           items: Object.keys(WANDS).map(k => ({ value: k, label: k })),
         },
@@ -968,7 +1100,7 @@ function buildPanel() {
         const colorRow = document.createElement('div');
         colorRow.className = 'color-row';
         colorRow.innerHTML = `
-          <label>Color</label>
+          <label>${sub.colorFieldLabel || 'Color'}</label>
           <input type="color" id="clr-${sub.cat}" value="${doll[sub.colorField] || '#ffffff'}"/>`;
         colorRow.querySelector('input').addEventListener('input', e => {
           doll[sub.colorField] = e.target.value;
@@ -1115,6 +1247,11 @@ function buildPreviewSvg(cat, value, d) {
     case 'scarf': {
       inner = svgScarf(value);
       inner = `<svg viewBox="80 162 80 80" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+      return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
+    }
+    case 'scarf2': {
+      inner = svgScarf2(value, d.scarf2Color || '#e94560', d.scarf2Color2 || '#ffffff');
+      inner = `<svg viewBox="80 168 80 30" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
       return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
     }
     case 'wand': {

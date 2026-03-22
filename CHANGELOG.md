@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.6.0] - 2026-03-22
+
+### Added
+- **Nuevos estilos de cejas** — `worried` (preocupado) y `cross` (enojado con V)
+- **Nuevas narices** — `cat` (triángulo kawaii), `pig` (círculo con orificios), `freckles` (pecas)
+- **Nuevas bocas** — `grin` (sonrisa amplia con dientes) y `cat_mouth` (boca gatuna en W)
+- **Nuevos tops** — `vest` (chaleco sin mangas unisex)
+- **Nuevos pantalones/faldas** — `leggings`, `skirt_mini`, `joggers`
+- **Nuevos zapatos** — `heel` (tacón), `boot_high` (bota alta), `slipper` (pantufla)
+- **Nuevo cinturón** — `suspenders` (tirantes cruzados sobre la camiseta)
+- **Nueva varita** — `crystal` (punta de cristal facetado)
+- **Nueva capa** — `poncho` (poncho con costados simétricos)
+- **Bufanda libre** — nueva categoría "Bufanda libre" con estilos `solid` y `diagonal` (franja diagonal con clipPath); 2 selectores de color independientes (Color 1 / Color 2)
+
+### Fixed
+- **Etiquetas de color en el panel** — el primer picker de color de cada subsección ahora usa `colorFieldLabel` (ej. "Color ojos") en lugar de mostrar siempre "Color"
+
+---
+
 ## [1.5.0] - 2026-03-22
 
 ### Added
