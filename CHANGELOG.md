@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.0] - 2026-03-22
+
+### Added
+- **Color de cejas** — selector de color independiente para las cejas; todos los estilos de ceja (straight, arched, angry, kawaii, thin, bushy, raised) ahora usan el color elegido en lugar de tener colores fijos
+- **Color de pestañas** — selector de color "Pestañas" en la sección Ojos; aplica a los estilos: `half` (arco cerrado), `wink` (arco del ojo guiñado), `sparkle` (rayos de brillo), `sleepy` (párpado caído). El valor por defecto hereda el color de pelo
+- Los estilos kawaii ahora son totalmente personalizables: los círculos decorativos y el trazo responden al mismo picker de color de cejas
+
+---
+
 ## [1.4.0] - 2026-03-21
 
 ### Added

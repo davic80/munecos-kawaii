@@ -50,7 +50,7 @@ function svgBase(gender, skin) {
 
 // ---- EYES ----
 const EYES = {
-  round: (c) => `
+  round: (c, _lc) => `
     <circle cx="90" cy="118" r="14" fill="white"/>
     <circle cx="90" cy="120" r="9" fill="${c}"/>
     <circle cx="90" cy="120" r="5" fill="#111"/>
@@ -59,55 +59,55 @@ const EYES = {
     <circle cx="150" cy="120" r="9" fill="${c}"/>
     <circle cx="150" cy="120" r="5" fill="#111"/>
     <circle cx="153" cy="116" r="2.5" fill="white"/>`,
-  star: (_c) => `
+  star: (_c, _lc) => `
     <text x="76" y="132" font-size="24" text-anchor="middle" fill="#ffdd00">★</text>
     <text x="144" y="132" font-size="24" text-anchor="middle" fill="#ffdd00">★</text>`,
-  half: (_c) => `
-    <path d="M76,118 Q90,132 104,118" fill="none" stroke="#222" stroke-width="3" stroke-linecap="round"/>
-    <path d="M136,118 Q150,132 164,118" fill="none" stroke="#222" stroke-width="3" stroke-linecap="round"/>`,
-  wink: (c) => `
+  half: (_c, lc) => `
+    <path d="M76,118 Q90,132 104,118" fill="none" stroke="${lc}" stroke-width="3" stroke-linecap="round"/>
+    <path d="M136,118 Q150,132 164,118" fill="none" stroke="${lc}" stroke-width="3" stroke-linecap="round"/>`,
+  wink: (c, lc) => `
     <circle cx="90" cy="118" r="14" fill="white"/>
     <circle cx="90" cy="120" r="9" fill="${c}"/>
     <circle cx="90" cy="120" r="5" fill="#111"/>
     <circle cx="93" cy="116" r="2.5" fill="white"/>
-    <path d="M136,120 Q150,132 164,120" fill="none" stroke="#222" stroke-width="3" stroke-linecap="round"/>`,
-  heart: (_c) => `
+    <path d="M136,120 Q150,132 164,120" fill="none" stroke="${lc}" stroke-width="3" stroke-linecap="round"/>`,
+  heart: (_c, _lc) => `
     <text x="76" y="134" font-size="26" text-anchor="middle" fill="#ff4d6d">♥</text>
     <text x="144" y="134" font-size="26" text-anchor="middle" fill="#ff4d6d">♥</text>`,
   // Sparkle — big anime eyes with star pupil and glints
-  sparkle: (c) => `
+  sparkle: (c, lc) => `
     <circle cx="90" cy="118" r="16" fill="white"/>
     <circle cx="90" cy="119" r="11" fill="${c}"/>
     <circle cx="90" cy="119" r="6" fill="#111"/>
     <circle cx="94" cy="114" r="3" fill="white"/>
     <circle cx="86" cy="122" r="1.5" fill="white"/>
-    <line x1="90" y1="100" x2="90" y2="96" stroke="#ffe066" stroke-width="2" stroke-linecap="round"/>
-    <line x1="100" y1="104" x2="103" y2="101" stroke="#ffe066" stroke-width="2" stroke-linecap="round"/>
-    <line x1="80" y1="104" x2="77" y2="101" stroke="#ffe066" stroke-width="2" stroke-linecap="round"/>
+    <line x1="90" y1="100" x2="90" y2="96" stroke="${lc}" stroke-width="2" stroke-linecap="round"/>
+    <line x1="100" y1="104" x2="103" y2="101" stroke="${lc}" stroke-width="2" stroke-linecap="round"/>
+    <line x1="80" y1="104" x2="77" y2="101" stroke="${lc}" stroke-width="2" stroke-linecap="round"/>
     <circle cx="150" cy="118" r="16" fill="white"/>
     <circle cx="150" cy="119" r="11" fill="${c}"/>
     <circle cx="150" cy="119" r="6" fill="#111"/>
     <circle cx="154" cy="114" r="3" fill="white"/>
     <circle cx="146" cy="122" r="1.5" fill="white"/>
-    <line x1="150" y1="100" x2="150" y2="96" stroke="#ffe066" stroke-width="2" stroke-linecap="round"/>
-    <line x1="160" y1="104" x2="163" y2="101" stroke="#ffe066" stroke-width="2" stroke-linecap="round"/>
-    <line x1="140" y1="104" x2="137" y2="101" stroke="#ffe066" stroke-width="2" stroke-linecap="round"/>`,
+    <line x1="150" y1="100" x2="150" y2="96" stroke="${lc}" stroke-width="2" stroke-linecap="round"/>
+    <line x1="160" y1="104" x2="163" y2="101" stroke="${lc}" stroke-width="2" stroke-linecap="round"/>
+    <line x1="140" y1="104" x2="137" y2="101" stroke="${lc}" stroke-width="2" stroke-linecap="round"/>`,
   // Sleepy — heavy drooping eyelid, half-open
-  sleepy: (c) => `
+  sleepy: (c, lc) => `
     <circle cx="90" cy="120" r="13" fill="white"/>
     <circle cx="90" cy="121" r="8" fill="${c}"/>
     <circle cx="90" cy="121" r="4" fill="#111"/>
     <circle cx="93" cy="118" r="2" fill="white"/>
     <path d="M76,114 Q90,110 104,114" fill="#f5c5a3" stroke="none"/>
-    <path d="M76,114 Q90,110 104,114" fill="none" stroke="#5a3a1a" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M76,114 Q90,110 104,114" fill="none" stroke="${lc}" stroke-width="2.5" stroke-linecap="round"/>
     <circle cx="150" cy="120" r="13" fill="white"/>
     <circle cx="150" cy="121" r="8" fill="${c}"/>
     <circle cx="150" cy="121" r="4" fill="#111"/>
     <circle cx="153" cy="118" r="2" fill="white"/>
     <path d="M136,114 Q150,110 164,114" fill="#f5c5a3" stroke="none"/>
-    <path d="M136,114 Q150,110 164,114" fill="none" stroke="#5a3a1a" stroke-width="2.5" stroke-linecap="round"/>`,
+    <path d="M136,114 Q150,110 164,114" fill="none" stroke="${lc}" stroke-width="2.5" stroke-linecap="round"/>`,
   // Pixel — retro 3×3 grid pixel art eyes
-  pixel: (_c) => `
+  pixel: (_c, _lc) => `
     <rect x="78" y="110" width="7" height="7" fill="#111"/>
     <rect x="85" y="110" width="7" height="7" fill="#111"/>
     <rect x="92" y="110" width="7" height="7" fill="#111"/>
@@ -127,7 +127,7 @@ const EYES = {
     <rect x="145" y="124" width="7" height="7" fill="#111"/>
     <rect x="152" y="124" width="7" height="7" fill="#111"/>`,
   // Teary — round eyes with a single teardrop
-  teary: (c) => `
+  teary: (c, _lc) => `
     <circle cx="90" cy="118" r="14" fill="white"/>
     <circle cx="90" cy="119" r="9" fill="${c}"/>
     <circle cx="90" cy="119" r="5" fill="#111"/>
@@ -144,32 +144,32 @@ const EYES = {
 
 // ---- EYEBROWS ----
 const BROWS = {
-  straight: `
-    <rect x="74" y="96" width="28" height="5" rx="2.5" fill="#5a3a1a"/>
-    <rect x="138" y="96" width="28" height="5" rx="2.5" fill="#5a3a1a"/>`,
-  arched: `
-    <path d="M74,100 Q88,90 102,100" fill="none" stroke="#5a3a1a" stroke-width="4" stroke-linecap="round"/>
-    <path d="M138,100 Q152,90 166,100" fill="none" stroke="#5a3a1a" stroke-width="4" stroke-linecap="round"/>`,
-  angry: `
-    <path d="M74,98 Q88,104 102,98" fill="none" stroke="#5a3a1a" stroke-width="4" stroke-linecap="round"/>
-    <path d="M138,98 Q152,104 166,98" fill="none" stroke="#5a3a1a" stroke-width="4" stroke-linecap="round"/>`,
-  kawaii: `
-    <path d="M74,98 Q88,92 102,98" fill="none" stroke="#d4804a" stroke-width="3.5" stroke-linecap="round"/>
-    <path d="M138,98 Q152,92 166,98" fill="none" stroke="#d4804a" stroke-width="3.5" stroke-linecap="round"/>
-    <circle cx="76" cy="98" r="3" fill="#d4804a"/>
-    <circle cx="138" cy="98" r="3" fill="#d4804a"/>`,
+  straight: (c) => `
+    <rect x="74" y="96" width="28" height="5" rx="2.5" fill="${c}"/>
+    <rect x="138" y="96" width="28" height="5" rx="2.5" fill="${c}"/>`,
+  arched: (c) => `
+    <path d="M74,100 Q88,90 102,100" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+    <path d="M138,100 Q152,90 166,100" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
+  angry: (c) => `
+    <path d="M74,98 Q88,104 102,98" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+    <path d="M138,98 Q152,104 166,98" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
+  kawaii: (c) => `
+    <path d="M74,98 Q88,92 102,98" fill="none" stroke="${c}" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M138,98 Q152,92 166,98" fill="none" stroke="${c}" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="76" cy="98" r="3" fill="${c}"/>
+    <circle cx="138" cy="98" r="3" fill="${c}"/>`,
   // Thin — very fine high arched lines, 90s/anime style
-  thin: `
-    <path d="M76,94 Q88,88 102,93" fill="none" stroke="#5a3a1a" stroke-width="1.8" stroke-linecap="round"/>
-    <path d="M138,94 Q152,88 166,93" fill="none" stroke="#5a3a1a" stroke-width="1.8" stroke-linecap="round"/>`,
+  thin: (c) => `
+    <path d="M76,94 Q88,88 102,93" fill="none" stroke="${c}" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M138,94 Q152,88 166,93" fill="none" stroke="${c}" stroke-width="1.8" stroke-linecap="round"/>`,
   // Bushy — thick natural stroke
-  bushy: `
-    <path d="M72,100 Q88,92 104,100" fill="none" stroke="#5a3a1a" stroke-width="7" stroke-linecap="round"/>
-    <path d="M136,100 Q152,92 168,100" fill="none" stroke="#5a3a1a" stroke-width="7" stroke-linecap="round"/>`,
+  bushy: (c) => `
+    <path d="M72,100 Q88,92 104,100" fill="none" stroke="${c}" stroke-width="7" stroke-linecap="round"/>
+    <path d="M136,100 Q152,92 168,100" fill="none" stroke="${c}" stroke-width="7" stroke-linecap="round"/>`,
   // Raised — left normal arched, right lifted skeptical
-  raised: `
-    <path d="M74,100 Q88,90 102,100" fill="none" stroke="#5a3a1a" stroke-width="4" stroke-linecap="round"/>
-    <path d="M138,94 Q152,86 166,96" fill="none" stroke="#5a3a1a" stroke-width="4" stroke-linecap="round"/>`,
+  raised: (c) => `
+    <path d="M74,100 Q88,90 102,100" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+    <path d="M138,94 Q152,86 166,96" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
 };
 
 // ---- NOSE ----
@@ -649,6 +649,8 @@ function defaultDoll(idx) {
     scarf: null,
     wand: null,
     bgColor: '#1a2a4a',
+    browColor: '#5a3a1a',
+    lashColor: '#3d2b1f',
     // scale fields: -50..+50 (0 = normal size)
     eyesScale: 0, browsScale: 0, noseScale: 0, mouthScale: 0,
     hairScale: 0, topScale: 0,   bottomScale: 0, shoesScale: 0,
@@ -687,8 +689,8 @@ function renderDoll(container, d) {
   const parts = [];
   parts.push(svgBase(d.gender, d.skin));
   if (d.hair)    parts.push(sc('hair',    (HAIR[d.hair]    || (() => ''))(d.hairColor    || '#3d2b1f')));
-  if (d.brows)   parts.push(sc('brows',   BROWS[d.brows]   || ''));
-  if (d.eyes)    parts.push(sc('eyes',    (EYES[d.eyes]    || EYES.round)(d.eyeColor)));
+  if (d.brows)   parts.push(sc('brows',   (BROWS[d.brows]   || (() => ''))(d.browColor || '#5a3a1a')));
+  if (d.eyes)    parts.push(sc('eyes',    (EYES[d.eyes]    || EYES.round)(d.eyeColor, d.lashColor || d.hairColor || '#3d2b1f')));
   if (d.nose)    parts.push(sc('nose',    NOSES[d.nose]    || ''));
   if (d.mouth)   parts.push(sc('mouth',   MOUTHS[d.mouth]  || ''));
   if (d.bottom)  parts.push(sc('bottom',  (BOTTOMS[d.bottom] || (() => ''))(d.bottomColor, d.gender)));
@@ -715,7 +717,7 @@ function renderAll() {
 /* mini SVG for slot tabs */
 function renderMini(d) {
   const parts = [svgBase(d.gender, d.skin)];
-  if (d.eyes) parts.push((EYES[d.eyes] || EYES.round)(d.eyeColor));
+  if (d.eyes) parts.push((EYES[d.eyes] || EYES.round)(d.eyeColor, d.lashColor || d.hairColor || '#3d2b1f'));
   if (d.top) parts.push((TOPS[d.top] || (() => ''))(d.topColor, d.gender));
   if (d.scarf) parts.push(svgScarf(d.scarf));
   return `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg">${parts.join('\n')}</svg>`;
@@ -873,11 +875,11 @@ function buildPanel() {
           ],
         },
         {
-          label: 'Ojos', cat: 'eyes', colorField: 'eyeColor', scaleField: 'eyesScale',
+          label: 'Ojos', cat: 'eyes', colorField: 'eyeColor', colorField2: 'lashColor', colorField2Label: 'Pestañas', scaleField: 'eyesScale',
           items: Object.keys(EYES).map(k => ({ value: k, label: k })),
         },
         {
-          label: 'Cejas', cat: 'brows', scaleField: 'browsScale',
+          label: 'Cejas', cat: 'brows', colorField: 'browColor', scaleField: 'browsScale',
           items: Object.keys(BROWS).map(k => ({ value: k, label: k })),
         },
         {
@@ -976,6 +978,21 @@ function buildPanel() {
         body.appendChild(colorRow);
       }
 
+      // Second color picker (e.g. lash color for eyes)
+      if (sub.colorField2) {
+        const colorRow2 = document.createElement('div');
+        colorRow2.className = 'color-row';
+        colorRow2.innerHTML = `
+          <label>${sub.colorField2Label || 'Color 2'}</label>
+          <input type="color" id="clr2-${sub.cat}" value="${doll[sub.colorField2] || '#ffffff'}"/>`;
+        colorRow2.querySelector('input').addEventListener('input', e => {
+          doll[sub.colorField2] = e.target.value;
+          saveCollection();
+          renderAll();
+        });
+        body.appendChild(colorRow2);
+      }
+
       // Item grid
       const grid = document.createElement('div');
       grid.className = 'item-grid';
@@ -1035,11 +1052,11 @@ function buildPreviewSvg(cat, value, d) {
       inner = svgBase(value, skin);
       break;
     case 'eyes':
-      inner = `<ellipse cx="22" cy="22" rx="20" ry="20" fill="#fff2e8"/>` + (EYES[value] || EYES.round)(eyeC);
-      inner = `<svg viewBox="60 100 120 60" xmlns="http://www.w3.org/2000/svg">${(EYES[value]||EYES.round)(eyeC)}</svg>`;
+      inner = `<ellipse cx="22" cy="22" rx="20" ry="20" fill="#fff2e8"/>` + (EYES[value] || EYES.round)(eyeC, d.lashColor || d.hairColor || '#3d2b1f');
+      inner = `<svg viewBox="60 100 120 60" xmlns="http://www.w3.org/2000/svg">${(EYES[value]||EYES.round)(eyeC, d.lashColor || d.hairColor || '#3d2b1f')}</svg>`;
       return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
     case 'brows':
-      inner = `<svg viewBox="60 82 120 34" xmlns="http://www.w3.org/2000/svg">${BROWS[value]||''}</svg>`;
+      inner = `<svg viewBox="60 82 120 34" xmlns="http://www.w3.org/2000/svg">${(BROWS[value] || (() => ''))(d.browColor || '#5a3a1a')}</svg>`;
       return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
     case 'nose':
       inner = `<svg viewBox="96 128 48 32" xmlns="http://www.w3.org/2000/svg">${NOSES[value]||''}</svg>`;
