@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.6.1] - 2026-03-23
+
+### Fixed
+- **Color de ojos** — eliminado el picker duplicado del panel derecho; el selector de color de ojos vive únicamente en el panel izquierdo (subsección Ojos)
+- **Tirantes (suspenders)** — rediseñados como dos tirantes verticales paralelos (izquierdo y derecho) que van del hombro a la cintura; eliminada la barra inferior horizontal y el cruce diagonal
+- **Varitas** — corregida la dirección: ahora apuntan hacia afuera en diagonal (alejándose del cuerpo) en lugar de hacia el interior
+
+---
+
 ## [1.6.0] - 2026-03-22
 
 ### Added

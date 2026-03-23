@@ -429,13 +429,12 @@ const BELTS = {
   wide: (c) => `
     <rect x="74" y="270" width="92" height="14" rx="5" fill="${c}"/>
     <rect x="114" y="268" width="12" height="18" rx="3" fill="${darken(c,20)}"/>`,
-  // Suspenders — two diagonal straps from shoulders crossing at chest
+  // Suspenders — two vertical straps from shoulders to waistband
   suspenders: (c) => `
-    <path d="M96,200 L112,278" fill="none" stroke="${c}" stroke-width="5" stroke-linecap="round"/>
-    <path d="M144,200 L128,278" fill="none" stroke="${c}" stroke-width="5" stroke-linecap="round"/>
-    <rect x="108" y="270" width="24" height="8" rx="3" fill="${c}"/>
-    <rect x="92" y="196" width="12" height="8" rx="3" fill="${darken(c,15)}"/>
-    <rect x="136" y="196" width="12" height="8" rx="3" fill="${darken(c,15)}"/>`,
+    <rect x="105" y="200" width="7" height="78" rx="3" fill="${c}"/>
+    <rect x="128" y="200" width="7" height="78" rx="3" fill="${c}"/>
+    <rect x="101" y="195" width="15" height="8" rx="3" fill="${darken(c,15)}"/>
+    <rect x="124" y="195" width="15" height="8" rx="3" fill="${darken(c,15)}"/>`,
 };
 
 // ---- HP SCARVES ----
@@ -494,48 +493,48 @@ function svgScarf2(style, c1, c2) {
 // All wands originate from the doll's right hand (~196,256), pointing up-right at ~-38°
 const WANDS = {
   elder: `
-    <g transform="translate(196,256) rotate(-38)">
+    <g transform="translate(196,256) rotate(38)">
       <rect x="-4" y="-88" width="8" height="88" rx="4" fill="#3d2b1f"/>
       <ellipse cx="0" cy="-88" rx="8" ry="7" fill="#2a1a0e"/>
       <circle cx="0" cy="-70" r="4" fill="#6b4423"/>
       <circle cx="0" cy="-52" r="3" fill="#6b4423"/>
     </g>`,
   holly: `
-    <g transform="translate(196,256) rotate(-38)">
+    <g transform="translate(196,256) rotate(38)">
       <rect x="-3" y="-80" width="6" height="80" rx="3" fill="#8b4513"/>
       <ellipse cx="0" cy="-80" rx="6" ry="7" fill="#5a2d0c"/>
     </g>`,
   elm: `
-    <g transform="translate(196,256) rotate(-38)">
+    <g transform="translate(196,256) rotate(38)">
       <rect x="-4" y="-84" width="8" height="84" rx="4" fill="#c8a96e"/>
       <ellipse cx="0" cy="-84" rx="9" ry="6" fill="#a07840"/>
     </g>`,
   willow: `
-    <g transform="translate(196,256) rotate(-38)">
+    <g transform="translate(196,256) rotate(38)">
       <path d="M0,0 Q-6,-20 -3,-40 Q0,-60 -2,-80" fill="none" stroke="#8b7355" stroke-width="6" stroke-linecap="round"/>
       <ellipse cx="0" cy="-80" rx="7" ry="5" fill="#6b5a3e"/>
     </g>`,
   vine: `
-    <g transform="translate(196,256) rotate(-38)">
+    <g transform="translate(196,256) rotate(38)">
       <rect x="-3" y="-80" width="6" height="80" rx="3" fill="#4a7c3f"/>
       <path d="M-3,-20 Q-12,-28 -8,-38" fill="none" stroke="#5a9e4e" stroke-width="2.5"/>
       <path d="M3,-45 Q12,-53 8,-63" fill="none" stroke="#5a9e4e" stroke-width="2.5"/>
       <ellipse cx="0" cy="-80" rx="5" ry="7" fill="#2d5c24"/>
     </g>`,
   phoenix: `
-    <g transform="translate(196,256) rotate(-38)">
+    <g transform="translate(196,256) rotate(38)">
       <rect x="-3" y="-80" width="6" height="80" rx="3" fill="#6b3d1e"/>
       <path d="M-6,-80 Q0,-92 6,-80 Q0,-70 -6,-80 Z" fill="#e8820c"/>
       <path d="M-3,-78 Q0,-88 3,-78" fill="none" stroke="#f5c518" stroke-width="1.5"/>
     </g>`,
   unicorn: `
-    <g transform="translate(196,256) rotate(-38)">
+    <g transform="translate(196,256) rotate(38)">
       <rect x="-3" y="-80" width="6" height="80" rx="3" fill="#e8e0d0"/>
       <path d="M0,-80 L-4,-96 L0,-90 L4,-96 Z" fill="#d4c5f0"/>
       <ellipse cx="0" cy="-80" rx="5" ry="5" fill="#c8b8e8"/>
     </g>`,
   oak: `
-    <g transform="translate(196,256) rotate(-38)">
+    <g transform="translate(196,256) rotate(38)">
       <path d="M-4,0 Q-5,-40 -3,-80 Q0,-82 3,-80 Q5,-40 4,0" fill="#5c3d1e"/>
       <circle cx="-2" cy="-28" r="4" fill="#4a2e14"/>
       <circle cx="2" cy="-56" r="3.5" fill="#4a2e14"/>
@@ -543,7 +542,7 @@ const WANDS = {
     </g>`,
   // Crystal — angular faceted crystal tip
   crystal: `
-    <g transform="translate(196,256) rotate(-38)">
+    <g transform="translate(196,256) rotate(38)">
       <rect x="-3" y="-68" width="6" height="68" rx="3" fill="#c8b8e8"/>
       <polygon points="0,-84 -7,-68 7,-68" fill="#a990d8"/>
       <polygon points="0,-84 -7,-68 0,-72" fill="#d4c8f0"/>
@@ -971,7 +970,7 @@ function switchSlot(idx) {
 /* ---------- RIGHT PANEL SYNC ---------- */
 function syncRightPanel() {
   document.getElementById('doll-name').value = doll.name;
-  document.getElementById('eye-color').value = doll.eyeColor;
+  // eye color is managed via left panel only
   document.querySelectorAll('.skin-swatch').forEach(sw => {
     sw.classList.toggle('active', sw.dataset.color === doll.skin);
   });
@@ -1451,12 +1450,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderAll();
   });
 
-  // Eye color
-  document.getElementById('eye-color').addEventListener('input', e => {
-    doll.eyeColor = e.target.value;
-    saveCollection();
-    renderAll();
-  });
+  // Eye color — managed via left panel only
 
   // Background color
   document.getElementById('bg-color').addEventListener('input', e => {
