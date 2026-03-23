@@ -204,6 +204,43 @@ const BROWS = {
     <path d="M138,94 Q152,96 166,88" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
 };
 
+// ---- CHEEKS ----
+// All functions receive (c) = cheek color. Positions: left cx≈74 cy≈136, right cx≈166 cy≈136
+const CHEEKS = {
+  // soft — classic oval blush
+  soft: (c) => `
+    <ellipse cx="74" cy="136" rx="14" ry="9" fill="${c}" opacity="0.55"/>
+    <ellipse cx="166" cy="136" rx="14" ry="9" fill="${c}" opacity="0.55"/>`,
+  // round — full circle blush
+  round: (c) => `
+    <circle cx="74" cy="136" r="13" fill="${c}" opacity="0.45"/>
+    <circle cx="166" cy="136" r="13" fill="${c}" opacity="0.45"/>`,
+  // heart — small heart shape on each cheek
+  heart: (c) => `
+    <text x="74" y="142" font-size="16" text-anchor="middle" fill="${c}" opacity="0.75">♥</text>
+    <text x="166" y="142" font-size="16" text-anchor="middle" fill="${c}" opacity="0.75">♥</text>`,
+  // star — tiny star sparkle blush
+  star: (c) => `
+    <text x="74" y="142" font-size="16" text-anchor="middle" fill="${c}" opacity="0.8">★</text>
+    <text x="166" y="142" font-size="16" text-anchor="middle" fill="${c}" opacity="0.8">★</text>`,
+  // freckles — three small dots per cheek
+  freckles: (c) => `
+    <circle cx="65" cy="135" r="2.5" fill="${c}" opacity="0.7"/>
+    <circle cx="72" cy="139" r="2.5" fill="${c}" opacity="0.7"/>
+    <circle cx="79" cy="133" r="2.5" fill="${c}" opacity="0.7"/>
+    <circle cx="157" cy="133" r="2.5" fill="${c}" opacity="0.7"/>
+    <circle cx="164" cy="139" r="2.5" fill="${c}" opacity="0.7"/>
+    <circle cx="171" cy="135" r="2.5" fill="${c}" opacity="0.7"/>`,
+  // lines — three short horizontal strokes (anime style)
+  lines: (c) => `
+    <line x1="60" y1="133" x2="76" y2="133" stroke="${c}" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+    <line x1="60" y1="137" x2="80" y2="137" stroke="${c}" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+    <line x1="62" y1="141" x2="76" y2="141" stroke="${c}" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+    <line x1="164" y1="133" x2="180" y2="133" stroke="${c}" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+    <line x1="160" y1="137" x2="180" y2="137" stroke="${c}" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+    <line x1="164" y1="141" x2="178" y2="141" stroke="${c}" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>`,
+};
+
 // ---- NOSE ----
 const NOSES = {
   dot: `<circle cx="120" cy="140" r="4" fill="rgba(0,0,0,0.18)"/>`,
@@ -325,40 +362,40 @@ const BOTTOMS = {
 // ---- SHOES ----
 const SHOES = {
   sneaker: (c) => `
-    <ellipse cx="97" cy="334" rx="22" ry="10" fill="${c}"/>
-    <ellipse cx="143" cy="334" rx="22" ry="10" fill="${c}"/>
-    <rect x="80" y="326" width="32" height="10" rx="4" fill="${darken(c,20)}"/>
-    <rect x="128" y="326" width="32" height="10" rx="4" fill="${darken(c,20)}"/>`,
+    <ellipse cx="104" cy="334" rx="22" ry="10" fill="${c}"/>
+    <ellipse cx="136" cy="334" rx="22" ry="10" fill="${c}"/>
+    <rect x="87" y="326" width="32" height="10" rx="4" fill="${darken(c,20)}"/>
+    <rect x="121" y="326" width="32" height="10" rx="4" fill="${darken(c,20)}"/>`,
   boot: (c) => `
-    <rect x="80" y="316" width="32" height="22" rx="6" fill="${c}"/>
-    <rect x="128" y="316" width="32" height="22" rx="6" fill="${c}"/>
-    <ellipse cx="96" cy="336" rx="20" ry="6" fill="${darken(c,15)}"/>
-    <ellipse cx="144" cy="336" rx="20" ry="6" fill="${darken(c,15)}"/>`,
+    <rect x="87" y="316" width="32" height="22" rx="6" fill="${c}"/>
+    <rect x="121" y="316" width="32" height="22" rx="6" fill="${c}"/>
+    <ellipse cx="103" cy="336" rx="20" ry="6" fill="${darken(c,15)}"/>
+    <ellipse cx="137" cy="336" rx="20" ry="6" fill="${darken(c,15)}"/>`,
   sandal: (c) => `
-    <ellipse cx="97" cy="335" rx="22" ry="6" fill="${c}"/>
-    <ellipse cx="143" cy="335" rx="22" ry="6" fill="${c}"/>
-    <line x1="82" y1="328" x2="112" y2="328" stroke="${darken(c,25)}" stroke-width="3"/>
-    <line x1="130" y1="328" x2="160" y2="328" stroke="${darken(c,25)}" stroke-width="3"/>`,
+    <ellipse cx="104" cy="335" rx="22" ry="6" fill="${c}"/>
+    <ellipse cx="136" cy="335" rx="22" ry="6" fill="${c}"/>
+    <line x1="89" y1="328" x2="119" y2="328" stroke="${darken(c,25)}" stroke-width="3"/>
+    <line x1="123" y1="328" x2="153" y2="328" stroke="${darken(c,25)}" stroke-width="3"/>`,
   // Heel — high-heel silhouette
   heel: (c) => `
-    <path d="M78,328 Q80,338 100,338 Q116,338 118,328 L118,322 Q100,320 78,328 Z" fill="${c}"/>
-    <path d="M126,328 Q128,338 148,338 Q164,338 166,328 L166,322 Q148,320 126,328 Z" fill="${c}"/>
-    <rect x="78" y="328" width="6" height="14" rx="3" fill="${darken(c,20)}"/>
-    <rect x="126" y="328" width="6" height="14" rx="3" fill="${darken(c,20)}"/>`,
+    <path d="M85,328 Q87,338 107,338 Q123,338 125,328 L125,322 Q107,320 85,328 Z" fill="${c}"/>
+    <path d="M119,328 Q121,338 141,338 Q157,338 159,328 L159,322 Q141,320 119,328 Z" fill="${c}"/>
+    <rect x="85" y="328" width="6" height="14" rx="3" fill="${darken(c,20)}"/>
+    <rect x="119" y="328" width="6" height="14" rx="3" fill="${darken(c,20)}"/>`,
   // Knee-high boot
   boot_high: (c) => `
-    <rect x="80" y="296" width="30" height="42" rx="6" fill="${c}"/>
-    <rect x="128" y="296" width="30" height="42" rx="6" fill="${c}"/>
-    <ellipse cx="95" cy="337" rx="19" ry="6" fill="${darken(c,15)}"/>
-    <ellipse cx="143" cy="337" rx="19" ry="6" fill="${darken(c,15)}"/>
-    <rect x="80" y="308" width="30" height="4" rx="2" fill="${darken(c,10)}"/>
-    <rect x="128" y="308" width="30" height="4" rx="2" fill="${darken(c,10)}"/>`,
+    <rect x="87" y="296" width="30" height="42" rx="6" fill="${c}"/>
+    <rect x="121" y="296" width="30" height="42" rx="6" fill="${c}"/>
+    <ellipse cx="102" cy="337" rx="19" ry="6" fill="${darken(c,15)}"/>
+    <ellipse cx="136" cy="337" rx="19" ry="6" fill="${darken(c,15)}"/>
+    <rect x="87" y="308" width="30" height="4" rx="2" fill="${darken(c,10)}"/>
+    <rect x="121" y="308" width="30" height="4" rx="2" fill="${darken(c,10)}"/>`,
   // Slipper / loafer — flat round
   slipper: (c) => `
-    <ellipse cx="97" cy="334" rx="22" ry="8" fill="${c}"/>
-    <ellipse cx="143" cy="334" rx="22" ry="8" fill="${c}"/>
-    <path d="M76,330 Q88,322 118,328" fill="none" stroke="${darken(c,18)}" stroke-width="3" stroke-linecap="round"/>
-    <path d="M124,328 Q154,322 166,330" fill="none" stroke="${darken(c,18)}" stroke-width="3" stroke-linecap="round"/>`,
+    <ellipse cx="104" cy="334" rx="22" ry="8" fill="${c}"/>
+    <ellipse cx="136" cy="334" rx="22" ry="8" fill="${c}"/>
+    <path d="M83,330 Q95,322 125,328" fill="none" stroke="${darken(c,18)}" stroke-width="3" stroke-linecap="round"/>
+    <path d="M117,328 Q147,322 159,330" fill="none" stroke="${darken(c,18)}" stroke-width="3" stroke-linecap="round"/>`,
 };
 
 // ---- HATS ----
@@ -835,7 +872,7 @@ const BG_SCENES = {
     label: 'Hogwarts',
     svg: `
       <!-- Sky gradient base -->
-      <rect x="0" y="0" width="240" height="340" fill="none"/>
+      <rect x="0" y="0" width="240" height="340" fill="#0d1530"/>
       <!-- Stars -->
       <circle cx="20" cy="18" r="1.2" fill="rgba(255,255,220,0.9)"/>
       <circle cx="55" cy="8" r="1" fill="rgba(255,255,220,0.8)"/>
@@ -886,7 +923,7 @@ const BG_SCENES = {
     label: 'Gran Comedor',
     svg: `
       <!-- Stone ceiling -->
-      <rect x="0" y="0" width="240" height="340" fill="none"/>
+      <rect x="0" y="0" width="240" height="340" fill="#1a1200"/>
       <!-- Ceiling arches -->
       <path d="M0,0 Q60,30 120,0 Q180,30 240,0 L240,50 Q180,80 120,50 Q60,80 0,50 Z" fill="rgba(30,24,18,0.6)"/>
       <!-- Floating candles -->
@@ -922,7 +959,7 @@ const BG_SCENES = {
     label: 'Bosque Prohibido',
     svg: `
       <!-- Dark sky -->
-      <rect x="0" y="0" width="240" height="340" fill="none"/>
+      <rect x="0" y="0" width="240" height="340" fill="#0a1a0a"/>
       <!-- Stars -->
       <circle cx="30" cy="15" r="1" fill="rgba(255,255,220,0.7)"/>
       <circle cx="70" cy="25" r="1.2" fill="rgba(255,255,220,0.9)"/>
@@ -959,7 +996,7 @@ const BG_SCENES = {
     label: 'Andén 9¾',
     svg: `
       <!-- Station ceiling / sky -->
-      <rect x="0" y="0" width="240" height="340" fill="none"/>
+      <rect x="0" y="0" width="240" height="340" fill="#b0b8c8"/>
       <!-- Steel roof arches -->
       <path d="M0,0 Q120,60 240,0" fill="none" stroke="rgba(160,160,180,0.3)" stroke-width="3"/>
       <path d="M0,20 Q120,80 240,20" fill="none" stroke="rgba(160,160,180,0.2)" stroke-width="2"/>
@@ -995,7 +1032,7 @@ const BG_SCENES = {
     label: 'Quidditch',
     svg: `
       <!-- Open sky -->
-      <rect x="0" y="0" width="240" height="340" fill="none"/>
+      <rect x="0" y="0" width="240" height="340" fill="#1a3a1a"/>
       <!-- Clouds -->
       <ellipse cx="50" cy="40" rx="32" ry="14" fill="rgba(255,255,255,0.1)"/>
       <ellipse cx="66" cy="34" rx="22" ry="12" fill="rgba(255,255,255,0.1)"/>
@@ -1100,8 +1137,17 @@ const CATEGORY_SCALE_ORIGIN = {
   lefthand: [56, 252],
 };
 
+/* ---------- SCENE BACKGROUND COLORS ---------- */
+const SCENE_BG = {
+  hogwarts:         '#0d1530',
+  great_hall:       '#1a1200',
+  forbidden_forest: '#0a1a0a',
+  platform_934:     '#b0b8c8',
+  quidditch:        '#1a3a1a',
+};
+
 function applyBgColor() {
-  const bg = doll.bgColor || '#1a2a4a';
+  const bg = (doll.bgScene && SCENE_BG[doll.bgScene]) ? SCENE_BG[doll.bgScene] : (doll.bgColor || '#1a2a4a');
   document.querySelector('.canvas-bg').style.background =
     `radial-gradient(ellipse at 50% 60%, ${bg} 0%, ${darken(bg, 20)} 100%)`;
 }
@@ -1146,7 +1192,7 @@ function defaultDoll(idx) {
     hatYOffset: 0,  capeYOffset: 0,  glassesYOffset: 0, beltYOffset: 0,
     wandYOffset: 0, lefthandYOffset: 0,
     // flip fields (horizontal mirror) for selected categories
-    hairFlip: false, hatFlip: false, capeFlip: false, wandFlip: false, lefthandFlip: false,
+    hairFlip: false, hatFlip: false, wandFlip: false, lefthandFlip: false, scarf2Flip: false,
     // background scene
     bgScene: null,
   };
@@ -1204,11 +1250,15 @@ function renderDoll(container, d) {
   if (d.belt)    parts.push(layer('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor), false));
   if (d.top)     parts.push(layer('top',     (TOPS[d.top]     || (() => ''))(d.topColor, d.gender), false));
   if (d.shoes)   parts.push(layer('shoes',   (SHOES[d.shoes]  || (() => ''))(d.shoesColor), false));
-  if (d.cape)    parts.push(layer('cape',    (CAPES[d.cape]   || (() => ''))(d.capeColor), true));
+  if (d.cape)    parts.push(layer('cape',    (CAPES[d.cape]   || (() => ''))(d.capeColor), false));
   if (d.hat)     parts.push(layer('hat',     (HATS[d.hat]     || (() => ''))(d.hatColor), true));
   if (d.glasses) parts.push(layer('glasses', (GLASSES[d.glasses] || (() => ''))(d.glassesColor), false));
   if (d.scarf)     parts.push(svgScarf(d.scarf));
-  if (d.scarf2)    parts.push(svgScarf2(d.scarf2, d.scarf2Color || '#e94560', d.scarf2Color2 || '#ffffff'));
+  if (d.scarf2) {
+    let s2 = svgScarf2(d.scarf2, d.scarf2Color || '#e94560', d.scarf2Color2 || '#ffffff');
+    if (d.scarf2Flip) s2 = `<g transform="translate(240,0) scale(-1,1)">${s2}</g>`;
+    parts.push(s2);
+  }
   if (d.wand)      parts.push(layer('wand',     WANDS[d.wand]    || '', true));
   if (d.lefthand)  parts.push(layer('lefthand', (LEFTHAND[d.lefthand] || (() => ''))(d.lefthandColor || '#7c3aed'), true));
 
@@ -1356,14 +1406,6 @@ function switchSlot(idx) {
 /* ---------- RIGHT PANEL SYNC ---------- */
 function syncRightPanel() {
   document.getElementById('doll-name').value = doll.name;
-  // eye color is managed via left panel only
-  document.querySelectorAll('.skin-swatch').forEach(sw => {
-    sw.classList.toggle('active', sw.dataset.color === doll.skin);
-  });
-  document.getElementById('skin-custom').value = doll.skin;
-  document.querySelectorAll('.gender-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.gender === doll.gender);
-  });
   const bgEl = document.getElementById('bg-color');
   if (bgEl) bgEl.value = doll.bgColor || '#1a2a4a';
   document.querySelectorAll('.scene-chip').forEach(c => {
@@ -1459,6 +1501,7 @@ function buildPanel() {
           label: 'Bufanda libre', cat: 'scarf2',
           colorField: 'scarf2Color', colorFieldLabel: 'Color 1',
           colorField2: 'scarf2Color2', colorField2Label: 'Color 2',
+          flipField: 'scarf2Flip',
           items: SCARF2_STYLES.map(k => ({ value: k, label: k })),
         },
         {
@@ -1480,7 +1523,6 @@ function buildPanel() {
         },
         {
           label: 'Capa / Abrigo', cat: 'cape', colorField: 'capeColor', scaleField: 'capeScale', yOffsetField: 'capeYOffset',
-          flipField: 'capeFlip',
           items: Object.keys(CAPES).map(k => ({ value: k, label: k })),
         },
         {
@@ -1995,33 +2037,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderAll();
   });
 
-  // Gender buttons (right panel)
-  document.querySelectorAll('.gender-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      doll.gender = btn.dataset.gender;
-      saveCollection();
-      renderAll();
-    });
-  });
-
-  // Skin swatches
-  document.querySelectorAll('.skin-swatch').forEach(sw => {
-    sw.addEventListener('click', () => {
-      doll.skin = sw.dataset.color;
-      document.getElementById('skin-custom').value = doll.skin;
-      saveCollection();
-      renderAll();
-    });
-  });
-
-  // Skin custom picker
-  document.getElementById('skin-custom').addEventListener('input', e => {
-    doll.skin = e.target.value;
-    document.querySelectorAll('.skin-swatch').forEach(sw => sw.classList.remove('active'));
-    saveCollection();
-    renderAll();
-  });
-
   // Eye color — managed via left panel only
 
   // Background color
@@ -2053,13 +2068,6 @@ document.addEventListener('DOMContentLoaded', () => {
       forbidden_forest: 'Bosque Prohibido',
       platform_934:     'Andén 9¾',
       quidditch:        'Quidditch',
-    };
-    const SCENE_BG = {
-      hogwarts:         '#0d1530',
-      great_hall:       '#1a1200',
-      forbidden_forest: '#0a1a0a',
-      platform_934:     '#b0b8c8',
-      quidditch:        '#1a3a1a',
     };
     Object.keys(BG_SCENES).forEach(key => {
       const scene = BG_SCENES[key];

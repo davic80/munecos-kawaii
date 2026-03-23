@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.1] - 2026-03-23
+
+### Added
+- **Bufanda libre — espejo** — nuevo botón "⇄ Espejo" en la subsección "Bufanda libre" para reflejar horizontalmente el estilo `scarf2`
+
+### Fixed
+- **Escenas de fondo** — los rectángulos de fondo de las escenas `platform_934` (Andén 9¾) y `quidditch` usaban `fill="none"`; ahora usan el color correcto (`#b0b8c8` y `#1a3a1a` respectivamente) para que la miniatura del selector muestre el fondo
+- **SCENE_BG duplicado** — eliminada la declaración `const SCENE_BG` local dentro de `buildScenePicker()` (ahora solo existe la constante global)
+
+### Changed
+- **Capa / Abrigo — sin espejo** — eliminado el botón "⇄ Espejo" de la subsección "Capa / Abrigo" (la capa es simétrica; el flip no aportaba valor)
+- **Zapatos más centrados** — todos los estilos de calzado (`sneaker`, `boot`, `sandal`, `heel`, `boot_high`, `slipper`) ajustados ~7 px hacia el centro para alinearlos mejor con las piernas del muñeco
+- **Panel derecho simplificado** — "Género" y "Color de piel" eliminados del panel derecho; quedan únicamente: Nombre, Color de fondo, Escena de fondo, Resetear muñeco
+
+---
+
 ## [1.9.0] - 2026-03-23
 
 ### Added
