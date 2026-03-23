@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.6.3] - 2026-03-23
+
+### Fixed
+- **Varita** — origen movido de `translate(196,256)` a `translate(184,258)`: la varita arranca ahora del centro de la mano en lugar del borde exterior del brazo
+
+---
+
 ## [1.6.2] - 2026-03-23
 
 ### Fixed
