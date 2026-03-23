@@ -522,8 +522,8 @@ header h1 {
 }
 .scene-chip:hover { border-color: var(--accent2); }
 .scene-chip.active { border-color: var(--accent); background: #1e2d50; }
-.scene-chip svg { width: 100px; height: 142px; border-radius: 4px; }
-.scene-chip span { font-size: 0.58rem; color: var(--text-muted); text-align: center; max-width: 104px; }
+.scene-chip svg { width: 50px; height: 71px; border-radius: 4px; }
+.scene-chip span { font-size: 0.58rem; color: var(--text-muted); text-align: center; max-width: 54px; }
 .scene-chip.active span { color: var(--text); }
 
 /* ===== SKIN PICKER (LEFT PANEL) ===== */

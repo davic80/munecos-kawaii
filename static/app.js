@@ -41,10 +41,6 @@ function svgBase(gender, skin) {
 
   <!-- HEAD (big funko) -->
   <ellipse cx="120" cy="112" rx="70" ry="77" fill="${skin}"/>
-
-  <!-- CHEEKS -->
-  <ellipse cx="74" cy="136" rx="14" ry="9" fill="rgba(255,160,160,0.35)"/>
-  <ellipse cx="166" cy="136" rx="14" ry="9" fill="rgba(255,160,160,0.35)"/>
   `;
 }
 
@@ -1090,6 +1086,7 @@ const CATEGORY_YOFFSET_MAP = {
   brows:   'browsYOffset',
   nose:    'noseYOffset',
   mouth:   'mouthYOffset',
+  cheeks:  'cheeksYOffset',
   hair:    'hairYOffset',
   top:     'topYOffset',
   bottom:  'bottomYOffset',
@@ -1107,6 +1104,7 @@ const CATEGORY_SCALE_MAP = {
   brows:   'browsScale',
   nose:    'noseScale',
   mouth:   'mouthScale',
+  cheeks:  'cheeksScale',
   hair:    'hairScale',
   top:     'topScale',
   bottom:  'bottomScale',
@@ -1125,6 +1123,7 @@ const CATEGORY_SCALE_ORIGIN = {
   brows:   [120,  97],
   nose:    [120, 140],
   mouth:   [120, 165],
+  cheeks:  [120, 136],
   hair:    [120,  60],
   hat:     [120,  45],
   glasses: [120, 115],
@@ -1181,13 +1180,15 @@ function defaultDoll(idx) {
     bgColor: '#1a2a4a',
     browColor: '#5a3a1a',
     lashColor: '#3d2b1f',
+    cheeks: 'soft',
+    cheeksColor: 'rgba(255,160,160,0.35)',
     // scale fields: -50..+50 (0 = normal size)
-    eyesScale: 0, browsScale: 0, noseScale: 0, mouthScale: 0,
+    eyesScale: 0, browsScale: 0, noseScale: 0, mouthScale: 0, cheeksScale: 0,
     hairScale: 0, topScale: 0,   bottomScale: 0, shoesScale: 0,
     hatScale: 0,  capeScale: 0,  glassesScale: 0, beltScale: 0,
     wandScale: 0, lefthandScale: 0,
     // yOffset fields: -15..+15 (0 = normal position, in SVG px)
-    eyesYOffset: 0, browsYOffset: 0, noseYOffset: 0, mouthYOffset: 0,
+    eyesYOffset: 0, browsYOffset: 0, noseYOffset: 0, mouthYOffset: 0, cheeksYOffset: 0,
     hairYOffset: 0, topYOffset: 0,   bottomYOffset: 0, shoesYOffset: 0,
     hatYOffset: 0,  capeYOffset: 0,  glassesYOffset: 0, beltYOffset: 0,
     wandYOffset: 0, lefthandYOffset: 0,
@@ -1246,6 +1247,7 @@ function renderDoll(container, d) {
   if (d.eyes)    parts.push(layer('eyes',    (EYES[d.eyes]    || EYES.round)(d.eyeColor, d.lashColor || d.hairColor || '#3d2b1f'), false));
   if (d.nose)    parts.push(layer('nose',    NOSES[d.nose]    || '', false));
   if (d.mouth)   parts.push(layer('mouth',   MOUTHS[d.mouth]  || '', false));
+  if (d.cheeks)  parts.push(layer('cheeks',  (CHEEKS[d.cheeks] || (() => ''))(d.cheeksColor || 'rgba(255,160,160,0.35)'), false));
   if (d.bottom)  parts.push(layer('bottom',  (BOTTOMS[d.bottom] || (() => ''))(d.bottomColor, d.gender), false));
   if (d.belt)    parts.push(layer('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor), false));
   if (d.top)     parts.push(layer('top',     (TOPS[d.top]     || (() => ''))(d.topColor, d.gender), false));
@@ -1289,6 +1291,7 @@ const CATEGORY_FIELD_MAP = {
   brows: 'brows',
   nose: 'nose',
   mouth: 'mouth',
+  cheeks: 'cheeks',
   hair: 'hair',
   top: 'top',
   bottom: 'bottom',
@@ -1320,7 +1323,7 @@ function equipItem(category, value) {
   const field = CATEGORY_FIELD_MAP[category];
   if (!field) return;
   // toggle off if already equipped (except gender/eyes/brows/nose/mouth — always need one)
-  const mandatory = ['gender', 'eyes', 'nose', 'mouth'];
+  const mandatory = ['gender', 'eyes', 'nose', 'mouth', 'cheeks'];
   if (doll[field] === value && !mandatory.includes(category)) {
     doll[field] = null;
   } else {
@@ -1461,6 +1464,11 @@ function buildPanel() {
         {
           label: 'Boca', cat: 'mouth', scaleField: 'mouthScale', yOffsetField: 'mouthYOffset',
           items: Object.keys(MOUTHS).map(k => ({ value: k, label: k })),
+        },
+        {
+          label: 'Mejillas', cat: 'cheeks', colorField: 'cheeksColor', colorFieldLabel: 'Color',
+          scaleField: 'cheeksScale', yOffsetField: 'cheeksYOffset',
+          items: Object.keys(CHEEKS).map(k => ({ value: k, label: k })),
         },
         {
           label: 'Pelo', cat: 'hair', colorField: 'hairColor', scaleField: 'hairScale', yOffsetField: 'hairYOffset',
@@ -1803,6 +1811,10 @@ function buildPreviewSvg(cat, value, d) {
     case 'mouth':
       inner = `<svg viewBox="90 150 60 40" xmlns="http://www.w3.org/2000/svg">${MOUTHS[value]||''}</svg>`;
       return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
+    case 'cheeks': {
+      inner = `<svg viewBox="40 118 160 40" xmlns="http://www.w3.org/2000/svg">${(CHEEKS[value]||(() => ''))(d.cheeksColor||'rgba(255,160,160,0.35)')}</svg>`;
+      return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
+    }
     case 'hair': {
       const fn = HAIR[value];
       inner = fn ? fn(d.hairColor || '#3d2b1f') : '';

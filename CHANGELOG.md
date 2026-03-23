@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.2] - 2026-03-23
+
+### Added
+- **Mejillas** — nueva categoría de rasgos con 6 estilos: `soft` (óvalo clásico), `round` (círculo), `heart` (corazón), `star` (estrella), `freckles` (pecas), `lines` (trazos anime). Color, tamaño y posición vertical ajustables. Siempre visible (mandatory)
+
+### Fixed
+- **Chips de escena** — revertido el tamaño del thumbnail al original `50×71px` (en v1.9.1 se había aumentado a `100×142px` por error)
+
+### Changed
+- **Mejillas desacopladas de `svgBase()`** — las mejillas ya no están hardcodeadas en la base del muñeco; ahora se renderizan como capa independiente entre boca y ropa inferior, lo que permite cambiar estilo, color, tamaño y posición
+
+---
+
 ## [1.9.1] - 2026-03-23
 
 ### Added
