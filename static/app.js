@@ -145,39 +145,39 @@ const EYES = {
 // ---- EYEBROWS ----
 const BROWS = {
   straight: (c) => `
-    <rect x="74" y="96" width="28" height="5" rx="2.5" fill="${c}"/>
-    <rect x="138" y="96" width="28" height="5" rx="2.5" fill="${c}"/>`,
+    <rect x="74" y="90" width="28" height="5" rx="2.5" fill="${c}"/>
+    <rect x="138" y="90" width="28" height="5" rx="2.5" fill="${c}"/>`,
   arched: (c) => `
-    <path d="M74,100 Q88,90 102,100" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
-    <path d="M138,100 Q152,90 166,100" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
+    <path d="M74,94 Q88,84 102,94" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+    <path d="M138,94 Q152,84 166,94" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
   angry: (c) => `
-    <path d="M74,98 Q88,104 102,98" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
-    <path d="M138,98 Q152,104 166,98" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
+    <path d="M74,92 Q88,98 102,92" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+    <path d="M138,92 Q152,98 166,92" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
   kawaii: (c) => `
-    <path d="M74,98 Q88,92 102,98" fill="none" stroke="${c}" stroke-width="3.5" stroke-linecap="round"/>
-    <path d="M138,98 Q152,92 166,98" fill="none" stroke="${c}" stroke-width="3.5" stroke-linecap="round"/>
-    <circle cx="76" cy="98" r="3" fill="${c}"/>
-    <circle cx="138" cy="98" r="3" fill="${c}"/>`,
+    <path d="M74,92 Q88,86 102,92" fill="none" stroke="${c}" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M138,92 Q152,86 166,92" fill="none" stroke="${c}" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="76" cy="92" r="3" fill="${c}"/>
+    <circle cx="138" cy="92" r="3" fill="${c}"/>`,
   // Thin — very fine high arched lines, 90s/anime style
   thin: (c) => `
-    <path d="M76,94 Q88,88 102,93" fill="none" stroke="${c}" stroke-width="1.8" stroke-linecap="round"/>
-    <path d="M138,94 Q152,88 166,93" fill="none" stroke="${c}" stroke-width="1.8" stroke-linecap="round"/>`,
+    <path d="M76,88 Q88,82 102,87" fill="none" stroke="${c}" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M138,88 Q152,82 166,87" fill="none" stroke="${c}" stroke-width="1.8" stroke-linecap="round"/>`,
   // Bushy — thick natural stroke
   bushy: (c) => `
-    <path d="M72,100 Q88,92 104,100" fill="none" stroke="${c}" stroke-width="7" stroke-linecap="round"/>
-    <path d="M136,100 Q152,92 168,100" fill="none" stroke="${c}" stroke-width="7" stroke-linecap="round"/>`,
+    <path d="M72,94 Q88,86 104,94" fill="none" stroke="${c}" stroke-width="7" stroke-linecap="round"/>
+    <path d="M136,94 Q152,86 168,94" fill="none" stroke="${c}" stroke-width="7" stroke-linecap="round"/>`,
   // Raised — left normal arched, right lifted skeptical
   raised: (c) => `
-    <path d="M74,100 Q88,90 102,100" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
-    <path d="M138,94 Q152,86 166,96" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
+    <path d="M74,94 Q88,84 102,94" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+    <path d="M138,88 Q152,80 166,90" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
   // Worried — inner ends raised, outer ends dropped
   worried: (c) => `
-    <path d="M74,100 Q82,90 102,96" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
-    <path d="M138,96 Q158,90 166,100" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
+    <path d="M74,94 Q82,84 102,90" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+    <path d="M138,90 Q158,84 166,94" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
   // Cross — both brows angled sharply inward/down, scowling
   cross: (c) => `
-    <path d="M74,94 Q88,102 102,100" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
-    <path d="M138,100 Q152,102 166,94" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
+    <path d="M74,88 Q88,96 102,94" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>
+    <path d="M138,94 Q152,96 166,88" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"/>`,
 };
 
 // ---- NOSE ----
@@ -819,10 +819,10 @@ function renderDoll(container, d) {
   if (d.bottom)  parts.push(sc('bottom',  (BOTTOMS[d.bottom] || (() => ''))(d.bottomColor, d.gender)));
   if (d.top)     parts.push(sc('top',     (TOPS[d.top]     || (() => ''))(d.topColor, d.gender)));
   if (d.shoes)   parts.push(sc('shoes',   (SHOES[d.shoes]  || (() => ''))(d.shoesColor)));
+  if (d.belt)    parts.push(sc('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor)));
   if (d.cape)    parts.push(sc('cape',    (CAPES[d.cape]   || (() => ''))(d.capeColor)));
   if (d.hat)     parts.push(sc('hat',     (HATS[d.hat]     || (() => ''))(d.hatColor)));
   if (d.glasses) parts.push(sc('glasses', (GLASSES[d.glasses] || (() => ''))(d.glassesColor)));
-  if (d.belt)    parts.push(sc('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor)));
   if (d.scarf)   parts.push(svgScarf(d.scarf));
   if (d.scarf2)  parts.push(svgScarf2(d.scarf2, d.scarf2Color || '#e94560', d.scarf2Color2 || '#ffffff'));
   if (d.wand)    parts.push(sc('wand',    WANDS[d.wand]    || ''));
@@ -884,7 +884,7 @@ function equipItem(category, value) {
   const field = CATEGORY_FIELD_MAP[category];
   if (!field) return;
   // toggle off if already equipped (except gender/eyes/brows/nose/mouth — always need one)
-  const mandatory = ['gender', 'eyes', 'brows', 'nose', 'mouth'];
+  const mandatory = ['gender', 'eyes', 'nose', 'mouth'];
   if (doll[field] === value && !mandatory.includes(category)) {
     doll[field] = null;
   } else {

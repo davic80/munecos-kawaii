@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.6.2] - 2026-03-23
+
+### Fixed
+- **Cinturón debajo de la capa** — el cinturón/tirantes ahora se renderizan antes que la capa, quedando cubiertos por ella en lugar de encima
+- **Cejas opcionales** — las cejas ya no son obligatorias; se pueden deseleccionar haciendo clic sobre la ceja equipada (valor inicial sigue siendo `arched`)
+
+---
+
 ## [1.6.1] - 2026-03-23
 
 ### Fixed
