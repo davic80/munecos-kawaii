@@ -272,7 +272,10 @@ const BOTTOMS = {
   pants: (c, gender) => gender === 'girl'
     ? `<path d="M82,282 L82,330 Q100,336 110,330 L118,300 L122,300 L130,330 Q140,336 158,330 L158,282 Z" fill="${c}"/>`
     : `<path d="M78,280 L78,332 Q98,338 112,332 L119,302 L121,302 L128,332 Q142,338 162,332 L162,280 Z" fill="${c}"/>`,
-  skirt: (c, _g) => `<path d="M78,282 Q78,320 120,326 Q162,320 162,282 Z" fill="${c}"/>`,
+  skirt: (c, _g) => `
+    <path d="M92,282 L72,340 L168,340 L148,282 Z" fill="${c}"/>
+    <path d="M72,334 L168,334 L168,340 L72,340 Z" fill="${darken(c,12)}"/>
+    <line x1="90" y1="290" x2="74" y2="334" stroke="${darken(c,8)}" stroke-width="1" opacity="0.5"/>`,
   shorts: (c, gender) => gender === 'girl'
     ? `<path d="M84,282 L84,310 Q100,316 112,310 L118,296 L122,296 L128,310 Q140,316 156,310 L156,282 Z" fill="${c}"/>`
     : `<path d="M80,280 L80,312 Q98,318 112,312 L119,298 L121,298 L128,312 Q142,318 160,312 L160,280 Z" fill="${c}"/>`,
@@ -281,10 +284,11 @@ const BOTTOMS = {
     <path d="M84,282 L82,338 Q96,342 110,338 L118,302 L122,302 L130,338 Q144,342 158,338 L156,282 Z" fill="${c}"/>
     <rect x="82" y="334" width="28" height="6" rx="3" fill="${darken(c,14)}"/>
     <rect x="130" y="334" width="28" height="6" rx="3" fill="${darken(c,14)}"/>`,
-  // Mini skirt — short flared
+  // Mini skirt — short trapezoid, narrow waist wide hem
   skirt_mini: (c, _g) => `
-    <path d="M82,282 Q80,306 120,312 Q160,306 158,282 Z" fill="${c}"/>
-    <path d="M80,306 Q82,314 120,318 Q158,314 160,306 Q120,312 80,306 Z" fill="${darken(c,10)}"/>`,
+    <path d="M90,282 L76,314 L164,314 L150,282 Z" fill="${c}"/>
+    <path d="M76,308 L164,308 L164,314 L76,314 Z" fill="${darken(c,12)}"/>
+    <line x1="88" y1="290" x2="78" y2="308" stroke="${darken(c,8)}" stroke-width="1" opacity="0.5"/>`,
   // Joggers — relaxed tapered with ribbed cuffs
   joggers: (c, _g) => `
     <path d="M80,282 L80,328 Q98,336 112,328 L119,302 L121,302 L128,328 Q142,336 160,328 L160,282 Z" fill="${c}"/>
@@ -336,30 +340,30 @@ const SHOES = {
 // ---- HATS ----
 const HATS = {
   beanie: (c) => `
-    <path d="M54,70 Q52,18 120,14 Q188,18 186,70 Z" fill="${c}"/>
-    <rect x="46" y="64" width="148" height="15" rx="7.5" fill="${darken(c,15)}"/>`,
+    <path d="M54,62 Q52,10 120,6 Q188,10 186,62 Z" fill="${c}"/>
+    <rect x="46" y="56" width="148" height="15" rx="7.5" fill="${darken(c,15)}"/>`,
   wizard: (c) => `
-    <path d="M120,-18 L86,68 L154,68 Z" fill="${c}"/>
-    <ellipse cx="120" cy="68" rx="46" ry="11" fill="${darken(c,10)}"/>
-    <path d="M100,30 Q120,18 140,30" fill="none" stroke="#f5c518" stroke-width="2.5"/>`,
+    <path d="M120,-26 L86,60 L154,60 Z" fill="${c}"/>
+    <ellipse cx="120" cy="60" rx="46" ry="11" fill="${darken(c,10)}"/>
+    <path d="M100,22 Q120,10 140,22" fill="none" stroke="#f5c518" stroke-width="2.5"/>`,
   beret: (c) => `
-    <ellipse cx="120" cy="32" rx="66" ry="26" fill="${c}"/>
-    <circle cx="148" cy="16" r="6" fill="${darken(c,18)}"/>
-    <rect x="60" y="46" width="120" height="11" rx="5.5" fill="${darken(c,10)}"/>`,
+    <ellipse cx="120" cy="24" rx="66" ry="26" fill="${c}"/>
+    <circle cx="148" cy="8" r="6" fill="${darken(c,18)}"/>
+    <rect x="60" y="38" width="120" height="11" rx="5.5" fill="${darken(c,10)}"/>`,
   cap: (c) => `
-    <path d="M58,68 Q56,24 120,20 Q184,24 182,68 Z" fill="${c}"/>
-    <rect x="52" y="62" width="136" height="13" rx="6.5" fill="${darken(c,12)}"/>
-    <rect x="32" y="68" width="98" height="10" rx="5" fill="${darken(c,8)}"/>`,
+    <path d="M58,60 Q56,16 120,12 Q184,16 182,60 Z" fill="${c}"/>
+    <rect x="52" y="54" width="136" height="13" rx="6.5" fill="${darken(c,12)}"/>
+    <rect x="32" y="60" width="98" height="10" rx="5" fill="${darken(c,8)}"/>`,
   crown: (c) => `
-    <rect x="60" y="62" width="120" height="18" rx="4" fill="${darken(c,10)}"/>
-    <polygon points="60,62 80,34 100,58 120,28 140,58 160,34 180,62" fill="${c}"/>
-    <circle cx="80" cy="38" r="5" fill="${darken(c,30)}"/>
-    <circle cx="120" cy="32" r="6" fill="${darken(c,30)}"/>
-    <circle cx="160" cy="38" r="5" fill="${darken(c,30)}"/>`,
+    <rect x="60" y="54" width="120" height="18" rx="4" fill="${darken(c,10)}"/>
+    <polygon points="60,54 80,26 100,50 120,20 140,50 160,26 180,54" fill="${c}"/>
+    <circle cx="80" cy="30" r="5" fill="${darken(c,30)}"/>
+    <circle cx="120" cy="24" r="6" fill="${darken(c,30)}"/>
+    <circle cx="160" cy="30" r="5" fill="${darken(c,30)}"/>`,
   top_hat: (c) => `
-    <rect x="84" y="18" width="72" height="56" rx="6" fill="${c}"/>
-    <rect x="58" y="68" width="124" height="13" rx="6.5" fill="${darken(c,12)}"/>
-    <rect x="86" y="30" width="68" height="6" rx="3" fill="${darken(c,20)}"/>`,
+    <rect x="84" y="10" width="72" height="56" rx="6" fill="${c}"/>
+    <rect x="58" y="60" width="124" height="13" rx="6.5" fill="${darken(c,12)}"/>
+    <rect x="86" y="22" width="68" height="6" rx="3" fill="${darken(c,20)}"/>`,
 };
 
 // ---- CAPES / COATS ----
@@ -556,7 +560,7 @@ const WANDS = {
 const LEFTHAND = {
   // Potion — round flask with short thin neck, cork, semi-transparent liquid
   potion: (c) => `
-    <g transform="translate(56,248)">
+    <g transform="translate(56,248) scale(1.1)">
       <!-- Flask body (round) -->
       <circle cx="0" cy="8" r="13" fill="rgba(220,240,255,0.35)" stroke="rgba(180,210,255,0.7)" stroke-width="1.2"/>
       <!-- Liquid fill (semi-transparent, lower half) -->
@@ -570,14 +574,14 @@ const LEFTHAND = {
       <rect x="-4.5" y="-15" width="9" height="6" rx="2" fill="#c8a46e"/>
       <rect x="-3" y="-14" width="6" height="2" rx="1" fill="#a07840" opacity="0.5"/>
     </g>`,
-  // Flower — petals + centre + short stem + two leaves
+  // Flower — petals + centre + longer stem + two leaves
   flower: (c) => `
-    <g transform="translate(56,244)">
-      <!-- Stem -->
-      <line x1="0" y1="4" x2="0" y2="18" stroke="#4a8c3f" stroke-width="2.5" stroke-linecap="round"/>
+    <g transform="translate(56,244) scale(1.1)">
+      <!-- Stem (longer) -->
+      <line x1="0" y1="4" x2="0" y2="26" stroke="#4a8c3f" stroke-width="2.5" stroke-linecap="round"/>
       <!-- Leaves -->
-      <path d="M0,12 Q-7,8 -5,4" fill="none" stroke="#4a8c3f" stroke-width="2" stroke-linecap="round"/>
-      <path d="M0,10 Q7,6 5,2" fill="none" stroke="#4a8c3f" stroke-width="2" stroke-linecap="round"/>
+      <path d="M0,18 Q-8,13 -6,8" fill="none" stroke="#4a8c3f" stroke-width="2" stroke-linecap="round"/>
+      <path d="M0,15 Q8,10 6,5" fill="none" stroke="#4a8c3f" stroke-width="2" stroke-linecap="round"/>
       <!-- Petals (6, rotated) -->
       <g>
         <ellipse cx="0" cy="-9" rx="4" ry="7" fill="${c}" opacity="0.9"/>
@@ -593,7 +597,7 @@ const LEFTHAND = {
     </g>`,
   // Book — closed book held in hand, coloured covers, white pages on spine
   book: (c) => `
-    <g transform="translate(56,246)">
+    <g transform="translate(56,246) scale(1.5)">
       <!-- Back cover -->
       <rect x="-11" y="-14" width="22" height="26" rx="2" fill="${c}"/>
       <!-- Pages (right side, white block) -->
@@ -878,9 +882,9 @@ function renderDoll(container, d) {
   if (d.nose)    parts.push(sc('nose',    NOSES[d.nose]    || ''));
   if (d.mouth)   parts.push(sc('mouth',   MOUTHS[d.mouth]  || ''));
   if (d.bottom)  parts.push(sc('bottom',  (BOTTOMS[d.bottom] || (() => ''))(d.bottomColor, d.gender)));
+  if (d.belt)    parts.push(sc('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor)));
   if (d.top)     parts.push(sc('top',     (TOPS[d.top]     || (() => ''))(d.topColor, d.gender)));
   if (d.shoes)   parts.push(sc('shoes',   (SHOES[d.shoes]  || (() => ''))(d.shoesColor)));
-  if (d.belt)    parts.push(sc('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor)));
   if (d.cape)    parts.push(sc('cape',    (CAPES[d.cape]   || (() => ''))(d.capeColor)));
   if (d.hat)     parts.push(sc('hat',     (HATS[d.hat]     || (() => ''))(d.hatColor)));
   if (d.glasses) parts.push(sc('glasses', (GLASSES[d.glasses] || (() => ''))(d.glassesColor)));

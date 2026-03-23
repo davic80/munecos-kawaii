@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.7.1] - 2026-03-23
+
+### Fixed
+- **Cinturón bajo camiseta** — el cinturón/tirantes ahora se renderizan entre el pantalón y la camiseta; la camiseta lo tapa correctamente
+- **Libro (mano izq.)** — tamaño inicial incrementado un 50% mediante escala interna
+- **Flor (mano izq.)** — tamaño inicial incrementado un 10%; tallo alargado (~57% más largo) con hojas reposicionadas
+- **Poción (mano izq.)** — tamaño inicial incrementado un 10%
+- **Sombreros** — subidos 8px en la cabeza (todos los valores Y reducidos en 8)
+- **Faldas** — rediseñadas como trapecio oblicuo (estrecho en cintura, ancho en bajo): `skirt` larga hasta `y=340`, `skirt_mini` corta hasta `y=314`; dobladillo oscuro en la base
+
+---
+
 ## [1.7.0] - 2026-03-23
 
 ### Added
