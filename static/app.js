@@ -551,6 +551,64 @@ const WANDS = {
     </g>`,
 };
 
+// ---- LEFT HAND OBJECTS ----
+// Left hand center: boy arm x=38 w=36 → cx=56, hand bottom ≈ y=258
+const LEFTHAND = {
+  // Potion — round flask with short thin neck, cork, semi-transparent liquid
+  potion: (c) => `
+    <g transform="translate(56,248)">
+      <!-- Flask body (round) -->
+      <circle cx="0" cy="8" r="13" fill="rgba(220,240,255,0.35)" stroke="rgba(180,210,255,0.7)" stroke-width="1.2"/>
+      <!-- Liquid fill (semi-transparent, lower half) -->
+      <clipPath id="lh-potion-clip"><circle cx="0" cy="8" r="13"/></clipPath>
+      <rect x="-13" y="10" width="26" height="11" fill="${c}" opacity="0.55" clip-path="url(#lh-potion-clip)"/>
+      <!-- Highlight -->
+      <circle cx="-5" cy="2" r="3.5" fill="rgba(255,255,255,0.45)"/>
+      <!-- Neck -->
+      <rect x="-4" y="-11" width="8" height="11" rx="2" fill="rgba(200,230,255,0.5)" stroke="rgba(180,210,255,0.6)" stroke-width="1"/>
+      <!-- Cork -->
+      <rect x="-4.5" y="-15" width="9" height="6" rx="2" fill="#c8a46e"/>
+      <rect x="-3" y="-14" width="6" height="2" rx="1" fill="#a07840" opacity="0.5"/>
+    </g>`,
+  // Flower — petals + centre + short stem + two leaves
+  flower: (c) => `
+    <g transform="translate(56,244)">
+      <!-- Stem -->
+      <line x1="0" y1="4" x2="0" y2="18" stroke="#4a8c3f" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Leaves -->
+      <path d="M0,12 Q-7,8 -5,4" fill="none" stroke="#4a8c3f" stroke-width="2" stroke-linecap="round"/>
+      <path d="M0,10 Q7,6 5,2" fill="none" stroke="#4a8c3f" stroke-width="2" stroke-linecap="round"/>
+      <!-- Petals (6, rotated) -->
+      <g>
+        <ellipse cx="0" cy="-9" rx="4" ry="7" fill="${c}" opacity="0.9"/>
+        <ellipse cx="0" cy="-9" rx="4" ry="7" fill="${c}" opacity="0.9" transform="rotate(60,0,0)"/>
+        <ellipse cx="0" cy="-9" rx="4" ry="7" fill="${c}" opacity="0.9" transform="rotate(120,0,0)"/>
+        <ellipse cx="0" cy="-9" rx="4" ry="7" fill="${c}" opacity="0.9" transform="rotate(180,0,0)"/>
+        <ellipse cx="0" cy="-9" rx="4" ry="7" fill="${c}" opacity="0.9" transform="rotate(240,0,0)"/>
+        <ellipse cx="0" cy="-9" rx="4" ry="7" fill="${c}" opacity="0.9" transform="rotate(300,0,0)"/>
+      </g>
+      <!-- Centre -->
+      <circle cx="0" cy="0" r="5" fill="#f5d84a"/>
+      <circle cx="0" cy="0" r="3" fill="#e8b820"/>
+    </g>`,
+  // Book — closed book held in hand, coloured covers, white pages on spine
+  book: (c) => `
+    <g transform="translate(56,246)">
+      <!-- Back cover -->
+      <rect x="-11" y="-14" width="22" height="26" rx="2" fill="${c}"/>
+      <!-- Pages (right side, white block) -->
+      <rect x="8" y="-12" width="4" height="22" rx="1" fill="#f0ece0"/>
+      <!-- Front cover -->
+      <rect x="-11" y="-14" width="19" height="26" rx="2" fill="${c}"/>
+      <!-- Cover shadow/edge -->
+      <rect x="-11" y="-14" width="3" height="26" rx="1" fill="rgba(0,0,0,0.15)"/>
+      <!-- Decorative lines on cover -->
+      <line x1="-5" y1="-7" x2="5" y2="-7" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="-5" y1="-3" x2="5" y2="-3" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-linecap="round"/>
+      <line x1="-5" y1="1" x2="3" y2="1" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-linecap="round"/>
+    </g>`,
+};
+
 // ---- HAIR ----
 // Head: cx=120 cy=112 rx=70 ry=77 → top≈35, sides≈50/190, bottom≈189
 const HAIR = {
@@ -721,6 +779,7 @@ const CATEGORY_SCALE_MAP = {
   glasses: 'glassesScale',
   belt:    'beltScale',
   wand:    'wandScale',
+  lefthand: 'lefthandScale',
 };
 
 // SVG origin point for each category's scale transform
@@ -738,6 +797,7 @@ const CATEGORY_SCALE_ORIGIN = {
   cape:    [120, 250],
   belt:    [120, 278],
   wand:    [196, 256],
+  lefthand: [56, 252],
 };
 
 function applyBgColor() {
@@ -771,6 +831,7 @@ function defaultDoll(idx) {
     scarf: null,
     scarf2: null, scarf2Color: '#e94560', scarf2Color2: '#ffffff',
     wand: null,
+    lefthand: null, lefthandColor: '#7c3aed',
     bgColor: '#1a2a4a',
     browColor: '#5a3a1a',
     lashColor: '#3d2b1f',
@@ -778,7 +839,7 @@ function defaultDoll(idx) {
     eyesScale: 0, browsScale: 0, noseScale: 0, mouthScale: 0,
     hairScale: 0, topScale: 0,   bottomScale: 0, shoesScale: 0,
     hatScale: 0,  capeScale: 0,  glassesScale: 0, beltScale: 0,
-    wandScale: 0,
+    wandScale: 0, lefthandScale: 0,
   };
 }
 
@@ -823,9 +884,10 @@ function renderDoll(container, d) {
   if (d.cape)    parts.push(sc('cape',    (CAPES[d.cape]   || (() => ''))(d.capeColor)));
   if (d.hat)     parts.push(sc('hat',     (HATS[d.hat]     || (() => ''))(d.hatColor)));
   if (d.glasses) parts.push(sc('glasses', (GLASSES[d.glasses] || (() => ''))(d.glassesColor)));
-  if (d.scarf)   parts.push(svgScarf(d.scarf));
-  if (d.scarf2)  parts.push(svgScarf2(d.scarf2, d.scarf2Color || '#e94560', d.scarf2Color2 || '#ffffff'));
-  if (d.wand)    parts.push(sc('wand',    WANDS[d.wand]    || ''));
+  if (d.scarf)     parts.push(svgScarf(d.scarf));
+  if (d.scarf2)    parts.push(svgScarf2(d.scarf2, d.scarf2Color || '#e94560', d.scarf2Color2 || '#ffffff'));
+  if (d.wand)      parts.push(sc('wand',     WANDS[d.wand]    || ''));
+  if (d.lefthand)  parts.push(sc('lefthand', (LEFTHAND[d.lefthand] || (() => ''))(d.lefthandColor || '#7c3aed')));
 
   container.innerHTML = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg">${parts.join('\n')}</svg>`;
 }
@@ -865,6 +927,7 @@ const CATEGORY_FIELD_MAP = {
   scarf: 'scarf',
   scarf2: 'scarf2',
   wand: 'wand',
+  lefthand: 'lefthand',
 };
 
 function updateEquipped() {
@@ -1058,6 +1121,12 @@ function buildPanel() {
         {
           label: 'Varita', cat: 'wand', scaleField: 'wandScale',
           items: Object.keys(WANDS).map(k => ({ value: k, label: k })),
+        },
+        {
+          label: 'Objeto mano izq.', cat: 'lefthand',
+          colorField: 'lefthandColor', colorFieldLabel: 'Color',
+          scaleField: 'lefthandScale',
+          items: Object.keys(LEFTHAND).map(k => ({ value: k, label: k })),
         },
         {
           label: 'Sombrero', cat: 'hat', colorField: 'hatColor', scaleField: 'hatScale',
@@ -1256,6 +1325,12 @@ function buildPreviewSvg(cat, value, d) {
     case 'wand': {
       inner = WANDS[value] || '';
       inner = `<svg viewBox="120 190 90 100" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+      return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
+    }
+    case 'lefthand': {
+      const fn = LEFTHAND[value];
+      inner = fn ? fn(d.lefthandColor || '#7c3aed') : '';
+      inner = `<svg viewBox="30 220 60 60" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
       return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
     }
     default:

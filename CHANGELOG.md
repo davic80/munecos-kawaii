@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.7.0] - 2026-03-23
+
+### Added
+- **Objeto mano izquierda** — nueva categoría "Objeto mano izq." en Harry Potter & Extras con 3 ítems y selector de color + slider de tamaño:
+  - `potion` — frasco redondo con cuello corto, líquido semitransparente del color elegido, corcho marrón claro fijo, brillo de cristal
+  - `flower` — flor de 6 pétalos del color elegido, tallo y hojas verdes fijos, centro amarillo
+  - `book` — libro cerrado con tapas del color elegido, páginas blancas en el lomo, líneas decorativas en cubierta
+
+---
+
 ## [1.6.3] - 2026-03-23
 
 ### Fixed
