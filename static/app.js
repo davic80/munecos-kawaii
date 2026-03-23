@@ -863,11 +863,11 @@ const HAIR = {
 };
 
 /* ---------- BACKGROUND SCENES ---------- */
-const BG_SCENES = {
+ const BG_SCENES = {
   hogwarts: {
     label: 'Hogwarts',
-    svg: `
-      <!-- Sky gradient base -->
+    svgSky: `
+      <!-- Night sky -->
       <rect x="0" y="0" width="240" height="340" fill="#0d1530"/>
       <!-- Stars -->
       <circle cx="20" cy="18" r="1.2" fill="rgba(255,255,220,0.9)"/>
@@ -881,44 +881,46 @@ const BG_SCENES = {
       <!-- Moon -->
       <circle cx="195" cy="30" r="14" fill="rgba(255,250,200,0.22)"/>
       <circle cx="200" cy="26" r="11" fill="rgba(20,24,50,0.7)"/>
-      <!-- Castle silhouette -->
-      <!-- Main body -->
-      <rect x="30" y="240" width="180" height="100" fill="rgba(20,22,40,0.82)"/>
+      <!-- Castle silhouette — main body -->
+      <rect x="30" y="180" width="180" height="160" fill="rgba(20,22,40,0.85)"/>
       <!-- Battlements main -->
-      <rect x="30" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
-      <rect x="48" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
-      <rect x="66" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
-      <rect x="84" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
-      <rect x="144" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
-      <rect x="162" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
-      <rect x="180" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
-      <rect x="198" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
+      <rect x="30" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="48" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="66" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="84" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="144" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="162" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="180" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="198" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
       <!-- Left tower -->
-      <rect x="18" y="190" width="34" height="110" fill="rgba(18,20,38,0.88)"/>
-      <polygon points="18,190 35,162 52,190" fill="rgba(18,20,38,0.9)"/>
-      <rect x="18" y="182" width="8" height="10" fill="rgba(18,20,38,0.9)"/>
-      <rect x="30" y="182" width="8" height="10" fill="rgba(18,20,38,0.9)"/>
-      <rect x="42" y="182" width="8" height="10" fill="rgba(18,20,38,0.9)"/>
+      <rect x="18" y="130" width="34" height="210" fill="rgba(18,20,38,0.9)"/>
+      <polygon points="18,130 35,102 52,130" fill="rgba(18,20,38,0.92)"/>
+      <rect x="18" y="122" width="8" height="10" fill="rgba(18,20,38,0.92)"/>
+      <rect x="30" y="122" width="8" height="10" fill="rgba(18,20,38,0.92)"/>
+      <rect x="42" y="122" width="8" height="10" fill="rgba(18,20,38,0.92)"/>
       <!-- Right tower -->
-      <rect x="188" y="200" width="34" height="140" fill="rgba(18,20,38,0.88)"/>
-      <polygon points="188,200 205,170 222,200" fill="rgba(18,20,38,0.9)"/>
-      <rect x="188" y="192" width="8" height="10" fill="rgba(18,20,38,0.9)"/>
-      <rect x="200" y="192" width="8" height="10" fill="rgba(18,20,38,0.9)"/>
-      <rect x="212" y="192" width="8" height="10" fill="rgba(18,20,38,0.9)"/>
+      <rect x="188" y="140" width="34" height="200" fill="rgba(18,20,38,0.9)"/>
+      <polygon points="188,140 205,110 222,140" fill="rgba(18,20,38,0.92)"/>
+      <rect x="188" y="132" width="8" height="10" fill="rgba(18,20,38,0.92)"/>
+      <rect x="200" y="132" width="8" height="10" fill="rgba(18,20,38,0.92)"/>
+      <rect x="212" y="132" width="8" height="10" fill="rgba(18,20,38,0.92)"/>
       <!-- Lit windows -->
-      <rect x="44" y="252" width="8" height="11" rx="3" fill="rgba(255,220,100,0.55)"/>
-      <rect x="60" y="258" width="8" height="11" rx="3" fill="rgba(255,220,100,0.45)"/>
-      <rect x="152" y="248" width="8" height="11" rx="3" fill="rgba(255,220,100,0.55)"/>
-      <rect x="170" y="260" width="8" height="11" rx="3" fill="rgba(255,220,100,0.4)"/>
-      <rect x="26" y="218" width="6" height="9" rx="2" fill="rgba(255,220,100,0.5)"/>
-      <rect x="196" y="228" width="6" height="9" rx="2" fill="rgba(255,220,100,0.5)"/>
-      <!-- Ground -->
-      <rect x="0" y="316" width="240" height="24" fill="rgba(10,14,28,0.7)"/>`,
+      <rect x="44" y="196" width="8" height="11" rx="3" fill="rgba(255,220,100,0.55)"/>
+      <rect x="60" y="208" width="8" height="11" rx="3" fill="rgba(255,220,100,0.45)"/>
+      <rect x="152" y="192" width="8" height="11" rx="3" fill="rgba(255,220,100,0.55)"/>
+      <rect x="170" y="204" width="8" height="11" rx="3" fill="rgba(255,220,100,0.4)"/>
+      <rect x="26" y="158" width="6" height="9" rx="2" fill="rgba(255,220,100,0.5)"/>
+      <rect x="196" y="168" width="6" height="9" rx="2" fill="rgba(255,220,100,0.5)"/>`,
+    svgGround: `
+      <!-- Dark grass ground -->
+      <rect x="0" y="0" width="240" height="80" fill="rgba(10,14,28,0.92)"/>
+      <rect x="0" y="0" width="240" height="8" fill="rgba(20,30,12,0.5)"/>`,
+    groundH: 80,
   },
   great_hall: {
     label: 'Gran Comedor',
-    svg: `
-      <!-- Stone ceiling -->
+    svgSky: `
+      <!-- Stone ceiling dark -->
       <rect x="0" y="0" width="240" height="340" fill="#1a1200"/>
       <!-- Ceiling arches -->
       <path d="M0,0 Q60,30 120,0 Q180,30 240,0 L240,50 Q180,80 120,50 Q60,80 0,50 Z" fill="rgba(30,24,18,0.6)"/>
@@ -939,21 +941,26 @@ const BG_SCENES = {
       <line x1="117" y1="0" x2="117" y2="38" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
       <line x1="157" y1="0" x2="157" y2="25" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
       <line x1="197" y1="0" x2="197" y2="40" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
-      <!-- Long tables -->
-      <rect x="10" y="300" width="100" height="12" rx="4" fill="rgba(80,55,30,0.7)"/>
-      <rect x="130" y="300" width="100" height="12" rx="4" fill="rgba(80,55,30,0.7)"/>
-      <!-- Table legs -->
-      <rect x="18" y="310" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
-      <rect x="96" y="310" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
-      <rect x="138" y="310" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
-      <rect x="216" y="310" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
+      <!-- Long tables in mid area -->
+      <rect x="10" y="240" width="100" height="12" rx="4" fill="rgba(80,55,30,0.7)"/>
+      <rect x="130" y="240" width="100" height="12" rx="4" fill="rgba(80,55,30,0.7)"/>
+      <rect x="18" y="250" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
+      <rect x="96" y="250" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
+      <rect x="138" y="250" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
+      <rect x="216" y="250" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>`,
+    svgGround: `
       <!-- Stone floor -->
-      <rect x="0" y="322" width="240" height="18" fill="rgba(40,34,28,0.55)"/>
-      <line x1="0" y1="330" x2="240" y2="330" stroke="rgba(60,50,40,0.4)" stroke-width="1"/>`,
+      <rect x="0" y="0" width="240" height="80" fill="rgba(40,34,28,0.9)"/>
+      <line x1="0" y1="12" x2="240" y2="12" stroke="rgba(60,50,40,0.5)" stroke-width="1"/>
+      <line x1="0" y1="40" x2="240" y2="40" stroke="rgba(60,50,40,0.4)" stroke-width="1"/>
+      <line x1="60" y1="0" x2="60" y2="80" stroke="rgba(60,50,40,0.3)" stroke-width="0.8"/>
+      <line x1="120" y1="0" x2="120" y2="80" stroke="rgba(60,50,40,0.3)" stroke-width="0.8"/>
+      <line x1="180" y1="0" x2="180" y2="80" stroke="rgba(60,50,40,0.3)" stroke-width="0.8"/>`,
+    groundH: 80,
   },
   forbidden_forest: {
     label: 'Bosque Prohibido',
-    svg: `
+    svgSky: `
       <!-- Dark sky -->
       <rect x="0" y="0" width="240" height="340" fill="#0a1a0a"/>
       <!-- Stars -->
@@ -968,30 +975,34 @@ const BG_SCENES = {
       <circle cx="120" cy="50" r="28" fill="rgba(220,230,210,0.2)"/>
       <circle cx="120" cy="50" r="22" fill="rgba(230,240,215,0.18)"/>
       <!-- Tree trunks — back layer -->
-      <rect x="0" y="180" width="22" height="160" fill="rgba(15,18,12,0.7)"/>
-      <rect x="218" y="200" width="22" height="140" fill="rgba(15,18,12,0.7)"/>
-      <rect x="50" y="200" width="16" height="140" fill="rgba(15,18,12,0.6)"/>
-      <rect x="170" y="210" width="16" height="130" fill="rgba(15,18,12,0.6)"/>
+      <rect x="0" y="160" width="22" height="180" fill="rgba(15,18,12,0.75)"/>
+      <rect x="218" y="175" width="22" height="165" fill="rgba(15,18,12,0.75)"/>
+      <rect x="50" y="178" width="16" height="162" fill="rgba(15,18,12,0.65)"/>
+      <rect x="170" y="185" width="16" height="155" fill="rgba(15,18,12,0.65)"/>
       <!-- Tree crowns — back -->
-      <ellipse cx="11" cy="178" rx="30" ry="50" fill="rgba(10,22,10,0.75)"/>
-      <ellipse cx="229" cy="196" rx="28" ry="46" fill="rgba(10,22,10,0.75)"/>
-      <ellipse cx="58" cy="196" rx="24" ry="42" fill="rgba(10,22,10,0.65)"/>
-      <ellipse cx="178" cy="206" rx="24" ry="40" fill="rgba(10,22,10,0.65)"/>
+      <ellipse cx="11" cy="158" rx="30" ry="50" fill="rgba(10,22,10,0.78)"/>
+      <ellipse cx="229" cy="172" rx="28" ry="46" fill="rgba(10,22,10,0.78)"/>
+      <ellipse cx="58" cy="175" rx="24" ry="42" fill="rgba(10,22,10,0.68)"/>
+      <ellipse cx="178" cy="182" rx="24" ry="40" fill="rgba(10,22,10,0.68)"/>
       <!-- Tree trunks — front layer -->
-      <rect x="88" y="240" width="14" height="100" fill="rgba(12,15,10,0.8)"/>
-      <rect x="136" y="250" width="14" height="90" fill="rgba(12,15,10,0.8)"/>
+      <rect x="88" y="210" width="14" height="130" fill="rgba(12,15,10,0.85)"/>
+      <rect x="136" y="220" width="14" height="120" fill="rgba(12,15,10,0.85)"/>
       <!-- Tree crowns — front -->
-      <ellipse cx="95" cy="236" rx="28" ry="48" fill="rgba(8,18,8,0.82)"/>
-      <ellipse cx="143" cy="246" rx="26" ry="44" fill="rgba(8,18,8,0.82)"/>
-      <!-- Ground -->
-      <rect x="0" y="316" width="240" height="24" fill="rgba(8,14,8,0.75)"/>
+      <ellipse cx="95" cy="206" rx="28" ry="48" fill="rgba(8,18,8,0.85)"/>
+      <ellipse cx="143" cy="216" rx="26" ry="44" fill="rgba(8,18,8,0.85)"/>`,
+    svgGround: `
+      <!-- Dark forest floor -->
+      <rect x="0" y="0" width="240" height="80" fill="rgba(8,14,8,0.92)"/>
       <!-- Ground mist -->
-      <ellipse cx="120" cy="320" rx="120" ry="10" fill="rgba(180,200,180,0.08)"/>`,
+      <ellipse cx="120" cy="10" rx="130" ry="14" fill="rgba(180,200,180,0.1)"/>
+      <ellipse cx="60" cy="20" rx="80" ry="10" fill="rgba(180,200,180,0.07)"/>
+      <ellipse cx="190" cy="18" rx="70" ry="9" fill="rgba(180,200,180,0.07)"/>`,
+    groundH: 80,
   },
   platform_934: {
     label: 'Andén 9¾',
-    svg: `
-      <!-- Station ceiling / sky -->
+    svgSky: `
+      <!-- Station ceiling -->
       <rect x="0" y="0" width="240" height="340" fill="#b0b8c8"/>
       <!-- Steel roof arches -->
       <path d="M0,0 Q120,60 240,0" fill="none" stroke="rgba(160,160,180,0.3)" stroke-width="3"/>
@@ -1002,63 +1013,86 @@ const BG_SCENES = {
       <ellipse cx="160" cy="110" rx="38" ry="16" fill="rgba(220,220,230,0.1)"/>
       <ellipse cx="140" cy="96" rx="28" ry="12" fill="rgba(220,220,230,0.09)"/>
       <!-- Train body -->
-      <rect x="0" y="240" width="200" height="60" rx="8" fill="rgba(180,30,30,0.72)"/>
+      <rect x="0" y="200" width="210" height="70" rx="8" fill="rgba(180,30,30,0.75)"/>
       <!-- Train windows -->
-      <rect x="10" y="252" width="22" height="16" rx="4" fill="rgba(255,240,180,0.45)"/>
-      <rect x="40" y="252" width="22" height="16" rx="4" fill="rgba(255,240,180,0.45)"/>
-      <rect x="70" y="252" width="22" height="16" rx="4" fill="rgba(255,240,180,0.5)"/>
-      <rect x="100" y="252" width="22" height="16" rx="4" fill="rgba(255,240,180,0.4)"/>
-      <rect x="130" y="252" width="22" height="16" rx="4" fill="rgba(255,240,180,0.45)"/>
-      <rect x="160" y="252" width="22" height="16" rx="4" fill="rgba(255,240,180,0.4)"/>
+      <rect x="10" y="212" width="22" height="18" rx="4" fill="rgba(255,240,180,0.5)"/>
+      <rect x="40" y="212" width="22" height="18" rx="4" fill="rgba(255,240,180,0.5)"/>
+      <rect x="70" y="212" width="22" height="18" rx="4" fill="rgba(255,240,180,0.55)"/>
+      <rect x="100" y="212" width="22" height="18" rx="4" fill="rgba(255,240,180,0.45)"/>
+      <rect x="130" y="212" width="22" height="18" rx="4" fill="rgba(255,240,180,0.5)"/>
+      <rect x="160" y="212" width="22" height="18" rx="4" fill="rgba(255,240,180,0.45)"/>
       <!-- Train bottom stripe -->
-      <rect x="0" y="292" width="200" height="8" fill="rgba(30,30,30,0.6)"/>
-      <!-- Wheels -->
-      <circle cx="40" cy="304" r="10" fill="rgba(20,20,20,0.8)"/>
-      <circle cx="40" cy="304" r="5" fill="rgba(100,100,110,0.7)"/>
-      <circle cx="120" cy="304" r="10" fill="rgba(20,20,20,0.8)"/>
-      <circle cx="120" cy="304" r="5" fill="rgba(100,100,110,0.7)"/>
-      <!-- Platform -->
-      <rect x="0" y="310" width="240" height="30" fill="rgba(90,80,70,0.65)"/>
-      <line x1="0" y1="314" x2="240" y2="314" stroke="rgba(120,110,90,0.4)" stroke-width="1"/>
+      <rect x="0" y="260" width="210" height="10" fill="rgba(30,30,30,0.6)"/>
       <!-- Sign 9¾ -->
-      <rect x="192" y="270" width="38" height="22" rx="4" fill="rgba(30,30,30,0.7)"/>
-      <text x="211" y="286" font-size="11" text-anchor="middle" fill="rgba(255,220,80,0.9)" font-weight="bold">9¾</text>`,
+      <rect x="192" y="220" width="38" height="22" rx="4" fill="rgba(30,30,30,0.7)"/>
+      <text x="211" y="236" font-size="11" text-anchor="middle" fill="rgba(255,220,80,0.9)" font-weight="bold">9¾</text>`,
+    svgGround: `
+      <!-- Platform stone -->
+      <rect x="0" y="0" width="240" height="80" fill="rgba(90,80,70,0.9)"/>
+      <line x1="0" y1="8" x2="240" y2="8" stroke="rgba(120,110,90,0.5)" stroke-width="1.5"/>
+      <!-- Wheels visible above platform -->
+      <circle cx="40" cy="0" r="18" fill="rgba(20,20,20,0.85)"/>
+      <circle cx="40" cy="0" r="9" fill="rgba(100,100,110,0.75)"/>
+      <circle cx="130" cy="0" r="18" fill="rgba(20,20,20,0.85)"/>
+      <circle cx="130" cy="0" r="9" fill="rgba(100,100,110,0.75)"/>
+      <!-- Platform edge line -->
+      <line x1="0" y1="22" x2="240" y2="22" stroke="rgba(255,255,200,0.25)" stroke-width="2"/>`,
+    groundH: 80,
   },
   quidditch: {
     label: 'Quidditch',
-    svg: `
-      <!-- Open sky -->
-      <rect x="0" y="0" width="240" height="340" fill="#1a3a1a"/>
-      <!-- Clouds -->
-      <ellipse cx="50" cy="40" rx="32" ry="14" fill="rgba(255,255,255,0.1)"/>
-      <ellipse cx="66" cy="34" rx="22" ry="12" fill="rgba(255,255,255,0.1)"/>
-      <ellipse cx="180" cy="55" rx="28" ry="12" fill="rgba(255,255,255,0.08)"/>
-      <ellipse cx="195" cy="48" rx="20" ry="10" fill="rgba(255,255,255,0.08)"/>
-      <!-- Stars/sparkles around hoops -->
-      <text x="22" y="155" font-size="10" fill="rgba(255,230,80,0.7)">✦</text>
-      <text x="210" y="170" font-size="10" fill="rgba(255,230,80,0.7)">✦</text>
-      <text x="110" y="60" font-size="8" fill="rgba(255,230,80,0.5)">✦</text>
-      <!-- Left goal post -->
-      <rect x="10" y="170" width="5" height="120" fill="rgba(160,140,80,0.65)"/>
+    svgSky: `
+      <!-- Blue sky -->
+      <rect x="0" y="0" width="240" height="340" fill="#4a9fd4"/>
+      <!-- Sky gradient overlay -->
+      <rect x="0" y="0" width="240" height="120" fill="rgba(30,80,160,0.18)"/>
+      <!-- Fluffy clouds -->
+      <ellipse cx="50" cy="38" rx="36" ry="16" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="72" cy="30" rx="28" ry="14" fill="rgba(255,255,255,0.92)"/>
+      <ellipse cx="34" cy="44" rx="22" ry="12" fill="rgba(255,255,255,0.8)"/>
+      <ellipse cx="180" cy="55" rx="32" ry="14" fill="rgba(255,255,255,0.85)"/>
+      <ellipse cx="200" cy="46" rx="24" ry="12" fill="rgba(255,255,255,0.9)"/>
+      <ellipse cx="164" cy="60" rx="20" ry="10" fill="rgba(255,255,255,0.78)"/>
+      <ellipse cx="120" cy="20" rx="20" ry="9" fill="rgba(255,255,255,0.7)"/>
+      <ellipse cx="136" cy="14" rx="16" ry="8" fill="rgba(255,255,255,0.75)"/>
+      <!-- Golden snitch high up -->
+      <circle cx="170" cy="85" r="7" fill="rgba(255,210,40,0.9)"/>
+      <circle cx="170" cy="85" r="4" fill="rgba(255,235,80,0.95)"/>
+      <path d="M160,83 Q153,79 147,83" fill="none" stroke="rgba(255,210,40,0.7)" stroke-width="2"/>
+      <path d="M180,83 Q187,79 193,83" fill="none" stroke="rgba(255,210,40,0.7)" stroke-width="2"/>
+      <!-- Left goal post (tall, in sky) -->
+      <rect x="12" y="100" width="6" height="200" fill="rgba(180,150,60,0.8)"/>
       <!-- Left hoops -->
-      <circle cx="12" cy="170" r="14" fill="none" stroke="rgba(160,140,80,0.7)" stroke-width="4"/>
-      <circle cx="12" cy="200" r="14" fill="none" stroke="rgba(160,140,80,0.7)" stroke-width="4"/>
-      <circle cx="12" cy="230" r="14" fill="none" stroke="rgba(160,140,80,0.7)" stroke-width="4"/>
+      <circle cx="15" cy="130" r="16" fill="none" stroke="rgba(180,150,60,0.85)" stroke-width="5"/>
+      <circle cx="15" cy="165" r="16" fill="none" stroke="rgba(180,150,60,0.85)" stroke-width="5"/>
+      <circle cx="15" cy="200" r="16" fill="none" stroke="rgba(180,150,60,0.85)" stroke-width="5"/>
       <!-- Right goal post -->
-      <rect x="225" y="170" width="5" height="120" fill="rgba(160,140,80,0.65)"/>
+      <rect x="222" y="100" width="6" height="200" fill="rgba(180,150,60,0.8)"/>
       <!-- Right hoops -->
-      <circle cx="228" cy="170" r="14" fill="none" stroke="rgba(160,140,80,0.7)" stroke-width="4"/>
-      <circle cx="228" cy="200" r="14" fill="none" stroke="rgba(160,140,80,0.7)" stroke-width="4"/>
-      <circle cx="228" cy="230" r="14" fill="none" stroke="rgba(160,140,80,0.7)" stroke-width="4"/>
-      <!-- Golden snitch -->
-      <circle cx="185" cy="90" r="7" fill="rgba(255,210,40,0.8)"/>
-      <circle cx="185" cy="90" r="4" fill="rgba(255,230,80,0.9)"/>
-      <path d="M175,88 Q168,84 162,88" fill="none" stroke="rgba(255,210,40,0.6)" stroke-width="2"/>
-      <path d="M195,88 Q202,84 208,88" fill="none" stroke="rgba(255,210,40,0.6)" stroke-width="2"/>
-      <!-- Ground pitch -->
-      <rect x="0" y="308" width="240" height="32" fill="rgba(20,60,20,0.55)"/>
-      <line x1="120" y1="308" x2="120" y2="340" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
-      <ellipse cx="120" cy="315" rx="50" ry="8" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>`,
+      <circle cx="225" cy="130" r="16" fill="none" stroke="rgba(180,150,60,0.85)" stroke-width="5"/>
+      <circle cx="225" cy="165" r="16" fill="none" stroke="rgba(180,150,60,0.85)" stroke-width="5"/>
+      <circle cx="225" cy="200" r="16" fill="none" stroke="rgba(180,150,60,0.85)" stroke-width="5"/>`,
+    svgGround: `
+      <!-- Quidditch pitch in perspective -->
+      <!-- Base green field -->
+      <rect x="0" y="0" width="240" height="80" fill="#2e7d32"/>
+      <!-- Perspective trapezoid — lighter centre stripe -->
+      <polygon points="80,0 160,0 240,80 0,80" fill="rgba(46,120,46,0.6)"/>
+      <!-- Perspective lines converging to horizon centre -->
+      <line x1="120" y1="0" x2="0" y2="80" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"/>
+      <line x1="120" y1="0" x2="240" y2="80" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"/>
+      <line x1="120" y1="0" x2="60" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+      <line x1="120" y1="0" x2="180" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+      <!-- Centre circle (ellipse in perspective — near bottom = bigger) -->
+      <ellipse cx="120" cy="68" rx="55" ry="10" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <!-- Halfway line (perspective — wider at front) -->
+      <line x1="0" y1="50" x2="240" y2="50" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+      <!-- Goal line (front) -->
+      <line x1="0" y1="72" x2="240" y2="72" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <!-- Post bases at ground level -->
+      <rect x="9" y="0" width="8" height="20" fill="rgba(160,130,40,0.7)"/>
+      <rect x="223" y="0" width="8" height="20" fill="rgba(160,130,40,0.7)"/>`,
+    groundH: 80,
   },
 };
 
@@ -1142,7 +1176,7 @@ const SCENE_BG = {
   great_hall:       '#1a1200',
   forbidden_forest: '#0a1a0a',
   platform_934:     '#b0b8c8',
-  quidditch:        '#1a3a1a',
+  quidditch:        '#4a9fd4',
 };
 
 /* ---------- DOLL POSITION ---------- */
@@ -1168,13 +1202,23 @@ function applyDollPosition() {
     el.innerHTML = '';
     return;
   }
-  const bg = SCENE_BG[d.bgScene] || '#1a2a4a';
-  el.innerHTML = `<svg viewBox="0 0 240 340" preserveAspectRatio="xMidYMid slice"
-    xmlns="http://www.w3.org/2000/svg"
-    style="position:absolute;inset:0;width:100%;height:100%;">
-    <rect width="240" height="340" fill="${bg}"/>
-    ${BG_SCENES[d.bgScene].svg}
-  </svg>`;
+  const scene = BG_SCENES[d.bgScene];
+  const bg    = SCENE_BG[d.bgScene] || '#1a2a4a';
+  const groundH = scene.groundH || 80;
+  // Sky SVG: fills the full canvas anchored to the top (xMidYMin slice)
+  // Ground SVG: fixed height at the bottom (xMidYMax meet), anchored to the bottom edge
+  el.innerHTML = `
+    <svg viewBox="0 0 240 340" preserveAspectRatio="xMidYMin slice"
+      xmlns="http://www.w3.org/2000/svg"
+      style="position:absolute;inset:0;width:100%;height:100%;">
+      <rect width="240" height="340" fill="${bg}"/>
+      ${scene.svgSky}
+    </svg>
+    <svg viewBox="0 0 240 ${groundH}" preserveAspectRatio="xMidYMax meet"
+      xmlns="http://www.w3.org/2000/svg"
+      style="position:absolute;bottom:0;left:0;width:100%;height:${groundH / 340 * 100}%;">
+      ${scene.svgGround}
+    </svg>`;
 }
 
 function applyBgColor() {
@@ -2182,7 +2226,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const chip = document.createElement('div');
       chip.className = 'scene-chip' + (doll.bgScene === key ? ' active' : '');
       chip.dataset.scene = key;
-      const miniSvg = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="340" fill="${SCENE_BG[key] || '#1a2a4a'}"/>${scene.svg}</svg>`;
+      const miniSvg = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="340" fill="${SCENE_BG[key] || '#1a2a4a'}"/>${scene.svgSky || ''}${scene.svgGround ? `<g transform="translate(0,${340 - (scene.groundH||80)})">${scene.svgGround}</g>` : ''}</svg>`;
       chip.innerHTML = `${miniSvg}<span>${SCENE_LABELS[key] || key}</span>`;
       chip.addEventListener('click', () => {
         doll.bgScene = key;

@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.5] - 2026-03-23
+
+### Added
+- **Escenas de fondo — suelo y cielo anclados.** Cada escena ahora define dos capas SVG independientes: `svgSky` (anclado arriba, `preserveAspectRatio="xMidYMin slice"`) y `svgGround` (anclado abajo, altura fija en píxeles). El suelo siempre se ve en la parte inferior de la pantalla y el cielo/ambiente siempre en la parte superior, independientemente del tamaño o ratio de pantalla
+
+### Changed
+- **Quidditch rediseñado** — cielo azul brillante (`#4a9fd4`) con nubes blancas esponjosas, snitch dorada, portería con 3 aros a cada lado. El suelo muestra el campo en perspectiva con trapezoide verde, líneas de fuga convergentes al horizonte, círculo central elíptico y bases de postes
+- **Estructura `BG_SCENES`**: cada escena pasa de `{ label, svg }` a `{ label, svgSky, svgGround, groundH }`. Los chips de escena también usan el nuevo formato combinando ambas capas en el thumbnail
+
+---
+
 ## [1.9.4] - 2026-03-23
 
 ### Added
