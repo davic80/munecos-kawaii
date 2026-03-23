@@ -331,6 +331,13 @@ header h1 {
   background: radial-gradient(ellipse at 50% 60%, #1a2a4a 0%, var(--bg) 70%);
 }
 
+#bg-scene-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .doll-wrap {
   position: relative;
   width: 240px;

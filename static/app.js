@@ -1145,10 +1145,32 @@ const SCENE_BG = {
   quidditch:        '#1a3a1a',
 };
 
+/* ---------- BACKGROUND SCENE LAYER ---------- */
+function renderBgScene(d) {
+  const el = document.getElementById('bg-scene-layer');
+  if (!el) return;
+  if (!d.bgScene || !BG_SCENES[d.bgScene]) {
+    el.innerHTML = '';
+    return;
+  }
+  const bg = SCENE_BG[d.bgScene] || '#1a2a4a';
+  el.innerHTML = `<svg viewBox="0 0 240 340" preserveAspectRatio="xMidYMid slice"
+    xmlns="http://www.w3.org/2000/svg"
+    style="position:absolute;inset:0;width:100%;height:100%;">
+    <rect width="240" height="340" fill="${bg}"/>
+    ${BG_SCENES[d.bgScene].svg}
+  </svg>`;
+}
+
 function applyBgColor() {
-  const bg = (doll.bgScene && SCENE_BG[doll.bgScene]) ? SCENE_BG[doll.bgScene] : (doll.bgColor || '#1a2a4a');
-  document.querySelector('.canvas-bg').style.background =
-    `radial-gradient(ellipse at 50% 60%, ${bg} 0%, ${darken(bg, 20)} 100%)`;
+  const canvasBg = document.querySelector('.canvas-bg');
+  if (doll.bgScene) {
+    canvasBg.style.background = 'transparent';
+  } else {
+    const bg = doll.bgColor || '#1a2a4a';
+    canvasBg.style.background =
+      `radial-gradient(ellipse at 50% 60%, ${bg} 0%, ${darken(bg, 20)} 100%)`;
+  }
 }
 
 /* ---------- STATE ---------- */
@@ -1239,8 +1261,6 @@ function renderDoll(container, d) {
   };
   const layer = (cat, svg, hasFlip) => yo(cat, hasFlip ? flip(cat, sc(cat, svg)) : sc(cat, svg));
   const parts = [];
-  // Background scene (rendered inside the SVG, before base)
-  if (d.bgScene && BG_SCENES[d.bgScene]) parts.push(BG_SCENES[d.bgScene].svg);
   parts.push(svgBase(d.gender, d.skin));
   if (d.hair)    parts.push(layer('hair',    (HAIR[d.hair]    || (() => ''))(d.hairColor    || '#3d2b1f'), true));
   if (d.brows)   parts.push(layer('brows',   (BROWS[d.brows]   || (() => ''))(d.browColor || '#5a3a1a'), false));
@@ -1269,6 +1289,7 @@ function renderDoll(container, d) {
 
 function renderAll() {
   renderDoll(document.getElementById('doll-layers'), doll);
+  renderBgScene(doll);
   applyBgColor();
   updateEquipped();
   updateSlotTabs();

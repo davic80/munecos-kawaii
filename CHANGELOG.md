@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.3] - 2026-03-23
+
+### Changed
+- **Escenas de fondo — capa independiente** — el fondo ya no se renderiza dentro del SVG del muñeco (donde quedaba limitado al tamaño del canvas 240×340). Ahora se renderiza en un `<div id="bg-scene-layer">` propio con `preserveAspectRatio="xMidYMid slice"`, llenando todo el área central de la pantalla. El muñeco flota encima como capa independiente
+- **`applyBgColor()`** — cuando hay una escena activa el `.canvas-bg` se pone a `transparent` para no bloquear la escena; sin escena sigue mostrando el gradiente del color personalizado
+
+---
+
 ## [1.9.2] - 2026-03-23
 
 ### Added
