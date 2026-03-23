@@ -1145,8 +1145,23 @@ const SCENE_BG = {
   quidditch:        '#1a3a1a',
 };
 
-/* ---------- BACKGROUND SCENE LAYER ---------- */
-function renderBgScene(d) {
+/* ---------- DOLL POSITION ---------- */
+function applyDollPosition() {
+  const wrap = document.getElementById('doll-wrap');
+  const area = document.querySelector('.canvas-area');
+  if (!wrap || !area) return;
+  const aW = area.clientWidth;
+  const aH = area.clientHeight;
+  const dW = 240, dH = 340;
+  const defaultX = (aW - dW) / 2;
+  const defaultY = aH * 0.9 - dH;
+  const x = (doll.dollX !== null && doll.dollX !== undefined) ? doll.dollX : defaultX;
+  const y = (doll.dollY !== null && doll.dollY !== undefined) ? doll.dollY : defaultY;
+  wrap.style.left = x + 'px';
+  wrap.style.top  = y + 'px';
+}
+
+/* ---------- BACKGROUND SCENE LAYER ---------- */function renderBgScene(d) {
   const el = document.getElementById('bg-scene-layer');
   if (!el) return;
   if (!d.bgScene || !BG_SCENES[d.bgScene]) {
@@ -1218,6 +1233,8 @@ function defaultDoll(idx) {
     hairFlip: false, hatFlip: false, wandFlip: false, lefthandFlip: false, scarf2Flip: false,
     // background scene
     bgScene: null,
+    // doll position in canvas (null = default: centered X, base at 90% height)
+    dollX: null, dollY: null,
   };
 }
 
@@ -1291,6 +1308,7 @@ function renderAll() {
   renderDoll(document.getElementById('doll-layers'), doll);
   renderBgScene(doll);
   applyBgColor();
+  applyDollPosition();
   updateEquipped();
   updateSlotTabs();
   syncRightPanel();
@@ -1407,6 +1425,63 @@ function initDragDrop() {
     }
     touchChip = null;
   });
+}
+
+/* ---------- DOLL DRAG (move doll around canvas) ---------- */
+function initDollDrag() {
+  const wrap = document.getElementById('doll-wrap');
+  const area = document.querySelector('.canvas-area');
+  if (!wrap || !area) return;
+
+  let dragging = false, startX, startY, origLeft, origTop;
+
+  const onStart = (cx, cy) => {
+    dragging = true;
+    startX = cx; startY = cy;
+    origLeft = wrap.offsetLeft;
+    origTop  = wrap.offsetTop;
+    wrap.classList.add('grabbing');
+  };
+
+  const onMove = (cx, cy) => {
+    if (!dragging) return;
+    const aW = area.clientWidth;
+    const aH = area.clientHeight;
+    const newLeft = Math.max(-120, Math.min(aW - 120, origLeft + (cx - startX)));
+    const newTop  = Math.max(-170, Math.min(aH - 170, origTop  + (cy - startY)));
+    wrap.style.left = newLeft + 'px';
+    wrap.style.top  = newTop  + 'px';
+  };
+
+  const onEnd = () => {
+    if (!dragging) return;
+    dragging = false;
+    wrap.classList.remove('grabbing');
+    doll.dollX = wrap.offsetLeft;
+    doll.dollY = wrap.offsetTop;
+    saveCollection();
+  };
+
+  wrap.addEventListener('mousedown', e => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    onStart(e.clientX, e.clientY);
+  });
+  document.addEventListener('mousemove', e => onMove(e.clientX, e.clientY));
+  document.addEventListener('mouseup', () => onEnd());
+
+  wrap.addEventListener('touchstart', e => {
+    // Only drag doll if not touching an item-chip
+    if (e.target.closest('.item-chip')) return;
+    e.preventDefault();
+    onStart(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: false });
+
+  document.addEventListener('touchmove', e => {
+    if (dragging) { e.preventDefault(); onMove(e.touches[0].clientX, e.touches[0].clientY); }
+  }, { passive: false });
+
+  document.addEventListener('touchend', () => onEnd());
 }
 
 /* ---------- SLOT TABS ---------- */
@@ -2120,6 +2195,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Drag & drop
   initDragDrop();
+  initDollDrag();
 
   // Load from URL hash if present
   loadFromHash();

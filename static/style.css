@@ -339,11 +339,15 @@ header h1 {
 }
 
 .doll-wrap {
-  position: relative;
+  position: absolute;
   width: 240px;
   height: 340px;
   z-index: 1;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
 }
+.doll-wrap.grabbing { cursor: grabbing; }
 
 .doll-wrap.drag-over::after {
   content: 'Suelta aquí';

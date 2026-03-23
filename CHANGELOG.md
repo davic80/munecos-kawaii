@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.4] - 2026-03-23
+
+### Added
+- **Muñeco arrastrable** — el muñeco puede moverse libremente por el canvas arrastrándolo con ratón o dedo (touch). La posición se guarda por slot en localStorage y persiste entre sesiones. Al resetear el muñeco, la posición vuelve a la posición por defecto
+
+### Changed
+- **Posición inicial del muñeco** — en lugar de estar centrado verticalmente, el muñeco aparece con su base al 90% de la altura del canvas (pegado a la base), alineado horizontalmente al centro
+
+---
+
 ## [1.9.3] - 2026-03-23
 
 ### Changed
