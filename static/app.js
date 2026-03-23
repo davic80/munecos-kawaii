@@ -1277,7 +1277,7 @@ function buildPanel() {
         offsetRow.innerHTML = `
           <span class="scale-icon">↕</span>
           <label>Posición</label>
-          <input type="range" min="-30" max="30" step="1" value="${curOff}" id="yoff-${sub.cat}"/>
+          <input type="range" min="-15" max="15" step="1" value="${curOff}" id="yoff-${sub.cat}"/>
           <span class="scale-val" id="yoff-val-${sub.cat}">${curOff > 0 ? '+' : ''}${curOff}</span>`;
         const inp2 = offsetRow.querySelector('input');
         const lbl2 = offsetRow.querySelector('.scale-val');
