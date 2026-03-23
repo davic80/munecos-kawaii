@@ -769,6 +769,23 @@ function scaleWrap(svg, cx, cy, scaleVal) {
   return `<g transform="translate(${cx},${cy}) scale(${s}) translate(${-cx},${-cy})">${svg}</g>`;
 }
 
+const CATEGORY_YOFFSET_MAP = {
+  eyes:    'eyesYOffset',
+  brows:   'browsYOffset',
+  nose:    'noseYOffset',
+  mouth:   'mouthYOffset',
+  hair:    'hairYOffset',
+  top:     'topYOffset',
+  bottom:  'bottomYOffset',
+  shoes:   'shoesYOffset',
+  hat:     'hatYOffset',
+  cape:    'capeYOffset',
+  glasses: 'glassesYOffset',
+  belt:    'beltYOffset',
+  wand:    'wandYOffset',
+  lefthand: 'lefthandYOffset',
+};
+
 const CATEGORY_SCALE_MAP = {
   eyes:    'eyesScale',
   brows:   'browsScale',
@@ -844,6 +861,11 @@ function defaultDoll(idx) {
     hairScale: 0, topScale: 0,   bottomScale: 0, shoesScale: 0,
     hatScale: 0,  capeScale: 0,  glassesScale: 0, beltScale: 0,
     wandScale: 0, lefthandScale: 0,
+    // yOffset fields: -30..+30 (0 = normal position, in SVG px)
+    eyesYOffset: 0, browsYOffset: 0, noseYOffset: 0, mouthYOffset: 0,
+    hairYOffset: 0, topYOffset: 0,   bottomYOffset: 0, shoesYOffset: 0,
+    hatYOffset: 0,  capeYOffset: 0,  glassesYOffset: 0, beltYOffset: 0,
+    wandYOffset: 0, lefthandYOffset: 0,
   };
 }
 
@@ -874,24 +896,31 @@ function renderDoll(container, d) {
     const field  = CATEGORY_SCALE_MAP[cat];
     return scaleWrap(svg, origin[0], origin[1], d[field] || 0);
   };
+  const yo = (cat, svg) => {
+    const field = CATEGORY_YOFFSET_MAP[cat];
+    const v = d[field] || 0;
+    if (!v) return svg;
+    return `<g transform="translate(0,${v})">${svg}</g>`;
+  };
+  const layer = (cat, svg) => yo(cat, sc(cat, svg));
   const parts = [];
   parts.push(svgBase(d.gender, d.skin));
-  if (d.hair)    parts.push(sc('hair',    (HAIR[d.hair]    || (() => ''))(d.hairColor    || '#3d2b1f')));
-  if (d.brows)   parts.push(sc('brows',   (BROWS[d.brows]   || (() => ''))(d.browColor || '#5a3a1a')));
-  if (d.eyes)    parts.push(sc('eyes',    (EYES[d.eyes]    || EYES.round)(d.eyeColor, d.lashColor || d.hairColor || '#3d2b1f')));
-  if (d.nose)    parts.push(sc('nose',    NOSES[d.nose]    || ''));
-  if (d.mouth)   parts.push(sc('mouth',   MOUTHS[d.mouth]  || ''));
-  if (d.bottom)  parts.push(sc('bottom',  (BOTTOMS[d.bottom] || (() => ''))(d.bottomColor, d.gender)));
-  if (d.belt)    parts.push(sc('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor)));
-  if (d.top)     parts.push(sc('top',     (TOPS[d.top]     || (() => ''))(d.topColor, d.gender)));
-  if (d.shoes)   parts.push(sc('shoes',   (SHOES[d.shoes]  || (() => ''))(d.shoesColor)));
-  if (d.cape)    parts.push(sc('cape',    (CAPES[d.cape]   || (() => ''))(d.capeColor)));
-  if (d.hat)     parts.push(sc('hat',     (HATS[d.hat]     || (() => ''))(d.hatColor)));
-  if (d.glasses) parts.push(sc('glasses', (GLASSES[d.glasses] || (() => ''))(d.glassesColor)));
+  if (d.hair)    parts.push(layer('hair',    (HAIR[d.hair]    || (() => ''))(d.hairColor    || '#3d2b1f')));
+  if (d.brows)   parts.push(layer('brows',   (BROWS[d.brows]   || (() => ''))(d.browColor || '#5a3a1a')));
+  if (d.eyes)    parts.push(layer('eyes',    (EYES[d.eyes]    || EYES.round)(d.eyeColor, d.lashColor || d.hairColor || '#3d2b1f')));
+  if (d.nose)    parts.push(layer('nose',    NOSES[d.nose]    || ''));
+  if (d.mouth)   parts.push(layer('mouth',   MOUTHS[d.mouth]  || ''));
+  if (d.bottom)  parts.push(layer('bottom',  (BOTTOMS[d.bottom] || (() => ''))(d.bottomColor, d.gender)));
+  if (d.belt)    parts.push(layer('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor)));
+  if (d.top)     parts.push(layer('top',     (TOPS[d.top]     || (() => ''))(d.topColor, d.gender)));
+  if (d.shoes)   parts.push(layer('shoes',   (SHOES[d.shoes]  || (() => ''))(d.shoesColor)));
+  if (d.cape)    parts.push(layer('cape',    (CAPES[d.cape]   || (() => ''))(d.capeColor)));
+  if (d.hat)     parts.push(layer('hat',     (HATS[d.hat]     || (() => ''))(d.hatColor)));
+  if (d.glasses) parts.push(layer('glasses', (GLASSES[d.glasses] || (() => ''))(d.glassesColor)));
   if (d.scarf)     parts.push(svgScarf(d.scarf));
   if (d.scarf2)    parts.push(svgScarf2(d.scarf2, d.scarf2Color || '#e94560', d.scarf2Color2 || '#ffffff'));
-  if (d.wand)      parts.push(sc('wand',     WANDS[d.wand]    || ''));
-  if (d.lefthand)  parts.push(sc('lefthand', (LEFTHAND[d.lefthand] || (() => ''))(d.lefthandColor || '#7c3aed')));
+  if (d.wand)      parts.push(layer('wand',     WANDS[d.wand]    || ''));
+  if (d.lefthand)  parts.push(layer('lefthand', (LEFTHAND[d.lefthand] || (() => ''))(d.lefthandColor || '#7c3aed')));
 
   container.innerHTML = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg">${parts.join('\n')}</svg>`;
 }
@@ -1067,23 +1096,23 @@ function buildPanel() {
           ],
         },
         {
-          label: 'Ojos', cat: 'eyes', colorField: 'eyeColor', colorFieldLabel: 'Color ojos', colorField2: 'lashColor', colorField2Label: 'Color pestañas', scaleField: 'eyesScale',
+          label: 'Ojos', cat: 'eyes', colorField: 'eyeColor', colorFieldLabel: 'Color ojos', colorField2: 'lashColor', colorField2Label: 'Color pestañas', scaleField: 'eyesScale', yOffsetField: 'eyesYOffset',
           items: Object.keys(EYES).map(k => ({ value: k, label: k })),
         },
         {
-          label: 'Cejas', cat: 'brows', colorField: 'browColor', scaleField: 'browsScale',
+          label: 'Cejas', cat: 'brows', colorField: 'browColor', scaleField: 'browsScale', yOffsetField: 'browsYOffset',
           items: Object.keys(BROWS).map(k => ({ value: k, label: k })),
         },
         {
-          label: 'Nariz', cat: 'nose', scaleField: 'noseScale',
+          label: 'Nariz', cat: 'nose', scaleField: 'noseScale', yOffsetField: 'noseYOffset',
           items: Object.keys(NOSES).map(k => ({ value: k, label: k })),
         },
         {
-          label: 'Boca', cat: 'mouth', scaleField: 'mouthScale',
+          label: 'Boca', cat: 'mouth', scaleField: 'mouthScale', yOffsetField: 'mouthYOffset',
           items: Object.keys(MOUTHS).map(k => ({ value: k, label: k })),
         },
         {
-          label: 'Pelo', cat: 'hair', colorField: 'hairColor', scaleField: 'hairScale',
+          label: 'Pelo', cat: 'hair', colorField: 'hairColor', scaleField: 'hairScale', yOffsetField: 'hairYOffset',
           items: Object.keys(HAIR).map(k => ({ value: k, label: k })),
         },
       ],
@@ -1092,19 +1121,19 @@ function buildPanel() {
       label: 'Ropa', icon: '👕', open: true,
       subsections: [
         {
-          label: 'Camiseta / Top', cat: 'top', colorField: 'topColor', scaleField: 'topScale',
+          label: 'Camiseta / Top', cat: 'top', colorField: 'topColor', scaleField: 'topScale', yOffsetField: 'topYOffset',
           items: Object.keys(TOPS).map(k => ({ value: k, label: k })),
         },
         {
-          label: 'Pantalón / Falda', cat: 'bottom', colorField: 'bottomColor', scaleField: 'bottomScale',
+          label: 'Pantalón / Falda', cat: 'bottom', colorField: 'bottomColor', scaleField: 'bottomScale', yOffsetField: 'bottomYOffset',
           items: Object.keys(BOTTOMS).map(k => ({ value: k, label: k })),
         },
         {
-          label: 'Zapatos', cat: 'shoes', colorField: 'shoesColor', scaleField: 'shoesScale',
+          label: 'Zapatos', cat: 'shoes', colorField: 'shoesColor', scaleField: 'shoesScale', yOffsetField: 'shoesYOffset',
           items: Object.keys(SHOES).map(k => ({ value: k, label: k })),
         },
         {
-          label: 'Cinturón', cat: 'belt', colorField: 'beltColor', scaleField: 'beltScale',
+          label: 'Cinturón', cat: 'belt', colorField: 'beltColor', scaleField: 'beltScale', yOffsetField: 'beltYOffset',
           items: Object.keys(BELTS).map(k => ({ value: k, label: k })),
         },
       ],
@@ -1123,25 +1152,25 @@ function buildPanel() {
           items: SCARF2_STYLES.map(k => ({ value: k, label: k })),
         },
         {
-          label: 'Varita', cat: 'wand', scaleField: 'wandScale',
+          label: 'Varita', cat: 'wand', scaleField: 'wandScale', yOffsetField: 'wandYOffset',
           items: Object.keys(WANDS).map(k => ({ value: k, label: k })),
         },
         {
           label: 'Objeto mano izq.', cat: 'lefthand',
           colorField: 'lefthandColor', colorFieldLabel: 'Color',
-          scaleField: 'lefthandScale',
+          scaleField: 'lefthandScale', yOffsetField: 'lefthandYOffset',
           items: Object.keys(LEFTHAND).map(k => ({ value: k, label: k })),
         },
         {
-          label: 'Sombrero', cat: 'hat', colorField: 'hatColor', scaleField: 'hatScale',
+          label: 'Sombrero', cat: 'hat', colorField: 'hatColor', scaleField: 'hatScale', yOffsetField: 'hatYOffset',
           items: Object.keys(HATS).map(k => ({ value: k, label: k })),
         },
         {
-          label: 'Capa / Abrigo', cat: 'cape', colorField: 'capeColor', scaleField: 'capeScale',
+          label: 'Capa / Abrigo', cat: 'cape', colorField: 'capeColor', scaleField: 'capeScale', yOffsetField: 'capeYOffset',
           items: Object.keys(CAPES).map(k => ({ value: k, label: k })),
         },
         {
-          label: 'Gafas', cat: 'glasses', colorField: 'glassesColor', scaleField: 'glassesScale',
+          label: 'Gafas', cat: 'glasses', colorField: 'glassesColor', scaleField: 'glassesScale', yOffsetField: 'glassesYOffset',
           items: Object.keys(GLASSES).map(k => ({ value: k, label: k })),
         },
       ],
@@ -1238,6 +1267,28 @@ function buildPanel() {
           renderDoll(document.getElementById('doll-layers'), doll);
         });
         body.appendChild(scaleRow);
+      }
+
+      // Y-offset slider for this sub-category (below the scale slider)
+      if (sub.yOffsetField) {
+        const curOff = doll[sub.yOffsetField] || 0;
+        const offsetRow = document.createElement('div');
+        offsetRow.className = 'scale-row';
+        offsetRow.innerHTML = `
+          <span class="scale-icon">↕</span>
+          <label>Posición</label>
+          <input type="range" min="-30" max="30" step="1" value="${curOff}" id="yoff-${sub.cat}"/>
+          <span class="scale-val" id="yoff-val-${sub.cat}">${curOff > 0 ? '+' : ''}${curOff}</span>`;
+        const inp2 = offsetRow.querySelector('input');
+        const lbl2 = offsetRow.querySelector('.scale-val');
+        inp2.addEventListener('input', e => {
+          const v = parseInt(e.target.value, 10);
+          doll[sub.yOffsetField] = v;
+          lbl2.textContent = `${v > 0 ? '+' : ''}${v}`;
+          saveCollection();
+          renderDoll(document.getElementById('doll-layers'), doll);
+        });
+        body.appendChild(offsetRow);
       }
     });
 

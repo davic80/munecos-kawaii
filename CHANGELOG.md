@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.8.0] - 2026-03-23
+
+### Added
+- **Slider de posición vertical** — nuevo control "Posición ↕" debajo del slider de tamaño en cada categoría (rasgos, ropa y extras); rango -30..+30 px SVG (0 = posición original). Permite subir o bajar cualquier elemento de forma independiente sin afectar a los demás. Los valores se guardan en `localStorage` y se incluyen en la URL compartida.
+
+---
+
 ## [1.7.1] - 2026-03-23
 
 ### Fixed
