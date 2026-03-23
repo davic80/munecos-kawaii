@@ -1214,9 +1214,9 @@ function applyDollPosition() {
       <rect width="240" height="340" fill="${bg}"/>
       ${scene.svgSky}
     </svg>
-    <svg viewBox="0 0 240 ${groundH}" preserveAspectRatio="xMidYMax meet"
+    <svg viewBox="0 0 240 ${groundH}" preserveAspectRatio="none"
       xmlns="http://www.w3.org/2000/svg"
-      style="position:absolute;bottom:0;left:0;width:100%;height:${groundH / 340 * 100}%;">
+      style="position:absolute;bottom:0;left:0;width:100%;height:20%;">
       ${scene.svgGround}
     </svg>`;
 }

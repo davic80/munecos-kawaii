@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.6] - 2026-03-24
+
+### Fixed
+- **Suelo de escenas de fondo sin barras laterales.** El SVG del suelo ahora usa `preserveAspectRatio="none"` y altura fija del `20%` del canvas, en lugar de `xMidYMax meet` con porcentaje derivado de `groundH`. Esto elimina las barras laterales en pantallas anchas y garantiza que el suelo siempre ocupe exactamente el 20% inferior del canvas a todo ancho
+
+---
+
 ## [1.9.5] - 2026-03-23
 
 ### Added
