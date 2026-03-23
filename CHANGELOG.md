@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.0] - 2026-03-23
+
+### Added
+- **Nuevos ojos** — `closed` (ojos cerrados con pestañas), `angry_eyes` (cejas fruncidas + iris pequeño), `dollar` (ojos con símbolo $)
+- **Nuevas capas** — `short_cape` (capa corta con cierre dorado), `cloak` (túnica con capucha), `vest_leather` (chaleco de cuero con botones)
+- **Bufanda libre — nuevos estilos** — `checker` (cuadros), `stripes` (rayas), `knit` (punto trenzado) añadidos a los ya existentes `solid` y `diagonal`
+- **Escenas de fondo HP** — 5 escenas Harry Potter renderizadas dentro del propio SVG del muñeco: `hogwarts`, `great_hall` (Gran Comedor), `forbidden_forest` (Bosque Prohibido), `platform_934` (Andén 9¾), `quidditch` (campo de quidditch). Selector de escena en el panel derecho con previsualización en miniatura
+- **Voltear / Espejo** — botón "⇄ Espejo" por categoría para reflejar horizontalmente: pelo, sombrero, capa, varita y mano izquierda
+- **Resetear ajustes** — botón "↺ Resetear ajustes" por categoría para volver tamaño y posición a cero sin afectar al ítem equipado
+- **Selector de piel en panel izquierdo** — los 8 tonos de piel preestablecidos + selector personalizado ahora aparecen en la sección "Rasgos" del panel izquierdo, además del panel derecho
+- **Previsualización hover** — al pasar el cursor sobre una ficha de ítem en el panel izquierdo se muestra una previsualización instantánea en el muñeco (solo escritorio)
+
+### Changed
+- **Panel izquierdo — sección Rasgos** — reordenada: Piel → Género → Ojos → Cejas → Nariz → Boca → Pelo
+- **Categorías con volteo** — `hair`, `hat`, `cape`, `wand`, `lefthand` disponen del botón "⇄ Espejo"
+
+---
+
 ## [1.8.1] - 2026-03-23
 
 ### Fixed

@@ -140,6 +140,30 @@ const EYES = {
     <circle cx="153" cy="115" r="2.5" fill="white"/>
     <ellipse cx="150" cy="134" rx="3" ry="5" fill="rgba(100,180,255,0.7)"/>
     <path d="M147,130 Q150,136 153,130" fill="rgba(100,180,255,0.7)" stroke="none"/>`,
+  // Closed — happy closed curved eyes (sleeping/smiling)
+  closed: (_c, lc) => `
+    <path d="M76,122 Q90,112 104,122" fill="none" stroke="${lc}" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M136,122 Q150,112 164,122" fill="none" stroke="${lc}" stroke-width="3.5" stroke-linecap="round"/>`,
+  // Angry eyes — sharp angled pupils, menacing look
+  angry_eyes: (c, _lc) => `
+    <circle cx="90" cy="120" r="13" fill="white"/>
+    <circle cx="91" cy="121" r="8" fill="${c}"/>
+    <circle cx="91" cy="121" r="4.5" fill="#111"/>
+    <circle cx="94" cy="118" r="2" fill="white"/>
+    <line x1="76" y1="110" x2="104" y2="116" stroke="#111" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="150" cy="120" r="13" fill="white"/>
+    <circle cx="149" cy="121" r="8" fill="${c}"/>
+    <circle cx="149" cy="121" r="4.5" fill="#111"/>
+    <circle cx="152" cy="118" r="2" fill="white"/>
+    <line x1="136" y1="116" x2="164" y2="110" stroke="#111" stroke-width="4" stroke-linecap="round"/>`,
+  // Dollar — round eyes with $ symbol pupils
+  dollar: (c, _lc) => `
+    <circle cx="90" cy="118" r="14" fill="white"/>
+    <circle cx="90" cy="119" r="9" fill="${c}"/>
+    <text x="90" y="123" font-size="11" text-anchor="middle" fill="#111" font-weight="bold">$</text>
+    <circle cx="150" cy="118" r="14" fill="white"/>
+    <circle cx="150" cy="119" r="9" fill="${c}"/>
+    <text x="150" y="123" font-size="11" text-anchor="middle" fill="#111" font-weight="bold">$</text>`,
 };
 
 // ---- EYEBROWS ----
@@ -383,6 +407,28 @@ const CAPES = {
     <path d="M184,200 Q190,240 186,290 Q168,306 152,298 L152,200 Z" fill="${c}"/>
     <path d="M88,200 L88,298 Q120,308 152,298 L152,200 Q136,194 120,192 Q104,194 88,200 Z" fill="${darken(c,8)}"/>
     <path d="M88,200 Q104,206 120,206 Q136,206 152,200 Q136,194 120,192 Q104,194 88,200 Z" fill="${darken(c,16)}"/>`,
+  // Short cape — waist-length cape with neck clasp
+  short_cape: (c) => `
+    <path d="M62,200 Q54,232 60,258 Q76,268 88,262 L88,200 Z" fill="${c}"/>
+    <path d="M178,200 Q186,232 180,258 Q164,268 152,262 L152,200 Z" fill="${c}"/>
+    <path d="M88,200 L88,262 Q120,272 152,262 L152,200 Q136,194 120,192 Q104,194 88,200 Z" fill="${darken(c,8)}"/>
+    <circle cx="120" cy="200" r="5" fill="${darken(c,24)}"/>
+    <circle cx="120" cy="200" r="3" fill="${darken(c,10)}"/>`,
+  // Cloak — full cape with visible hood draped over shoulders
+  cloak: (c) => `
+    <path d="M58,196 L36,296 Q56,318 80,308 L80,196 Z" fill="${c}"/>
+    <path d="M182,196 L204,296 Q184,318 160,308 L160,196 Z" fill="${c}"/>
+    <path d="M80,196 L80,308 Q120,318 160,308 L160,196 Z" fill="${darken(c,6)}"/>
+    <path d="M80,196 Q120,186 160,196 Q148,168 120,162 Q92,168 80,196 Z" fill="${darken(c,4)}"/>
+    <path d="M86,196 Q120,188 154,196 Q148,172 120,166 Q92,172 86,196 Z" fill="${darken(c,12)}"/>`,
+  // Leather vest — sleeveless open vest with zip and pockets
+  vest_leather: (c) => `
+    <path d="M80,196 L68,286 Q80,294 92,290 L96,196 Z" fill="${c}"/>
+    <path d="M160,196 L172,286 Q160,294 148,290 L144,196 Z" fill="${c}"/>
+    <path d="M96,196 L92,290 Q120,298 148,290 L144,196 Q136,192 120,191 Q104,192 96,196 Z" fill="${darken(c,10)}"/>
+    <line x1="120" y1="196" x2="120" y2="290" stroke="${darken(c,30)}" stroke-width="2" stroke-dasharray="4,3"/>
+    <rect x="88" y="238" width="14" height="10" rx="3" fill="${darken(c,20)}"/>
+    <rect x="138" y="238" width="14" height="10" rx="3" fill="${darken(c,20)}"/>`,
 };
 
 // ---- GLASSES ----
@@ -470,7 +516,7 @@ function svgScarf(house) {
 }
 
 // ---- FREE SCARVES ----
-const SCARF2_STYLES = ['solid', 'diagonal'];
+const SCARF2_STYLES = ['solid', 'diagonal', 'checker', 'stripes', 'knit'];
 
 function svgScarf2(style, c1, c2) {
   if (style === 'solid') {
@@ -488,6 +534,39 @@ function svgScarf2(style, c1, c2) {
       <line x1="122" y1="174" x2="112" y2="200" stroke="${c2}" stroke-width="7" stroke-linecap="butt"/>
       <line x1="136" y1="174" x2="126" y2="200" stroke="${c2}" stroke-width="7" stroke-linecap="butt"/>
       <line x1="150" y1="174" x2="140" y2="200" stroke="${c2}" stroke-width="7" stroke-linecap="butt"/>
+    </g>`;
+  }
+  if (style === 'checker') {
+    return `
+    <rect x="88" y="178" width="64" height="18" rx="9" fill="${c1}"/>
+    <clipPath id="scarf2-clip"><rect x="88" y="178" width="64" height="18" rx="9"/></clipPath>
+    <g clip-path="url(#scarf2-clip)">
+      <rect x="88" y="178" width="8" height="9" fill="${c2}"/>
+      <rect x="96" y="187" width="8" height="9" fill="${c2}"/>
+      <rect x="104" y="178" width="8" height="9" fill="${c2}"/>
+      <rect x="112" y="187" width="8" height="9" fill="${c2}"/>
+      <rect x="120" y="178" width="8" height="9" fill="${c2}"/>
+      <rect x="128" y="187" width="8" height="9" fill="${c2}"/>
+      <rect x="136" y="178" width="8" height="9" fill="${c2}"/>
+      <rect x="144" y="187" width="8" height="9" fill="${c2}"/>
+    </g>`;
+  }
+  if (style === 'stripes') {
+    return `
+    <rect x="88" y="178" width="64" height="18" rx="9" fill="${c1}"/>
+    <clipPath id="scarf2-clip"><rect x="88" y="178" width="64" height="18" rx="9"/></clipPath>
+    <g clip-path="url(#scarf2-clip)">
+      <rect x="88" y="181" width="64" height="4" fill="${c2}"/>
+      <rect x="88" y="189" width="64" height="4" fill="${c2}"/>
+    </g>`;
+  }
+  if (style === 'knit') {
+    return `
+    <rect x="88" y="178" width="64" height="18" rx="9" fill="${c1}"/>
+    <clipPath id="scarf2-clip"><rect x="88" y="178" width="64" height="18" rx="9"/></clipPath>
+    <g clip-path="url(#scarf2-clip)">
+      <path d="M88,183 Q92,179 96,183 Q100,187 104,183 Q108,179 112,183 Q116,187 120,183 Q124,179 128,183 Q132,187 136,183 Q140,179 144,183 Q148,187 152,183" fill="none" stroke="${c2}" stroke-width="2" stroke-linecap="round"/>
+      <path d="M88,191 Q92,187 96,191 Q100,195 104,191 Q108,187 112,191 Q116,195 120,191 Q124,187 128,191 Q132,195 136,191 Q140,187 144,191 Q148,195 152,191" fill="none" stroke="${c2}" stroke-width="2" stroke-linecap="round"/>
     </g>`;
   }
   return '';
@@ -750,6 +829,206 @@ const HAIR = {
     <path d="M62,52 Q60,36 74,28 Q94,18 120,16 Q146,18 166,28 Q180,36 178,52" fill="${c}"/>`,
 };
 
+/* ---------- BACKGROUND SCENES ---------- */
+const BG_SCENES = {
+  hogwarts: {
+    label: 'Hogwarts',
+    svg: `
+      <!-- Sky gradient base -->
+      <rect x="0" y="0" width="240" height="340" fill="none"/>
+      <!-- Stars -->
+      <circle cx="20" cy="18" r="1.2" fill="rgba(255,255,220,0.9)"/>
+      <circle cx="55" cy="8" r="1" fill="rgba(255,255,220,0.8)"/>
+      <circle cx="90" cy="22" r="1.2" fill="rgba(255,255,220,0.9)"/>
+      <circle cx="130" cy="10" r="1" fill="rgba(255,255,220,0.7)"/>
+      <circle cx="170" cy="20" r="1.2" fill="rgba(255,255,220,0.9)"/>
+      <circle cx="210" cy="6" r="1" fill="rgba(255,255,220,0.8)"/>
+      <circle cx="40" cy="35" r="0.8" fill="rgba(255,255,220,0.6)"/>
+      <circle cx="195" cy="38" r="0.8" fill="rgba(255,255,220,0.6)"/>
+      <!-- Moon -->
+      <circle cx="195" cy="30" r="14" fill="rgba(255,250,200,0.22)"/>
+      <circle cx="200" cy="26" r="11" fill="rgba(20,24,50,0.7)"/>
+      <!-- Castle silhouette -->
+      <!-- Main body -->
+      <rect x="30" y="240" width="180" height="100" fill="rgba(20,22,40,0.82)"/>
+      <!-- Battlements main -->
+      <rect x="30" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
+      <rect x="48" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
+      <rect x="66" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
+      <rect x="84" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
+      <rect x="144" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
+      <rect x="162" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
+      <rect x="180" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
+      <rect x="198" y="232" width="12" height="12" fill="rgba(20,22,40,0.82)"/>
+      <!-- Left tower -->
+      <rect x="18" y="190" width="34" height="110" fill="rgba(18,20,38,0.88)"/>
+      <polygon points="18,190 35,162 52,190" fill="rgba(18,20,38,0.9)"/>
+      <rect x="18" y="182" width="8" height="10" fill="rgba(18,20,38,0.9)"/>
+      <rect x="30" y="182" width="8" height="10" fill="rgba(18,20,38,0.9)"/>
+      <rect x="42" y="182" width="8" height="10" fill="rgba(18,20,38,0.9)"/>
+      <!-- Right tower -->
+      <rect x="188" y="200" width="34" height="140" fill="rgba(18,20,38,0.88)"/>
+      <polygon points="188,200 205,170 222,200" fill="rgba(18,20,38,0.9)"/>
+      <rect x="188" y="192" width="8" height="10" fill="rgba(18,20,38,0.9)"/>
+      <rect x="200" y="192" width="8" height="10" fill="rgba(18,20,38,0.9)"/>
+      <rect x="212" y="192" width="8" height="10" fill="rgba(18,20,38,0.9)"/>
+      <!-- Lit windows -->
+      <rect x="44" y="252" width="8" height="11" rx="3" fill="rgba(255,220,100,0.55)"/>
+      <rect x="60" y="258" width="8" height="11" rx="3" fill="rgba(255,220,100,0.45)"/>
+      <rect x="152" y="248" width="8" height="11" rx="3" fill="rgba(255,220,100,0.55)"/>
+      <rect x="170" y="260" width="8" height="11" rx="3" fill="rgba(255,220,100,0.4)"/>
+      <rect x="26" y="218" width="6" height="9" rx="2" fill="rgba(255,220,100,0.5)"/>
+      <rect x="196" y="228" width="6" height="9" rx="2" fill="rgba(255,220,100,0.5)"/>
+      <!-- Ground -->
+      <rect x="0" y="316" width="240" height="24" fill="rgba(10,14,28,0.7)"/>`,
+  },
+  great_hall: {
+    label: 'Gran Comedor',
+    svg: `
+      <!-- Stone ceiling -->
+      <rect x="0" y="0" width="240" height="340" fill="none"/>
+      <!-- Ceiling arches -->
+      <path d="M0,0 Q60,30 120,0 Q180,30 240,0 L240,50 Q180,80 120,50 Q60,80 0,50 Z" fill="rgba(30,24,18,0.6)"/>
+      <!-- Floating candles -->
+      <rect x="35" y="42" width="4" height="14" rx="2" fill="rgba(255,240,200,0.85)"/>
+      <ellipse cx="37" cy="40" rx="3" ry="5" fill="rgba(255,200,60,0.7)"/>
+      <rect x="75" y="28" width="4" height="14" rx="2" fill="rgba(255,240,200,0.85)"/>
+      <ellipse cx="77" cy="26" rx="3" ry="5" fill="rgba(255,200,60,0.7)"/>
+      <rect x="115" y="38" width="4" height="14" rx="2" fill="rgba(255,240,200,0.85)"/>
+      <ellipse cx="117" cy="36" rx="3" ry="5" fill="rgba(255,200,60,0.7)"/>
+      <rect x="155" y="25" width="4" height="14" rx="2" fill="rgba(255,240,200,0.85)"/>
+      <ellipse cx="157" cy="23" rx="3" ry="5" fill="rgba(255,200,60,0.7)"/>
+      <rect x="195" y="40" width="4" height="14" rx="2" fill="rgba(255,240,200,0.85)"/>
+      <ellipse cx="197" cy="38" rx="3" ry="5" fill="rgba(255,200,60,0.7)"/>
+      <!-- Candle strings -->
+      <line x1="37" y1="0" x2="37" y2="42" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
+      <line x1="77" y1="0" x2="77" y2="28" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
+      <line x1="117" y1="0" x2="117" y2="38" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
+      <line x1="157" y1="0" x2="157" y2="25" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
+      <line x1="197" y1="0" x2="197" y2="40" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
+      <!-- Long tables -->
+      <rect x="10" y="300" width="100" height="12" rx="4" fill="rgba(80,55,30,0.7)"/>
+      <rect x="130" y="300" width="100" height="12" rx="4" fill="rgba(80,55,30,0.7)"/>
+      <!-- Table legs -->
+      <rect x="18" y="310" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
+      <rect x="96" y="310" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
+      <rect x="138" y="310" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
+      <rect x="216" y="310" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
+      <!-- Stone floor -->
+      <rect x="0" y="322" width="240" height="18" fill="rgba(40,34,28,0.55)"/>
+      <line x1="0" y1="330" x2="240" y2="330" stroke="rgba(60,50,40,0.4)" stroke-width="1"/>`,
+  },
+  forbidden_forest: {
+    label: 'Bosque Prohibido',
+    svg: `
+      <!-- Dark sky -->
+      <rect x="0" y="0" width="240" height="340" fill="none"/>
+      <!-- Stars -->
+      <circle cx="30" cy="15" r="1" fill="rgba(255,255,220,0.7)"/>
+      <circle cx="70" cy="25" r="1.2" fill="rgba(255,255,220,0.9)"/>
+      <circle cx="110" cy="10" r="1" fill="rgba(255,255,220,0.6)"/>
+      <circle cx="150" cy="20" r="1.2" fill="rgba(255,255,220,0.8)"/>
+      <circle cx="190" cy="12" r="1" fill="rgba(255,255,220,0.7)"/>
+      <circle cx="50" cy="40" r="0.8" fill="rgba(255,255,220,0.5)"/>
+      <circle cx="170" cy="35" r="0.8" fill="rgba(255,255,220,0.5)"/>
+      <!-- Full moon -->
+      <circle cx="120" cy="50" r="28" fill="rgba(220,230,210,0.2)"/>
+      <circle cx="120" cy="50" r="22" fill="rgba(230,240,215,0.18)"/>
+      <!-- Tree trunks — back layer -->
+      <rect x="0" y="180" width="22" height="160" fill="rgba(15,18,12,0.7)"/>
+      <rect x="218" y="200" width="22" height="140" fill="rgba(15,18,12,0.7)"/>
+      <rect x="50" y="200" width="16" height="140" fill="rgba(15,18,12,0.6)"/>
+      <rect x="170" y="210" width="16" height="130" fill="rgba(15,18,12,0.6)"/>
+      <!-- Tree crowns — back -->
+      <ellipse cx="11" cy="178" rx="30" ry="50" fill="rgba(10,22,10,0.75)"/>
+      <ellipse cx="229" cy="196" rx="28" ry="46" fill="rgba(10,22,10,0.75)"/>
+      <ellipse cx="58" cy="196" rx="24" ry="42" fill="rgba(10,22,10,0.65)"/>
+      <ellipse cx="178" cy="206" rx="24" ry="40" fill="rgba(10,22,10,0.65)"/>
+      <!-- Tree trunks — front layer -->
+      <rect x="88" y="240" width="14" height="100" fill="rgba(12,15,10,0.8)"/>
+      <rect x="136" y="250" width="14" height="90" fill="rgba(12,15,10,0.8)"/>
+      <!-- Tree crowns — front -->
+      <ellipse cx="95" cy="236" rx="28" ry="48" fill="rgba(8,18,8,0.82)"/>
+      <ellipse cx="143" cy="246" rx="26" ry="44" fill="rgba(8,18,8,0.82)"/>
+      <!-- Ground -->
+      <rect x="0" y="316" width="240" height="24" fill="rgba(8,14,8,0.75)"/>
+      <!-- Ground mist -->
+      <ellipse cx="120" cy="320" rx="120" ry="10" fill="rgba(180,200,180,0.08)"/>`,
+  },
+  platform_934: {
+    label: 'Andén 9¾',
+    svg: `
+      <!-- Station ceiling / sky -->
+      <rect x="0" y="0" width="240" height="340" fill="none"/>
+      <!-- Steel roof arches -->
+      <path d="M0,0 Q120,60 240,0" fill="none" stroke="rgba(160,160,180,0.3)" stroke-width="3"/>
+      <path d="M0,20 Q120,80 240,20" fill="none" stroke="rgba(160,160,180,0.2)" stroke-width="2"/>
+      <!-- Steam/smoke clouds -->
+      <ellipse cx="60" cy="100" rx="40" ry="18" fill="rgba(220,220,230,0.12)"/>
+      <ellipse cx="80" cy="88" rx="30" ry="14" fill="rgba(220,220,230,0.1)"/>
+      <ellipse cx="160" cy="110" rx="38" ry="16" fill="rgba(220,220,230,0.1)"/>
+      <ellipse cx="140" cy="96" rx="28" ry="12" fill="rgba(220,220,230,0.09)"/>
+      <!-- Train body -->
+      <rect x="0" y="240" width="200" height="60" rx="8" fill="rgba(180,30,30,0.72)"/>
+      <!-- Train windows -->
+      <rect x="10" y="252" width="22" height="16" rx="4" fill="rgba(255,240,180,0.45)"/>
+      <rect x="40" y="252" width="22" height="16" rx="4" fill="rgba(255,240,180,0.45)"/>
+      <rect x="70" y="252" width="22" height="16" rx="4" fill="rgba(255,240,180,0.5)"/>
+      <rect x="100" y="252" width="22" height="16" rx="4" fill="rgba(255,240,180,0.4)"/>
+      <rect x="130" y="252" width="22" height="16" rx="4" fill="rgba(255,240,180,0.45)"/>
+      <rect x="160" y="252" width="22" height="16" rx="4" fill="rgba(255,240,180,0.4)"/>
+      <!-- Train bottom stripe -->
+      <rect x="0" y="292" width="200" height="8" fill="rgba(30,30,30,0.6)"/>
+      <!-- Wheels -->
+      <circle cx="40" cy="304" r="10" fill="rgba(20,20,20,0.8)"/>
+      <circle cx="40" cy="304" r="5" fill="rgba(100,100,110,0.7)"/>
+      <circle cx="120" cy="304" r="10" fill="rgba(20,20,20,0.8)"/>
+      <circle cx="120" cy="304" r="5" fill="rgba(100,100,110,0.7)"/>
+      <!-- Platform -->
+      <rect x="0" y="310" width="240" height="30" fill="rgba(90,80,70,0.65)"/>
+      <line x1="0" y1="314" x2="240" y2="314" stroke="rgba(120,110,90,0.4)" stroke-width="1"/>
+      <!-- Sign 9¾ -->
+      <rect x="192" y="270" width="38" height="22" rx="4" fill="rgba(30,30,30,0.7)"/>
+      <text x="211" y="286" font-size="11" text-anchor="middle" fill="rgba(255,220,80,0.9)" font-weight="bold">9¾</text>`,
+  },
+  quidditch: {
+    label: 'Quidditch',
+    svg: `
+      <!-- Open sky -->
+      <rect x="0" y="0" width="240" height="340" fill="none"/>
+      <!-- Clouds -->
+      <ellipse cx="50" cy="40" rx="32" ry="14" fill="rgba(255,255,255,0.1)"/>
+      <ellipse cx="66" cy="34" rx="22" ry="12" fill="rgba(255,255,255,0.1)"/>
+      <ellipse cx="180" cy="55" rx="28" ry="12" fill="rgba(255,255,255,0.08)"/>
+      <ellipse cx="195" cy="48" rx="20" ry="10" fill="rgba(255,255,255,0.08)"/>
+      <!-- Stars/sparkles around hoops -->
+      <text x="22" y="155" font-size="10" fill="rgba(255,230,80,0.7)">✦</text>
+      <text x="210" y="170" font-size="10" fill="rgba(255,230,80,0.7)">✦</text>
+      <text x="110" y="60" font-size="8" fill="rgba(255,230,80,0.5)">✦</text>
+      <!-- Left goal post -->
+      <rect x="10" y="170" width="5" height="120" fill="rgba(160,140,80,0.65)"/>
+      <!-- Left hoops -->
+      <circle cx="12" cy="170" r="14" fill="none" stroke="rgba(160,140,80,0.7)" stroke-width="4"/>
+      <circle cx="12" cy="200" r="14" fill="none" stroke="rgba(160,140,80,0.7)" stroke-width="4"/>
+      <circle cx="12" cy="230" r="14" fill="none" stroke="rgba(160,140,80,0.7)" stroke-width="4"/>
+      <!-- Right goal post -->
+      <rect x="225" y="170" width="5" height="120" fill="rgba(160,140,80,0.65)"/>
+      <!-- Right hoops -->
+      <circle cx="228" cy="170" r="14" fill="none" stroke="rgba(160,140,80,0.7)" stroke-width="4"/>
+      <circle cx="228" cy="200" r="14" fill="none" stroke="rgba(160,140,80,0.7)" stroke-width="4"/>
+      <circle cx="228" cy="230" r="14" fill="none" stroke="rgba(160,140,80,0.7)" stroke-width="4"/>
+      <!-- Golden snitch -->
+      <circle cx="185" cy="90" r="7" fill="rgba(255,210,40,0.8)"/>
+      <circle cx="185" cy="90" r="4" fill="rgba(255,230,80,0.9)"/>
+      <path d="M175,88 Q168,84 162,88" fill="none" stroke="rgba(255,210,40,0.6)" stroke-width="2"/>
+      <path d="M195,88 Q202,84 208,88" fill="none" stroke="rgba(255,210,40,0.6)" stroke-width="2"/>
+      <!-- Ground pitch -->
+      <rect x="0" y="308" width="240" height="32" fill="rgba(20,60,20,0.55)"/>
+      <line x1="120" y1="308" x2="120" y2="340" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+      <ellipse cx="120" cy="315" rx="50" ry="8" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>`,
+  },
+};
+
 /* ---------- COLOR HELPERS ---------- */
 function darken(hex, amount) {
   let c = hex.replace('#', '');
@@ -861,11 +1140,15 @@ function defaultDoll(idx) {
     hairScale: 0, topScale: 0,   bottomScale: 0, shoesScale: 0,
     hatScale: 0,  capeScale: 0,  glassesScale: 0, beltScale: 0,
     wandScale: 0, lefthandScale: 0,
-    // yOffset fields: -30..+30 (0 = normal position, in SVG px)
+    // yOffset fields: -15..+15 (0 = normal position, in SVG px)
     eyesYOffset: 0, browsYOffset: 0, noseYOffset: 0, mouthYOffset: 0,
     hairYOffset: 0, topYOffset: 0,   bottomYOffset: 0, shoesYOffset: 0,
     hatYOffset: 0,  capeYOffset: 0,  glassesYOffset: 0, beltYOffset: 0,
     wandYOffset: 0, lefthandYOffset: 0,
+    // flip fields (horizontal mirror) for selected categories
+    hairFlip: false, hatFlip: false, capeFlip: false, wandFlip: false, lefthandFlip: false,
+    // background scene
+    bgScene: null,
   };
 }
 
@@ -902,25 +1185,32 @@ function renderDoll(container, d) {
     if (!v) return svg;
     return `<g transform="translate(0,${v})">${svg}</g>`;
   };
-  const layer = (cat, svg) => yo(cat, sc(cat, svg));
+  const flip = (cat, svg) => {
+    const field = cat + 'Flip';
+    if (!d[field]) return svg;
+    return `<g transform="translate(240,0) scale(-1,1)">${svg}</g>`;
+  };
+  const layer = (cat, svg, hasFlip) => yo(cat, hasFlip ? flip(cat, sc(cat, svg)) : sc(cat, svg));
   const parts = [];
+  // Background scene (rendered inside the SVG, before base)
+  if (d.bgScene && BG_SCENES[d.bgScene]) parts.push(BG_SCENES[d.bgScene].svg);
   parts.push(svgBase(d.gender, d.skin));
-  if (d.hair)    parts.push(layer('hair',    (HAIR[d.hair]    || (() => ''))(d.hairColor    || '#3d2b1f')));
-  if (d.brows)   parts.push(layer('brows',   (BROWS[d.brows]   || (() => ''))(d.browColor || '#5a3a1a')));
-  if (d.eyes)    parts.push(layer('eyes',    (EYES[d.eyes]    || EYES.round)(d.eyeColor, d.lashColor || d.hairColor || '#3d2b1f')));
-  if (d.nose)    parts.push(layer('nose',    NOSES[d.nose]    || ''));
-  if (d.mouth)   parts.push(layer('mouth',   MOUTHS[d.mouth]  || ''));
-  if (d.bottom)  parts.push(layer('bottom',  (BOTTOMS[d.bottom] || (() => ''))(d.bottomColor, d.gender)));
-  if (d.belt)    parts.push(layer('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor)));
-  if (d.top)     parts.push(layer('top',     (TOPS[d.top]     || (() => ''))(d.topColor, d.gender)));
-  if (d.shoes)   parts.push(layer('shoes',   (SHOES[d.shoes]  || (() => ''))(d.shoesColor)));
-  if (d.cape)    parts.push(layer('cape',    (CAPES[d.cape]   || (() => ''))(d.capeColor)));
-  if (d.hat)     parts.push(layer('hat',     (HATS[d.hat]     || (() => ''))(d.hatColor)));
-  if (d.glasses) parts.push(layer('glasses', (GLASSES[d.glasses] || (() => ''))(d.glassesColor)));
+  if (d.hair)    parts.push(layer('hair',    (HAIR[d.hair]    || (() => ''))(d.hairColor    || '#3d2b1f'), true));
+  if (d.brows)   parts.push(layer('brows',   (BROWS[d.brows]   || (() => ''))(d.browColor || '#5a3a1a'), false));
+  if (d.eyes)    parts.push(layer('eyes',    (EYES[d.eyes]    || EYES.round)(d.eyeColor, d.lashColor || d.hairColor || '#3d2b1f'), false));
+  if (d.nose)    parts.push(layer('nose',    NOSES[d.nose]    || '', false));
+  if (d.mouth)   parts.push(layer('mouth',   MOUTHS[d.mouth]  || '', false));
+  if (d.bottom)  parts.push(layer('bottom',  (BOTTOMS[d.bottom] || (() => ''))(d.bottomColor, d.gender), false));
+  if (d.belt)    parts.push(layer('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor), false));
+  if (d.top)     parts.push(layer('top',     (TOPS[d.top]     || (() => ''))(d.topColor, d.gender), false));
+  if (d.shoes)   parts.push(layer('shoes',   (SHOES[d.shoes]  || (() => ''))(d.shoesColor), false));
+  if (d.cape)    parts.push(layer('cape',    (CAPES[d.cape]   || (() => ''))(d.capeColor), true));
+  if (d.hat)     parts.push(layer('hat',     (HATS[d.hat]     || (() => ''))(d.hatColor), true));
+  if (d.glasses) parts.push(layer('glasses', (GLASSES[d.glasses] || (() => ''))(d.glassesColor), false));
   if (d.scarf)     parts.push(svgScarf(d.scarf));
   if (d.scarf2)    parts.push(svgScarf2(d.scarf2, d.scarf2Color || '#e94560', d.scarf2Color2 || '#ffffff'));
-  if (d.wand)      parts.push(layer('wand',     WANDS[d.wand]    || ''));
-  if (d.lefthand)  parts.push(layer('lefthand', (LEFTHAND[d.lefthand] || (() => ''))(d.lefthandColor || '#7c3aed')));
+  if (d.wand)      parts.push(layer('wand',     WANDS[d.wand]    || '', true));
+  if (d.lefthand)  parts.push(layer('lefthand', (LEFTHAND[d.lefthand] || (() => ''))(d.lefthandColor || '#7c3aed'), true));
 
   container.innerHTML = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg">${parts.join('\n')}</svg>`;
 }
@@ -1076,6 +1366,9 @@ function syncRightPanel() {
   });
   const bgEl = document.getElementById('bg-color');
   if (bgEl) bgEl.value = doll.bgColor || '#1a2a4a';
+  document.querySelectorAll('.scene-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.scene === (doll.bgScene || ''));
+  });
 }
 
 /* ---------- BUILD LEFT PANEL ---------- */
@@ -1083,10 +1376,26 @@ function buildPanel() {
   const panel = document.getElementById('left-panel');
   panel.innerHTML = '';
 
+  const SKIN_PRESETS = [
+    { color: '#fde8d0', title: 'Clara' },
+    { color: '#f5c5a3', title: 'Media-clara' },
+    { color: '#e8a87c', title: 'Media' },
+    { color: '#c68642', title: 'Morena' },
+    { color: '#8d5524', title: 'Oscura' },
+    { color: '#5c3317', title: 'Muy oscura' },
+    { color: '#ffe0f0', title: 'Rosa kawaii' },
+    { color: '#b8f0e0', title: 'Menta kawaii' },
+  ];
+
   const sections = [
     {
       label: 'Rasgos', icon: '✨', open: true,
       subsections: [
+        {
+          label: 'Piel', cat: 'skin',
+          type: 'skin',
+          items: [],
+        },
         {
           label: 'Género', cat: 'gender',
           type: 'gender',
@@ -1113,6 +1422,7 @@ function buildPanel() {
         },
         {
           label: 'Pelo', cat: 'hair', colorField: 'hairColor', scaleField: 'hairScale', yOffsetField: 'hairYOffset',
+          flipField: 'hairFlip',
           items: Object.keys(HAIR).map(k => ({ value: k, label: k })),
         },
       ],
@@ -1153,20 +1463,24 @@ function buildPanel() {
         },
         {
           label: 'Varita', cat: 'wand', scaleField: 'wandScale', yOffsetField: 'wandYOffset',
+          flipField: 'wandFlip',
           items: Object.keys(WANDS).map(k => ({ value: k, label: k })),
         },
         {
           label: 'Objeto mano izq.', cat: 'lefthand',
           colorField: 'lefthandColor', colorFieldLabel: 'Color',
           scaleField: 'lefthandScale', yOffsetField: 'lefthandYOffset',
+          flipField: 'lefthandFlip',
           items: Object.keys(LEFTHAND).map(k => ({ value: k, label: k })),
         },
         {
           label: 'Sombrero', cat: 'hat', colorField: 'hatColor', scaleField: 'hatScale', yOffsetField: 'hatYOffset',
+          flipField: 'hatFlip',
           items: Object.keys(HATS).map(k => ({ value: k, label: k })),
         },
         {
           label: 'Capa / Abrigo', cat: 'cape', colorField: 'capeColor', scaleField: 'capeScale', yOffsetField: 'capeYOffset',
+          flipField: 'capeFlip',
           items: Object.keys(CAPES).map(k => ({ value: k, label: k })),
         },
         {
@@ -1226,9 +1540,77 @@ function buildPanel() {
         body.appendChild(colorRow2);
       }
 
-      // Item grid
+      // Special type: skin picker
+      if (sub.type === 'skin') {
+        const skinGrid = document.createElement('div');
+        skinGrid.className = 'left-skin-picker';
+        SKIN_PRESETS.forEach(preset => {
+          const sw = document.createElement('div');
+          sw.className = 'skin-swatch left-swatch' + (doll.skin === preset.color ? ' active' : '');
+          sw.style.background = preset.color;
+          sw.title = preset.title;
+          sw.addEventListener('click', () => {
+            doll.skin = preset.color;
+            skinGrid.querySelectorAll('.left-swatch').forEach(s => s.classList.remove('active'));
+            sw.classList.add('active');
+            document.querySelectorAll('.skin-swatch').forEach(s => s.classList.toggle('active', s.dataset.color === preset.color));
+            const sc = document.getElementById('skin-custom');
+            if (sc) sc.value = preset.color;
+            saveCollection();
+            renderAll();
+          });
+          skinGrid.appendChild(sw);
+        });
+        body.appendChild(skinGrid);
+        // Custom color for skin
+        const skinCustomRow = document.createElement('div');
+        skinCustomRow.className = 'color-row';
+        skinCustomRow.innerHTML = `<label>Personalizado</label><input type="color" id="left-skin-custom" value="${doll.skin || '#f5c5a3'}"/>`;
+        skinCustomRow.querySelector('input').addEventListener('input', e => {
+          doll.skin = e.target.value;
+          skinGrid.querySelectorAll('.left-swatch').forEach(s => s.classList.remove('active'));
+          document.querySelectorAll('.skin-swatch').forEach(s => s.classList.remove('active'));
+          const sc = document.getElementById('skin-custom');
+          if (sc) sc.value = e.target.value;
+          saveCollection();
+          renderAll();
+        });
+        body.appendChild(skinCustomRow);
+        return; // skin subsection done — skip chips/sliders
+      }
+
+      // Special type: gender (chips only, no grid)
+      if (sub.type === 'gender') {
+        const gGrid = document.createElement('div');
+        gGrid.className = 'item-grid';
+        sub.items.forEach(item => {
+          const chip = document.createElement('div');
+          chip.className = 'item-chip' + (doll.gender === item.value ? ' equipped' : '');
+          chip.innerHTML = `<span style="font-size:1.2rem">${item.icon}</span><span>${item.label}</span>`;
+          chip.addEventListener('click', () => {
+            doll.gender = item.value;
+            gGrid.querySelectorAll('.item-chip').forEach(c => c.classList.remove('equipped'));
+            chip.classList.add('equipped');
+            document.querySelectorAll('.gender-btn').forEach(b => b.classList.toggle('active', b.dataset.gender === item.value));
+            saveCollection();
+            renderAll();
+          });
+          gGrid.appendChild(chip);
+        });
+        body.appendChild(gGrid);
+        return; // gender subsection done
+      }
+
+      // Item grid (standard chips with hover preview)
       const grid = document.createElement('div');
       grid.className = 'item-grid';
+      const FIELD_MAP = {
+        eyes: 'eyes', brows: 'brows', nose: 'nose', mouth: 'mouth',
+        hair: 'hair', top: 'top', bottom: 'bottom', shoes: 'shoes',
+        hat: 'hat', cape: 'cape', glasses: 'glasses', belt: 'belt',
+        scarf: 'scarf', scarf2: 'scarf2', wand: 'wand', lefthand: 'lefthand',
+      };
+      const dollField = FIELD_MAP[sub.cat];
 
       sub.items.forEach(item => {
         const chip = document.createElement('div');
@@ -1242,6 +1624,20 @@ function buildPanel() {
         chip.innerHTML = `${previewSvg}<span>${capitalize(item.label)}</span>`;
 
         chip.addEventListener('click', () => equipItem(sub.cat, item.value));
+
+        // Hover preview (desktop only)
+        if (dollField) {
+          chip.addEventListener('mouseenter', () => {
+            const prev = doll[dollField];
+            doll[dollField] = item.value;
+            renderDoll(document.getElementById('doll-layers'), doll);
+            doll[dollField] = prev;
+          });
+          chip.addEventListener('mouseleave', () => {
+            renderDoll(document.getElementById('doll-layers'), doll);
+          });
+        }
+
         grid.appendChild(chip);
       });
 
@@ -1289,6 +1685,52 @@ function buildPanel() {
           renderDoll(document.getElementById('doll-layers'), doll);
         });
         body.appendChild(offsetRow);
+      }
+
+      // Reset adjustments button (if scale or yOffset exist)
+      if (sub.scaleField || sub.yOffsetField) {
+        const resetRow = document.createElement('div');
+        resetRow.className = 'reset-row';
+        const resetBtn = document.createElement('button');
+        resetBtn.className = 'btn-reset-adj';
+        resetBtn.textContent = '↺ Resetear ajustes';
+        resetBtn.addEventListener('click', () => {
+          if (sub.scaleField) {
+            doll[sub.scaleField] = 0;
+            const sclEl = document.getElementById(`scl-${sub.cat}`);
+            const sclValEl = document.getElementById(`scl-val-${sub.cat}`);
+            if (sclEl) sclEl.value = 0;
+            if (sclValEl) sclValEl.textContent = '0%';
+          }
+          if (sub.yOffsetField) {
+            doll[sub.yOffsetField] = 0;
+            const offEl = document.getElementById(`yoff-${sub.cat}`);
+            const offValEl = document.getElementById(`yoff-val-${sub.cat}`);
+            if (offEl) offEl.value = 0;
+            if (offValEl) offValEl.textContent = '0';
+          }
+          saveCollection();
+          renderDoll(document.getElementById('doll-layers'), doll);
+        });
+        resetRow.appendChild(resetBtn);
+        body.appendChild(resetRow);
+      }
+
+      // Flip toggle button (only for categories with flipField)
+      if (sub.flipField) {
+        const flipRow = document.createElement('div');
+        flipRow.className = 'flip-row';
+        const flipBtn = document.createElement('button');
+        flipBtn.className = 'btn-flip' + (doll[sub.flipField] ? ' active' : '');
+        flipBtn.textContent = '⇄ Espejo';
+        flipBtn.addEventListener('click', () => {
+          doll[sub.flipField] = !doll[sub.flipField];
+          flipBtn.classList.toggle('active', doll[sub.flipField]);
+          saveCollection();
+          renderDoll(document.getElementById('doll-layers'), doll);
+        });
+        flipRow.appendChild(flipBtn);
+        body.appendChild(flipRow);
       }
     });
 
@@ -1588,6 +2030,52 @@ document.addEventListener('DOMContentLoaded', () => {
     saveCollection();
     applyBgColor();
   });
+
+  // Scene picker (right panel)
+  (function buildScenePicker() {
+    const picker = document.getElementById('scene-picker');
+    if (!picker) return;
+    // "Ninguna" chip
+    const noneChip = document.createElement('div');
+    noneChip.className = 'scene-chip' + (!doll.bgScene ? ' active' : '');
+    noneChip.dataset.scene = '';
+    noneChip.innerHTML = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="340" fill="#1a2a4a"/><text x="120" y="175" text-anchor="middle" font-size="40" fill="rgba(255,255,255,0.2)">✕</text></svg><span>Ninguna</span>`;
+    noneChip.addEventListener('click', () => {
+      doll.bgScene = null;
+      saveCollection();
+      renderAll();
+    });
+    picker.appendChild(noneChip);
+    // One chip per scene
+    const SCENE_LABELS = {
+      hogwarts:         'Hogwarts',
+      great_hall:       'Gran Comedor',
+      forbidden_forest: 'Bosque Prohibido',
+      platform_934:     'Andén 9¾',
+      quidditch:        'Quidditch',
+    };
+    const SCENE_BG = {
+      hogwarts:         '#0d1530',
+      great_hall:       '#1a1200',
+      forbidden_forest: '#0a1a0a',
+      platform_934:     '#b0b8c8',
+      quidditch:        '#1a3a1a',
+    };
+    Object.keys(BG_SCENES).forEach(key => {
+      const scene = BG_SCENES[key];
+      const chip = document.createElement('div');
+      chip.className = 'scene-chip' + (doll.bgScene === key ? ' active' : '');
+      chip.dataset.scene = key;
+      const miniSvg = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="340" fill="${SCENE_BG[key] || '#1a2a4a'}"/>${scene.svg}</svg>`;
+      chip.innerHTML = `${miniSvg}<span>${SCENE_LABELS[key] || key}</span>`;
+      chip.addEventListener('click', () => {
+        doll.bgScene = key;
+        saveCollection();
+        renderAll();
+      });
+      picker.appendChild(chip);
+    });
+  })();
 
   // Drag & drop
   initDragDrop();
