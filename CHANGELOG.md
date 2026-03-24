@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.10.0] - 2026-03-24
+
+### Changed
+- **Escoba con efecto de profundidad.** La escoba ahora pasa por detrás de la pierna izquierda y por delante de la pierna derecha. Implementado dividiendo cada modelo en dos partes con línea de corte en `x=105` (punto `(105,285)` sobre el palo): `back` se renderiza antes de `svgBase` (debajo del cuerpo completo) y `front` se renderiza entre `bottom` y `belt` como antes. Ambas partes comparten los mismos controles de escala, posición y rotación
+- **Eliminado el botón de espejo (flip) para escobas.** Con el split de capas el flip rompería la ilusión de profundidad, por lo que se ha eliminado `broomFlip` completamente del modelo de datos y del panel
+
+---
+
 ## [1.9.9] - 2026-03-24
 
 ### Fixed

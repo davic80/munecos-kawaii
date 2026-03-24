@@ -668,20 +668,27 @@ const WANDS = {
 };
 
 // ---- HP BROOMS ----
-// Broom pole: handle/tip at top-left (30,270), tail/bristles at bottom-right (215,308).
-// Doll grips the handle around the midpoint. Bristles to the right (broomFlip inverts).
-// Rendered between bottom and belt layers.
+// Each broom is split into { back, front } at x=105 (y≈285 on the pole line).
+// back  = pole tip/handle from (30,270) → (105,285) — rendered BEFORE svgBase (behind body/legs)
+// front = pole from (105,285) → (215,308) + grip + bristles + tie — rendered between bottom and belt
+// Cut point on pole line (30,270)→(215,308): x=105 → y = 270 + 38*(105-30)/185 ≈ 285
 const BROOMS = {
   // Nimbus 2000 — pale-wood pole, compact bristle bundle, gold ring at handle tip
-  nimbus_2000: `
+  nimbus_2000: {
+    back: `
     <g>
-      <!-- Pole: handle top-left → tail bottom-right -->
-      <line x1="30" y1="270" x2="215" y2="308" stroke="#c8a46e" stroke-width="5" stroke-linecap="round"/>
-      <!-- Handle grip (darker centre segment) -->
-      <line x1="80" y1="278" x2="140" y2="291" stroke="#a07840" stroke-width="7" stroke-linecap="round"/>
+      <!-- Pole back segment: tip (30,270) → cut (105,285) -->
+      <line x1="30" y1="270" x2="105" y2="285" stroke="#c8a46e" stroke-width="5" stroke-linecap="round"/>
       <!-- Gold handle ring at tip -->
       <ellipse cx="33" cy="271" rx="5" ry="3" fill="none" stroke="#d4a017" stroke-width="2" transform="rotate(12,33,271)"/>
-      <!-- Bristles at bottom-right: compact symmetrical fan -->
+    </g>`,
+    front: `
+    <g>
+      <!-- Pole front segment: cut (105,285) → tail (215,308) -->
+      <line x1="105" y1="285" x2="215" y2="308" stroke="#c8a46e" stroke-width="5" stroke-linecap="round"/>
+      <!-- Handle grip (darker centre segment, fully in front) -->
+      <line x1="105" y1="285" x2="140" y2="291" stroke="#a07840" stroke-width="7" stroke-linecap="round"/>
+      <!-- Bristles: compact symmetrical fan -->
       <line x1="212" y1="307" x2="228" y2="292" stroke="#8b7355" stroke-width="1.8" stroke-linecap="round"/>
       <line x1="212" y1="307" x2="230" y2="297" stroke="#8b7355" stroke-width="1.8" stroke-linecap="round"/>
       <line x1="212" y1="307" x2="231" y2="303" stroke="#8b7355" stroke-width="1.8" stroke-linecap="round"/>
@@ -692,19 +699,27 @@ const BROOMS = {
       <!-- Bristle tie band -->
       <line x1="206" y1="305" x2="209" y2="318" stroke="#6b5a3e" stroke-width="2.5" stroke-linecap="round"/>
     </g>`,
+  },
 
   // Nimbus 2001 — darker mahogany pole, wider fan bristles, silver fittings
-  nimbus_2001: `
+  nimbus_2001: {
+    back: `
     <g>
-      <!-- Pole -->
-      <line x1="30" y1="270" x2="215" y2="308" stroke="#8b5e3c" stroke-width="5" stroke-linecap="round"/>
-      <!-- Wood grain highlights -->
+      <!-- Pole back segment -->
+      <line x1="30" y1="270" x2="105" y2="285" stroke="#8b5e3c" stroke-width="5" stroke-linecap="round"/>
+      <!-- Wood grain on back segment -->
       <line x1="55" y1="275" x2="95" y2="283" stroke="#a07050" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-      <line x1="125" y1="289" x2="165" y2="297" stroke="#a07050" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-      <!-- Handle grip -->
-      <line x1="80" y1="278" x2="140" y2="291" stroke="#6b3d1e" stroke-width="7" stroke-linecap="round"/>
       <!-- Silver handle cap -->
       <ellipse cx="33" cy="271" rx="5" ry="3" fill="#c0c0c0" stroke="#a0a0a0" stroke-width="1" transform="rotate(12,33,271)"/>
+    </g>`,
+    front: `
+    <g>
+      <!-- Pole front segment -->
+      <line x1="105" y1="285" x2="215" y2="308" stroke="#8b5e3c" stroke-width="5" stroke-linecap="round"/>
+      <!-- Wood grain on front segment -->
+      <line x1="125" y1="289" x2="165" y2="297" stroke="#a07050" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      <!-- Handle grip -->
+      <line x1="105" y1="285" x2="140" y2="291" stroke="#6b3d1e" stroke-width="7" stroke-linecap="round"/>
       <!-- Bristles: wider fan -->
       <line x1="212" y1="307" x2="230" y2="288" stroke="#7a6548" stroke-width="1.8" stroke-linecap="round"/>
       <line x1="212" y1="307" x2="232" y2="294" stroke="#7a6548" stroke-width="1.8" stroke-linecap="round"/>
@@ -717,23 +732,31 @@ const BROOMS = {
       <!-- Silver bristle band -->
       <line x1="205" y1="305" x2="209" y2="319" stroke="#b0b0b0" stroke-width="2.5" stroke-linecap="round"/>
     </g>`,
+  },
 
   // Firebolt — sleek dark mahogany, black grip, razor-thin even bristles
-  firebolt: `
+  firebolt: {
+    back: `
     <g>
-      <!-- Pole — rich mahogany -->
-      <line x1="30" y1="270" x2="215" y2="308" stroke="#7c3010" stroke-width="5" stroke-linecap="round"/>
-      <!-- Lacquer sheen -->
-      <line x1="48" y1="273" x2="198" y2="304" stroke="#a04020" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
-      <!-- Black striped grip -->
-      <line x1="88" y1="280" x2="138" y2="290" stroke="#1a1a1a" stroke-width="8" stroke-linecap="round"/>
-      <line x1="91" y1="280" x2="97" y2="281" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round"/>
-      <line x1="103" y1="283" x2="109" y2="284" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round"/>
-      <line x1="115" y1="285" x2="121" y2="286" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round"/>
-      <line x1="127" y1="288" x2="133" y2="289" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round"/>
+      <!-- Pole back segment — rich mahogany -->
+      <line x1="30" y1="270" x2="105" y2="285" stroke="#7c3010" stroke-width="5" stroke-linecap="round"/>
+      <!-- Lacquer sheen on back -->
+      <line x1="48" y1="273" x2="100" y2="284" stroke="#a04020" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
       <!-- Polished silver handle ferrule -->
       <rect x="26" y="266" width="10" height="6" rx="2" fill="#d0d0d0" stroke="#a0a0a0" stroke-width="0.8" transform="rotate(12,31,269)"/>
-      <!-- Bristles: ultra-thin, perfectly even, tight spread -->
+    </g>`,
+    front: `
+    <g>
+      <!-- Pole front segment -->
+      <line x1="105" y1="285" x2="215" y2="308" stroke="#7c3010" stroke-width="5" stroke-linecap="round"/>
+      <!-- Lacquer sheen on front -->
+      <line x1="108" y1="285" x2="198" y2="304" stroke="#a04020" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+      <!-- Black striped grip -->
+      <line x1="105" y1="285" x2="138" y2="290" stroke="#1a1a1a" stroke-width="8" stroke-linecap="round"/>
+      <line x1="108" y1="285" x2="114" y2="286" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round"/>
+      <line x1="118" y1="287" x2="124" y2="288" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round"/>
+      <line x1="128" y1="289" x2="134" y2="290" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round"/>
+      <!-- Bristles: ultra-thin, perfectly even -->
       <line x1="213" y1="307" x2="228" y2="290" stroke="#6b5030" stroke-width="1.2" stroke-linecap="round"/>
       <line x1="213" y1="307" x2="230" y2="294" stroke="#6b5030" stroke-width="1.2" stroke-linecap="round"/>
       <line x1="213" y1="307" x2="231" y2="299" stroke="#6b5030" stroke-width="1.2" stroke-linecap="round"/>
@@ -746,20 +769,28 @@ const BROOMS = {
       <!-- Thin black bristle band -->
       <line x1="206" y1="305" x2="209" y2="317" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
     </g>`,
+  },
 
   // Cleansweep 11 — dark green pole, sturdy V-spread bristles, metal reinforcements
-  cleansweep: `
+  cleansweep: {
+    back: `
     <g>
-      <!-- Pole — dark green -->
-      <line x1="30" y1="270" x2="215" y2="308" stroke="#3a5c2a" stroke-width="6" stroke-linecap="round"/>
-      <!-- Metal reinforcement bands -->
+      <!-- Pole back segment — dark green -->
+      <line x1="30" y1="270" x2="105" y2="285" stroke="#3a5c2a" stroke-width="6" stroke-linecap="round"/>
+      <!-- Metal reinforcement band on back -->
       <line x1="60" y1="276" x2="65" y2="277" stroke="#888" stroke-width="3" stroke-linecap="round"/>
-      <line x1="165" y1="297" x2="170" y2="298" stroke="#888" stroke-width="3" stroke-linecap="round"/>
-      <!-- Handle grip — darker green -->
-      <line x1="80" y1="278" x2="140" y2="291" stroke="#2a4a1a" stroke-width="8" stroke-linecap="round"/>
       <!-- Bronze handle cap -->
       <ellipse cx="33" cy="271" rx="5" ry="3" fill="#cd7f32" stroke="#a06020" stroke-width="1" transform="rotate(12,33,271)"/>
-      <!-- Bristles: wide V, sturdy, slightly uneven -->
+    </g>`,
+    front: `
+    <g>
+      <!-- Pole front segment -->
+      <line x1="105" y1="285" x2="215" y2="308" stroke="#3a5c2a" stroke-width="6" stroke-linecap="round"/>
+      <!-- Metal reinforcement band on front -->
+      <line x1="165" y1="297" x2="170" y2="298" stroke="#888" stroke-width="3" stroke-linecap="round"/>
+      <!-- Handle grip — darker green -->
+      <line x1="105" y1="285" x2="140" y2="291" stroke="#2a4a1a" stroke-width="8" stroke-linecap="round"/>
+      <!-- Bristles: wide V, sturdy -->
       <line x1="212" y1="307" x2="231" y2="287" stroke="#8b7355" stroke-width="2.2" stroke-linecap="round"/>
       <line x1="212" y1="307" x2="233" y2="294" stroke="#8b7355" stroke-width="2.2" stroke-linecap="round"/>
       <line x1="212" y1="307" x2="234" y2="301" stroke="#8b7355" stroke-width="2.2" stroke-linecap="round"/>
@@ -770,17 +801,27 @@ const BROOMS = {
       <!-- Sturdy bristle band -->
       <line x1="205" y1="305" x2="209" y2="320" stroke="#5a4a2e" stroke-width="3" stroke-linecap="round"/>
     </g>`,
+  },
 
   // Comet 260 — mahogany with grain, long swept-back curved bristles like a comet tail
-  comet_260: `
+  comet_260: {
+    back: `
     <g>
-      <!-- Pole — mahogany with vein -->
-      <line x1="30" y1="270" x2="215" y2="308" stroke="#8b4513" stroke-width="5" stroke-linecap="round"/>
-      <line x1="52" y1="274" x2="192" y2="303" stroke="#a0522d" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-      <!-- Handle grip -->
-      <line x1="80" y1="278" x2="140" y2="291" stroke="#6b2e0e" stroke-width="7" stroke-linecap="round"/>
+      <!-- Pole back segment — mahogany -->
+      <line x1="30" y1="270" x2="105" y2="285" stroke="#8b4513" stroke-width="5" stroke-linecap="round"/>
+      <!-- Wood vein on back -->
+      <line x1="52" y1="274" x2="98" y2="284" stroke="#a0522d" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
       <!-- Copper handle ring -->
       <ellipse cx="33" cy="271" rx="5" ry="3" fill="none" stroke="#cd7f32" stroke-width="2" transform="rotate(12,33,271)"/>
+    </g>`,
+    front: `
+    <g>
+      <!-- Pole front segment -->
+      <line x1="105" y1="285" x2="215" y2="308" stroke="#8b4513" stroke-width="5" stroke-linecap="round"/>
+      <!-- Wood vein on front -->
+      <line x1="108" y1="285" x2="192" y2="303" stroke="#a0522d" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+      <!-- Handle grip -->
+      <line x1="105" y1="285" x2="140" y2="291" stroke="#6b2e0e" stroke-width="7" stroke-linecap="round"/>
       <!-- Bristles: long, swept back, curving like comet tail -->
       <path d="M212,307 Q222,298 232,288" fill="none" stroke="#9b8465" stroke-width="1.8" stroke-linecap="round"/>
       <path d="M212,307 Q224,301 235,294" fill="none" stroke="#9b8465" stroke-width="1.8" stroke-linecap="round"/>
@@ -792,24 +833,33 @@ const BROOMS = {
       <!-- Bristle tie -->
       <line x1="205" y1="305" x2="209" y2="318" stroke="#6b5030" stroke-width="2.5" stroke-linecap="round"/>
     </g>`,
+  },
 
   // Oakshaft 79 — thick oak pole, knots, rustic uneven bristles
-  oakshaft: `
+  oakshaft: {
+    back: `
     <g>
-      <!-- Thick oak pole -->
-      <line x1="30" y1="270" x2="215" y2="308" stroke="#6b4423" stroke-width="7" stroke-linecap="round"/>
-      <!-- Knots in the wood -->
+      <!-- Thick oak pole back segment -->
+      <line x1="30" y1="270" x2="105" y2="285" stroke="#6b4423" stroke-width="7" stroke-linecap="round"/>
+      <!-- Knot on back segment -->
       <ellipse cx="68" cy="276" rx="5" ry="3" fill="#4a2e14" transform="rotate(12,68,276)"/>
-      <ellipse cx="158" cy="295" rx="4" ry="2.5" fill="#4a2e14" transform="rotate(12,158,295)"/>
-      <!-- Rough handle wrap (twine) -->
+      <!-- Rough twine wrap on back segment -->
       <line x1="85" y1="279" x2="91" y2="280" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
       <line x1="95" y1="281" x2="101" y2="282" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="105" y1="283" x2="111" y2="284" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="115" y1="285" x2="121" y2="286" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="125" y1="287" x2="131" y2="288" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="135" y1="289" x2="141" y2="290" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
       <!-- Rustic blunt handle end -->
       <ellipse cx="33" cy="271" rx="5" ry="3.5" fill="#4a2e14" transform="rotate(12,33,271)"/>
+    </g>`,
+    front: `
+    <g>
+      <!-- Thick oak pole front segment -->
+      <line x1="105" y1="285" x2="215" y2="308" stroke="#6b4423" stroke-width="7" stroke-linecap="round"/>
+      <!-- Knot on front segment -->
+      <ellipse cx="158" cy="295" rx="4" ry="2.5" fill="#4a2e14" transform="rotate(12,158,295)"/>
+      <!-- Rough twine wrap on front segment -->
+      <line x1="108" y1="285" x2="114" y2="286" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="118" y1="287" x2="124" y2="288" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="128" y1="289" x2="134" y2="290" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="138" y1="291" x2="144" y2="292" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
       <!-- Bristles: thick, irregular, rustic -->
       <line x1="212" y1="307" x2="229" y2="288" stroke="#7a6040" stroke-width="2.5" stroke-linecap="round"/>
       <line x1="212" y1="307" x2="232" y2="295" stroke="#7a6040" stroke-width="2" stroke-linecap="round"/>
@@ -821,6 +871,7 @@ const BROOMS = {
       <!-- Rough twine bristle tie -->
       <line x1="205" y1="305" x2="209" y2="321" stroke="#8b7355" stroke-width="3.5" stroke-linecap="round"/>
     </g>`,
+  },
 };
 
 // ---- LEFT HAND OBJECTS ----
@@ -1454,7 +1505,7 @@ function defaultDoll(idx) {
     // rotate fields (degrees, 0 = default angle)
     broomRotate: 0,
     // flip fields (horizontal mirror) for selected categories
-    hairFlip: false, hatFlip: false, wandFlip: false, lefthandFlip: false, scarf2Flip: false, broomFlip: false,
+    hairFlip: false, hatFlip: false, wandFlip: false, lefthandFlip: false, scarf2Flip: false,
     // background scene
     bgScene: null,
     // doll position in canvas (null = default: centered X, base at 90% height)
@@ -1506,7 +1557,11 @@ function renderDoll(container, d) {
     return rotateWrap(svg, origin[0], origin[1], d[CATEGORY_ROTATE_MAP[cat]] || 0);
   };
   const layer = (cat, svg, hasFlip) => ro(cat, yo(cat, hasFlip ? flip(cat, sc(cat, svg)) : sc(cat, svg)));
+  // Broom has no flip — both back and front get the same scale/yOffset/rotate transforms
+  const broomLayer = svg => ro('broom', yo('broom', sc('broom', svg)));
   const parts = [];
+  // broom_back renders BEHIND everything (below svgBase / body)
+  if (d.broom) parts.push(broomLayer((BROOMS[d.broom] || {}).back || ''));
   parts.push(svgBase(d.gender, d.skin));
   if (d.hair)    parts.push(layer('hair',    (HAIR[d.hair]    || (() => ''))(d.hairColor    || '#3d2b1f'), true));
   if (d.brows)   parts.push(layer('brows',   (BROWS[d.brows]   || (() => ''))(d.browColor || '#5a3a1a'), false));
@@ -1515,7 +1570,8 @@ function renderDoll(container, d) {
   if (d.mouth)   parts.push(layer('mouth',   MOUTHS[d.mouth]  || '', false));
   if (d.cheeks)  parts.push(layer('cheeks',  (CHEEKS[d.cheeks] || (() => ''))(d.cheeksColor || 'rgba(255,160,160,0.35)'), false));
   if (d.bottom)  parts.push(layer('bottom',  (BOTTOMS[d.bottom] || (() => ''))(d.bottomColor, d.gender), false));
-  if (d.broom)   parts.push(layer('broom',   BROOMS[d.broom]   || '', true));
+  // broom_front renders in front of bottom/legs but behind belt/top
+  if (d.broom)   parts.push(broomLayer((BROOMS[d.broom] || {}).front || ''));
   if (d.belt)    parts.push(layer('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor), false));
   if (d.top)     parts.push(layer('top',     (TOPS[d.top]     || (() => ''))(d.topColor, d.gender), false));
   if (d.shoes)   parts.push(layer('shoes',   (SHOES[d.shoes]  || (() => ''))(d.shoesColor), false));
@@ -1832,7 +1888,6 @@ function buildPanel() {
           label: 'Escoba', cat: 'broom',
           scaleField: 'broomScale', yOffsetField: 'broomYOffset',
           rotateField: 'broomRotate',
-          flipField: 'broomFlip',
           items: Object.keys(BROOMS).map(k => ({ value: k, label: k.replace(/_/g, ' ') })),
         },
         {
@@ -2249,7 +2304,8 @@ function buildPreviewSvg(cat, value, d) {
       return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
     }
     case 'broom': {
-      inner = BROOMS[value] || '';
+      const b = BROOMS[value] || {};
+      inner = (b.back || '') + (b.front || '');
       inner = `<svg viewBox="0 255 240 80" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
       return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
     }
