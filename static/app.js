@@ -874,6 +874,75 @@ const BROOMS = {
   },
 };
 
+// ---- TATTOOS ----
+// All designs centered at (120,145) — left cheek by default.
+// Use tattooXOffset/tattooYOffset to reposition anywhere on the body.
+// Color is user-controlled via tattooColor.
+const TATTOOS = {
+  // Lightning bolt — Harry Potter's scar
+  lightning: (c) => `
+    <g transform="translate(120,145)">
+      <polygon points="2,-11 -3,-1 2,-1 -2,11 3,1 -2,1" fill="${c}"/>
+    </g>`,
+
+  // Heart — simple bold heart
+  heart: (c) => `
+    <g transform="translate(120,145)">
+      <path d="M0,8 C-1,6 -9,1 -9,-4 C-9,-8 -6,-10 -3,-10 C-1,-10 0,-9 0,-8 C0,-9 1,-10 3,-10 C6,-10 9,-8 9,-4 C9,1 1,6 0,8 Z" fill="${c}"/>
+    </g>`,
+
+  // Deathly Hallows symbol — triangle + circle + vertical line
+  deathly_hallows: (c) => `
+    <g transform="translate(120,145)">
+      <!-- Triangle -->
+      <polygon points="0,-12 -10,8 10,8" fill="none" stroke="${c}" stroke-width="1.5"/>
+      <!-- Circle -->
+      <circle cx="0" cy="3" r="5" fill="none" stroke="${c}" stroke-width="1.5"/>
+      <!-- Vertical line (Elder Wand) -->
+      <line x1="0" y1="-12" x2="0" y2="8" stroke="${c}" stroke-width="1.5" stroke-linecap="round"/>
+    </g>`,
+
+  // Dark Mark — skull with snake
+  dark_mark: (c) => `
+    <g transform="translate(120,145)">
+      <!-- Skull -->
+      <ellipse cx="0" cy="-6" rx="7" ry="6" fill="none" stroke="${c}" stroke-width="1.4"/>
+      <!-- Eye sockets -->
+      <ellipse cx="-2.5" cy="-7" rx="1.5" ry="1.5" fill="${c}"/>
+      <ellipse cx="2.5" cy="-7" rx="1.5" ry="1.5" fill="${c}"/>
+      <!-- Jaw -->
+      <path d="M-5,-1 Q-4,1 0,1 Q4,1 5,-1" fill="none" stroke="${c}" stroke-width="1.2"/>
+      <!-- Teeth -->
+      <line x1="-2" y1="-1" x2="-2" y2="1" stroke="${c}" stroke-width="1"/>
+      <line x1="0" y1="-1" x2="0" y2="1" stroke="${c}" stroke-width="1"/>
+      <line x1="2" y1="-1" x2="2" y2="1" stroke="${c}" stroke-width="1"/>
+      <!-- Snake body coming out of skull -->
+      <path d="M0,1 Q-5,5 -3,8 Q0,11 3,8 Q6,5 4,10" fill="none" stroke="${c}" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Snake tongue -->
+      <path d="M4,10 L5,12 M4,10 L3,12" fill="none" stroke="${c}" stroke-width="1" stroke-linecap="round"/>
+    </g>`,
+
+  // Golden Snitch — small winged ball
+  golden_snitch: (c) => `
+    <g transform="translate(120,145)">
+      <!-- Ball -->
+      <circle cx="0" cy="0" r="5" fill="${c}" opacity="0.9"/>
+      <circle cx="-1.5" cy="-1.5" r="1.5" fill="rgba(255,255,255,0.5)"/>
+      <!-- Left wing -->
+      <path d="M-5,0 Q-12,-8 -10,-2 Q-12,2 -5,1" fill="${c}" opacity="0.7"/>
+      <!-- Right wing -->
+      <path d="M5,0 Q12,-8 10,-2 Q12,2 5,1" fill="${c}" opacity="0.7"/>
+    </g>`,
+
+  // "Always" — Snape's eternal promise, italic script
+  always: (c) => `
+    <g transform="translate(120,145)">
+      <text x="0" y="0" text-anchor="middle" dominant-baseline="middle"
+            font-family="Georgia, serif" font-style="italic" font-size="9"
+            fill="${c}">Always</text>
+    </g>`,
+};
+
 // ---- LEFT HAND OBJECTS ----
 // Left hand center: boy arm x=38 w=36 → cx=56, hand bottom ≈ y=258
 const LEFTHAND = {
@@ -1347,6 +1416,12 @@ const CATEGORY_YOFFSET_MAP = {
   wand:    'wandYOffset',
   lefthand: 'lefthandYOffset',
   broom:   'broomYOffset',
+  tattoo:  'tattooYOffset',
+};
+
+// X-offset field map (horizontal repositioning — only for categories that support it)
+const CATEGORY_XOFFSET_MAP = {
+  tattoo: 'tattooXOffset',
 };
 
 const CATEGORY_SCALE_MAP = {
@@ -1366,6 +1441,7 @@ const CATEGORY_SCALE_MAP = {
   wand:    'wandScale',
   lefthand: 'lefthandScale',
   broom:   'broomScale',
+  tattoo:  'tattooScale',
 };
 
 // SVG origin point for each category's scale transform
@@ -1386,16 +1462,19 @@ const CATEGORY_SCALE_ORIGIN = {
   wand:    [196, 256],
   lefthand: [56, 252],
   broom:   [120, 288],
+  tattoo:  [120, 145],
 };
 
 // Rotation field map (only for categories that support rotation)
 const CATEGORY_ROTATE_MAP = {
-  broom: 'broomRotate',
+  broom:  'broomRotate',
+  tattoo: 'tattooRotate',
 };
 
 // SVG pivot point for each category's rotation transform
 const CATEGORY_ROTATE_ORIGIN = {
-  broom: [120, 288],
+  broom:  [120, 288],
+  tattoo: [120, 145],
 };
 
 /* ---------- SCENE BACKGROUND COLORS ---------- */
@@ -1496,16 +1575,18 @@ function defaultDoll(idx) {
     eyesScale: 0, browsScale: 0, noseScale: 0, mouthScale: 0, cheeksScale: 0,
     hairScale: 0, topScale: 0,   bottomScale: 0, shoesScale: 0,
     hatScale: 0,  capeScale: 0,  glassesScale: 0, beltScale: 0,
-    wandScale: 0, lefthandScale: 0, broomScale: 0,
+    wandScale: 0, lefthandScale: 0, broomScale: 0, tattooScale: 0,
     // yOffset fields: -15..+15 (0 = normal position, in SVG px)
     eyesYOffset: 0, browsYOffset: 0, noseYOffset: 0, mouthYOffset: 0, cheeksYOffset: 0,
     hairYOffset: 0, topYOffset: 0,   bottomYOffset: 0, shoesYOffset: 0,
     hatYOffset: 0,  capeYOffset: 0,  glassesYOffset: 0, beltYOffset: 0,
-    wandYOffset: 0, lefthandYOffset: 0, broomYOffset: 0,
+    wandYOffset: 0, lefthandYOffset: 0, broomYOffset: 0, tattooYOffset: 0,
+    // xOffset fields (horizontal repositioning)
+    tattooXOffset: 0,
     // rotate fields (degrees, 0 = default angle)
-    broomRotate: 0,
+    broomRotate: 0, tattooRotate: 0,
     // flip fields (horizontal mirror) for selected categories
-    hairFlip: false, hatFlip: false, wandFlip: false, lefthandFlip: false, scarf2Flip: false,
+    hairFlip: false, hatFlip: false, wandFlip: false, lefthandFlip: false, scarf2Flip: false, tattooFlip: false,
     // background scene
     bgScene: null,
     // doll position in canvas (null = default: centered X, base at 90% height)
@@ -1556,7 +1637,16 @@ function renderDoll(container, d) {
     if (!origin) return svg;
     return rotateWrap(svg, origin[0], origin[1], d[CATEGORY_ROTATE_MAP[cat]] || 0);
   };
+  const xo = (cat, svg) => {
+    const field = CATEGORY_XOFFSET_MAP[cat];
+    if (!field) return svg;
+    const v = d[field] || 0;
+    if (!v) return svg;
+    return `<g transform="translate(${v},0)">${svg}</g>`;
+  };
   const layer = (cat, svg, hasFlip) => ro(cat, yo(cat, hasFlip ? flip(cat, sc(cat, svg)) : sc(cat, svg)));
+  // Tattoo: sc → flip → xo → yo → ro (scale at anchor, then mirror, then reposition, then rotate)
+  const tattooLayer = svg => ro('tattoo', yo('tattoo', xo('tattoo', flip('tattoo', sc('tattoo', svg)))));
   // Broom has no flip — both back and front get the same scale/yOffset/rotate transforms
   const broomLayer = svg => ro('broom', yo('broom', sc('broom', svg)));
   const parts = [];
@@ -1569,6 +1659,8 @@ function renderDoll(container, d) {
   if (d.nose)    parts.push(layer('nose',    NOSES[d.nose]    || '', false));
   if (d.mouth)   parts.push(layer('mouth',   MOUTHS[d.mouth]  || '', false));
   if (d.cheeks)  parts.push(layer('cheeks',  (CHEEKS[d.cheeks] || (() => ''))(d.cheeksColor || 'rgba(255,160,160,0.35)'), false));
+  // tattoo: above skin, below all clothing and accessories
+  if (d.tattoo)  parts.push(tattooLayer((TATTOOS[d.tattoo] || (() => ''))(d.tattooColor || '#1a1a2e')));
   if (d.bottom)  parts.push(layer('bottom',  (BOTTOMS[d.bottom] || (() => ''))(d.bottomColor, d.gender), false));
   // broom_front renders in front of bottom/legs but behind belt/top
   if (d.broom)   parts.push(broomLayer((BROOMS[d.broom] || {}).front || ''));
@@ -1630,6 +1722,7 @@ const CATEGORY_FIELD_MAP = {
   wand: 'wand',
   lefthand: 'lefthand',
   broom: 'broom',
+  tattoo: 'tattoo',
 };
 
 function updateEquipped() {
@@ -1926,6 +2019,16 @@ function buildPanel() {
           label: 'Gafas', cat: 'glasses', colorField: 'glassesColor', scaleField: 'glassesScale', yOffsetField: 'glassesYOffset',
           items: Object.keys(GLASSES).map(k => ({ value: k, label: k })),
         },
+        {
+          label: 'Tatuaje', cat: 'tattoo',
+          colorField: 'tattooColor', colorFieldLabel: 'Color',
+          scaleField: 'tattooScale',
+          xOffsetField: 'tattooXOffset', xOffsetMin: -80, xOffsetMax: 80,
+          yOffsetField: 'tattooYOffset', yOffsetMin: -80, yOffsetMax: 80,
+          rotateField: 'tattooRotate', rotateMin: -180, rotateMax: 180,
+          flipField: 'tattooFlip',
+          items: Object.keys(TATTOOS).map(k => ({ value: k, label: k.replace(/_/g, ' ') })),
+        },
       ],
     },
   ];
@@ -2048,7 +2151,7 @@ function buildPanel() {
         hair: 'hair', top: 'top', bottom: 'bottom', shoes: 'shoes',
         hat: 'hat', cape: 'cape', glasses: 'glasses', belt: 'belt',
         scarf: 'scarf', scarf2: 'scarf2', wand: 'wand', lefthand: 'lefthand',
-        broom: 'broom',
+        broom: 'broom', tattoo: 'tattoo',
       };
       const dollField = FIELD_MAP[sub.cat];
 
@@ -2105,15 +2208,41 @@ function buildPanel() {
         body.appendChild(scaleRow);
       }
 
+      // X-offset slider for this sub-category (below scale slider, above Y-offset)
+      if (sub.xOffsetField) {
+        const curXOff = doll[sub.xOffsetField] || 0;
+        const xMin = sub.xOffsetMin !== undefined ? sub.xOffsetMin : -80;
+        const xMax = sub.xOffsetMax !== undefined ? sub.xOffsetMax : 80;
+        const xOffsetRow = document.createElement('div');
+        xOffsetRow.className = 'scale-row';
+        xOffsetRow.innerHTML = `
+          <span class="scale-icon">↔</span>
+          <label>Pos. X</label>
+          <input type="range" min="${xMin}" max="${xMax}" step="1" value="${curXOff}" id="xoff-${sub.cat}"/>
+          <span class="scale-val" id="xoff-val-${sub.cat}">${curXOff > 0 ? '+' : ''}${curXOff}</span>`;
+        const inpX = xOffsetRow.querySelector('input');
+        const lblX = xOffsetRow.querySelector('.scale-val');
+        inpX.addEventListener('input', e => {
+          const v = parseInt(e.target.value, 10);
+          doll[sub.xOffsetField] = v;
+          lblX.textContent = `${v > 0 ? '+' : ''}${v}`;
+          saveCollection();
+          renderDoll(document.getElementById('doll-layers'), doll);
+        });
+        body.appendChild(xOffsetRow);
+      }
+
       // Y-offset slider for this sub-category (below the scale slider)
       if (sub.yOffsetField) {
         const curOff = doll[sub.yOffsetField] || 0;
+        const yMin = sub.yOffsetMin !== undefined ? sub.yOffsetMin : -15;
+        const yMax = sub.yOffsetMax !== undefined ? sub.yOffsetMax : 15;
         const offsetRow = document.createElement('div');
         offsetRow.className = 'scale-row';
         offsetRow.innerHTML = `
           <span class="scale-icon">↕</span>
-          <label>Posición</label>
-          <input type="range" min="-15" max="15" step="1" value="${curOff}" id="yoff-${sub.cat}"/>
+          <label>Pos. Y</label>
+          <input type="range" min="${yMin}" max="${yMax}" step="1" value="${curOff}" id="yoff-${sub.cat}"/>
           <span class="scale-val" id="yoff-val-${sub.cat}">${curOff > 0 ? '+' : ''}${curOff}</span>`;
         const inp2 = offsetRow.querySelector('input');
         const lbl2 = offsetRow.querySelector('.scale-val');
@@ -2130,12 +2259,14 @@ function buildPanel() {
       // Rotation slider for this sub-category (below the yOffset slider)
       if (sub.rotateField) {
         const curRot = doll[sub.rotateField] || 0;
+        const rMin = sub.rotateMin !== undefined ? sub.rotateMin : -45;
+        const rMax = sub.rotateMax !== undefined ? sub.rotateMax : 45;
         const rotRow = document.createElement('div');
         rotRow.className = 'scale-row';
         rotRow.innerHTML = `
           <span class="scale-icon">↻</span>
           <label>Rotación</label>
-          <input type="range" min="-45" max="45" step="1" value="${curRot}" id="rot-${sub.cat}"/>
+          <input type="range" min="${rMin}" max="${rMax}" step="1" value="${curRot}" id="rot-${sub.cat}"/>
           <span class="scale-val" id="rot-val-${sub.cat}">${curRot > 0 ? '+' : ''}${curRot}°</span>`;
         const inp3 = rotRow.querySelector('input');
         const lbl3 = rotRow.querySelector('.scale-val');
@@ -2149,8 +2280,8 @@ function buildPanel() {
         body.appendChild(rotRow);
       }
 
-      // Reset adjustments button (if scale, yOffset or rotate exist)
-      if (sub.scaleField || sub.yOffsetField || sub.rotateField) {
+      // Reset adjustments button (if scale, xOffset, yOffset or rotate exist)
+      if (sub.scaleField || sub.xOffsetField || sub.yOffsetField || sub.rotateField) {
         const resetRow = document.createElement('div');
         resetRow.className = 'reset-row';
         const resetBtn = document.createElement('button');
@@ -2163,6 +2294,13 @@ function buildPanel() {
             const sclValEl = document.getElementById(`scl-val-${sub.cat}`);
             if (sclEl) sclEl.value = 0;
             if (sclValEl) sclValEl.textContent = '0%';
+          }
+          if (sub.xOffsetField) {
+            doll[sub.xOffsetField] = 0;
+            const xoffEl = document.getElementById(`xoff-${sub.cat}`);
+            const xoffValEl = document.getElementById(`xoff-val-${sub.cat}`);
+            if (xoffEl) xoffEl.value = 0;
+            if (xoffValEl) xoffValEl.textContent = '0';
           }
           if (sub.yOffsetField) {
             doll[sub.yOffsetField] = 0;
@@ -2307,6 +2445,12 @@ function buildPreviewSvg(cat, value, d) {
       const b = BROOMS[value] || {};
       inner = (b.back || '') + (b.front || '');
       inner = `<svg viewBox="0 255 240 80" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+      return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
+    }
+    case 'tattoo': {
+      const fn = TATTOOS[value];
+      inner = fn ? fn(d.tattooColor || '#1a1a2e') : '';
+      inner = `<svg viewBox="80 100 80 80" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
       return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
     }
     default:

@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.10.1] - 2026-03-24
+
+### Added
+- **Tatuajes HP.** Nueva categoría `tattoo` con 6 diseños de Harry Potter: `lightning` (cicatriz), `heart`, `deathly_hallows`, `dark_mark`, `golden_snitch` y `always`. Se renderiza encima de la piel y por debajo de toda la ropa y accesorios
+- **Panel Tatuaje.** Subsección "Tatuaje" en el acordeón "Harry Potter & Extras" con: selector de color, slider de tamaño (-50..+50), slider de posición horizontal X (-80..+80), slider de posición vertical Y (-80..+80), slider de rotación (-180..+180°), botón espejo y botón de reset
+- **Slider X universal.** Nuevo `xOffsetField` en el sistema de panel (`buildPanel`), con helper `xo()` en `renderDoll()` y mapa `CATEGORY_XOFFSET_MAP`. Otros sliders (Y, rotación) ahora aceptan min/max personalizados mediante `yOffsetMin/Max` y `rotateMin/Max` en la definición de subsección
+
+---
+
 ## [1.10.0] - 2026-03-24
 
 ### Changed
