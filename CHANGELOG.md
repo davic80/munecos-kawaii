@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.9] - 2026-03-24
+
+### Fixed
+- **Escobas rediseñadas (orientación correcta).** El palo ahora va de `(30,270)` arriba-izquierda a `(215,308)` abajo-derecha. El mango/punta de vuelo queda a la izquierda y las cerdas a la derecha, en diagonal ~20°. Los 6 modelos (Nimbus 2000/2001, Firebolt, Cleansweep 11, Comet 260, Oakshaft 79) han sido redibujados con la nueva geometría
+- **Thumbnails de escobas.** Añadido `case 'broom':` en `buildPreviewSvg()` con `viewBox="0 255 240 80"`. Las miniaturas en el panel ahora muestran correctamente el SVG de cada escoba en lugar de una caja gris
+- **Hover preview de escobas.** Añadido `broom: 'broom'` al `FIELD_MAP` local en `buildPanel()`. El hover sobre los chips de escoba ahora activa la preview en el doll
+
+### Added
+- **Slider de rotación para escobas.** Nuevo slider `↻ Rotación` (-45°..+45°) en la subsección Escoba del panel. Gira la escoba alrededor del pivote `(120,288)` sin afectar otras categorías. Soporta reset junto con tamaño y posición. Implementado con `rotateWrap()`, `CATEGORY_ROTATE_MAP` y `CATEGORY_ROTATE_ORIGIN`
+
+---
+
 ## [1.9.8] - 2026-03-24
 
 ### Added
