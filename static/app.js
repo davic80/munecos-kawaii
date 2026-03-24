@@ -667,6 +667,161 @@ const WANDS = {
     </g>`,
 };
 
+// ---- HP BROOMS ----
+// Broom pole crosses diagonally from (20,305) to (215,268), straddling the doll's hips.
+// Bristles extend to the right by default (broomFlip inverts). Rendered between bottom and belt.
+const BROOMS = {
+  // Nimbus 2000 — pale-wood pole, compact bristle bundle, gold ring at tail
+  nimbus_2000: `
+    <g>
+      <!-- Pole -->
+      <line x1="18" y1="306" x2="222" y2="266" stroke="#c8a46e" stroke-width="5" stroke-linecap="round"/>
+      <!-- Handle grip (darker centre segment) -->
+      <line x1="90" y1="291" x2="150" y2="278" stroke="#a07840" stroke-width="7" stroke-linecap="round"/>
+      <!-- Gold tail ring -->
+      <ellipse cx="21" cy="305" rx="5" ry="3" fill="none" stroke="#d4a017" stroke-width="2" transform="rotate(-10,21,305)"/>
+      <!-- Bristles: compact symmetrical bundle -->
+      <line x1="218" y1="267" x2="234" y2="252" stroke="#8b7355" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="236" y2="257" stroke="#8b7355" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="237" y2="263" stroke="#8b7355" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="236" y2="268" stroke="#8b7355" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="234" y2="274" stroke="#8b7355" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="231" y2="279" stroke="#8b7355" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="227" y2="282" stroke="#8b7355" stroke-width="1.8" stroke-linecap="round"/>
+      <!-- Bristle tie band -->
+      <line x1="212" y1="269" x2="215" y2="282" stroke="#6b5a3e" stroke-width="2.5" stroke-linecap="round"/>
+    </g>`,
+
+  // Nimbus 2001 — darker mahogany pole, wider fan bristles, silver fittings
+  nimbus_2001: `
+    <g>
+      <!-- Pole -->
+      <line x1="18" y1="306" x2="222" y2="266" stroke="#8b5e3c" stroke-width="5" stroke-linecap="round"/>
+      <!-- Wood grain highlights -->
+      <line x1="60" y1="299" x2="100" y2="290" stroke="#a07050" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      <line x1="130" y1="283" x2="170" y2="274" stroke="#a07050" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      <!-- Handle grip -->
+      <line x1="90" y1="291" x2="150" y2="278" stroke="#6b3d1e" stroke-width="7" stroke-linecap="round"/>
+      <!-- Silver tail cap -->
+      <ellipse cx="21" cy="305" rx="5" ry="3" fill="#c0c0c0" stroke="#a0a0a0" stroke-width="1" transform="rotate(-10,21,305)"/>
+      <!-- Bristles: wider fan -->
+      <line x1="218" y1="267" x2="236" y2="248" stroke="#7a6548" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="238" y2="254" stroke="#7a6548" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="239" y2="261" stroke="#7a6548" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="239" y2="267" stroke="#7a6548" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="238" y2="273" stroke="#7a6548" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="235" y2="279" stroke="#7a6548" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="231" y2="284" stroke="#7a6548" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="226" y2="287" stroke="#7a6548" stroke-width="1.8" stroke-linecap="round"/>
+      <!-- Silver bristle band -->
+      <line x1="211" y1="269" x2="215" y2="283" stroke="#b0b0b0" stroke-width="2.5" stroke-linecap="round"/>
+    </g>`,
+
+  // Firebolt — sleek dark mahogany, black grip, razor-thin even bristles
+  firebolt: `
+    <g>
+      <!-- Pole — rich mahogany -->
+      <line x1="18" y1="306" x2="222" y2="266" stroke="#7c3010" stroke-width="5" stroke-linecap="round"/>
+      <!-- Lacquer sheen -->
+      <line x1="40" y1="302" x2="200" y2="270" stroke="#a04020" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+      <!-- Black estriped grip -->
+      <line x1="95" y1="290" x2="145" y2="279" stroke="#1a1a1a" stroke-width="8" stroke-linecap="round"/>
+      <line x1="98" y1="290" x2="104" y2="288" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round"/>
+      <line x1="110" y1="287" x2="116" y2="285" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round"/>
+      <line x1="122" y1="285" x2="128" y2="283" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round"/>
+      <line x1="134" y1="282" x2="140" y2="280" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round"/>
+      <!-- Polished silver tail ferrule -->
+      <rect x="14" y="301" width="10" height="6" rx="2" fill="#d0d0d0" stroke="#a0a0a0" stroke-width="0.8" transform="rotate(-10,19,304)"/>
+      <!-- Bristles: ultra-thin, perfectly even, tight spread -->
+      <line x1="219" y1="267" x2="234" y2="250" stroke="#6b5030" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="219" y1="267" x2="236" y2="254" stroke="#6b5030" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="219" y1="267" x2="237" y2="259" stroke="#6b5030" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="219" y1="267" x2="238" y2="263" stroke="#6b5030" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="219" y1="267" x2="238" y2="267" stroke="#6b5030" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="219" y1="267" x2="237" y2="271" stroke="#6b5030" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="219" y1="267" x2="235" y2="275" stroke="#6b5030" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="219" y1="267" x2="232" y2="279" stroke="#6b5030" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="219" y1="267" x2="228" y2="282" stroke="#6b5030" stroke-width="1.2" stroke-linecap="round"/>
+      <!-- Thin black bristle band -->
+      <line x1="212" y1="269" x2="215" y2="281" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+    </g>`,
+
+  // Cleansweep 11 — dark green pole, sturdy V-spread bristles, metal reinforcements
+  cleansweep: `
+    <g>
+      <!-- Pole — dark green -->
+      <line x1="18" y1="306" x2="222" y2="266" stroke="#3a5c2a" stroke-width="6" stroke-linecap="round"/>
+      <!-- Metal reinforcement bands -->
+      <line x1="55" y1="300" x2="60" y2="298" stroke="#888" stroke-width="3" stroke-linecap="round"/>
+      <line x1="170" y1="276" x2="175" y2="274" stroke="#888" stroke-width="3" stroke-linecap="round"/>
+      <!-- Handle grip — darker green -->
+      <line x1="90" y1="291" x2="150" y2="278" stroke="#2a4a1a" stroke-width="8" stroke-linecap="round"/>
+      <!-- Bronze tail cap -->
+      <ellipse cx="21" cy="305" rx="5" ry="3" fill="#cd7f32" stroke="#a06020" stroke-width="1" transform="rotate(-10,21,305)"/>
+      <!-- Bristles: wide V, sturdy, slightly uneven -->
+      <line x1="218" y1="267" x2="237" y2="247" stroke="#8b7355" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="239" y2="254" stroke="#8b7355" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="240" y2="261" stroke="#8b7355" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="240" y2="268" stroke="#8b7355" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="238" y2="275" stroke="#8b7355" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="234" y2="281" stroke="#8b7355" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="218" y1="267" x2="228" y2="286" stroke="#8b7355" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- Sturdy bristle band -->
+      <line x1="211" y1="269" x2="215" y2="284" stroke="#5a4a2e" stroke-width="3" stroke-linecap="round"/>
+    </g>`,
+
+  // Comet 260 — mahogany with grain, long swept-back curved bristles like a comet tail
+  comet_260: `
+    <g>
+      <!-- Pole — mahogany with vein -->
+      <line x1="18" y1="306" x2="222" y2="266" stroke="#8b4513" stroke-width="5" stroke-linecap="round"/>
+      <line x1="50" y1="301" x2="190" y2="272" stroke="#a0522d" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+      <!-- Handle grip -->
+      <line x1="90" y1="291" x2="150" y2="278" stroke="#6b2e0e" stroke-width="7" stroke-linecap="round"/>
+      <!-- Copper tail ring -->
+      <ellipse cx="21" cy="305" rx="5" ry="3" fill="none" stroke="#cd7f32" stroke-width="2" transform="rotate(-10,21,305)"/>
+      <!-- Bristles: long, swept back, curving like comet tail -->
+      <path d="M218,267 Q228,258 238,248" fill="none" stroke="#9b8465" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M218,267 Q230,261 241,254" fill="none" stroke="#9b8465" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M218,267 Q231,265 242,261" fill="none" stroke="#9b8465" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M218,267 Q231,268 241,268" fill="none" stroke="#9b8465" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M218,267 Q230,271 239,274" fill="none" stroke="#9b8465" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M218,267 Q228,275 235,281" fill="none" stroke="#9b8465" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M218,267 Q225,279 229,287" fill="none" stroke="#9b8465" stroke-width="1.8" stroke-linecap="round"/>
+      <!-- Bristle tie -->
+      <line x1="211" y1="269" x2="215" y2="282" stroke="#6b5030" stroke-width="2.5" stroke-linecap="round"/>
+    </g>`,
+
+  // Oakshaft 79 — thick oak pole, knots, rustic uneven bristles
+  oakshaft: `
+    <g>
+      <!-- Thick oak pole -->
+      <line x1="18" y1="306" x2="222" y2="266" stroke="#6b4423" stroke-width="7" stroke-linecap="round"/>
+      <!-- Knots in the wood -->
+      <ellipse cx="70" cy="298" rx="5" ry="3" fill="#4a2e14" transform="rotate(-10,70,298)"/>
+      <ellipse cx="160" cy="277" rx="4" ry="2.5" fill="#4a2e14" transform="rotate(-10,160,277)"/>
+      <!-- Rough handle wrap (twine) -->
+      <line x1="90" y1="291" x2="96" y2="289" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="100" y1="289" x2="106" y2="287" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="110" y1="287" x2="116" y2="285" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="120" y1="285" x2="126" y2="283" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="130" y1="283" x2="136" y2="281" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="140" y1="281" x2="146" y2="279" stroke="#8b7355" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Rustic tail end (blunt, no cap) -->
+      <ellipse cx="21" cy="305" rx="5" ry="3.5" fill="#4a2e14" transform="rotate(-10,21,305)"/>
+      <!-- Bristles: thick, irregular, rustic -->
+      <line x1="217" y1="267" x2="234" y2="248" stroke="#7a6040" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="217" y1="267" x2="237" y2="255" stroke="#7a6040" stroke-width="2" stroke-linecap="round"/>
+      <line x1="217" y1="267" x2="238" y2="263" stroke="#7a6040" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="217" y1="267" x2="237" y2="269" stroke="#7a6040" stroke-width="2" stroke-linecap="round"/>
+      <line x1="217" y1="267" x2="235" y2="276" stroke="#7a6040" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="217" y1="267" x2="230" y2="283" stroke="#7a6040" stroke-width="2" stroke-linecap="round"/>
+      <line x1="217" y1="267" x2="223" y2="288" stroke="#7a6040" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Rough twine bristle tie -->
+      <line x1="210" y1="269" x2="215" y2="285" stroke="#8b7355" stroke-width="3.5" stroke-linecap="round"/>
+    </g>`,
+};
+
 // ---- LEFT HAND OBJECTS ----
 // Left hand center: boy arm x=38 w=36 → cx=56, hand bottom ≈ y=258
 const LEFTHAND = {
@@ -1132,6 +1287,7 @@ const CATEGORY_YOFFSET_MAP = {
   belt:    'beltYOffset',
   wand:    'wandYOffset',
   lefthand: 'lefthandYOffset',
+  broom:   'broomYOffset',
 };
 
 const CATEGORY_SCALE_MAP = {
@@ -1150,6 +1306,7 @@ const CATEGORY_SCALE_MAP = {
   belt:    'beltScale',
   wand:    'wandScale',
   lefthand: 'lefthandScale',
+  broom:   'broomScale',
 };
 
 // SVG origin point for each category's scale transform
@@ -1169,6 +1326,7 @@ const CATEGORY_SCALE_ORIGIN = {
   belt:    [120, 278],
   wand:    [196, 256],
   lefthand: [56, 252],
+  broom:   [120, 288],
 };
 
 /* ---------- SCENE BACKGROUND COLORS ---------- */
@@ -1259,6 +1417,7 @@ function defaultDoll(idx) {
     scarf2: null, scarf2Color: '#e94560', scarf2Color2: '#ffffff',
     wand: null,
     lefthand: null, lefthandColor: '#7c3aed',
+    broom: null,
     bgColor: '#1a2a4a',
     browColor: '#5a3a1a',
     lashColor: '#3d2b1f',
@@ -1268,14 +1427,14 @@ function defaultDoll(idx) {
     eyesScale: 0, browsScale: 0, noseScale: 0, mouthScale: 0, cheeksScale: 0,
     hairScale: 0, topScale: 0,   bottomScale: 0, shoesScale: 0,
     hatScale: 0,  capeScale: 0,  glassesScale: 0, beltScale: 0,
-    wandScale: 0, lefthandScale: 0,
+    wandScale: 0, lefthandScale: 0, broomScale: 0,
     // yOffset fields: -15..+15 (0 = normal position, in SVG px)
     eyesYOffset: 0, browsYOffset: 0, noseYOffset: 0, mouthYOffset: 0, cheeksYOffset: 0,
     hairYOffset: 0, topYOffset: 0,   bottomYOffset: 0, shoesYOffset: 0,
     hatYOffset: 0,  capeYOffset: 0,  glassesYOffset: 0, beltYOffset: 0,
-    wandYOffset: 0, lefthandYOffset: 0,
+    wandYOffset: 0, lefthandYOffset: 0, broomYOffset: 0,
     // flip fields (horizontal mirror) for selected categories
-    hairFlip: false, hatFlip: false, wandFlip: false, lefthandFlip: false, scarf2Flip: false,
+    hairFlip: false, hatFlip: false, wandFlip: false, lefthandFlip: false, scarf2Flip: false, broomFlip: false,
     // background scene
     bgScene: null,
     // doll position in canvas (null = default: centered X, base at 90% height)
@@ -1331,6 +1490,7 @@ function renderDoll(container, d) {
   if (d.mouth)   parts.push(layer('mouth',   MOUTHS[d.mouth]  || '', false));
   if (d.cheeks)  parts.push(layer('cheeks',  (CHEEKS[d.cheeks] || (() => ''))(d.cheeksColor || 'rgba(255,160,160,0.35)'), false));
   if (d.bottom)  parts.push(layer('bottom',  (BOTTOMS[d.bottom] || (() => ''))(d.bottomColor, d.gender), false));
+  if (d.broom)   parts.push(layer('broom',   BROOMS[d.broom]   || '', true));
   if (d.belt)    parts.push(layer('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor), false));
   if (d.top)     parts.push(layer('top',     (TOPS[d.top]     || (() => ''))(d.topColor, d.gender), false));
   if (d.shoes)   parts.push(layer('shoes',   (SHOES[d.shoes]  || (() => ''))(d.shoesColor), false));
@@ -1388,6 +1548,7 @@ const CATEGORY_FIELD_MAP = {
   scarf2: 'scarf2',
   wand: 'wand',
   lefthand: 'lefthand',
+  broom: 'broom',
 };
 
 function updateEquipped() {
@@ -1642,6 +1803,12 @@ function buildPanel() {
     {
       label: 'Harry Potter & Extras', icon: '⚡', open: true,
       subsections: [
+        {
+          label: 'Escoba', cat: 'broom',
+          scaleField: 'broomScale', yOffsetField: 'broomYOffset',
+          flipField: 'broomFlip',
+          items: Object.keys(BROOMS).map(k => ({ value: k, label: k.replace(/_/g, ' ') })),
+        },
         {
           label: 'Bufanda HP', cat: 'scarf',
           items: Object.keys(HP_HOUSES).map(k => ({ value: k, label: HP_HOUSES[k].name })),

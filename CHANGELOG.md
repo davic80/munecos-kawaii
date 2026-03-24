@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.8] - 2026-03-24
+
+### Added
+- **Escobas HP (6 modelos).** Nuevo accesorio `Escoba` en la sección Harry Potter & Extras. La escoba se renderiza entre la capa pantalón y el cinturón, cruzando el cuerpo en diagonal como si el muñeco estuviera montado. Modelos disponibles: Nimbus 2000, Nimbus 2001, Firebolt, Cleansweep 11, Comet 260 y Oakshaft 79. Cada modelo tiene colores fijos auténticos. Soporta flip horizontal, escala y offset vertical
+
+---
+
 ## [1.9.7] - 2026-03-24
 
 ### Fixed
