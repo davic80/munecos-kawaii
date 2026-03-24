@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.7] - 2026-03-24
+
+### Fixed
+- **Tren del Andén 9¾ ya no aparece cortado.** El tren se ha movido de la capa `svgSky` a `svgGround` con `groundH:140`. El viewBox del suelo es ahora `0 0 240 140`: `y=0..60` es el cuerpo del tren, `y=60` es la línea ruedas/andén, `y=60..140` es el andén de piedra. El tren siempre se renderiza completo y alineado con el suelo independientemente del tamaño de pantalla
+- **Muñeco se para sobre el suelo.** La posición por defecto del muñeco cambia de `aH × 90%` a `aH × 80%` (base del muñeco al 80% de la altura del canvas), coincidiendo con la línea superior del layer de suelo que ocupa el 20% inferior
+
+---
+
 ## [1.9.6] - 2026-03-24
 
 ### Fixed

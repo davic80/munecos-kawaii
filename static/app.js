@@ -999,7 +999,7 @@ const HAIR = {
       <ellipse cx="190" cy="18" rx="70" ry="9" fill="rgba(180,200,180,0.07)"/>`,
     groundH: 80,
   },
-  platform_934: {
+   platform_934: {
     label: 'Andén 9¾',
     svgSky: `
       <!-- Station ceiling -->
@@ -1011,33 +1011,34 @@ const HAIR = {
       <ellipse cx="60" cy="100" rx="40" ry="18" fill="rgba(220,220,230,0.12)"/>
       <ellipse cx="80" cy="88" rx="30" ry="14" fill="rgba(220,220,230,0.1)"/>
       <ellipse cx="160" cy="110" rx="38" ry="16" fill="rgba(220,220,230,0.1)"/>
-      <ellipse cx="140" cy="96" rx="28" ry="12" fill="rgba(220,220,230,0.09)"/>
-      <!-- Train body -->
-      <rect x="0" y="200" width="210" height="70" rx="8" fill="rgba(180,30,30,0.75)"/>
-      <!-- Train windows -->
-      <rect x="10" y="212" width="22" height="18" rx="4" fill="rgba(255,240,180,0.5)"/>
-      <rect x="40" y="212" width="22" height="18" rx="4" fill="rgba(255,240,180,0.5)"/>
-      <rect x="70" y="212" width="22" height="18" rx="4" fill="rgba(255,240,180,0.55)"/>
-      <rect x="100" y="212" width="22" height="18" rx="4" fill="rgba(255,240,180,0.45)"/>
-      <rect x="130" y="212" width="22" height="18" rx="4" fill="rgba(255,240,180,0.5)"/>
-      <rect x="160" y="212" width="22" height="18" rx="4" fill="rgba(255,240,180,0.45)"/>
-      <!-- Train bottom stripe -->
-      <rect x="0" y="260" width="210" height="10" fill="rgba(30,30,30,0.6)"/>
-      <!-- Sign 9¾ -->
-      <rect x="192" y="220" width="38" height="22" rx="4" fill="rgba(30,30,30,0.7)"/>
-      <text x="211" y="236" font-size="11" text-anchor="middle" fill="rgba(255,220,80,0.9)" font-weight="bold">9¾</text>`,
+      <ellipse cx="140" cy="96" rx="28" ry="12" fill="rgba(220,220,230,0.09)"/>`,
     svgGround: `
+      <!-- viewBox 0 0 240 140: tren y=0..60, ruedas en y=60, andén y=60..140 -->
+      <!-- Train body -->
+      <rect x="0" y="0" width="210" height="60" rx="8" fill="rgba(180,30,30,0.85)"/>
+      <!-- Train windows -->
+      <rect x="10" y="10" width="22" height="18" rx="4" fill="rgba(255,240,180,0.5)"/>
+      <rect x="40" y="10" width="22" height="18" rx="4" fill="rgba(255,240,180,0.5)"/>
+      <rect x="70" y="10" width="22" height="18" rx="4" fill="rgba(255,240,180,0.55)"/>
+      <rect x="100" y="10" width="22" height="18" rx="4" fill="rgba(255,240,180,0.45)"/>
+      <rect x="130" y="10" width="22" height="18" rx="4" fill="rgba(255,240,180,0.5)"/>
+      <rect x="160" y="10" width="22" height="18" rx="4" fill="rgba(255,240,180,0.45)"/>
+      <!-- Train bottom stripe -->
+      <rect x="0" y="50" width="210" height="10" fill="rgba(30,30,30,0.6)"/>
+      <!-- Sign 9¾ -->
+      <rect x="192" y="16" width="38" height="22" rx="4" fill="rgba(30,30,30,0.7)"/>
+      <text x="211" y="32" font-size="11" text-anchor="middle" fill="rgba(255,220,80,0.9)" font-weight="bold">9¾</text>
+      <!-- Wheels straddling train/platform boundary -->
+      <circle cx="40" cy="60" r="18" fill="rgba(20,20,20,0.85)"/>
+      <circle cx="40" cy="60" r="9" fill="rgba(100,100,110,0.75)"/>
+      <circle cx="130" cy="60" r="18" fill="rgba(20,20,20,0.85)"/>
+      <circle cx="130" cy="60" r="9" fill="rgba(100,100,110,0.75)"/>
       <!-- Platform stone -->
-      <rect x="0" y="0" width="240" height="80" fill="rgba(90,80,70,0.9)"/>
-      <line x1="0" y1="8" x2="240" y2="8" stroke="rgba(120,110,90,0.5)" stroke-width="1.5"/>
-      <!-- Wheels visible above platform -->
-      <circle cx="40" cy="0" r="18" fill="rgba(20,20,20,0.85)"/>
-      <circle cx="40" cy="0" r="9" fill="rgba(100,100,110,0.75)"/>
-      <circle cx="130" cy="0" r="18" fill="rgba(20,20,20,0.85)"/>
-      <circle cx="130" cy="0" r="9" fill="rgba(100,100,110,0.75)"/>
+      <rect x="0" y="60" width="240" height="80" fill="rgba(90,80,70,0.9)"/>
+      <line x1="0" y1="68" x2="240" y2="68" stroke="rgba(120,110,90,0.5)" stroke-width="1.5"/>
       <!-- Platform edge line -->
-      <line x1="0" y1="22" x2="240" y2="22" stroke="rgba(255,255,200,0.25)" stroke-width="2"/>`,
-    groundH: 80,
+      <line x1="0" y1="82" x2="240" y2="82" stroke="rgba(255,255,200,0.25)" stroke-width="2"/>`,
+    groundH: 140,
   },
   quidditch: {
     label: 'Quidditch',
@@ -1188,7 +1189,7 @@ function applyDollPosition() {
   const aH = area.clientHeight;
   const dW = 240, dH = 340;
   const defaultX = (aW - dW) / 2;
-  const defaultY = aH * 0.9 - dH;
+  const defaultY = aH * 0.8 - dH;
   const x = (doll.dollX !== null && doll.dollX !== undefined) ? doll.dollX : defaultX;
   const y = (doll.dollY !== null && doll.dollY !== undefined) ? doll.dollY : defaultY;
   wrap.style.left = x + 'px';
