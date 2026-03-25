@@ -1001,6 +1001,155 @@ const LEFTHAND = {
     </g>`,
 };
 
+// ---- PETS ----
+// Centered at (0,0), ~30-40px tall. outfitKey uses HP_HOUSES[key].c1/.c2 for stripes
+const PETS = {
+  rat: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const vest = h ? `
+      <rect x="-8" y="-4" width="16" height="14" rx="3" fill="${h.c1}" opacity="0.9"/>
+      <rect x="-8" y="-1" width="16" height="3" rx="0" fill="${h.c2}" opacity="0.85"/>
+      <rect x="-8" y="5" width="16" height="3" rx="0" fill="${h.c2}" opacity="0.85"/>` : '';
+    return `<g>
+      <!-- Tail (curvy) -->
+      <path d="M12,8 Q22,2 18,-8 Q14,-14 20,-18" fill="none" stroke="#b8a090" stroke-width="1.8" stroke-linecap="round"/>
+      <!-- Body (grey oval) -->
+      <ellipse cx="0" cy="4" rx="14" ry="10" fill="#b8a8a0"/>
+      <ellipse cx="0" cy="4" rx="14" ry="10" fill="rgba(255,255,255,0.1)"/>
+      ${vest}
+      <!-- Ears -->
+      <ellipse cx="-8" cy="-9" rx="6" ry="5" fill="#c8b8b0"/>
+      <ellipse cx="-8" cy="-9" rx="4" ry="3.5" fill="#e8b8b0"/>
+      <ellipse cx="8" cy="-9" rx="6" ry="5" fill="#c8b8b0"/>
+      <ellipse cx="8" cy="-9" rx="4" ry="3.5" fill="#e8b8b0"/>
+      <!-- Head -->
+      <ellipse cx="0" cy="-4" rx="10" ry="8" fill="#c0b0a8"/>
+      <!-- Eyes (kawaii) -->
+      <circle cx="-4" cy="-5" r="2.2" fill="#1a1a1a"/>
+      <circle cx="-3.2" cy="-5.8" r="0.8" fill="#fff"/>
+      <circle cx="4" cy="-5" r="2.2" fill="#1a1a1a"/>
+      <circle cx="4.8" cy="-5.8" r="0.8" fill="#fff"/>
+      <!-- Nose -->
+      <ellipse cx="0" cy="-2" rx="1.8" ry="1.2" fill="#e8a0a0"/>
+      <!-- Whiskers -->
+      <line x1="-10" y1="-3" x2="-3" y2="-2" stroke="#8a7a70" stroke-width="0.6" opacity="0.6"/>
+      <line x1="-10" y1="-1" x2="-3" y2="-1" stroke="#8a7a70" stroke-width="0.6" opacity="0.6"/>
+      <line x1="3" y1="-2" x2="10" y2="-3" stroke="#8a7a70" stroke-width="0.6" opacity="0.6"/>
+      <line x1="3" y1="-1" x2="10" y2="-1" stroke="#8a7a70" stroke-width="0.6" opacity="0.6"/>
+      <!-- Feet -->
+      <ellipse cx="-6" cy="13" rx="3.5" ry="2" fill="#c0b0a8"/>
+      <ellipse cx="6" cy="13" rx="3.5" ry="2" fill="#c0b0a8"/>
+    </g>`;
+  },
+  toad: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const bib = h ? `
+      <path d="M-10,-2 Q0,-10 10,-2 L8,8 Q0,12 -8,8 Z" fill="${h.c1}" opacity="0.85"/>
+      <rect x="-7" y="0" width="14" height="3" rx="0" fill="${h.c2}" opacity="0.8"/>
+      <rect x="-6" y="5" width="12" height="2.5" rx="0" fill="${h.c2}" opacity="0.8"/>` : '';
+    return `<g>
+      <!-- Body (green rounded) -->
+      <ellipse cx="0" cy="4" rx="16" ry="13" fill="#5a8a50"/>
+      <ellipse cx="0" cy="6" rx="14" ry="10" fill="#6aa060"/>
+      <!-- Spots -->
+      <circle cx="-7" cy="2" r="2.5" fill="#4a7a42" opacity="0.5"/>
+      <circle cx="5" cy="6" r="2" fill="#4a7a42" opacity="0.5"/>
+      <circle cx="8" cy="-1" r="1.8" fill="#4a7a42" opacity="0.5"/>
+      ${bib}
+      <!-- Eyes (bulging) -->
+      <circle cx="-7" cy="-10" r="5.5" fill="#6aa060"/>
+      <circle cx="-7" cy="-10" r="4" fill="#e8e8d0"/>
+      <circle cx="-7" cy="-10" r="2.5" fill="#1a1a1a"/>
+      <circle cx="-6.2" cy="-10.8" r="0.9" fill="#fff"/>
+      <circle cx="7" cy="-10" r="5.5" fill="#6aa060"/>
+      <circle cx="7" cy="-10" r="4" fill="#e8e8d0"/>
+      <circle cx="7" cy="-10" r="2.5" fill="#1a1a1a"/>
+      <circle cx="7.8" cy="-10.8" r="0.9" fill="#fff"/>
+      <!-- Mouth line -->
+      <path d="M-8,4 Q0,8 8,4" fill="none" stroke="#3a6a32" stroke-width="1" opacity="0.6"/>
+      <!-- Front legs -->
+      <ellipse cx="-10" cy="15" rx="4" ry="2.5" fill="#5a8a50"/>
+      <ellipse cx="10" cy="15" rx="4" ry="2.5" fill="#5a8a50"/>
+      <!-- Toes -->
+      <circle cx="-13" cy="15" r="1.2" fill="#4a7a42"/>
+      <circle cx="-10" cy="16.5" r="1.2" fill="#4a7a42"/>
+      <circle cx="13" cy="15" r="1.2" fill="#4a7a42"/>
+      <circle cx="10" cy="16.5" r="1.2" fill="#4a7a42"/>
+    </g>`;
+  },
+  cat: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const scarf = h ? `
+      <rect x="-8" y="-8" width="16" height="6" rx="2" fill="${h.c1}" opacity="0.9"/>
+      <rect x="-8" y="-6" width="16" height="2" rx="0" fill="${h.c2}" opacity="0.85"/>
+      <rect x="4" y="-8" width="5" height="12" rx="1.5" fill="${h.c1}" opacity="0.85"/>
+      <rect x="4.5" y="-4" width="4" height="2" rx="0" fill="${h.c2}" opacity="0.8"/>` : '';
+    return `<g>
+      <!-- Tail (curved) -->
+      <path d="M12,6 Q24,-2 20,-14 Q18,-20 22,-24" fill="none" stroke="#6a6a6a" stroke-width="3" stroke-linecap="round"/>
+      <!-- Body (sitting) -->
+      <ellipse cx="0" cy="6" rx="13" ry="12" fill="#808080"/>
+      <ellipse cx="0" cy="8" rx="11" ry="9" fill="#909090"/>
+      <!-- Chest lighter patch -->
+      <ellipse cx="0" cy="8" rx="6" ry="7" fill="#a0a0a0" opacity="0.5"/>
+      ${scarf}
+      <!-- Head -->
+      <circle cx="0" cy="-8" r="11" fill="#858585"/>
+      <!-- Ears (pointy) -->
+      <polygon points="-10,-16 -6,-26 -2,-16" fill="#858585"/>
+      <polygon points="-8,-18 -6,-24 -4,-18" fill="#c8a0a0" opacity="0.6"/>
+      <polygon points="2,-16 6,-26 10,-16" fill="#858585"/>
+      <polygon points="4,-18 6,-24 8,-18" fill="#c8a0a0" opacity="0.6"/>
+      <!-- Eyes (big kawaii) -->
+      <ellipse cx="-4" cy="-9" rx="3.5" ry="3.8" fill="#d4e84a"/>
+      <ellipse cx="-4" cy="-9" rx="1.8" ry="3" fill="#1a1a1a"/>
+      <circle cx="-3.2" cy="-10" r="1" fill="#fff"/>
+      <ellipse cx="4" cy="-9" rx="3.5" ry="3.8" fill="#d4e84a"/>
+      <ellipse cx="4" cy="-9" rx="1.8" ry="3" fill="#1a1a1a"/>
+      <circle cx="4.8" cy="-10" r="1" fill="#fff"/>
+      <!-- Nose -->
+      <polygon points="-1.5,-5 0,-3.5 1.5,-5" fill="#e8a0a0"/>
+      <!-- Whiskers -->
+      <line x1="-11" y1="-6" x2="-4" y2="-5" stroke="#aaa" stroke-width="0.6" opacity="0.6"/>
+      <line x1="-11" y1="-4" x2="-4" y2="-4" stroke="#aaa" stroke-width="0.6" opacity="0.6"/>
+      <line x1="4" y1="-5" x2="11" y2="-6" stroke="#aaa" stroke-width="0.6" opacity="0.6"/>
+      <line x1="4" y1="-4" x2="11" y2="-4" stroke="#aaa" stroke-width="0.6" opacity="0.6"/>
+      <!-- Mouth -->
+      <path d="M-2,-3 Q0,-1.5 2,-3" fill="none" stroke="#666" stroke-width="0.7"/>
+      <!-- Front paws -->
+      <ellipse cx="-5" cy="16" rx="4" ry="2.5" fill="#808080"/>
+      <ellipse cx="5" cy="16" rx="4" ry="2.5" fill="#808080"/>
+    </g>`;
+  },
+};
+
+// Pet position configs: { tx, ty, scale, leash? }
+const PET_POSITIONS = {
+  floor:     { tx: 170, ty: 308, s: 1.0 },
+  righthand: { tx: 184, ty: 238, s: 0.7 },
+  lefthand:  { tx: 56,  ty: 238, s: 0.7 },
+  leash:     { tx: 170, ty: 308, s: 1.0 },
+};
+
+// Renders positioned pet SVG layer (returns string)
+function renderPet(petKey, outfitKey, position, petScaleVal) {
+  const fn = PETS[petKey];
+  if (!fn) return '';
+  const pos = PET_POSITIONS[position] || PET_POSITIONS.floor;
+  let inner = fn(outfitKey);
+  // Leash line from left hand to pet center
+  const leashLine = position === 'leash'
+    ? `<path d="M56,258 Q90,290 ${pos.tx},${pos.ty - 5}" fill="none" stroke="#8b6914" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="4,2"/>`
+    : '';
+  // pet scale (uses scaleWrap around pet center after positioning)
+  let petSvg = `<g transform="translate(${pos.tx},${pos.ty}) scale(${pos.s})">${inner}</g>`;
+  if (petScaleVal) {
+    const s = 1 + petScaleVal / 100;
+    petSvg = `<g transform="translate(${pos.tx},${pos.ty}) scale(${s * pos.s}) translate(${-pos.tx},${-pos.ty})"><g transform="translate(${pos.tx},${pos.ty})">${inner}</g></g>`;
+  }
+  return `<g class="pet-layer" data-pet="${petKey}">${leashLine}${petSvg}</g>`;
+}
+
 // ---- HAIR ----
 // Head: cx=120 cy=112 rx=70 ry=77 → top≈35, sides≈50/190, bottom≈189
 const HAIR = {
@@ -1535,9 +1684,10 @@ const CATEGORY_SCALE_MAP = {
   belt:    'beltScale',
   wand:    'wandScale',
   lefthand: 'lefthandScale',
-  broom:   'broomScale',
-  tattoo:  'tattooScale',
-};
+    broom:   'broomScale',
+    tattoo:  'tattooScale',
+    pet:     'petScale',
+  };
 
 // SVG origin point for each category's scale transform
 const CATEGORY_SCALE_ORIGIN = {
@@ -1556,9 +1706,10 @@ const CATEGORY_SCALE_ORIGIN = {
   belt:    [120, 278],
   wand:    [196, 256],
   lefthand: [56, 252],
-  broom:   [120, 288],
-  tattoo:  [120, 145],
-};
+    broom:   [120, 288],
+    tattoo:  [120, 145],
+    pet:     [170, 308],
+  };
 
 // Rotation field map (only for categories that support rotation)
 const CATEGORY_ROTATE_MAP = {
@@ -1751,6 +1902,8 @@ function defaultDoll(idx) {
     bgScene: null,
     // doll position in canvas (null = default: centered X, base at 90% height)
     dollX: null, dollY: null,
+    // pet fields
+    pet: null, petOutfit: null, petPosition: 'floor', petScale: 0,
     // whether this doll is placed in the shared scene
     inScene: idx === 0,
   };
@@ -1847,8 +2000,13 @@ function renderDoll(container, d) {
     if (d.scarf2Flip) s2 = `<g transform="translate(240,0) scale(-1,1)">${s2}</g>`;
     parts.push(s2);
   }
-  if (d.wand)      parts.push(layer('wand',     WANDS[d.wand]    || '', true));
-  if (d.lefthand)  parts.push(layer('lefthand', (LEFTHAND[d.lefthand] || (() => ''))(d.lefthandColor || '#7c3aed'), true));
+  // Hand conflict: pet in righthand hides wand, pet in lefthand/leash hides lefthand
+  const petHidesWand = d.pet && d.petPosition === 'righthand';
+  const petHidesLefthand = d.pet && (d.petPosition === 'lefthand' || d.petPosition === 'leash');
+  if (d.wand && !petHidesWand)      parts.push(layer('wand',     WANDS[d.wand]    || '', true));
+  if (d.lefthand && !petHidesLefthand)  parts.push(layer('lefthand', (LEFTHAND[d.lefthand] || (() => ''))(d.lefthandColor || '#7c3aed'), true));
+  // Pet: last layer
+  if (d.pet) parts.push(renderPet(d.pet, d.petOutfit, d.petPosition || 'floor', d.petScale || 0));
 
   container.innerHTML = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg">${parts.join('\n')}</svg>`;
 }
@@ -1893,6 +2051,7 @@ const CATEGORY_FIELD_MAP = {
   lefthand: 'lefthand',
   broom: 'broom',
   tattoo: 'tattoo',
+  pet: 'pet',
 };
 
 function updateEquipped() {
@@ -2001,6 +2160,7 @@ function initDollDrag() {
 
   let dragging = false, dragWrap = null, startX, startY, origLeft, origTop;
   let didMove = false; // distinguish click from drag
+  let clickTarget = null; // track original click target for pet sound
 
   // Click on canvas background → deselect active doll visually
   area.addEventListener('click', e => {
@@ -2015,9 +2175,10 @@ function initDollDrag() {
     return (wrapTop + 340) > (aH - 30);
   };
 
-  const onStart = (wrap, cx, cy) => {
+  const onStart = (wrap, cx, cy, evTarget) => {
     dragging = true;
     didMove = false;
+    clickTarget = evTarget || null;
     dragWrap = wrap;
     startX = cx; startY = cy;
     origLeft = wrap.offsetLeft;
@@ -2066,8 +2227,16 @@ function initDollDrag() {
       collection[idx].dollX = dragWrap.offsetLeft;
       collection[idx].dollY = dragWrap.offsetTop;
       saveCollection();
+    } else if (!didMove && clickTarget) {
+      // Click (not drag) — check for pet layer click
+      const petLayer = clickTarget.closest ? clickTarget.closest('.pet-layer') : null;
+      if (petLayer) {
+        const petKey = petLayer.dataset.pet;
+        if (petKey) AudioManager.playAnimalSound(petKey);
+      }
     }
     dragWrap = null;
+    clickTarget = null;
   };
 
   // Delegate mouse events on scene-dolls container
@@ -2077,7 +2246,7 @@ function initDollDrag() {
     const wrap = e.target.closest('.doll-wrap');
     if (!wrap) return;
     e.preventDefault();
-    onStart(wrap, e.clientX, e.clientY);
+    onStart(wrap, e.clientX, e.clientY, e.target);
   });
   document.addEventListener('mousemove', e => onMove(e.clientX, e.clientY));
   document.addEventListener('mouseup', () => onEnd());
@@ -2087,7 +2256,7 @@ function initDollDrag() {
     const wrap = e.target.closest('.doll-wrap');
     if (!wrap) return;
     e.preventDefault();
-    onStart(wrap, e.touches[0].clientX, e.touches[0].clientY);
+    onStart(wrap, e.touches[0].clientX, e.touches[0].clientY, e.target);
   }, { passive: false });
 
   document.addEventListener('touchmove', e => {
@@ -2270,6 +2439,11 @@ function buildPanel() {
           flipField: 'tattooFlip',
           items: Object.keys(TATTOOS).map(k => ({ value: k, label: k.replace(/_/g, ' ') })),
         },
+        {
+          label: '🐾 Mascota', cat: 'pet', type: 'pet',
+          scaleField: 'petScale',
+          items: Object.keys(PETS).map(k => ({ value: k, label: k })),
+        },
       ],
     },
   ];
@@ -2384,6 +2558,128 @@ function buildPanel() {
         return; // gender subsection done
       }
 
+      // Special type: pet picker (toggle chips + position + outfit + scale)
+      if (sub.type === 'pet') {
+        const petTypes = [
+          { key: 'rat', emoji: '🐀', label: 'Rata' },
+          { key: 'toad', emoji: '🐸', label: 'Sapo' },
+          { key: 'cat', emoji: '🐱', label: 'Gato' },
+        ];
+        const petGrid = document.createElement('div');
+        petGrid.className = 'item-grid pet-type-grid';
+        petTypes.forEach(pt => {
+          const chip = document.createElement('div');
+          chip.className = 'item-chip pet-type-chip' + (doll.pet === pt.key ? ' equipped' : '');
+          chip.dataset.category = 'pet';
+          chip.dataset.value = pt.key;
+          const previewSvg = buildPreviewSvg('pet', pt.key, doll);
+          chip.innerHTML = `${previewSvg}<span>${pt.emoji} ${pt.label}</span>`;
+          chip.addEventListener('click', () => {
+            // Toggle off if same pet
+            if (doll.pet === pt.key) {
+              doll.pet = null;
+              doll.petOutfit = null;
+              doll.petPosition = 'floor';
+              doll.petScale = 0;
+            } else {
+              doll.pet = pt.key;
+            }
+            saveCollection();
+            renderAll();
+            // Rebuild panel to show/hide pet options
+            document.querySelector('.panel-left').innerHTML = '';
+            buildPanel();
+          });
+          petGrid.appendChild(chip);
+        });
+        body.appendChild(petGrid);
+
+        // Show position/outfit/scale only if a pet is equipped
+        if (doll.pet) {
+          // Position chips
+          const posLabel = document.createElement('div');
+          posLabel.style.cssText = 'font-size:0.65rem;color:var(--text-muted);padding:4px 4px 2px;font-weight:600;';
+          posLabel.textContent = 'Posición';
+          body.appendChild(posLabel);
+          const posGrid = document.createElement('div');
+          posGrid.className = 'item-grid pet-position-chips';
+          const positions = [
+            { key: 'floor', label: 'Suelo' },
+            { key: 'righthand', label: 'Mano der.' },
+            { key: 'lefthand', label: 'Mano izq.' },
+            { key: 'leash', label: 'Correa' },
+          ];
+          positions.forEach(pos => {
+            const chip = document.createElement('div');
+            chip.className = 'item-chip pet-pos-chip' + ((doll.petPosition || 'floor') === pos.key ? ' equipped' : '');
+            chip.innerHTML = `<span>${pos.label}</span>`;
+            chip.addEventListener('click', () => {
+              doll.petPosition = pos.key;
+              posGrid.querySelectorAll('.pet-pos-chip').forEach(c => c.classList.remove('equipped'));
+              chip.classList.add('equipped');
+              saveCollection();
+              renderAll();
+            });
+            posGrid.appendChild(chip);
+          });
+          body.appendChild(posGrid);
+
+          // Outfit chips
+          const outfitLabel = document.createElement('div');
+          outfitLabel.style.cssText = 'font-size:0.65rem;color:var(--text-muted);padding:4px 4px 2px;font-weight:600;';
+          outfitLabel.textContent = 'Traje';
+          body.appendChild(outfitLabel);
+          const outfitGrid = document.createElement('div');
+          outfitGrid.className = 'item-grid pet-outfit-chips';
+          const outfits = [
+            { key: null, label: '✕ Ninguno' },
+            { key: 'gryffindor', label: 'Gryffindor' },
+            { key: 'slytherin', label: 'Slytherin' },
+            { key: 'ravenclaw', label: 'Ravenclaw' },
+            { key: 'hufflepuff', label: 'Hufflepuff' },
+          ];
+          outfits.forEach(o => {
+            const chip = document.createElement('div');
+            chip.className = 'item-chip pet-outfit-chip' + (doll.petOutfit === o.key ? ' equipped' : '');
+            const colorDot = o.key && HP_HOUSES[o.key]
+              ? `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${HP_HOUSES[o.key].c1};border:1px solid ${HP_HOUSES[o.key].c2};margin-right:3px;vertical-align:middle;"></span>`
+              : '';
+            chip.innerHTML = `${colorDot}<span>${o.label}</span>`;
+            chip.addEventListener('click', () => {
+              doll.petOutfit = o.key;
+              outfitGrid.querySelectorAll('.pet-outfit-chip').forEach(c => c.classList.remove('equipped'));
+              chip.classList.add('equipped');
+              saveCollection();
+              renderAll();
+            });
+            outfitGrid.appendChild(chip);
+          });
+          body.appendChild(outfitGrid);
+
+          // Pet scale slider
+          const curPetScale = doll.petScale || 0;
+          const petScaleRow = document.createElement('div');
+          petScaleRow.className = 'scale-row';
+          petScaleRow.innerHTML = `
+            <span class="scale-icon">🔍</span>
+            <label>Tamaño</label>
+            <input type="range" min="-50" max="50" step="1" value="${curPetScale}" id="scl-pet"/>
+            <span class="scale-val" id="scl-val-pet">${curPetScale > 0 ? '+' : ''}${curPetScale}%</span>`;
+          const petScaleInp = petScaleRow.querySelector('input');
+          const petScaleLbl = petScaleRow.querySelector('.scale-val');
+          petScaleInp.addEventListener('input', e => {
+            const v = parseInt(e.target.value, 10);
+            doll.petScale = v;
+            petScaleLbl.textContent = `${v > 0 ? '+' : ''}${v}%`;
+            saveCollection();
+            renderActiveDoll();
+          });
+          body.appendChild(petScaleRow);
+        }
+
+        return; // pet subsection done
+      }
+
       // Item grid (standard chips with hover preview)
       const grid = document.createElement('div');
       grid.className = 'item-grid';
@@ -2392,7 +2688,7 @@ function buildPanel() {
         hair: 'hair', top: 'top', bottom: 'bottom', shoes: 'shoes',
         hat: 'hat', cape: 'cape', glasses: 'glasses', belt: 'belt',
         scarf: 'scarf', scarf2: 'scarf2', wand: 'wand', lefthand: 'lefthand',
-        broom: 'broom', tattoo: 'tattoo',
+        broom: 'broom', tattoo: 'tattoo', pet: 'pet',
       };
       const dollField = FIELD_MAP[sub.cat];
 
@@ -2694,6 +2990,12 @@ function buildPreviewSvg(cat, value, d) {
       inner = `<svg viewBox="80 100 80 80" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
       return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
     }
+    case 'pet': {
+      const fn = PETS[value];
+      inner = fn ? fn(null) : '';
+      inner = `<svg viewBox="-20 -20 40 40" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+      return `<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">${inner}</div>`;
+    }
     default:
       return `<div style="width:44px;height:44px;background:var(--surface2);border-radius:8px;"></div>`;
   }
@@ -2702,6 +3004,255 @@ function buildPreviewSvg(cat, value, d) {
 }
 
 function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+/* ---------- AUDIO MANAGER ---------- */
+const AudioManager = {
+  ctx: null,
+  bgGain: null,
+  sfxGain: null,
+  currentBg: null,
+  bgSources: [],
+
+  init() {
+    if (this.ctx) return;
+    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    this.bgGain = this.ctx.createGain();
+    this.bgGain.gain.value = 0.3;
+    this.bgGain.connect(this.ctx.destination);
+    this.sfxGain = this.ctx.createGain();
+    this.sfxGain.gain.value = 0.5;
+    this.sfxGain.connect(this.ctx.destination);
+  },
+
+  playAnimalSound(petKey) {
+    this.init();
+    switch (petKey) {
+      case 'rat': this.synthRat(); break;
+      case 'toad': this.synthToad(); break;
+      case 'cat': this.synthCat(); break;
+    }
+  },
+
+  synthRat() {
+    // High-frequency squeak
+    const ctx = this.ctx;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(2800, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(4200, ctx.currentTime + 0.08);
+    osc.frequency.exponentialRampToValueAtTime(3000, ctx.currentTime + 0.15);
+    gain.gain.setValueAtTime(0.4, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+    osc.connect(gain);
+    gain.connect(this.sfxGain);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.2);
+    // Second squeak
+    const osc2 = ctx.createOscillator();
+    const gain2 = ctx.createGain();
+    osc2.type = 'sine';
+    osc2.frequency.setValueAtTime(3200, ctx.currentTime + 0.22);
+    osc2.frequency.exponentialRampToValueAtTime(4500, ctx.currentTime + 0.30);
+    osc2.frequency.exponentialRampToValueAtTime(3400, ctx.currentTime + 0.38);
+    gain2.gain.setValueAtTime(0, ctx.currentTime);
+    gain2.gain.setValueAtTime(0.35, ctx.currentTime + 0.22);
+    gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.42);
+    osc2.connect(gain2);
+    gain2.connect(this.sfxGain);
+    osc2.start(ctx.currentTime + 0.22);
+    osc2.stop(ctx.currentTime + 0.42);
+  },
+
+  synthToad() {
+    // Low-frequency croak
+    const ctx = this.ctx;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(120, ctx.currentTime);
+    osc.frequency.linearRampToValueAtTime(80, ctx.currentTime + 0.3);
+    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain.gain.setValueAtTime(0.35, ctx.currentTime + 0.1);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+    osc.connect(gain);
+    gain.connect(this.sfxGain);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.4);
+    // Second croak
+    const osc2 = ctx.createOscillator();
+    const gain2 = ctx.createGain();
+    osc2.type = 'sawtooth';
+    osc2.frequency.setValueAtTime(100, ctx.currentTime + 0.5);
+    osc2.frequency.linearRampToValueAtTime(70, ctx.currentTime + 0.8);
+    gain2.gain.setValueAtTime(0, ctx.currentTime);
+    gain2.gain.setValueAtTime(0.3, ctx.currentTime + 0.5);
+    gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.9);
+    osc2.connect(gain2);
+    gain2.connect(this.sfxGain);
+    osc2.start(ctx.currentTime + 0.5);
+    osc2.stop(ctx.currentTime + 0.9);
+  },
+
+  synthCat() {
+    // Meow: frequency sweep
+    const ctx = this.ctx;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(500, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(900, ctx.currentTime + 0.15);
+    osc.frequency.exponentialRampToValueAtTime(700, ctx.currentTime + 0.35);
+    osc.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.55);
+    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain.gain.setValueAtTime(0.4, ctx.currentTime + 0.15);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6);
+    osc.connect(gain);
+    gain.connect(this.sfxGain);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.6);
+    // Add slight vibrato with second oscillator
+    const vib = ctx.createOscillator();
+    const vibGain = ctx.createGain();
+    vib.type = 'sine';
+    vib.frequency.value = 6;
+    vibGain.gain.value = 30;
+    vib.connect(vibGain);
+    vibGain.connect(osc.frequency);
+    vib.start(ctx.currentTime);
+    vib.stop(ctx.currentTime + 0.6);
+  },
+
+  // Hedwig's Theme: B4 E5 G5 F#5 E5 B5 A5 F#5 E5 G5 F#5 D#5 F5 B4
+  // Triangle oscillator, celesta-like, ~350-500ms per note, loops
+  synthHPTheme() {
+    const ctx = this.ctx;
+    // Note frequencies
+    const notes = [
+      493.88, // B4
+      659.25, // E5
+      783.99, // G5
+      739.99, // F#5
+      659.25, // E5
+      987.77, // B5
+      880.00, // A5
+      739.99, // F#5
+      659.25, // E5
+      783.99, // G5
+      739.99, // F#5
+      622.25, // D#5
+      698.46, // F5
+      493.88, // B4
+    ];
+    const durations = [
+      0.4, 0.6, 0.35, 0.35, 0.6, 0.4, 0.8, 0.8,
+      0.6, 0.35, 0.35, 0.6, 0.35, 1.0,
+    ];
+    const totalDuration = durations.reduce((a, b) => a + b, 0);
+
+    const playLoop = () => {
+      if (this.currentBg !== 'great_hall') return;
+      let t = ctx.currentTime;
+      const sources = [];
+      notes.forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.value = freq;
+        // Celesta-like envelope: quick attack, sustain, soft release
+        gain.gain.setValueAtTime(0, t);
+        gain.gain.linearRampToValueAtTime(0.25, t + 0.03);
+        gain.gain.setValueAtTime(0.2, t + durations[i] * 0.6);
+        gain.gain.exponentialRampToValueAtTime(0.01, t + durations[i] - 0.02);
+        osc.connect(gain);
+        gain.connect(this.bgGain);
+        osc.start(t);
+        osc.stop(t + durations[i]);
+        sources.push(osc);
+        t += durations[i];
+      });
+      this.bgSources = sources;
+      // Schedule next loop
+      this._bgTimer = setTimeout(() => playLoop(), totalDuration * 1000 + 200);
+    };
+    playLoop();
+  },
+
+  synthStadium() {
+    const ctx = this.ctx;
+    // Whistle: 2500Hz with vibrato, 0.5s
+    const whistle = ctx.createOscillator();
+    const wGain = ctx.createGain();
+    whistle.type = 'sine';
+    whistle.frequency.value = 2500;
+    const vibrato = ctx.createOscillator();
+    const vibGain = ctx.createGain();
+    vibrato.type = 'sine';
+    vibrato.frequency.value = 8;
+    vibGain.gain.value = 80;
+    vibrato.connect(vibGain);
+    vibGain.connect(whistle.frequency);
+    wGain.gain.setValueAtTime(0.3, ctx.currentTime);
+    wGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+    whistle.connect(wGain);
+    wGain.connect(this.sfxGain);
+    whistle.start(ctx.currentTime);
+    whistle.stop(ctx.currentTime + 0.5);
+    vibrato.start(ctx.currentTime);
+    vibrato.stop(ctx.currentTime + 0.5);
+
+    // Crowd burst: white noise through bandpass filter
+    const bufferSize = ctx.sampleRate * 1.5;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+    const noise = ctx.createBufferSource();
+    noise.buffer = buffer;
+    const bandpass = ctx.createBiquadFilter();
+    bandpass.type = 'bandpass';
+    bandpass.frequency.value = 1000;
+    bandpass.Q.value = 0.5;
+    const nGain = ctx.createGain();
+    nGain.gain.setValueAtTime(0, ctx.currentTime);
+    nGain.gain.linearRampToValueAtTime(0.2, ctx.currentTime + 0.3);
+    nGain.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 0.8);
+    nGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.5);
+    noise.connect(bandpass);
+    bandpass.connect(nGain);
+    nGain.connect(this.sfxGain);
+    noise.start(ctx.currentTime);
+    noise.stop(ctx.currentTime + 1.5);
+  },
+
+  playBgMusic(sceneKey) {
+    this.init();
+    if (this.currentBg === sceneKey) return; // already playing
+    this.stopBg();
+    this.currentBg = sceneKey;
+    switch (sceneKey) {
+      case 'great_hall':
+        this.synthHPTheme();
+        break;
+      case 'quidditch':
+        this.synthStadium();
+        this.currentBg = null; // one-shot, not looping
+        break;
+    }
+  },
+
+  stopBg() {
+    this.currentBg = null;
+    if (this._bgTimer) { clearTimeout(this._bgTimer); this._bgTimer = null; }
+    this.bgSources.forEach(s => { try { s.stop(); } catch (_) {} });
+    this.bgSources = [];
+    if (this.bgGain) {
+      this.bgGain.gain.linearRampToValueAtTime(0.01, (this.ctx ? this.ctx.currentTime : 0) + 0.3);
+      setTimeout(() => { if (this.bgGain) this.bgGain.gain.value = 0.3; }, 400);
+    }
+  },
+};
 
 /* ---------- INIT ---------- */
 // ===== EXPORT PNG (individual doll) =====
@@ -3059,6 +3610,7 @@ document.addEventListener('DOMContentLoaded', () => {
     noneChip.innerHTML = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="340" fill="#1a2a4a"/><text x="120" y="175" text-anchor="middle" font-size="40" fill="rgba(255,255,255,0.2)">✕</text></svg><span>Ninguna</span>`;
     noneChip.addEventListener('click', () => {
       sceneState.bgScene = null;
+      AudioManager.stopBg();
       saveCollection();
       renderAll();
     });
@@ -3082,6 +3634,12 @@ document.addEventListener('DOMContentLoaded', () => {
       chip.innerHTML = `${miniSvg}<span>${SCENE_LABELS[key] || key}</span>`;
       chip.addEventListener('click', () => {
         sceneState.bgScene = key;
+        // Trigger background music for scene
+        if (key === 'great_hall' || key === 'quidditch') {
+          AudioManager.playBgMusic(key);
+        } else {
+          AudioManager.stopBg();
+        }
         saveCollection();
         renderAll();
       });

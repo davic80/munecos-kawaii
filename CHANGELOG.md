@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.12.0] - 2026-03-25
+
+### Added
+- **Mascotas (rata, sapo, gato).** Nuevo sistema de mascotas con 3 animales kawaii en SVG. Cada mascota se puede equipar en 4 posiciones: suelo, mano derecha, mano izquierda y correa. Incluye trajes de las 4 casas de Hogwarts (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) con rayas en los colores de la casa. Control de tamaño con slider -50%..+50%
+- **Conflictos de mano inteligentes.** La mascota en "mano derecha" oculta la varita automáticamente; en "mano izquierda" o "correa" oculta el objeto de mano izquierda (datos sin tocar, solo render)
+- **Correa con línea curva.** La posición "correa" dibuja una línea curva discontinua desde la mano izquierda hasta la mascota
+- **Audio sintetizado (Web Audio API, cero archivos).** `AudioManager` global con sintetizador de sonidos de animales (squeak para rata, croak para sapo, meow para gato) al hacer clic en la mascota en escena
+- **Hedwig's Theme sintetizado.** Melodía del tema de Hedwig con oscilador triangular estilo celesta que se reproduce en loop al seleccionar la escena "Gran Comedor"
+- **Efecto de estadio.** Silbato con vibrato + ráfaga de ruido de multitud (ruido blanco filtrado) al seleccionar la escena "Quidditch"
+- **Panel de mascota completo.** Subsección especial en "Harry Potter & Extras" con selección de animal, posición, traje de casa y slider de tamaño. Se muestra/oculta dinámicamente según si hay mascota equipada
+
+---
+
 ## [1.11.1] - 2026-03-25
 
 ### Changed

@@ -659,6 +659,17 @@ header h1 {
 .left-swatch:hover { border-color: var(--accent2); transform: scale(1.15); }
 .left-swatch.active { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
 
+/* ===== PET CHIPS ===== */
+.pet-type-grid, .pet-position-chips, .pet-outfit-chips {
+  gap: 4px !important;
+}
+.pet-pos-chip, .pet-outfit-chip {
+  font-size: 0.65rem !important;
+  padding: 4px 6px !important;
+  min-width: 0 !important;
+}
+.pet-type-chip { min-width: 60px !important; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 700px) {
   :root { --panel-w: 200px; }
