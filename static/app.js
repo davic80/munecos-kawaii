@@ -1997,9 +1997,23 @@ function initDragDrop() {
 function initDollDrag() {
   const area = document.querySelector('.canvas-area');
   if (!area) return;
+  const trashZone = document.getElementById('scene-trash-zone');
 
   let dragging = false, dragWrap = null, startX, startY, origLeft, origTop;
   let didMove = false; // distinguish click from drag
+
+  // Click on canvas background → deselect active doll visually
+  area.addEventListener('click', e => {
+    if (!e.target.closest('.doll-wrap')) {
+      document.querySelectorAll('.doll-wrap.active-doll').forEach(w => w.classList.remove('active-doll'));
+    }
+  });
+
+  const isOverTrash = (wrapTop) => {
+    const aH = area.clientHeight;
+    // doll bottom = wrapTop + 340; trash zone occupies bottom 60px
+    return (wrapTop + 340) > (aH - 30);
+  };
 
   const onStart = (wrap, cx, cy) => {
     dragging = true;
@@ -2014,6 +2028,8 @@ function initDollDrag() {
     if (idx !== activeSlot) {
       switchSlot(idx);
     }
+    // Show trash zone
+    if (trashZone) trashZone.classList.add('visible');
   };
 
   const onMove = (cx, cy) => {
@@ -2026,13 +2042,26 @@ function initDollDrag() {
     const newTop  = Math.max(-170, Math.min(aH - 170, origTop  + dy));
     dragWrap.style.left = newLeft + 'px';
     dragWrap.style.top  = newTop  + 'px';
+    // Trash zone hover feedback
+    if (trashZone) trashZone.classList.toggle('hover', isOverTrash(newTop));
   };
 
   const onEnd = () => {
     if (!dragging || !dragWrap) return;
     dragging = false;
     dragWrap.classList.remove('grabbing');
-    if (didMove) {
+    const wrapTop = dragWrap.offsetTop;
+    if (trashZone) { trashZone.classList.remove('visible'); trashZone.classList.remove('hover'); }
+
+    if (didMove && isOverTrash(wrapTop)) {
+      // Remove doll from scene
+      const idx = parseInt(dragWrap.dataset.slot, 10);
+      collection[idx].inScene = false;
+      collection[idx].dollX = null;
+      collection[idx].dollY = null;
+      saveCollection();
+      renderAll();
+    } else if (didMove) {
       const idx = parseInt(dragWrap.dataset.slot, 10);
       collection[idx].dollX = dragWrap.offsetLeft;
       collection[idx].dollY = dragWrap.offsetTop;
@@ -2684,7 +2713,7 @@ function exportPng() {
   // Find the active doll's SVG
   const wrap = document.querySelector(`.doll-wrap[data-slot="${activeSlot}"] .doll-layers svg`);
   if (!wrap) {
-    btn.textContent = 'Guardar PNG';
+    btn.textContent = '🧍 Guardar';
     btn.disabled = false;
     return;
   }
@@ -2723,12 +2752,12 @@ function exportPng() {
       URL.revokeObjectURL(a.href);
       btn.textContent = 'Descargado!';
       btn.disabled = false;
-      setTimeout(() => btn.textContent = 'Guardar PNG', 2000);
+      setTimeout(() => btn.textContent = '🧍 Guardar', 2000);
     }, 'image/png');
   };
   img.onerror = () => {
     URL.revokeObjectURL(url);
-    btn.textContent = 'Guardar PNG';
+    btn.textContent = '🧍 Guardar';
     btn.disabled = false;
   };
   img.src = url;
@@ -2741,7 +2770,7 @@ function exportScenePng() {
   btn.disabled = true;
 
   const area = document.querySelector('.canvas-area');
-  if (!area) { btn.textContent = 'Escena PNG'; btn.disabled = false; return; }
+  if (!area) { btn.textContent = '🌅 Escena'; btn.disabled = false; return; }
 
   const aW = area.clientWidth;
   const aH = area.clientHeight;
@@ -2848,7 +2877,7 @@ function finishSceneExport(canvas, btn) {
     URL.revokeObjectURL(a.href);
     btn.textContent = 'Descargado!';
     btn.disabled = false;
-    setTimeout(() => btn.textContent = 'Escena PNG', 2000);
+    setTimeout(() => btn.textContent = '🌅 Escena', 2000);
   }, 'image/png');
 }
 
@@ -2913,6 +2942,7 @@ function loadFromHash() {
 
 document.addEventListener('DOMContentLoaded', () => {
   // Build slot tabs (draggable to canvas)
+  let draggingSlotIdx = null;
   const slotsEl = document.getElementById('slots');
   collection.forEach((_, i) => {
     const tab = document.createElement('div');
@@ -2922,11 +2952,12 @@ document.addEventListener('DOMContentLoaded', () => {
     tab.innerHTML = `<div class="slot-mini-svg"></div><span class="slot-name"></span>`;
     tab.addEventListener('click', () => switchSlot(i));
     tab.addEventListener('dragstart', e => {
+      draggingSlotIdx = i;
       e.dataTransfer.setData('text/plain', `slot:${i}`);
-      e.dataTransfer.effectAllowed = 'copy';
+      e.dataTransfer.effectAllowed = collection[i].inScene ? 'none' : 'copy';
       tab.classList.add('dragging');
     });
-    tab.addEventListener('dragend', () => tab.classList.remove('dragging'));
+    tab.addEventListener('dragend', () => { tab.classList.remove('dragging'); draggingSlotIdx = null; });
     slotsEl.appendChild(tab);
   });
 
@@ -2935,12 +2966,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const dropHint = document.getElementById('scene-drop-hint');
   canvasArea.addEventListener('dragover', e => {
     const dt = e.dataTransfer;
-    // Only accept slot drags (not item-chip drags)
-    if (dt.types.includes('text/plain')) {
-      e.preventDefault();
-      dt.dropEffect = 'copy';
-      if (dropHint) dropHint.classList.add('visible');
+    if (!dt.types.includes('text/plain')) return;
+    // If dragging a slot tab that is already in scene → prohibited
+    if (draggingSlotIdx !== null && collection[draggingSlotIdx].inScene) {
+      dt.dropEffect = 'none';
+      return; // don't preventDefault → browser shows prohibited cursor
     }
+    e.preventDefault();
+    dt.dropEffect = 'copy';
+    if (dropHint) dropHint.classList.add('visible');
   });
   canvasArea.addEventListener('dragleave', e => {
     if (!e.relatedTarget || !canvasArea.contains(e.relatedTarget)) {

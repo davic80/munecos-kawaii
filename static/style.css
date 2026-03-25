@@ -435,6 +435,33 @@ header h1 {
   opacity: 1;
 }
 
+/* ===== TRASH ZONE (remove doll from scene) ===== */
+.scene-trash-zone {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ff6b6b;
+  background: rgba(255, 50, 50, 0.06);
+  border-top: 2px dashed rgba(255, 50, 50, 0.25);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s, border-color 0.2s;
+  z-index: 10;
+}
+.scene-trash-zone.visible {
+  opacity: 1;
+}
+.scene-trash-zone.hover {
+  background: rgba(255, 50, 50, 0.18);
+  border-color: #ff4444;
+  color: #ff4444;
+}
+
 .doll-wrap.drag-over::after {
   content: 'Suelta aquí';
   position: absolute;

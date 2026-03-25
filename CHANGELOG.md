@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.11.1] - 2026-03-25
+
+### Changed
+- **Botones con emojis.** "Guardar PNG" → "🧍 Guardar", "Escena PNG" → "🌅 Escena" para mayor claridad visual
+- **Cursor prohibido al arrastrar muñeco ya en escena.** Arrastrar una pestaña de slot que ya está en el canvas muestra cursor de prohibido en lugar de `+`, y no se muestra el hint de drop
+
+### Added
+- **Deseleccionar muñeco.** Clic en el fondo del canvas (fuera de cualquier muñeco) elimina visualmente la selección (contorno rojo). Los paneles siguen mostrando el último muñeco editado
+- **Papelera al arrastrar.** Al arrastrar un muñeco en la escena aparece una zona roja en la parte inferior del canvas ("🗑️ Quitar de escena"). Soltar el muñeco sobre ella lo elimina de la escena
+
+---
+
 ## [1.11.0] - 2026-03-25
 
 ### Added
