@@ -1371,6 +1371,101 @@ const HAIR = {
       <rect x="223" y="0" width="8" height="20" fill="rgba(160,130,40,0.7)"/>`,
     groundH: 80,
   },
+
+  /* ===== GENERIC SCENES ===== */
+  park: {
+    label: 'Parque',
+    svgSky: `
+      <rect x="0" y="0" width="240" height="340" fill="#87CEEB"/>
+      <rect x="0" y="0" width="240" height="80" fill="rgba(100,180,255,0.15)"/>
+      <!-- Clouds -->
+      <ellipse cx="60" cy="40" rx="30" ry="14" fill="rgba(255,255,255,0.9)"/>
+      <ellipse cx="80" cy="34" rx="24" ry="12" fill="rgba(255,255,255,0.92)"/>
+      <ellipse cx="44" cy="46" rx="18" ry="10" fill="rgba(255,255,255,0.8)"/>
+      <ellipse cx="180" cy="50" rx="28" ry="12" fill="rgba(255,255,255,0.85)"/>
+      <ellipse cx="196" cy="44" rx="20" ry="10" fill="rgba(255,255,255,0.9)"/>
+      <!-- Sun -->
+      <circle cx="200" cy="60" r="20" fill="rgba(255,230,80,0.9)"/>
+      <circle cx="200" cy="60" r="14" fill="rgba(255,245,120,0.95)"/>
+      <!-- Tree left -->
+      <rect x="30" y="200" width="10" height="60" fill="#6d4c21"/>
+      <ellipse cx="35" cy="190" rx="28" ry="36" fill="#3a8c3a"/>
+      <ellipse cx="28" cy="198" rx="20" ry="28" fill="#2e7d32"/>
+      <ellipse cx="45" cy="196" rx="22" ry="30" fill="#43a047"/>
+      <!-- Tree right -->
+      <rect x="195" y="210" width="8" height="50" fill="#6d4c21"/>
+      <ellipse cx="199" cy="202" rx="24" ry="32" fill="#3a8c3a"/>
+      <ellipse cx="192" cy="208" rx="18" ry="24" fill="#2e7d32"/>
+      <ellipse cx="208" cy="206" rx="20" ry="26" fill="#43a047"/>
+      <!-- Bench -->
+      <rect x="90" y="268" width="60" height="6" rx="2" fill="#8d6e4a"/>
+      <rect x="94" y="274" width="4" height="16" fill="#6d4c21"/>
+      <rect x="142" y="274" width="4" height="16" fill="#6d4c21"/>
+      <rect x="88" y="260" width="4" height="12" fill="#6d4c21"/>
+      <rect x="148" y="260" width="4" height="12" fill="#6d4c21"/>
+      <rect x="88" y="258" width="64" height="4" rx="2" fill="#a07850"/>`,
+    svgGround: `
+      <rect x="0" y="0" width="240" height="80" fill="#4CAF50"/>
+      <rect x="0" y="0" width="240" height="20" fill="rgba(60,140,60,0.5)"/>
+      <!-- Path -->
+      <path d="M100,0 Q120,40 140,80 L100,80 Q80,40 60,0 Z" fill="rgba(180,160,120,0.6)"/>
+      <!-- Flowers -->
+      <circle cx="20" cy="30" r="3" fill="#ff6b6b"/>
+      <circle cx="25" cy="28" r="2.5" fill="#ffd93d"/>
+      <circle cx="70" cy="50" r="3" fill="#ff6b6b"/>
+      <circle cx="170" cy="25" r="2.5" fill="#c084fc"/>
+      <circle cx="210" cy="45" r="3" fill="#ffd93d"/>
+      <circle cx="215" cy="60" r="2.5" fill="#ff6b6b"/>`,
+    groundH: 80,
+  },
+
+  sunset_beach: {
+    label: 'Playa',
+    svgSky: `
+      <!-- Gradient sunset sky -->
+      <defs>
+        <linearGradient id="sunset-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a0533"/>
+          <stop offset="25%" stop-color="#6b2fa0"/>
+          <stop offset="50%" stop-color="#e8653a"/>
+          <stop offset="75%" stop-color="#f4a636"/>
+          <stop offset="100%" stop-color="#f7d26b"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="240" height="340" fill="url(#sunset-grad)"/>
+      <!-- Sun setting at horizon -->
+      <circle cx="120" cy="250" r="30" fill="rgba(255,180,50,0.9)"/>
+      <circle cx="120" cy="250" r="22" fill="rgba(255,220,80,0.95)"/>
+      <!-- Sun reflection on water -->
+      <rect x="105" y="260" width="30" height="2" rx="1" fill="rgba(255,200,60,0.4)"/>
+      <rect x="100" y="265" width="40" height="1.5" rx="1" fill="rgba(255,200,60,0.3)"/>
+      <rect x="95" y="270" width="50" height="1.5" rx="1" fill="rgba(255,200,60,0.2)"/>
+      <rect x="90" y="275" width="60" height="1" rx="1" fill="rgba(255,200,60,0.15)"/>
+      <!-- Clouds -->
+      <ellipse cx="50" cy="100" rx="32" ry="10" fill="rgba(255,160,80,0.4)"/>
+      <ellipse cx="190" cy="80" rx="26" ry="8" fill="rgba(255,140,60,0.35)"/>
+      <ellipse cx="140" cy="120" rx="20" ry="6" fill="rgba(255,180,100,0.3)"/>
+      <!-- Palm tree left -->
+      <path d="M40,290 Q42,250 38,210" fill="none" stroke="#4a3520" stroke-width="6" stroke-linecap="round"/>
+      <path d="M38,215 Q15,200 5,220" fill="none" stroke="#2e7d32" stroke-width="5" stroke-linecap="round"/>
+      <path d="M38,210 Q55,195 70,210" fill="none" stroke="#388e3c" stroke-width="5" stroke-linecap="round"/>
+      <path d="M38,212 Q25,190 10,195" fill="none" stroke="#43a047" stroke-width="4" stroke-linecap="round"/>
+      <path d="M38,212 Q50,188 65,192" fill="none" stroke="#2e7d32" stroke-width="4" stroke-linecap="round"/>
+      <!-- Water line -->
+      <rect x="0" y="260" width="240" height="40" fill="rgba(20,80,140,0.4)"/>
+      <path d="M0,262 Q30,258 60,262 Q90,266 120,262 Q150,258 180,262 Q210,266 240,262" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>`,
+    svgGround: `
+      <!-- Sandy beach -->
+      <rect x="0" y="0" width="240" height="80" fill="#e8c67a"/>
+      <rect x="0" y="0" width="240" height="10" fill="rgba(200,170,100,0.5)"/>
+      <!-- Wet sand near water -->
+      <rect x="0" y="0" width="240" height="15" fill="rgba(180,150,80,0.4)"/>
+      <!-- Shells/details -->
+      <ellipse cx="60" cy="40" rx="4" ry="3" fill="rgba(255,240,210,0.6)" transform="rotate(-15,60,40)"/>
+      <ellipse cx="170" cy="55" rx="3" ry="2" fill="rgba(255,230,200,0.5)" transform="rotate(20,170,55)"/>
+      <circle cx="130" cy="35" r="2" fill="rgba(200,180,150,0.5)"/>`,
+    groundH: 80,
+  },
 };
 
 /* ---------- COLOR HELPERS ---------- */
@@ -1484,33 +1579,85 @@ const SCENE_BG = {
   forbidden_forest: '#0a1a0a',
   platform_934:     '#b0b8c8',
   quidditch:        '#4a9fd4',
+  park:             '#87CEEB',
+  sunset_beach:     '#1a0533',
 };
 
 /* ---------- DOLL POSITION ---------- */
-function applyDollPosition() {
-  const wrap = document.getElementById('doll-wrap');
+function getDefaultDollPos(slotIdx) {
   const area = document.querySelector('.canvas-area');
-  if (!wrap || !area) return;
+  if (!area) return { x: 0, y: 0 };
   const aW = area.clientWidth;
   const aH = area.clientHeight;
   const dW = 240, dH = 340;
-  const defaultX = (aW - dW) / 2;
-  const defaultY = aH * 0.8 - dH;
-  const x = (doll.dollX !== null && doll.dollX !== undefined) ? doll.dollX : defaultX;
-  const y = (doll.dollY !== null && doll.dollY !== undefined) ? doll.dollY : defaultY;
-  wrap.style.left = x + 'px';
-  wrap.style.top  = y + 'px';
+  // Spread dolls across the canvas: slot 0 at 20%, 1 at 40%, 2 at 60%, 3 at 80%
+  const count = collection.filter(d => d.inScene).length || 1;
+  const inSceneIdxs = collection.map((d, i) => d.inScene ? i : -1).filter(i => i >= 0);
+  const posInScene = inSceneIdxs.indexOf(slotIdx);
+  const spacing = aW / (count + 1);
+  const x = spacing * (posInScene + 1) - dW / 2;
+  const y = aH * 0.8 - dH;
+  return { x, y };
 }
 
-/* ---------- BACKGROUND SCENE LAYER ---------- */function renderBgScene(d) {
+function renderSceneDolls() {
+  const container = document.getElementById('scene-dolls');
+  if (!container) return;
+
+  // Ensure a doll-wrap exists for each slot that is inScene
+  collection.forEach((d, i) => {
+    let wrap = container.querySelector(`.doll-wrap[data-slot="${i}"]`);
+    if (d.inScene) {
+      if (!wrap) {
+        wrap = document.createElement('div');
+        wrap.className = 'doll-wrap';
+        wrap.dataset.slot = i;
+        wrap.innerHTML = `<div class="doll-layers"></div><div class="doll-name-tag"></div>`;
+        container.appendChild(wrap);
+      }
+      // Render doll SVG into its layer
+      const layers = wrap.querySelector('.doll-layers');
+      renderDoll(layers, d);
+      // Position
+      const pos = getDefaultDollPos(i);
+      const x = (d.dollX !== null && d.dollX !== undefined) ? d.dollX : pos.x;
+      const y = (d.dollY !== null && d.dollY !== undefined) ? d.dollY : pos.y;
+      wrap.style.left = x + 'px';
+      wrap.style.top  = y + 'px';
+      // Active state
+      wrap.classList.toggle('active-doll', i === activeSlot);
+      // Name tag
+      const nameTag = wrap.querySelector('.doll-name-tag');
+      if (nameTag) nameTag.textContent = d.name || `Muñeco ${i + 1}`;
+    } else {
+      // Remove if exists but not in scene
+      if (wrap) wrap.remove();
+    }
+  });
+
+  // Remove any orphaned wraps
+  container.querySelectorAll('.doll-wrap').forEach(wrap => {
+    const idx = parseInt(wrap.dataset.slot, 10);
+    if (!collection[idx] || !collection[idx].inScene) wrap.remove();
+  });
+}
+
+/* Render just the active doll's SVG (for live slider/preview updates) */
+function renderActiveDoll() {
+  const wrap = document.querySelector(`#scene-dolls .doll-wrap[data-slot="${activeSlot}"] .doll-layers`);
+  if (wrap) renderDoll(wrap, doll);
+}
+
+/* ---------- BACKGROUND SCENE LAYER ---------- */
+function renderBgScene() {
   const el = document.getElementById('bg-scene-layer');
   if (!el) return;
-  if (!d.bgScene || !BG_SCENES[d.bgScene]) {
+  if (!sceneState.bgScene || !BG_SCENES[sceneState.bgScene]) {
     el.innerHTML = '';
     return;
   }
-  const scene = BG_SCENES[d.bgScene];
-  const bg    = SCENE_BG[d.bgScene] || '#1a2a4a';
+  const scene = BG_SCENES[sceneState.bgScene];
+  const bg    = SCENE_BG[sceneState.bgScene] || '#1a2a4a';
   const groundH = scene.groundH || 80;
   // Sky SVG: fills the full canvas anchored to the top (xMidYMin slice)
   // Ground SVG: fixed height at the bottom (xMidYMax meet), anchored to the bottom edge
@@ -1530,10 +1677,10 @@ function applyDollPosition() {
 
 function applyBgColor() {
   const canvasBg = document.querySelector('.canvas-bg');
-  if (doll.bgScene) {
+  if (sceneState.bgScene) {
     canvasBg.style.background = 'transparent';
   } else {
-    const bg = doll.bgColor || '#1a2a4a';
+    const bg = sceneState.bgColor || '#1a2a4a';
     canvasBg.style.background =
       `radial-gradient(ellipse at 50% 60%, ${bg} 0%, ${darken(bg, 20)} 100%)`;
   }
@@ -1541,7 +1688,20 @@ function applyBgColor() {
 
 /* ---------- STATE ---------- */
 const COLLECTION_KEY = 'munecos_kawaii_collection';
+const SCENE_STATE_KEY = 'munecos_kawaii_scene';
 const MAX_SLOTS = 4;
+
+function defaultSceneState() {
+  return { bgColor: '#1a2a4a', bgScene: null };
+}
+
+function loadSceneState() {
+  try {
+    const raw = localStorage.getItem(SCENE_STATE_KEY);
+    if (raw) return Object.assign(defaultSceneState(), JSON.parse(raw));
+  } catch (_) {}
+  return defaultSceneState();
+}
 
 function defaultDoll(idx) {
   return {
@@ -1591,6 +1751,8 @@ function defaultDoll(idx) {
     bgScene: null,
     // doll position in canvas (null = default: centered X, base at 90% height)
     dollX: null, dollY: null,
+    // whether this doll is placed in the shared scene
+    inScene: idx === 0,
   };
 }
 
@@ -1608,9 +1770,18 @@ function loadCollection() {
 
 function saveCollection() {
   localStorage.setItem(COLLECTION_KEY, JSON.stringify(collection));
+  localStorage.setItem(SCENE_STATE_KEY, JSON.stringify(sceneState));
 }
 
 let collection = loadCollection();
+let sceneState = loadSceneState();
+// Migrate: if first doll has bgColor/bgScene and sceneState doesn't, copy them over
+if (collection[0] && collection[0].bgColor && sceneState.bgColor === '#1a2a4a' && collection[0].bgColor !== '#1a2a4a') {
+  sceneState.bgColor = collection[0].bgColor;
+}
+if (collection[0] && collection[0].bgScene && !sceneState.bgScene) {
+  sceneState.bgScene = collection[0].bgScene;
+}
 let activeSlot = 0;
 let doll = collection[activeSlot];
 
@@ -1683,10 +1854,9 @@ function renderDoll(container, d) {
 }
 
 function renderAll() {
-  renderDoll(document.getElementById('doll-layers'), doll);
-  renderBgScene(doll);
+  renderSceneDolls();
+  renderBgScene();
   applyBgColor();
-  applyDollPosition();
   updateEquipped();
   updateSlotTabs();
   syncRightPanel();
@@ -1756,7 +1926,7 @@ function equipItem(category, value) {
 let dragData = null;
 
 function initDragDrop() {
-  const dollWrap = document.querySelector('.doll-wrap');
+  const sceneDolls = document.getElementById('scene-dolls');
 
   document.addEventListener('dragstart', e => {
     const chip = e.target.closest('.item-chip');
@@ -1772,89 +1942,123 @@ function initDragDrop() {
     dragData = null;
   });
 
-  dollWrap.addEventListener('dragover', e => {
+  sceneDolls.addEventListener('dragover', e => {
+    if (!dragData) return;
     e.preventDefault();
     e.dataTransfer.dropEffect = 'copy';
-    dollWrap.classList.add('drag-over');
+    // Highlight the closest doll-wrap
+    const wrap = e.target.closest('.doll-wrap');
+    sceneDolls.querySelectorAll('.doll-wrap').forEach(w => w.classList.remove('drag-over'));
+    if (wrap) wrap.classList.add('drag-over');
   });
 
-  dollWrap.addEventListener('dragleave', () => dollWrap.classList.remove('drag-over'));
+  sceneDolls.addEventListener('dragleave', e => {
+    if (!e.relatedTarget || !sceneDolls.contains(e.relatedTarget)) {
+      sceneDolls.querySelectorAll('.doll-wrap').forEach(w => w.classList.remove('drag-over'));
+    }
+  });
 
-  dollWrap.addEventListener('drop', e => {
+  sceneDolls.addEventListener('drop', e => {
     e.preventDefault();
-    dollWrap.classList.remove('drag-over');
+    sceneDolls.querySelectorAll('.doll-wrap').forEach(w => w.classList.remove('drag-over'));
     if (dragData) {
+      // Drop onto whichever doll wrap was targeted, or the active doll
+      const wrap = e.target.closest('.doll-wrap');
+      if (wrap) {
+        const idx = parseInt(wrap.dataset.slot, 10);
+        if (idx !== activeSlot) switchSlot(idx);
+      }
       equipItem(dragData.category, dragData.value);
       dragData = null;
     }
   });
 
-  // Touch support (mobile)
+  // Touch support for mobile
   let touchChip = null;
   document.addEventListener('touchstart', e => {
     const chip = e.target.closest('.item-chip');
     if (chip) touchChip = chip;
   }, { passive: true });
-
   document.addEventListener('touchend', e => {
     if (!touchChip) return;
     const touch = e.changedTouches[0];
     const el = document.elementFromPoint(touch.clientX, touch.clientY);
     if (el && el.closest('.doll-wrap')) {
+      const wrap = el.closest('.doll-wrap');
+      const idx = parseInt(wrap.dataset.slot, 10);
+      if (idx !== activeSlot) switchSlot(idx);
       equipItem(touchChip.dataset.category, touchChip.dataset.value);
     }
     touchChip = null;
   });
 }
 
-/* ---------- DOLL DRAG (move doll around canvas) ---------- */
+/* ---------- DOLL DRAG (move dolls around canvas + click to select) ---------- */
 function initDollDrag() {
-  const wrap = document.getElementById('doll-wrap');
   const area = document.querySelector('.canvas-area');
-  if (!wrap || !area) return;
+  if (!area) return;
 
-  let dragging = false, startX, startY, origLeft, origTop;
+  let dragging = false, dragWrap = null, startX, startY, origLeft, origTop;
+  let didMove = false; // distinguish click from drag
 
-  const onStart = (cx, cy) => {
+  const onStart = (wrap, cx, cy) => {
     dragging = true;
+    didMove = false;
+    dragWrap = wrap;
     startX = cx; startY = cy;
     origLeft = wrap.offsetLeft;
     origTop  = wrap.offsetTop;
     wrap.classList.add('grabbing');
+    // Select this doll
+    const idx = parseInt(wrap.dataset.slot, 10);
+    if (idx !== activeSlot) {
+      switchSlot(idx);
+    }
   };
 
   const onMove = (cx, cy) => {
-    if (!dragging) return;
+    if (!dragging || !dragWrap) return;
+    const dx = cx - startX, dy = cy - startY;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) didMove = true;
     const aW = area.clientWidth;
     const aH = area.clientHeight;
-    const newLeft = Math.max(-120, Math.min(aW - 120, origLeft + (cx - startX)));
-    const newTop  = Math.max(-170, Math.min(aH - 170, origTop  + (cy - startY)));
-    wrap.style.left = newLeft + 'px';
-    wrap.style.top  = newTop  + 'px';
+    const newLeft = Math.max(-120, Math.min(aW - 120, origLeft + dx));
+    const newTop  = Math.max(-170, Math.min(aH - 170, origTop  + dy));
+    dragWrap.style.left = newLeft + 'px';
+    dragWrap.style.top  = newTop  + 'px';
   };
 
   const onEnd = () => {
-    if (!dragging) return;
+    if (!dragging || !dragWrap) return;
     dragging = false;
-    wrap.classList.remove('grabbing');
-    doll.dollX = wrap.offsetLeft;
-    doll.dollY = wrap.offsetTop;
-    saveCollection();
+    dragWrap.classList.remove('grabbing');
+    if (didMove) {
+      const idx = parseInt(dragWrap.dataset.slot, 10);
+      collection[idx].dollX = dragWrap.offsetLeft;
+      collection[idx].dollY = dragWrap.offsetTop;
+      saveCollection();
+    }
+    dragWrap = null;
   };
 
-  wrap.addEventListener('mousedown', e => {
+  // Delegate mouse events on scene-dolls container
+  const sceneDolls = document.getElementById('scene-dolls');
+  sceneDolls.addEventListener('mousedown', e => {
     if (e.button !== 0) return;
+    const wrap = e.target.closest('.doll-wrap');
+    if (!wrap) return;
     e.preventDefault();
-    onStart(e.clientX, e.clientY);
+    onStart(wrap, e.clientX, e.clientY);
   });
   document.addEventListener('mousemove', e => onMove(e.clientX, e.clientY));
   document.addEventListener('mouseup', () => onEnd());
 
-  wrap.addEventListener('touchstart', e => {
-    // Only drag doll if not touching an item-chip
+  sceneDolls.addEventListener('touchstart', e => {
     if (e.target.closest('.item-chip')) return;
+    const wrap = e.target.closest('.doll-wrap');
+    if (!wrap) return;
     e.preventDefault();
-    onStart(e.touches[0].clientX, e.touches[0].clientY);
+    onStart(wrap, e.touches[0].clientX, e.touches[0].clientY);
   }, { passive: false });
 
   document.addEventListener('touchmove', e => {
@@ -1868,6 +2072,7 @@ function initDollDrag() {
 function updateSlotTabs() {
   document.querySelectorAll('.slot-tab').forEach((tab, i) => {
     tab.classList.toggle('active', i === activeSlot);
+    tab.classList.toggle('in-scene', !!collection[i].inScene);
     const mini = tab.querySelector('.slot-mini-svg');
     if (mini) mini.innerHTML = renderMini(collection[i]);
     const nameEl = tab.querySelector('.slot-name');
@@ -1878,6 +2083,7 @@ function updateSlotTabs() {
 function switchSlot(idx) {
   activeSlot = idx;
   doll = collection[idx];
+  buildPanel();
   renderAll();
   document.getElementById('doll-name').value = doll.name;
 }
@@ -1886,10 +2092,16 @@ function switchSlot(idx) {
 function syncRightPanel() {
   document.getElementById('doll-name').value = doll.name;
   const bgEl = document.getElementById('bg-color');
-  if (bgEl) bgEl.value = doll.bgColor || '#1a2a4a';
+  if (bgEl) bgEl.value = sceneState.bgColor || '#1a2a4a';
   document.querySelectorAll('.scene-chip').forEach(c => {
-    c.classList.toggle('active', c.dataset.scene === (doll.bgScene || ''));
+    c.classList.toggle('active', c.dataset.scene === (sceneState.bgScene || ''));
   });
+  // Toggle in-scene button text
+  const toggleBtn = document.getElementById('btn-toggle-scene');
+  if (toggleBtn) {
+    toggleBtn.textContent = doll.inScene ? '⊖ Quitar de escena' : '⊕ Añadir a escena';
+    toggleBtn.classList.toggle('in-scene', !!doll.inScene);
+  }
 }
 
 /* ---------- BUILD LEFT PANEL ---------- */
@@ -2173,11 +2385,11 @@ function buildPanel() {
           chip.addEventListener('mouseenter', () => {
             const prev = doll[dollField];
             doll[dollField] = item.value;
-            renderDoll(document.getElementById('doll-layers'), doll);
+            renderActiveDoll();
             doll[dollField] = prev;
           });
           chip.addEventListener('mouseleave', () => {
-            renderDoll(document.getElementById('doll-layers'), doll);
+            renderActiveDoll();
           });
         }
 
@@ -2203,7 +2415,7 @@ function buildPanel() {
           doll[sub.scaleField] = v;
           lbl.textContent = `${v > 0 ? '+' : ''}${v}%`;
           saveCollection();
-          renderDoll(document.getElementById('doll-layers'), doll);
+          renderActiveDoll();
         });
         body.appendChild(scaleRow);
       }
@@ -2227,7 +2439,7 @@ function buildPanel() {
           doll[sub.xOffsetField] = v;
           lblX.textContent = `${v > 0 ? '+' : ''}${v}`;
           saveCollection();
-          renderDoll(document.getElementById('doll-layers'), doll);
+          renderActiveDoll();
         });
         body.appendChild(xOffsetRow);
       }
@@ -2251,7 +2463,7 @@ function buildPanel() {
           doll[sub.yOffsetField] = v;
           lbl2.textContent = `${v > 0 ? '+' : ''}${v}`;
           saveCollection();
-          renderDoll(document.getElementById('doll-layers'), doll);
+          renderActiveDoll();
         });
         body.appendChild(offsetRow);
       }
@@ -2275,7 +2487,7 @@ function buildPanel() {
           doll[sub.rotateField] = v;
           lbl3.textContent = `${v > 0 ? '+' : ''}${v}°`;
           saveCollection();
-          renderDoll(document.getElementById('doll-layers'), doll);
+          renderActiveDoll();
         });
         body.appendChild(rotRow);
       }
@@ -2317,7 +2529,7 @@ function buildPanel() {
             if (rotValEl) rotValEl.textContent = '0°';
           }
           saveCollection();
-          renderDoll(document.getElementById('doll-layers'), doll);
+          renderActiveDoll();
         });
         resetRow.appendChild(resetBtn);
         body.appendChild(resetRow);
@@ -2334,7 +2546,7 @@ function buildPanel() {
           doll[sub.flipField] = !doll[sub.flipField];
           flipBtn.classList.toggle('active', doll[sub.flipField]);
           saveCollection();
-          renderDoll(document.getElementById('doll-layers'), doll);
+          renderActiveDoll();
         });
         flipRow.appendChild(flipBtn);
         body.appendChild(flipRow);
@@ -2463,29 +2675,28 @@ function buildPreviewSvg(cat, value, d) {
 function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
 /* ---------- INIT ---------- */
-// ===== EXPORT PNG =====
+// ===== EXPORT PNG (individual doll) =====
 function exportPng() {
   const btn = document.getElementById('btn-save');
   btn.textContent = 'Exportando...';
   btn.disabled = true;
 
-  // Get the SVG element from the doll layers
-  const svgEl = document.querySelector('#doll-layers svg');
-  if (!svgEl) {
+  // Find the active doll's SVG
+  const wrap = document.querySelector(`.doll-wrap[data-slot="${activeSlot}"] .doll-layers svg`);
+  if (!wrap) {
     btn.textContent = 'Guardar PNG';
     btn.disabled = false;
     return;
   }
 
   const SIZE = 480; // 2× the viewBox width for a crisp export
-  const clone = svgEl.cloneNode(true);
+  const clone = wrap.cloneNode(true);
   clone.setAttribute('width', SIZE);
   clone.setAttribute('height', Math.round(SIZE * 340 / 240));
   clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
 
   // Inline the background color so the PNG isn't transparent
-  const bgColor = doll.bgColor || '#1a2a4a';
-  const bgDark = darken(bgColor, 20);
+  const bgColor = sceneState.bgColor || '#1a2a4a';
   const bgRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
   bgRect.setAttribute('width', '240');
   bgRect.setAttribute('height', '340');
@@ -2504,14 +2715,13 @@ function exportPng() {
     const ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0);
     URL.revokeObjectURL(url);
-
     canvas.toBlob(blob => {
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = `${(doll.name || 'muneco').replace(/\s+/g, '_')}.png`;
       a.click();
       URL.revokeObjectURL(a.href);
-      btn.textContent = '¡Descargado!';
+      btn.textContent = 'Descargado!';
       btn.disabled = false;
       setTimeout(() => btn.textContent = 'Guardar PNG', 2000);
     }, 'image/png');
@@ -2522,6 +2732,124 @@ function exportPng() {
     btn.disabled = false;
   };
   img.src = url;
+}
+
+// ===== EXPORT SCENE PNG (all dolls + background) =====
+function exportScenePng() {
+  const btn = document.getElementById('btn-scene-save');
+  btn.textContent = 'Exportando...';
+  btn.disabled = true;
+
+  const area = document.querySelector('.canvas-area');
+  if (!area) { btn.textContent = 'Escena PNG'; btn.disabled = false; return; }
+
+  const aW = area.clientWidth;
+  const aH = area.clientHeight;
+  const SCALE = 2; // 2x for crisp
+  const cW = aW * SCALE;
+  const cH = aH * SCALE;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = cW;
+  canvas.height = cH;
+  const ctx = canvas.getContext('2d');
+
+  // Draw background
+  const bgColor = sceneState.bgColor || '#1a2a4a';
+  if (sceneState.bgScene && BG_SCENES[sceneState.bgScene]) {
+    // Render the scene background: solid color + sky SVG
+    const scene = BG_SCENES[sceneState.bgScene];
+    const sceneBg = SCENE_BG[sceneState.bgScene] || '#1a2a4a';
+    ctx.fillStyle = sceneBg;
+    ctx.fillRect(0, 0, cW, cH);
+    // We'll draw the sky SVG
+    const skySvg = `<svg viewBox="0 0 240 340" width="${cW}" height="${cH}" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="340" fill="${sceneBg}"/>${scene.svgSky}</svg>`;
+    const groundH = scene.groundH || 80;
+    const groundSvg = `<svg viewBox="0 0 240 ${groundH}" width="${cW}" height="${Math.round(cH * 0.2)}" xmlns="http://www.w3.org/2000/svg">${scene.svgGround}</svg>`;
+
+    // Render background SVGs then dolls on top
+    const skyBlob = new Blob([skySvg], { type: 'image/svg+xml;charset=utf-8' });
+    const skyUrl = URL.createObjectURL(skyBlob);
+    const skyImg = new Image();
+    skyImg.onload = () => {
+      ctx.drawImage(skyImg, 0, 0, cW, cH);
+      URL.revokeObjectURL(skyUrl);
+      // Ground
+      const groundBlob = new Blob([groundSvg], { type: 'image/svg+xml;charset=utf-8' });
+      const groundUrl = URL.createObjectURL(groundBlob);
+      const groundImg = new Image();
+      groundImg.onload = () => {
+        ctx.drawImage(groundImg, 0, cH * 0.8, cW, cH * 0.2);
+        URL.revokeObjectURL(groundUrl);
+        drawSceneDolls(ctx, aW, aH, SCALE, () => finishSceneExport(canvas, btn));
+      };
+      groundImg.onerror = () => {
+        URL.revokeObjectURL(groundUrl);
+        drawSceneDolls(ctx, aW, aH, SCALE, () => finishSceneExport(canvas, btn));
+      };
+      groundImg.src = groundUrl;
+    };
+    skyImg.onerror = () => {
+      URL.revokeObjectURL(skyUrl);
+      drawSceneDolls(ctx, aW, aH, SCALE, () => finishSceneExport(canvas, btn));
+    };
+    skyImg.src = skyUrl;
+  } else {
+    // Solid/gradient background
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, cW, cH);
+    drawSceneDolls(ctx, aW, aH, SCALE, () => finishSceneExport(canvas, btn));
+  }
+}
+
+function drawSceneDolls(ctx, aW, aH, scale, callback) {
+  const wraps = document.querySelectorAll('#scene-dolls .doll-wrap');
+  let remaining = wraps.length;
+  if (remaining === 0) { callback(); return; }
+
+  wraps.forEach(wrap => {
+    const svgEl = wrap.querySelector('.doll-layers svg');
+    if (!svgEl) { remaining--; if (!remaining) callback(); return; }
+    const x = wrap.offsetLeft * scale;
+    const y = wrap.offsetTop * scale;
+    const w = 240 * scale;
+    const h = 340 * scale;
+
+    const clone = svgEl.cloneNode(true);
+    clone.setAttribute('width', w);
+    clone.setAttribute('height', h);
+    clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+    const svgStr = new XMLSerializer().serializeToString(clone);
+    const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const img = new Image();
+    img.onload = () => {
+      ctx.drawImage(img, x, y, w, h);
+      URL.revokeObjectURL(url);
+      remaining--;
+      if (!remaining) callback();
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      remaining--;
+      if (!remaining) callback();
+    };
+    img.src = url;
+  });
+}
+
+function finishSceneExport(canvas, btn) {
+  canvas.toBlob(blob => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'escena_kawaii.png';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    btn.textContent = 'Descargado!';
+    btn.disabled = false;
+    setTimeout(() => btn.textContent = 'Escena PNG', 2000);
+  }, 'image/png');
 }
 
 // ===== URL SHARING =====
@@ -2584,14 +2912,58 @@ function loadFromHash() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Build slot tabs
+  // Build slot tabs (draggable to canvas)
   const slotsEl = document.getElementById('slots');
   collection.forEach((_, i) => {
     const tab = document.createElement('div');
-    tab.className = 'slot-tab' + (i === 0 ? ' active' : '');
+    tab.className = 'slot-tab' + (i === 0 ? ' active' : '') + (collection[i].inScene ? ' in-scene' : '');
+    tab.draggable = true;
+    tab.dataset.slotIdx = i;
     tab.innerHTML = `<div class="slot-mini-svg"></div><span class="slot-name"></span>`;
     tab.addEventListener('click', () => switchSlot(i));
+    tab.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('text/plain', `slot:${i}`);
+      e.dataTransfer.effectAllowed = 'copy';
+      tab.classList.add('dragging');
+    });
+    tab.addEventListener('dragend', () => tab.classList.remove('dragging'));
     slotsEl.appendChild(tab);
+  });
+
+  // Canvas drop zone for slot tabs (add doll to scene)
+  const canvasArea = document.querySelector('.canvas-area');
+  const dropHint = document.getElementById('scene-drop-hint');
+  canvasArea.addEventListener('dragover', e => {
+    const dt = e.dataTransfer;
+    // Only accept slot drags (not item-chip drags)
+    if (dt.types.includes('text/plain')) {
+      e.preventDefault();
+      dt.dropEffect = 'copy';
+      if (dropHint) dropHint.classList.add('visible');
+    }
+  });
+  canvasArea.addEventListener('dragleave', e => {
+    if (!e.relatedTarget || !canvasArea.contains(e.relatedTarget)) {
+      if (dropHint) dropHint.classList.remove('visible');
+    }
+  });
+  canvasArea.addEventListener('drop', e => {
+    if (dropHint) dropHint.classList.remove('visible');
+    const data = e.dataTransfer.getData('text/plain');
+    if (data && data.startsWith('slot:')) {
+      e.preventDefault();
+      const idx = parseInt(data.split(':')[1], 10);
+      if (!collection[idx].inScene) {
+        // Place doll at drop position
+        const rect = canvasArea.getBoundingClientRect();
+        collection[idx].dollX = e.clientX - rect.left - 120;
+        collection[idx].dollY = e.clientY - rect.top - 170;
+        collection[idx].inScene = true;
+        switchSlot(idx);
+        saveCollection();
+        renderAll();
+      }
+    }
   });
 
   // Name input
@@ -2599,10 +2971,14 @@ document.addEventListener('DOMContentLoaded', () => {
     doll.name = e.target.value || `Muñeco ${activeSlot + 1}`;
     saveCollection();
     updateSlotTabs();
+    renderSceneDolls(); // update name tag
   });
 
-  // Save/export PNG button
+  // Save/export PNG button (individual)
   document.getElementById('btn-save').addEventListener('click', exportPng);
+
+  // Save scene PNG button
+  document.getElementById('btn-scene-save').addEventListener('click', exportScenePng);
 
   // Share button
   document.getElementById('btn-share').addEventListener('click', shareDoll);
@@ -2610,19 +2986,30 @@ document.addEventListener('DOMContentLoaded', () => {
   // Reset button
   document.getElementById('btn-reset').addEventListener('click', () => {
     const name = doll.name;
+    const wasInScene = doll.inScene;
     collection[activeSlot] = defaultDoll(activeSlot);
     collection[activeSlot].name = name;
+    collection[activeSlot].inScene = wasInScene;
     doll = collection[activeSlot];
     saveCollection();
     buildPanel();
     renderAll();
   });
 
-  // Eye color — managed via left panel only
+  // Toggle in-scene button
+  document.getElementById('btn-toggle-scene').addEventListener('click', () => {
+    doll.inScene = !doll.inScene;
+    if (!doll.inScene) {
+      doll.dollX = null;
+      doll.dollY = null;
+    }
+    saveCollection();
+    renderAll();
+  });
 
-  // Background color
+  // Background color (global)
   document.getElementById('bg-color').addEventListener('input', e => {
-    doll.bgColor = e.target.value;
+    sceneState.bgColor = e.target.value;
     saveCollection();
     applyBgColor();
   });
@@ -2633,11 +3020,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!picker) return;
     // "Ninguna" chip
     const noneChip = document.createElement('div');
-    noneChip.className = 'scene-chip' + (!doll.bgScene ? ' active' : '');
+    noneChip.className = 'scene-chip' + (!sceneState.bgScene ? ' active' : '');
     noneChip.dataset.scene = '';
     noneChip.innerHTML = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="340" fill="#1a2a4a"/><text x="120" y="175" text-anchor="middle" font-size="40" fill="rgba(255,255,255,0.2)">✕</text></svg><span>Ninguna</span>`;
     noneChip.addEventListener('click', () => {
-      doll.bgScene = null;
+      sceneState.bgScene = null;
       saveCollection();
       renderAll();
     });
@@ -2649,16 +3036,18 @@ document.addEventListener('DOMContentLoaded', () => {
       forbidden_forest: 'Bosque Prohibido',
       platform_934:     'Andén 9¾',
       quidditch:        'Quidditch',
+      park:             'Parque',
+      sunset_beach:     'Playa',
     };
     Object.keys(BG_SCENES).forEach(key => {
       const scene = BG_SCENES[key];
       const chip = document.createElement('div');
-      chip.className = 'scene-chip' + (doll.bgScene === key ? ' active' : '');
+      chip.className = 'scene-chip' + (sceneState.bgScene === key ? ' active' : '');
       chip.dataset.scene = key;
       const miniSvg = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="340" fill="${SCENE_BG[key] || '#1a2a4a'}"/>${scene.svgSky || ''}${scene.svgGround ? `<g transform="translate(0,${340 - (scene.groundH||80)})">${scene.svgGround}</g>` : ''}</svg>`;
       chip.innerHTML = `${miniSvg}<span>${SCENE_LABELS[key] || key}</span>`;
       chip.addEventListener('click', () => {
-        doll.bgScene = key;
+        sceneState.bgScene = key;
         saveCollection();
         renderAll();
       });

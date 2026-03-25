@@ -108,6 +108,14 @@ header h1 {
 }
 .slot-tab:hover { border-color: var(--accent2); }
 .slot-tab.active { border-color: var(--accent); background: #1e2d50; }
+.slot-tab.in-scene::after {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent2);
+  flex-shrink: 0;
+}
+.slot-tab.dragging { opacity: 0.4; }
 
 .slot-mini-svg {
   width: 28px;
@@ -153,6 +161,35 @@ header h1 {
   white-space: nowrap;
 }
 .btn-share:hover { opacity: 0.85; }
+
+/* ===== SCENE SAVE BUTTON ===== */
+.btn-scene-save {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--accent2);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.btn-scene-save:hover { background: var(--surface); opacity: 0.85; }
+
+/* ===== TOGGLE IN-SCENE BUTTON ===== */
+.btn-toggle-scene {
+  background: var(--surface2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-toggle-scene:hover { background: #2a2a4a; color: var(--text); border-color: var(--accent2); }
+.btn-toggle-scene.in-scene { border-color: var(--accent); color: var(--accent); }
 
 /* ===== TOAST NOTIFICATION ===== */
 .toast {
@@ -338,6 +375,12 @@ header h1 {
   z-index: 0;
 }
 
+#scene-dolls {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 .doll-wrap {
   position: absolute;
   width: 240px;
@@ -346,8 +389,51 @@ header h1 {
   cursor: grab;
   user-select: none;
   touch-action: none;
+  transition: filter 0.2s, outline 0.2s;
 }
 .doll-wrap.grabbing { cursor: grabbing; }
+.doll-wrap.active-doll {
+  z-index: 2;
+  filter: drop-shadow(0 0 8px rgba(233, 69, 96, 0.7));
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.doll-name-tag {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.55);
+  padding: 1px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.scene-drop-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--accent2);
+  background: rgba(245, 166, 35, 0.06);
+  border: 3px dashed rgba(245, 166, 35, 0.3);
+  border-radius: 16px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+.scene-drop-hint.visible {
+  opacity: 1;
+}
 
 .doll-wrap.drag-over::after {
   content: 'Suelta aquí';
@@ -366,13 +452,13 @@ header h1 {
 }
 
 /* layers stack */
-#doll-layers {
+.doll-layers {
   width: 240px;
   height: 340px;
   position: relative;
 }
-#doll-layers > svg,
-#doll-layers > .layer-svg {
+.doll-layers > svg,
+.doll-layers > .layer-svg {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
@@ -554,5 +640,5 @@ header h1 {
 @media (max-width: 520px) {
   .panel-left { width: 160px; }
   .doll-wrap { width: 180px; height: 255px; }
-  #doll-layers { width: 180px; height: 255px; }
+  .doll-layers { width: 180px; height: 255px; }
 }

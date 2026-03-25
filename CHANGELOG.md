@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.11.0] - 2026-03-25
+
+### Added
+- **Escena multi-muñeco.** Hasta 4 muñecos vestidos independientemente pueden compartir el mismo canvas. Cada muñeco se arrastra libremente por la escena y se selecciona con clic (contorno rojo en el muñeco activo)
+- **Modelo de datos `inScene`.** Cada muñeco tiene un campo `inScene` que controla si aparece en el canvas. Slot 0 está en escena por defecto; los demás se añaden arrastrando su pestaña al canvas o con el botón "Añadir/Quitar de escena"
+- **Estado global de escena.** `bgColor` y `bgScene` se han movido del muñeco individual a un objeto `sceneState` global (persistido en `localStorage` clave `munecos_kawaii_scene`), con migración automática desde el formato anterior
+- **Pestañas de slot arrastrables.** Las pestañas de los 4 slots son `draggable`: arrastrar una pestaña al canvas añade ese muñeco a la escena. Indicador amarillo (`.in-scene`) marca los muñecos presentes en escena
+- **Exportar escena completa.** Nuevo botón "Escena PNG" (`#btn-scene-save`) exporta el canvas entero con fondo + todos los muñecos posicionados. "Guardar PNG" sigue exportando solo el muñeco activo individual
+- **2 nuevos fondos genéricos.** Escenas `Parque` y `Playa` con arte SVG original, sumando 7 fondos totales (5 HP + 2 genéricos)
+- **Botón toggle escena.** `#btn-toggle-scene` en el panel derecho permite añadir/quitar el muñeco activo de la escena con un clic
+- **Etiqueta de nombre.** Cada muñeco en escena muestra su nombre debajo (`.doll-name-tag`)
+
+### Changed
+- **Contenedor de escena.** `#doll-wrap` reemplazado por `#scene-dolls` con elementos `.doll-wrap[data-slot=N]` creados dinámicamente por JS
+- **`renderSceneDolls()` + `renderActiveDoll()`.** Nuevas funciones que crean/actualizan/eliminan los wrappers de muñecos en escena según su estado `inScene`
+- **`initDollDrag()` reescrito.** Eventos delegados en `#scene-dolls` para arrastrar cada muñeco independientemente
+- **`initDragDrop()` actualizado.** El drop de ítems de ropa ahora apunta al contenedor `#scene-dolls` y equipa al muñeco sobre el que se suelta
+- **`renderBgScene()` / `applyBgColor()`.** Ahora leen de `sceneState` en lugar del muñeco individual
+- **`syncRightPanel()`.** Usa `sceneState` para sincronizar controles de fondo y actualiza el botón toggle
+- **`DOMContentLoaded` reescrito.** Inicialización completa adaptada al modelo multi-muñeco
+
+---
+
 ## [1.10.1] - 2026-03-24
 
 ### Added
