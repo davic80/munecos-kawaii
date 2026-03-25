@@ -2003,7 +2003,7 @@ function renderDoll(container, d) {
   // Hand conflict: pet in righthand hides wand, pet in lefthand/leash hides lefthand
   const petHidesWand = d.pet && d.petPosition === 'righthand';
   const petHidesLefthand = d.pet && (d.petPosition === 'lefthand' || d.petPosition === 'leash');
-  if (d.wand && !petHidesWand)      parts.push(layer('wand',     WANDS[d.wand]    || '', true));
+  if (d.wand && !petHidesWand)      parts.push(`<g class="wand-layer" data-wand="${d.wand}">${layer('wand',     WANDS[d.wand]    || '', true)}</g>`);
   if (d.lefthand && !petHidesLefthand)  parts.push(layer('lefthand', (LEFTHAND[d.lefthand] || (() => ''))(d.lefthandColor || '#7c3aed'), true));
   // Pet: last layer
   if (d.pet) parts.push(renderPet(d.pet, d.petOutfit, d.petPosition || 'floor', d.petScale || 0));
@@ -2228,11 +2228,16 @@ function initDollDrag() {
       collection[idx].dollY = dragWrap.offsetTop;
       saveCollection();
     } else if (!didMove && clickTarget) {
-      // Click (not drag) — check for pet layer click
+      // Click (not drag) — check for pet layer or wand layer click
       const petLayer = clickTarget.closest ? clickTarget.closest('.pet-layer') : null;
       if (petLayer) {
         const petKey = petLayer.dataset.pet;
         if (petKey) AudioManager.playAnimalSound(petKey);
+      }
+      const wandLayer = clickTarget.closest ? clickTarget.closest('.wand-layer') : null;
+      if (wandLayer) {
+        const wandKey = wandLayer.dataset.wand;
+        if (wandKey) AudioManager.playWandSound(wandKey);
       }
     }
     dragWrap = null;
@@ -3251,6 +3256,217 @@ const AudioManager = {
       this.bgGain.gain.linearRampToValueAtTime(0.01, (this.ctx ? this.ctx.currentTime : 0) + 0.3);
       setTimeout(() => { if (this.bgGain) this.bgGain.gain.value = 0.3; }, 400);
     }
+  },
+
+  // ---- WAND SOUNDS (unique per wand) ----
+  playWandSound(wandKey) {
+    this.init();
+    const fn = this['synthWand_' + wandKey];
+    if (fn) fn.call(this);
+  },
+
+  // Elder — deep powerful hum, ancient resonance
+  synthWand_elder() {
+    const ctx = this.ctx, t = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const osc2 = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'triangle'; osc.frequency.value = 110;
+    osc2.type = 'sine'; osc2.frequency.value = 55; // sub-bass
+    gain.gain.setValueAtTime(0.35, t);
+    gain.gain.setValueAtTime(0.3, t + 0.2);
+    gain.gain.exponentialRampToValueAtTime(0.01, t + 1.2);
+    osc.connect(gain); osc2.connect(gain); gain.connect(this.sfxGain);
+    // Slight detune for ancient shimmer
+    const detune = ctx.createOscillator();
+    detune.type = 'triangle'; detune.frequency.value = 112;
+    const dGain = ctx.createGain();
+    dGain.gain.setValueAtTime(0.15, t);
+    dGain.gain.exponentialRampToValueAtTime(0.01, t + 1.2);
+    detune.connect(dGain); dGain.connect(this.sfxGain);
+    [osc, osc2, detune].forEach(o => { o.start(t); o.stop(t + 1.2); });
+  },
+
+  // Holly — bright sparkle, quick shimmering burst
+  synthWand_holly() {
+    const ctx = this.ctx, t = ctx.currentTime;
+    for (let i = 0; i < 5; i++) {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = 2000 + i * 500 + Math.random() * 200;
+      const start = t + i * 0.04;
+      gain.gain.setValueAtTime(0, t);
+      gain.gain.setValueAtTime(0.2, start);
+      gain.gain.exponentialRampToValueAtTime(0.01, start + 0.25);
+      osc.connect(gain); gain.connect(this.sfxGain);
+      osc.start(start); osc.stop(start + 0.3);
+    }
+  },
+
+  // Elm — warm bell tone, mellow harmonic ring
+  synthWand_elm() {
+    const ctx = this.ctx, t = ctx.currentTime;
+    const freqs = [440, 880, 1320]; // fundamental + harmonics
+    const amps = [0.3, 0.15, 0.08];
+    freqs.forEach((f, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine'; osc.frequency.value = f;
+      gain.gain.setValueAtTime(amps[i], t);
+      gain.gain.exponentialRampToValueAtTime(0.01, t + 0.8 - i * 0.1);
+      osc.connect(gain); gain.connect(this.sfxGain);
+      osc.start(t); osc.stop(t + 0.9);
+    });
+  },
+
+  // Willow — ethereal whoosh, breathy wind sweep
+  synthWand_willow() {
+    const ctx = this.ctx, t = ctx.currentTime;
+    const bufSize = ctx.sampleRate;
+    const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
+    const noise = ctx.createBufferSource();
+    noise.buffer = buf;
+    const bp = ctx.createBiquadFilter();
+    bp.type = 'bandpass'; bp.Q.value = 2;
+    bp.frequency.setValueAtTime(300, t);
+    bp.frequency.exponentialRampToValueAtTime(3000, t + 0.4);
+    bp.frequency.exponentialRampToValueAtTime(500, t + 0.8);
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0, t);
+    gain.gain.linearRampToValueAtTime(0.25, t + 0.15);
+    gain.gain.exponentialRampToValueAtTime(0.01, t + 0.9);
+    noise.connect(bp); bp.connect(gain); gain.connect(this.sfxGain);
+    noise.start(t); noise.stop(t + 1.0);
+  },
+
+  // Vine — nature chime, pentatonic cascade
+  synthWand_vine() {
+    const ctx = this.ctx, t = ctx.currentTime;
+    const notes = [523, 587, 659, 784, 880]; // C5 D5 E5 G5 A5 pentatonic
+    notes.forEach((f, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine'; osc.frequency.value = f;
+      const start = t + i * 0.07;
+      gain.gain.setValueAtTime(0, t);
+      gain.gain.setValueAtTime(0.22, start);
+      gain.gain.exponentialRampToValueAtTime(0.01, start + 0.4);
+      osc.connect(gain); gain.connect(this.sfxGain);
+      osc.start(start); osc.stop(start + 0.45);
+    });
+  },
+
+  // Phoenix — rising flame burst, crackling fire sweep
+  synthWand_phoenix() {
+    const ctx = this.ctx, t = ctx.currentTime;
+    // Rising sawtooth sweep
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(200, t);
+    osc.frequency.exponentialRampToValueAtTime(1200, t + 0.5);
+    gain.gain.setValueAtTime(0.2, t);
+    gain.gain.setValueAtTime(0.25, t + 0.3);
+    gain.gain.exponentialRampToValueAtTime(0.01, t + 0.7);
+    osc.connect(gain); gain.connect(this.sfxGain);
+    osc.start(t); osc.stop(t + 0.7);
+    // Crackle noise overlay
+    const bufSize = ctx.sampleRate * 0.6;
+    const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < bufSize; i++) data[i] = (Math.random() > 0.9 ? 1 : 0) * (Math.random() * 2 - 1);
+    const noise = ctx.createBufferSource();
+    noise.buffer = buf;
+    const nGain = ctx.createGain();
+    nGain.gain.setValueAtTime(0.15, t);
+    nGain.gain.exponentialRampToValueAtTime(0.01, t + 0.6);
+    noise.connect(nGain); nGain.connect(this.sfxGain);
+    noise.start(t); noise.stop(t + 0.6);
+  },
+
+  // Unicorn — shimmering glissando, dual detuned oscillators
+  synthWand_unicorn() {
+    const ctx = this.ctx, t = ctx.currentTime;
+    [0, 3].forEach(detune => { // slight detune for chorus
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(400 + detune, t);
+      osc.frequency.exponentialRampToValueAtTime(1600 + detune, t + 0.5);
+      osc.frequency.exponentialRampToValueAtTime(800, t + 0.8);
+      gain.gain.setValueAtTime(0.2, t);
+      gain.gain.setValueAtTime(0.25, t + 0.3);
+      gain.gain.exponentialRampToValueAtTime(0.01, t + 1.0);
+      osc.connect(gain); gain.connect(this.sfxGain);
+      osc.start(t); osc.stop(t + 1.0);
+    });
+    // Shimmer overtone
+    const shimmer = ctx.createOscillator();
+    const sGain = ctx.createGain();
+    shimmer.type = 'sine'; shimmer.frequency.value = 2400;
+    sGain.gain.setValueAtTime(0.08, t);
+    sGain.gain.exponentialRampToValueAtTime(0.01, t + 0.6);
+    shimmer.connect(sGain); sGain.connect(this.sfxGain);
+    shimmer.start(t); shimmer.stop(t + 0.6);
+  },
+
+  // Oak — deep resonant thud, wooden knock
+  synthWand_oak() {
+    const ctx = this.ctx, t = ctx.currentTime;
+    // Thud: low sine
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine'; osc.frequency.value = 80;
+    gain.gain.setValueAtTime(0.4, t);
+    gain.gain.exponentialRampToValueAtTime(0.01, t + 0.35);
+    osc.connect(gain); gain.connect(this.sfxGain);
+    osc.start(t); osc.stop(t + 0.35);
+    // Click transient
+    const click = ctx.createOscillator();
+    const cGain = ctx.createGain();
+    click.type = 'square'; click.frequency.value = 600;
+    cGain.gain.setValueAtTime(0.3, t);
+    cGain.gain.exponentialRampToValueAtTime(0.01, t + 0.04);
+    click.connect(cGain); cGain.connect(this.sfxGain);
+    click.start(t); click.stop(t + 0.05);
+    // Body resonance
+    const body = ctx.createOscillator();
+    const bGain = ctx.createGain();
+    body.type = 'triangle'; body.frequency.value = 160;
+    bGain.gain.setValueAtTime(0.15, t);
+    bGain.gain.exponentialRampToValueAtTime(0.01, t + 0.25);
+    body.connect(bGain); bGain.connect(this.sfxGain);
+    body.start(t); body.stop(t + 0.25);
+  },
+
+  // Crystal — glass bell ring, bright high sustain
+  synthWand_crystal() {
+    const ctx = this.ctx, t = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const osc2 = ctx.createOscillator();
+    const gain = ctx.createGain();
+    const gain2 = ctx.createGain();
+    osc.type = 'sine'; osc.frequency.value = 1200;
+    osc2.type = 'sine'; osc2.frequency.value = 2400; // overtone
+    gain.gain.setValueAtTime(0.3, t);
+    gain.gain.exponentialRampToValueAtTime(0.01, t + 1.4);
+    gain2.gain.setValueAtTime(0.12, t);
+    gain2.gain.exponentialRampToValueAtTime(0.01, t + 1.0);
+    osc.connect(gain); gain.connect(this.sfxGain);
+    osc2.connect(gain2); gain2.connect(this.sfxGain);
+    osc.start(t); osc.stop(t + 1.4);
+    osc2.start(t); osc2.stop(t + 1.0);
+    // Subtle shimmer
+    const shim = ctx.createOscillator();
+    const sGain = ctx.createGain();
+    shim.type = 'sine'; shim.frequency.value = 3600;
+    sGain.gain.setValueAtTime(0.05, t);
+    sGain.gain.exponentialRampToValueAtTime(0.01, t + 0.5);
+    shim.connect(sGain); sGain.connect(this.sfxGain);
+    shim.start(t); shim.stop(t + 0.5);
   },
 };
 

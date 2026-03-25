@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.12.1] - 2026-03-25
+
+### Added
+- **Sonidos de varitas.** Cada una de las 9 varitas tiene un sonido único sintetizado (Web Audio API, cero archivos) que se reproduce al hacer clic/tap sobre la varita en la escena:
+  - **Elder:** zumbido profundo y antiguo con detuning sutil
+  - **Holly:** ráfaga brillante de destellos agudos
+  - **Elm:** campana cálida con armónicos suaves
+  - **Willow:** whoosh etéreo (ruido filtrado con barrido)
+  - **Vine:** cascada pentatónica de campanitas naturales
+  - **Phoenix:** llamarada ascendente con crepitar de fuego
+  - **Unicorn:** glissando resplandeciente con osciladores desintonizados
+  - **Oak:** golpe resonante de madera con transiente de clic
+  - **Crystal:** campana de cristal aguda con largo sustain
+
+---
+
 ## [1.12.0] - 2026-03-25
 
 ### Added
