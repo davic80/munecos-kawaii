@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Munecos Kawaii</title>
   <link rel="stylesheet" href="/static/style.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
@@ -18,6 +18,15 @@
   <button class="btn-save" id="btn-save">&#129485; Guardar</button>
   <button class="btn-scene-save" id="btn-scene-save">&#127749; Escena</button>
   <button class="btn-share" id="btn-share">Compartir &#128279;</button>
+  <!-- Mobile hamburger (bottom sheet toggle) -->
+  <button class="btn-hamburger" id="btn-hamburger" aria-label="Abrir panel">&#9776;</button>
+  <!-- Mobile action menu -->
+  <button class="btn-action-menu" id="btn-action-menu" aria-label="Acciones">&#8942;</button>
+  <div class="action-menu-popup" id="action-menu-popup">
+    <button class="action-menu-item" id="mob-save">&#129485; Guardar PNG</button>
+    <button class="action-menu-item" id="mob-scene-save">&#127749; Escena PNG</button>
+    <button class="action-menu-item" id="mob-share">&#128279; Compartir</button>
+  </div>
 </header>
 
 <!-- ====== MAIN ====== -->
@@ -69,9 +78,23 @@
 
 </div><!-- /main -->
 
+<!-- ====== BOTTOM SHEET (mobile) ====== -->
+<div class="bottom-sheet-overlay" id="bottom-sheet-overlay"></div>
+<div class="bottom-sheet" id="bottom-sheet">
+  <div class="bottom-sheet-handle"><span></span></div>
+  <div class="bottom-sheet-content" id="bottom-sheet-content">
+    <!-- Panel content injected by JS on mobile -->
+  </div>
+</div>
+
+<!-- ====== MOBILE SLOT BAR ====== -->
+<div class="mobile-slot-bar" id="mobile-slot-bar">
+  <!-- Slot tabs cloned/moved here by JS on mobile -->
+</div>
+
 <!-- ====== FOOTER ====== -->
 <div class="footer-bar">
-  <span class="footer-version">v1.12.1</span>
+  <span class="footer-version">v2.0.0</span>
   <span class="footer-sep">·</span>
   <a href="https://github.com/davic80/munecos-kawaii"
      target="_blank" rel="noopener" class="footer-link">GitHub</a>

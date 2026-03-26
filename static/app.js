@@ -4,6 +4,12 @@
 
 'use strict';
 
+/* ---------- RESPONSIVE HELPERS ---------- */
+const mqMobile = window.matchMedia('(max-width: 767px)');
+const mqTablet = window.matchMedia('(min-width: 768px) and (max-width: 1024px)');
+function isMobile() { return mqMobile.matches; }
+function isTablet() { return mqTablet.matches; }
+
 /* ---------- SVG DEFINITIONS ---------- */
 
 // Returns the base SVG body/head for a given gender and skin color
@@ -2288,29 +2294,49 @@ function switchSlot(idx) {
   doll = collection[idx];
   buildPanel();
   renderAll();
-  document.getElementById('doll-name').value = doll.name;
+  const desktopName = document.getElementById('doll-name');
+  if (desktopName) desktopName.value = doll.name;
+  const mobName = document.getElementById('mob-doll-name');
+  if (mobName) mobName.value = doll.name;
 }
 
 /* ---------- RIGHT PANEL SYNC ---------- */
 function syncRightPanel() {
-  document.getElementById('doll-name').value = doll.name;
+  // Desktop right panel
+  const desktopName = document.getElementById('doll-name');
+  if (desktopName) desktopName.value = doll.name;
   const bgEl = document.getElementById('bg-color');
   if (bgEl) bgEl.value = sceneState.bgColor || '#1a2a4a';
-  document.querySelectorAll('.scene-chip').forEach(c => {
+  document.querySelectorAll('#scene-picker .scene-chip').forEach(c => {
     c.classList.toggle('active', c.dataset.scene === (sceneState.bgScene || ''));
   });
-  // Toggle in-scene button text
   const toggleBtn = document.getElementById('btn-toggle-scene');
   if (toggleBtn) {
     toggleBtn.textContent = doll.inScene ? '⊖ Quitar de escena' : '⊕ Añadir a escena';
     toggleBtn.classList.toggle('in-scene', !!doll.inScene);
   }
+
+  // Mobile config section (if present)
+  const mobName = document.getElementById('mob-doll-name');
+  if (mobName) mobName.value = doll.name;
+  const mobBg = document.getElementById('mob-bg-color');
+  if (mobBg) mobBg.value = sceneState.bgColor || '#1a2a4a';
+  document.querySelectorAll('#mob-scene-picker .scene-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.scene === (sceneState.bgScene || ''));
+  });
+  const mobToggle = document.getElementById('mob-toggle-scene');
+  if (mobToggle) {
+    mobToggle.textContent = doll.inScene ? '⊖ Quitar de escena' : '⊕ Añadir a escena';
+    mobToggle.classList.toggle('in-scene', !!doll.inScene);
+  }
 }
 
 /* ---------- BUILD LEFT PANEL ---------- */
 function buildPanel() {
-  const panel = document.getElementById('left-panel');
-  panel.innerHTML = '';
+  const target = isMobile()
+    ? document.getElementById('bottom-sheet-content')
+    : document.getElementById('left-panel');
+  target.innerHTML = '';
 
   const SKIN_PRESETS = [
     { color: '#fde8d0', title: 'Clara' },
@@ -2592,7 +2618,6 @@ function buildPanel() {
             saveCollection();
             renderAll();
             // Rebuild panel to show/hide pet options
-            document.querySelector('.panel-left').innerHTML = '';
             buildPanel();
           });
           petGrid.appendChild(chip);
@@ -2885,8 +2910,166 @@ function buildPanel() {
 
     acc.appendChild(hdr);
     acc.appendChild(body);
-    panel.appendChild(acc);
+    target.appendChild(acc);
   });
+
+  // On mobile or tablet, append "Configuracion" section with right-panel controls
+  // (right panel is hidden below 1024px)
+  if (isMobile() || isTablet()) {
+    buildConfigSection(target);
+  }
+}
+
+/* ---------- MOBILE: CONFIG SECTION (right-panel controls in bottom sheet) ---------- */
+function buildConfigSection(container) {
+  const acc = document.createElement('div');
+  acc.className = 'accordion-section';
+
+  const hdr = document.createElement('div');
+  hdr.className = 'accordion-header';
+  hdr.innerHTML = `<span>⚙️ Configuración</span><span class="chevron">▸</span>`;
+  hdr.addEventListener('click', () => {
+    hdr.classList.toggle('open');
+    bodyEl.classList.toggle('open');
+  });
+
+  const bodyEl = document.createElement('div');
+  bodyEl.className = 'accordion-body';
+
+  // -- Name input --
+  const nameLabel = document.createElement('h3');
+  nameLabel.textContent = 'Nombre';
+  nameLabel.style.cssText = 'font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:6px;';
+  bodyEl.appendChild(nameLabel);
+
+  const nameInput = document.createElement('input');
+  nameInput.type = 'text';
+  nameInput.className = 'name-input';
+  nameInput.id = 'mob-doll-name';
+  nameInput.placeholder = 'Nombre del muñeco';
+  nameInput.maxLength = 24;
+  nameInput.value = doll.name;
+  nameInput.addEventListener('input', e => {
+    doll.name = e.target.value || `Muñeco ${activeSlot + 1}`;
+    // Sync desktop name input if it exists
+    const desktopName = document.getElementById('doll-name');
+    if (desktopName) desktopName.value = doll.name;
+    saveCollection();
+    updateSlotTabs();
+    renderSceneDolls();
+  });
+  bodyEl.appendChild(nameInput);
+
+  // -- Background color --
+  const bgLabel = document.createElement('h3');
+  bgLabel.textContent = 'Color de fondo';
+  bgLabel.style.cssText = 'font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);border-bottom:1px solid var(--border);padding:6px 0;margin-top:10px;';
+  bodyEl.appendChild(bgLabel);
+
+  const bgRow = document.createElement('div');
+  bgRow.className = 'color-row';
+  const bgLbl = document.createElement('label');
+  bgLbl.textContent = 'Fondo';
+  const bgInput = document.createElement('input');
+  bgInput.type = 'color';
+  bgInput.id = 'mob-bg-color';
+  bgInput.value = sceneState.bgColor || '#1a2a4a';
+  bgInput.addEventListener('input', e => {
+    sceneState.bgColor = e.target.value;
+    // Sync desktop bg input
+    const desktopBg = document.getElementById('bg-color');
+    if (desktopBg) desktopBg.value = e.target.value;
+    saveCollection();
+    applyBgColor();
+  });
+  bgRow.appendChild(bgLbl);
+  bgRow.appendChild(bgInput);
+  bodyEl.appendChild(bgRow);
+
+  // -- Scene picker --
+  const sceneLabel = document.createElement('h3');
+  sceneLabel.textContent = 'Escena de fondo';
+  sceneLabel.style.cssText = 'font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);border-bottom:1px solid var(--border);padding:6px 0;margin-top:10px;';
+  bodyEl.appendChild(sceneLabel);
+
+  const scenePicker = document.createElement('div');
+  scenePicker.className = 'scene-picker';
+  scenePicker.id = 'mob-scene-picker';
+  // "Ninguna" chip
+  const noneChip = document.createElement('div');
+  noneChip.className = 'scene-chip' + (!sceneState.bgScene ? ' active' : '');
+  noneChip.dataset.scene = '';
+  noneChip.innerHTML = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="340" fill="#1a2a4a"/><text x="120" y="175" text-anchor="middle" font-size="40" fill="rgba(255,255,255,0.2)">✕</text></svg><span>Ninguna</span>`;
+  noneChip.addEventListener('click', () => {
+    sceneState.bgScene = null;
+    AudioManager.stopBg();
+    saveCollection();
+    renderAll();
+  });
+  scenePicker.appendChild(noneChip);
+
+  const SCENE_LABELS = {
+    hogwarts: 'Hogwarts', great_hall: 'Gran Comedor',
+    forbidden_forest: 'Bosque Prohibido', platform_934: 'Andén 9¾',
+    quidditch: 'Quidditch', park: 'Parque', sunset_beach: 'Playa',
+  };
+  Object.keys(BG_SCENES).forEach(key => {
+    const scene = BG_SCENES[key];
+    const chip = document.createElement('div');
+    chip.className = 'scene-chip' + (sceneState.bgScene === key ? ' active' : '');
+    chip.dataset.scene = key;
+    const miniSvg = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="340" fill="${SCENE_BG[key] || '#1a2a4a'}"/>${scene.svgSky || ''}${scene.svgGround ? `<g transform="translate(0,${340 - (scene.groundH||80)})">${scene.svgGround}</g>` : ''}</svg>`;
+    chip.innerHTML = `${miniSvg}<span>${SCENE_LABELS[key] || key}</span>`;
+    chip.addEventListener('click', () => {
+      sceneState.bgScene = key;
+      if (key === 'great_hall' || key === 'quidditch') {
+        AudioManager.playBgMusic(key);
+      } else {
+        AudioManager.stopBg();
+      }
+      saveCollection();
+      renderAll();
+    });
+    scenePicker.appendChild(chip);
+  });
+  bodyEl.appendChild(scenePicker);
+
+  // -- Toggle in-scene button --
+  const toggleBtn = document.createElement('button');
+  toggleBtn.className = 'btn-toggle-scene' + (doll.inScene ? ' in-scene' : '');
+  toggleBtn.id = 'mob-toggle-scene';
+  toggleBtn.textContent = doll.inScene ? '⊖ Quitar de escena' : '⊕ Añadir a escena';
+  toggleBtn.style.cssText = 'width:100%;margin-top:10px;';
+  toggleBtn.addEventListener('click', () => {
+    doll.inScene = !doll.inScene;
+    if (!doll.inScene) { doll.dollX = null; doll.dollY = null; }
+    saveCollection();
+    renderAll();
+  });
+  bodyEl.appendChild(toggleBtn);
+
+  // -- Reset button --
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'btn-reset';
+  resetBtn.id = 'mob-reset';
+  resetBtn.textContent = '🗑 Resetear muñeco';
+  resetBtn.style.cssText = 'width:100%;margin-top:8px;';
+  resetBtn.addEventListener('click', () => {
+    const name = doll.name;
+    const wasInScene = doll.inScene;
+    collection[activeSlot] = defaultDoll(activeSlot);
+    collection[activeSlot].name = name;
+    collection[activeSlot].inScene = wasInScene;
+    doll = collection[activeSlot];
+    saveCollection();
+    buildPanel();
+    renderAll();
+  });
+  bodyEl.appendChild(resetBtn);
+
+  acc.appendChild(hdr);
+  acc.appendChild(bodyEl);
+  container.appendChild(acc);
 }
 
 function buildPreviewSvg(cat, value, d) {
@@ -3707,6 +3890,185 @@ function loadFromHash() {
   } catch (_) { return false; }
 }
 
+/* ---------- BOTTOM SHEET (Task 8) ---------- */
+function initBottomSheet() {
+  const sheet = document.getElementById('bottom-sheet');
+  const overlay = document.getElementById('bottom-sheet-overlay');
+  const handle = sheet.querySelector('.bottom-sheet-handle');
+  if (!sheet || !handle) return;
+
+  let startY = 0, startTranslate = 0, dragging = false;
+  const maxH = () => sheet.offsetHeight;
+
+  function getTranslateY() {
+    const st = getComputedStyle(sheet);
+    const m = new DOMMatrix(st.transform);
+    return m.m42;
+  }
+
+  function snapTo(state) {
+    sheet.style.transition = 'transform 0.3s cubic-bezier(0.4,0,0.2,1)';
+    sheet.classList.remove('peek', 'open');
+    if (state === 'open') {
+      sheet.classList.add('open');
+      overlay.classList.add('visible');
+    } else if (state === 'peek') {
+      sheet.classList.add('peek');
+      overlay.classList.remove('visible');
+    } else {
+      // closed: translateY(100%)
+      overlay.classList.remove('visible');
+    }
+  }
+
+  // Toggle from hamburger button
+  window._toggleBottomSheet = function() {
+    if (sheet.classList.contains('open')) {
+      snapTo('closed');
+    } else {
+      snapTo('open');
+    }
+  };
+
+  // Close on overlay tap
+  overlay.addEventListener('click', () => snapTo('closed'));
+
+  // Touch drag on handle
+  handle.addEventListener('touchstart', e => {
+    dragging = true;
+    startY = e.touches[0].clientY;
+    startTranslate = getTranslateY();
+    sheet.style.transition = 'none';
+  }, { passive: true });
+
+  handle.addEventListener('touchmove', e => {
+    if (!dragging) return;
+    const dy = e.touches[0].clientY - startY;
+    const newY = Math.max(0, startTranslate + dy);
+    sheet.style.transform = `translateY(${newY}px)`;
+  }, { passive: true });
+
+  handle.addEventListener('touchend', e => {
+    if (!dragging) return;
+    dragging = false;
+    const currentY = getTranslateY();
+    const h = maxH();
+    const ratio = currentY / h;
+    // Snap logic: < 30% from top → open, > 70% → closed, else peek
+    if (ratio < 0.3) {
+      snapTo('open');
+    } else if (ratio > 0.7) {
+      snapTo('closed');
+    } else {
+      snapTo('peek');
+    }
+  });
+
+  // Also handle touchcancel on handle
+  handle.addEventListener('touchcancel', () => {
+    if (dragging) {
+      dragging = false;
+      snapTo('closed');
+    }
+  });
+}
+
+/* ---------- MOBILE SLOT BAR (Task 9) ---------- */
+function buildMobileSlotBar() {
+  const bar = document.getElementById('mobile-slot-bar');
+  if (!bar) return;
+  bar.innerHTML = '';
+  collection.forEach((_, i) => {
+    const tab = document.createElement('div');
+    tab.className = 'slot-tab' + (i === activeSlot ? ' active' : '') + (collection[i].inScene ? ' in-scene' : '');
+    tab.dataset.slotIdx = i;
+    tab.innerHTML = `<div class="slot-mini-svg"></div><span class="slot-name"></span>`;
+    tab.addEventListener('click', () => switchSlot(i));
+    bar.appendChild(tab);
+  });
+  updateMobileSlotTabs();
+}
+
+function updateMobileSlotTabs() {
+  const bar = document.getElementById('mobile-slot-bar');
+  if (!bar) return;
+  bar.querySelectorAll('.slot-tab').forEach((tab, i) => {
+    tab.classList.toggle('active', i === activeSlot);
+    tab.classList.toggle('in-scene', !!collection[i].inScene);
+    const mini = tab.querySelector('.slot-mini-svg');
+    if (mini) mini.innerHTML = renderMini(collection[i]);
+    const nameEl = tab.querySelector('.slot-name');
+    if (nameEl) nameEl.textContent = collection[i].name;
+  });
+}
+
+/* ---------- MOBILE ACTION MENU (Task 10) ---------- */
+function initActionMenu() {
+  const btn = document.getElementById('btn-action-menu');
+  const popup = document.getElementById('action-menu-popup');
+  if (!btn || !popup) return;
+
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    popup.classList.toggle('open');
+  });
+
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (!popup.contains(e.target) && e.target !== btn) {
+      popup.classList.remove('open');
+    }
+  });
+
+  // Wire up mobile action buttons
+  document.getElementById('mob-save').addEventListener('click', () => {
+    popup.classList.remove('open');
+    exportPng();
+  });
+  document.getElementById('mob-scene-save').addEventListener('click', () => {
+    popup.classList.remove('open');
+    exportScenePng();
+  });
+  document.getElementById('mob-share').addEventListener('click', () => {
+    popup.classList.remove('open');
+    shareDoll();
+  });
+}
+
+/* ---------- RESIZE HANDLER (Task 11) ---------- */
+function initResponsiveHandler() {
+  let prevMobile = isMobile();
+
+  function onLayoutChange() {
+    const nowMobile = isMobile();
+    if (nowMobile !== prevMobile) {
+      prevMobile = nowMobile;
+      // Rebuild panel into correct target
+      buildPanel();
+      if (nowMobile) {
+        buildMobileSlotBar();
+      }
+      renderAll();
+    }
+  }
+
+  mqMobile.addEventListener('change', onLayoutChange);
+  mqTablet.addEventListener('change', onLayoutChange);
+}
+
+/* ---------- TOUCHCANCEL SAFETY (Task 11) ---------- */
+function initTouchCancel() {
+  document.addEventListener('touchcancel', () => {
+    // Clean up any drag states
+    document.querySelectorAll('.dragging').forEach(el => el.classList.remove('dragging'));
+    document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
+    const dropHint = document.getElementById('scene-drop-hint');
+    if (dropHint) dropHint.classList.remove('visible');
+    const trash = document.getElementById('scene-trash-zone');
+    if (trash) { trash.classList.remove('visible'); trash.classList.remove('hover'); }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // Build slot tabs (draggable to canvas)
   let draggingSlotIdx = null;
@@ -3870,7 +4232,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load from URL hash if present
   loadFromHash();
 
-  // Build left panel
+  // Mobile: bottom sheet, slot bar, action menu, resize handler, touchcancel
+  initBottomSheet();
+  initActionMenu();
+  initResponsiveHandler();
+  initTouchCancel();
+  if (isMobile()) {
+    buildMobileSlotBar();
+  }
+
+  // Hamburger button toggles bottom sheet
+  document.getElementById('btn-hamburger').addEventListener('click', () => {
+    if (window._toggleBottomSheet) window._toggleBottomSheet();
+  });
+
+  // Build left panel (or bottom sheet content on mobile)
   buildPanel();
 
   // Initial render

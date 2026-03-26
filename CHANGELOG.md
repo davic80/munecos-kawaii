@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.0.0] - 2026-03-26
+
+### Added
+- **Diseño responsive mobile-first.** Rediseño completo de la interfaz para funcionar en móviles y tablets además de escritorio. Tres breakpoints: móvil (<768px), tablet (768-1024px), escritorio (>1024px)
+- **Bottom sheet deslizable (móvil).** Panel de personalización como hoja inferior tipo Google Maps con drag handle, snap a 3 posiciones (cerrado/peek/abierto) y overlay oscuro. Se abre con el botón hamburguesa ☰ en el header
+- **Barra de slots fija (móvil).** Los 4 slots de muñecos aparecen como barra fija en la parte inferior de la pantalla, siempre visible para cambiar rápidamente entre muñecos
+- **Menú de acciones ⋮ (móvil).** Botón de tres puntos verticales en el header que despliega un menú con Guardar PNG, Escena PNG y Compartir
+- **Sección "Configuración" en bottom sheet.** Los controles del panel derecho (nombre, color de fondo, selector de escena, añadir/quitar de escena, resetear) se integran como sección acordeón dentro del bottom sheet en móvil
+- **Touch targets ampliados.** Todos los elementos interactivos cumplen el mínimo de 48px en móvil (44px en tablet): sliders más gruesos (24px con thumb de 24px), swatches de piel 36px, chips de mascota más grandes, botones más altos
+- **Soporte viewport-fit=cover.** Safe area para dispositivos con notch (padding inferior respeta `env(safe-area-inset-bottom)`)
+- **Supresión de tap highlight.** `-webkit-tap-highlight-color: transparent` en dispositivos táctiles
+- **Handler touchcancel.** Limpieza automática de estados de drag cuando el sistema cancela un toque (llamada entrante, notificación, etc.)
+- **Handler de redimensionado.** Detección automática de cambio entre móvil/tablet/escritorio con `matchMedia` listeners para reconstruir la interfaz al girar el dispositivo o redimensionar la ventana
+
+### Changed
+- **Breakpoints actualizados.** Reemplazo de los 3 breakpoints antiguos (480px/520px/700px) por el sistema de 3 tiers (móvil/tablet/escritorio)
+- **Panel izquierdo redirigido en móvil.** `buildPanel()` inyecta el contenido en `#bottom-sheet-content` en lugar de `#left-panel` cuando la pantalla es <768px
+- **`syncRightPanel()` dual.** Sincroniza tanto los controles del panel derecho (escritorio) como los controles de la sección Configuración (móvil)
+- **Header compacto en móvil.** Altura reducida a 48px, título más pequeño, botones de acción reemplazados por hamburguesa + menú ⋮
+
+### Removed
+- **Breakpoint 480px** que ocultaba el footer (ahora el footer se oculta como parte del breakpoint móvil <768px)
+- **Breakpoint 520px** que encogía el panel y los muñecos (ya no necesario con el diseño mobile-first)
+- **Breakpoint 700px** que ocultaba el panel derecho sin alternativa (ahora los controles están en el bottom sheet)
+
+---
+
 ## [1.12.1] - 2026-03-25
 
 ### Added
