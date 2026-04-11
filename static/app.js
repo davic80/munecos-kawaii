@@ -1846,7 +1846,15 @@ function applyBgColor() {
 /* ---------- STATE ---------- */
 const COLLECTION_KEY = 'munecos_kawaii_collection';
 const SCENE_STATE_KEY = 'munecos_kawaii_scene';
-const MAX_SLOTS = 4;
+const MAX_SLOTS = 8;
+const PET_SCALE_MIN = 75;
+const PET_SCALE_MAX = 200;
+
+function normalizePetScale(value) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return PET_SCALE_MIN;
+  return Math.min(PET_SCALE_MAX, Math.max(PET_SCALE_MIN, Math.round(n)));
+}
 
 function defaultSceneState() {
   return { bgColor: '#1a2a4a', bgScene: null };
@@ -1909,7 +1917,7 @@ function defaultDoll(idx) {
     // doll position in canvas (null = default: centered X, base at 90% height)
     dollX: null, dollY: null,
     // pet fields
-    pet: null, petOutfit: null, petPosition: 'floor', petScale: 0,
+    pet: null, petOutfit: null, petPosition: 'floor', petScale: PET_SCALE_MIN,
     // whether this doll is placed in the shared scene
     inScene: idx === 0,
   };
@@ -1919,7 +1927,11 @@ function loadCollection() {
   try {
     const raw = localStorage.getItem(COLLECTION_KEY);
     if (raw) {
-      const arr = JSON.parse(raw);
+      const arr = JSON.parse(raw).map((d, idx) => {
+        const merged = Object.assign(defaultDoll(idx), d || {});
+        merged.petScale = normalizePetScale(merged.petScale);
+        return merged;
+      });
       while (arr.length < MAX_SLOTS) arr.push(defaultDoll(arr.length));
       return arr.slice(0, MAX_SLOTS);
     }
@@ -2012,7 +2024,7 @@ function renderDoll(container, d) {
   if (d.wand && !petHidesWand)      parts.push(`<g class="wand-layer" data-wand="${d.wand}">${layer('wand',     WANDS[d.wand]    || '', true)}</g>`);
   if (d.lefthand && !petHidesLefthand)  parts.push(layer('lefthand', (LEFTHAND[d.lefthand] || (() => ''))(d.lefthandColor || '#7c3aed'), true));
   // Pet: last layer
-  if (d.pet) parts.push(renderPet(d.pet, d.petOutfit, d.petPosition || 'floor', d.petScale || 0));
+  if (d.pet) parts.push(renderPet(d.pet, d.petOutfit, d.petPosition || 'floor', normalizePetScale(d.petScale)));
 
   container.innerHTML = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg">${parts.join('\n')}</svg>`;
 }
@@ -2279,7 +2291,9 @@ function initDollDrag() {
 
 /* ---------- SLOT TABS ---------- */
 function updateSlotTabs() {
-  document.querySelectorAll('.slot-tab').forEach((tab, i) => {
+  document.querySelectorAll('.slot-tab').forEach(tab => {
+    const i = parseInt(tab.dataset.slotIdx, 10);
+    if (!Number.isFinite(i) || !collection[i]) return;
     tab.classList.toggle('active', i === activeSlot);
     tab.classList.toggle('in-scene', !!collection[i].inScene);
     const mini = tab.querySelector('.slot-mini-svg');
@@ -2611,7 +2625,7 @@ function buildPanel() {
               doll.pet = null;
               doll.petOutfit = null;
               doll.petPosition = 'floor';
-              doll.petScale = 0;
+              doll.petScale = PET_SCALE_MIN;
             } else {
               doll.pet = pt.key;
             }
@@ -2687,18 +2701,18 @@ function buildPanel() {
           body.appendChild(outfitGrid);
 
           // Pet scale slider
-          const curPetScale = doll.petScale || 0;
+          const curPetScale = normalizePetScale(doll.petScale);
           const petScaleRow = document.createElement('div');
           petScaleRow.className = 'scale-row';
           petScaleRow.innerHTML = `
             <span class="scale-icon">🔍</span>
             <label>Tamaño</label>
-            <input type="range" min="-50" max="50" step="1" value="${curPetScale}" id="scl-pet"/>
+            <input type="range" min="${PET_SCALE_MIN}" max="${PET_SCALE_MAX}" step="1" value="${curPetScale}" id="scl-pet"/>
             <span class="scale-val" id="scl-val-pet">${curPetScale > 0 ? '+' : ''}${curPetScale}%</span>`;
           const petScaleInp = petScaleRow.querySelector('input');
           const petScaleLbl = petScaleRow.querySelector('.scale-val');
           petScaleInp.addEventListener('input', e => {
-            const v = parseInt(e.target.value, 10);
+            const v = normalizePetScale(parseInt(e.target.value, 10));
             doll.petScale = v;
             petScaleLbl.textContent = `${v > 0 ? '+' : ''}${v}%`;
             saveCollection();
@@ -3908,6 +3922,7 @@ function initBottomSheet() {
 
   function snapTo(state) {
     sheet.style.transition = 'transform 0.3s cubic-bezier(0.4,0,0.2,1)';
+    sheet.style.transform = ''; // clear inline style so CSS classes take over
     sheet.classList.remove('peek', 'open');
     if (state === 'open') {
       sheet.classList.add('open');
@@ -3916,7 +3931,7 @@ function initBottomSheet() {
       sheet.classList.add('peek');
       overlay.classList.remove('visible');
     } else {
-      // closed: translateY(100%)
+      // closed: translateY(100%) from default CSS
       overlay.classList.remove('visible');
     }
   }
@@ -3943,10 +3958,11 @@ function initBottomSheet() {
 
   handle.addEventListener('touchmove', e => {
     if (!dragging) return;
+    e.preventDefault(); // prevent scroll interference
     const dy = e.touches[0].clientY - startY;
     const newY = Math.max(0, startTranslate + dy);
     sheet.style.transform = `translateY(${newY}px)`;
-  }, { passive: true });
+  }, { passive: false });
 
   handle.addEventListener('touchend', e => {
     if (!dragging) return;
@@ -3980,26 +3996,14 @@ function buildMobileSlotBar() {
   bar.innerHTML = '';
   collection.forEach((_, i) => {
     const tab = document.createElement('div');
-    tab.className = 'slot-tab' + (i === activeSlot ? ' active' : '') + (collection[i].inScene ? ' in-scene' : '');
+    tab.className = 'slot-tab';
     tab.dataset.slotIdx = i;
     tab.innerHTML = `<div class="slot-mini-svg"></div><span class="slot-name"></span>`;
     tab.addEventListener('click', () => switchSlot(i));
     bar.appendChild(tab);
   });
-  updateMobileSlotTabs();
-}
-
-function updateMobileSlotTabs() {
-  const bar = document.getElementById('mobile-slot-bar');
-  if (!bar) return;
-  bar.querySelectorAll('.slot-tab').forEach((tab, i) => {
-    tab.classList.toggle('active', i === activeSlot);
-    tab.classList.toggle('in-scene', !!collection[i].inScene);
-    const mini = tab.querySelector('.slot-mini-svg');
-    if (mini) mini.innerHTML = renderMini(collection[i]);
-    const nameEl = tab.querySelector('.slot-name');
-    if (nameEl) nameEl.textContent = collection[i].name;
-  });
+  // updateSlotTabs() will handle active/in-scene/names via dataset.slotIdx
+  updateSlotTabs();
 }
 
 /* ---------- MOBILE ACTION MENU (Task 10) ---------- */

@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.1.0] - 2026-04-11
+
+### Added
+- **8 personajes simultáneos.** `MAX_SLOTS` aumentado de 4 a 8. La barra de slots (escritorio y móvil) soporta los 8 con scroll horizontal. Los datos guardados en localStorage se migran automáticamente: si existían 4 personajes, se añaden los 4 nuevos con valores por defecto.
+- **Mascotas más grandes por defecto.** El tamaño inicial de las mascotas pasa de 0% a +75%. El slider de tamaño cambia de rango -50..+50 a 75..200 (sin valores por debajo del tamaño base). `normalizePetScale()` garantiza que cualquier valor antiguo guardado quede automáticamente en el mínimo nuevo al cargar.
+
+### Fixed
+- **Crash al cargar en móvil con 8 slots.** `updateSlotTabs()` usaba el índice del forEach como índice de `collection`. Con 8 slots en el header y 8 en la barra móvil = 16 elementos en el DOM, el índice 8+ accedía a `collection[8]` inexistente → TypeError. Corregido usando `tab.dataset.slotIdx` para identificar el slot correcto.
+- **Bottom sheet se quedaba atascado al arrastrar el handle.** `snapTo()` añadía la clase CSS correcta pero el `style.transform` inline del arrastre tenía prioridad sobre el CSS → el panel se quedaba donde estaba. Corregido limpiando `sheet.style.transform = ''` al inicio de `snapTo()`.
+- **Scroll indeseado al arrastrar el handle.** El listener `touchmove` del handle usaba `passive: true`, impidiendo llamar a `preventDefault()`. Cambiado a `passive: false` para bloquear interferencias de scroll del sistema.
+- **Función `updateMobileSlotTabs()` duplicada.** Existía una función paralela a `updateSlotTabs()` para la barra móvil que usaba su propio índice de bucle (mismo bug del punto 1). Eliminada y reemplazada por la llamada a `updateSlotTabs()` centralizada que ya usa `dataset.slotIdx`.
+
+---
+
 ## [2.0.0] - 2026-03-26
 
 ### Added
