@@ -924,6 +924,11 @@ header h1 {
   :root { --panel-w: 280px; }
   .panel-right { display: none; }
 
+  /* Slots: ocultar tabs del header, usar barra inferior igual que móvil */
+  .slots { display: none; }
+  .mobile-slot-bar { display: flex; }
+  .main { padding-bottom: calc(var(--mobile-slot-h) + var(--safe-bottom)); }
+
   /* Touch targets for tablet */
   .accordion-header {
     padding: 12px 14px;

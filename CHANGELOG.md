@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.1.1] - 2026-04-14
+
+### Fixed
+- **Barra de slots invisible en tablet.** En resoluciones 768-1024px los tabs del header (`.slots`) no se ocultaban y la barra inferior (`mobile-slot-bar`) no se activaba. Con 8 slots × 80px mínimo = 640px compitiendo con el título y los 3 botones de acción, los tabs quedaban aplastados o fuera de pantalla. La barra inferior de slots ahora también se muestra en tablet, igual que en móvil.
+- **`initResponsiveHandler` no reconstruía el slot bar al pasar a tablet.** El handler solo comprobaba cambios en el breakpoint móvil; ahora también detecta el breakpoint tablet y llama a `buildMobileSlotBar()` al entrar en cualquiera de los dos rangos táctiles.
+
+---
+
 ## [2.1.0] - 2026-04-11
 
 ### Added

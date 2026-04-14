@@ -4042,14 +4042,16 @@ function initActionMenu() {
 /* ---------- RESIZE HANDLER (Task 11) ---------- */
 function initResponsiveHandler() {
   let prevMobile = isMobile();
+  let prevTablet = isTablet();
 
   function onLayoutChange() {
     const nowMobile = isMobile();
-    if (nowMobile !== prevMobile) {
+    const nowTablet = isTablet();
+    if (nowMobile !== prevMobile || nowTablet !== prevTablet) {
       prevMobile = nowMobile;
-      // Rebuild panel into correct target
+      prevTablet = nowTablet;
       buildPanel();
-      if (nowMobile) {
+      if (nowMobile || nowTablet) {
         buildMobileSlotBar();
       }
       renderAll();
@@ -4241,7 +4243,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initActionMenu();
   initResponsiveHandler();
   initTouchCancel();
-  if (isMobile()) {
+  if (isMobile() || isTablet()) {
     buildMobileSlotBar();
   }
 
