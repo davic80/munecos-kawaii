@@ -3998,11 +3998,18 @@ function buildMobileSlotBar() {
     const tab = document.createElement('div');
     tab.className = 'slot-tab';
     tab.dataset.slotIdx = i;
+    tab.draggable = true;
     tab.innerHTML = `<div class="slot-mini-svg"></div><span class="slot-name"></span>`;
     tab.addEventListener('click', () => switchSlot(i));
+    // HTML5 drag (mouse/trackpad on tablet/desktop)
+    tab.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('text/plain', `slot:${i}`);
+      e.dataTransfer.effectAllowed = collection[i].inScene ? 'none' : 'copy';
+      tab.classList.add('dragging');
+    });
+    tab.addEventListener('dragend', () => tab.classList.remove('dragging'));
     bar.appendChild(tab);
   });
-  // updateSlotTabs() will handle active/in-scene/names via dataset.slotIdx
   updateSlotTabs();
 }
 
@@ -4073,6 +4080,113 @@ function initTouchCancel() {
     const trash = document.getElementById('scene-trash-zone');
     if (trash) { trash.classList.remove('visible'); trash.classList.remove('hover'); }
   });
+}
+
+/* ---------- MOBILE SLOT TOUCH DRAG ---------- */
+function initMobileSlotDrag() {
+  const bar = document.getElementById('mobile-slot-bar');
+  const canvasArea = document.querySelector('.canvas-area');
+  const dropHint = document.getElementById('scene-drop-hint');
+  if (!bar || !canvasArea) return;
+
+  let ghost = null;
+  let dragSlotIdx = null;
+  let activeTouchId = null;
+
+  function createGhost(slotIdx, x, y) {
+    ghost = document.createElement('div');
+    ghost.className = 'slot-drag-ghost';
+    ghost.innerHTML = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg"
+      style="width:68px;height:96px;">${renderMini(collection[slotIdx]).match(/<svg[^>]*>([\s\S]*)<\/svg>/)?.[1] || ''}</svg>`;
+    document.body.appendChild(ghost);
+    moveGhost(x, y);
+  }
+
+  function moveGhost(x, y) {
+    if (!ghost) return;
+    ghost.style.left = x + 'px';
+    ghost.style.top = y + 'px';
+  }
+
+  function removeGhost() {
+    if (ghost) { ghost.remove(); ghost = null; }
+    if (dropHint) dropHint.classList.remove('visible');
+    dragSlotIdx = null;
+    activeTouchId = null;
+  }
+
+  function isOverCanvas(x, y) {
+    const rect = canvasArea.getBoundingClientRect();
+    return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+  }
+
+  // Event delegation on bar — survives innerHTML rebuilds
+  bar.addEventListener('touchstart', e => {
+    // Find the tab that was touched
+    const tab = e.target.closest('.slot-tab');
+    if (!tab) return;
+    const idx = parseInt(tab.dataset.slotIdx, 10);
+    if (!Number.isFinite(idx)) return;
+
+    // Only start drag if touch moves enough (distinguish tap from drag)
+    const touch = e.changedTouches[0];
+    dragSlotIdx = idx;
+    activeTouchId = touch.identifier;
+    createGhost(idx, touch.clientX, touch.clientY);
+    e.preventDefault(); // prevent scroll while dragging slot
+  }, { passive: false });
+
+  document.addEventListener('touchmove', e => {
+    if (dragSlotIdx === null) return;
+    // Find our tracked touch
+    let touch = null;
+    for (let i = 0; i < e.changedTouches.length; i++) {
+      if (e.changedTouches[i].identifier === activeTouchId) {
+        touch = e.changedTouches[i]; break;
+      }
+    }
+    if (!touch) return;
+    e.preventDefault();
+
+    moveGhost(touch.clientX, touch.clientY);
+
+    const overCanvas = isOverCanvas(touch.clientX, touch.clientY);
+    const alreadyInScene = collection[dragSlotIdx]?.inScene;
+
+    if (overCanvas && !alreadyInScene) {
+      if (dropHint) dropHint.classList.add('visible');
+      ghost.classList.remove('no-drop');
+    } else {
+      if (dropHint) dropHint.classList.remove('visible');
+      if (overCanvas && alreadyInScene) ghost.classList.add('no-drop');
+      else ghost.classList.remove('no-drop');
+    }
+  }, { passive: false });
+
+  document.addEventListener('touchend', e => {
+    if (dragSlotIdx === null) return;
+    let touch = null;
+    for (let i = 0; i < e.changedTouches.length; i++) {
+      if (e.changedTouches[i].identifier === activeTouchId) {
+        touch = e.changedTouches[i]; break;
+      }
+    }
+    const idx = dragSlotIdx;
+    removeGhost();
+    if (!touch) return;
+
+    if (isOverCanvas(touch.clientX, touch.clientY) && !collection[idx].inScene) {
+      const rect = canvasArea.getBoundingClientRect();
+      collection[idx].dollX = touch.clientX - rect.left - 120;
+      collection[idx].dollY = touch.clientY - rect.top - 170;
+      collection[idx].inScene = true;
+      switchSlot(idx);
+      saveCollection();
+      renderAll();
+    }
+  });
+
+  document.addEventListener('touchcancel', () => { removeGhost(); });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -4238,11 +4352,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load from URL hash if present
   loadFromHash();
 
-  // Mobile: bottom sheet, slot bar, action menu, resize handler, touchcancel
+  // Mobile: bottom sheet, slot bar, action menu, resize handler, touchcancel, touch drag
   initBottomSheet();
   initActionMenu();
   initResponsiveHandler();
   initTouchCancel();
+  initMobileSlotDrag();
   if (isMobile() || isTablet()) {
     buildMobileSlotBar();
   }

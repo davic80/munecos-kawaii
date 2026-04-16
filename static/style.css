@@ -820,6 +820,29 @@ header h1 {
   flex-shrink: 0;
 }
 
+/* ===== SLOT DRAG GHOST (touch drag from mobile slot bar) ===== */
+.slot-drag-ghost {
+  position: fixed;
+  width: 80px;
+  height: 110px;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.85;
+  transform: translate(-50%, -110%) scale(1.08);
+  border-radius: 10px;
+  background: var(--surface2);
+  border: 2px solid var(--accent2);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s;
+}
+.slot-drag-ghost.no-drop {
+  border-color: var(--accent);
+  opacity: 0.6;
+}
+
 /* ===== RESPONSIVE: MOBILE (<768px) ===== */
 @media (max-width: 767px) {
   :root {

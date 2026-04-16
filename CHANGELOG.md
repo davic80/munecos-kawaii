@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.1.2] - 2026-04-16
+
+### Added
+- **Drag-to-canvas desde barra de slots móvil/tablet.** Se puede arrastrar un muñeco desde la barra inferior de slots y soltarlo sobre el canvas para añadirlo a la escena. Incluye ghost SVG que sigue el dedo, indicador de zona de drop (`scene-drop-hint`) y feedback visual rojo (`.no-drop`) si el muñeco ya está en escena.
+- **HTML5 drag en barra de slots.** Los tabs de la barra móvil tienen ahora `draggable=true` con listeners `dragstart`/`dragend` para compatibilidad con dispositivos que usan ratón en modo tablet.
+
+---
+
 ## [2.1.1] - 2026-04-14
 
 ### Fixed
