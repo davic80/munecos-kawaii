@@ -310,6 +310,57 @@ const TOPS = {
   dress: (c, _g) => `
     <path d="M88,200 Q84,210 82,240 L74,286 Q120,298 166,286 L158,240 Q156,210 152,200 L140,208 Q130,198 120,198 Q110,198 100,208 Z" fill="${c}"/>
     <path d="M82,240 Q76,262 74,286 Q120,298 166,286 Q164,262 158,240 Z" fill="${darken(c,10)}"/>`,
+  dress_rose: (c, _g) => `
+    <path d="M88,200 Q84,210 82,240 L74,286 Q120,298 166,286 L158,240 Q156,210 152,200 L140,208 Q130,198 120,198 Q110,198 100,208 Z" fill="${c}"/>
+    <path d="M82,240 Q76,262 74,286 Q120,298 166,286 Q164,262 158,240 Z" fill="${darken(c,10)}"/>
+    <!-- Rose petals scattered on skirt -->
+    <circle cx="90"  cy="252" r="5" fill="#e8355a"/><circle cx="86"  cy="256" r="3.5" fill="#f06080"/><circle cx="94"  cy="256" r="3.5" fill="#f06080"/><circle cx="90"  cy="259" r="3.5" fill="#f06080"/><circle cx="90"  cy="253" r="2.5" fill="#fff0f3"/>
+    <circle cx="115" cy="265" r="5" fill="#c0224a"/><circle cx="111" cy="269" r="3.5" fill="#e04070"/><circle cx="119" cy="269" r="3.5" fill="#e04070"/><circle cx="115" cy="272" r="3.5" fill="#e04070"/><circle cx="115" cy="266" r="2.5" fill="#fff0f3"/>
+    <circle cx="140" cy="255" r="5" fill="#e8355a"/><circle cx="136" cy="259" r="3.5" fill="#f06080"/><circle cx="144" cy="259" r="3.5" fill="#f06080"/><circle cx="140" cy="262" r="3.5" fill="#f06080"/><circle cx="140" cy="256" r="2.5" fill="#fff0f3"/>
+    <circle cx="100" cy="275" r="4" fill="#c0224a"/><circle cx="97"  cy="278" r="3" fill="#e04070"/><circle cx="103" cy="278" r="3" fill="#e04070"/><circle cx="100" cy="281" r="3" fill="#e04070"/>
+    <circle cx="130" cy="278" r="4" fill="#e8355a"/><circle cx="127" cy="281" r="3" fill="#f06080"/><circle cx="133" cy="281" r="3" fill="#f06080"/><circle cx="130" cy="284" r="3" fill="#f06080"/>
+    <!-- Small leaves -->
+    <ellipse cx="96"  cy="250" rx="3" ry="1.5" fill="#4a8a3a" transform="rotate(-30,96,250)"/>
+    <ellipse cx="121" cy="263" rx="3" ry="1.5" fill="#4a8a3a" transform="rotate(20,121,263)"/>
+    <ellipse cx="146" cy="253" rx="3" ry="1.5" fill="#4a8a3a" transform="rotate(-40,146,253)"/>`,
+  dress_daisy: (c, _g) => `
+    <path d="M88,200 Q84,210 82,240 L74,286 Q120,298 166,286 L158,240 Q156,210 152,200 L140,208 Q130,198 120,198 Q110,198 100,208 Z" fill="${c}"/>
+    <path d="M82,240 Q76,262 74,286 Q120,298 166,286 Q164,262 158,240 Z" fill="${darken(c,10)}"/>
+    <!-- Daisies: white petals + yellow center -->
+    <circle cx="95"  cy="218" r="4.5" fill="#ffe135"/>${[0,45,90,135,180,225,270,315].map(a=>`<ellipse cx="${95+Math.round(7*Math.cos(a*Math.PI/180))}" cy="${218+Math.round(7*Math.sin(a*Math.PI/180))}" rx="3.5" ry="2" fill="#fff" transform="rotate(${a},${95+Math.round(7*Math.cos(a*Math.PI/180))},${218+Math.round(7*Math.sin(a*Math.PI/180))})" opacity="0.95"/>`).join('')}
+    <circle cx="145" cy="222" r="4.5" fill="#ffe135"/>${[0,45,90,135,180,225,270,315].map(a=>`<ellipse cx="${145+Math.round(7*Math.cos(a*Math.PI/180))}" cy="${222+Math.round(7*Math.sin(a*Math.PI/180))}" rx="3.5" ry="2" fill="#fff" transform="rotate(${a},${145+Math.round(7*Math.cos(a*Math.PI/180))},${222+Math.round(7*Math.sin(a*Math.PI/180))})" opacity="0.95"/>`).join('')}
+    <circle cx="108" cy="258" r="4"   fill="#ffe135"/>${[0,45,90,135,180,225,270,315].map(a=>`<ellipse cx="${108+Math.round(6*Math.cos(a*Math.PI/180))}" cy="${258+Math.round(6*Math.sin(a*Math.PI/180))}" rx="3" ry="1.8" fill="#fff" transform="rotate(${a},${108+Math.round(6*Math.cos(a*Math.PI/180))},${258+Math.round(6*Math.sin(a*Math.PI/180))})" opacity="0.92"/>`).join('')}
+    <circle cx="135" cy="270" r="4"   fill="#ffe135"/>${[0,45,90,135,180,225,270,315].map(a=>`<ellipse cx="${135+Math.round(6*Math.cos(a*Math.PI/180))}" cy="${270+Math.round(6*Math.sin(a*Math.PI/180))}" rx="3" ry="1.8" fill="#fff" transform="rotate(${a},${135+Math.round(6*Math.cos(a*Math.PI/180))},${270+Math.round(6*Math.sin(a*Math.PI/180))})" opacity="0.92"/>`).join('')}
+    <!-- Stems -->
+    <line x1="95" y1="223" x2="97" y2="230" stroke="#5a9a3a" stroke-width="1.2"/>
+    <line x1="145" y1="227" x2="143" y2="234" stroke="#5a9a3a" stroke-width="1.2"/>`,
+  dress_wildflower: (c, _g) => `
+    <path d="M88,200 Q84,210 82,240 L74,286 Q120,298 166,286 L158,240 Q156,210 152,200 L140,208 Q130,198 120,198 Q110,198 100,208 Z" fill="${c}"/>
+    <path d="M82,240 Q76,262 74,286 Q120,298 166,286 Q164,262 158,240 Z" fill="${darken(c,10)}"/>
+    <!-- Wildflowers: lavender, orange, pink, yellow mixed -->
+    <!-- Lavender sprig -->
+    <line x1="97" y1="244" x2="97" y2="228" stroke="#5a8a3a" stroke-width="1.5"/>
+    <ellipse cx="97" cy="228" rx="2.5" ry="4" fill="#b07ad8"/>
+    <ellipse cx="94" cy="233" rx="2" ry="3" fill="#c48ee0"/>
+    <ellipse cx="100" cy="232" rx="2" ry="3" fill="#c48ee0"/>
+    <!-- Orange poppy -->
+    <circle cx="118" cy="220" r="3" fill="#ff8c00"/>
+    ${[0,60,120,180,240,300].map(a=>`<ellipse cx="${118+Math.round(5.5*Math.cos(a*Math.PI/180))}" cy="${220+Math.round(5.5*Math.sin(a*Math.PI/180))}" rx="3" ry="2" fill="#ff6a00" transform="rotate(${a},${118+Math.round(5.5*Math.cos(a*Math.PI/180))},${220+Math.round(5.5*Math.sin(a*Math.PI/180))})" opacity="0.9"/>`).join('')}
+    <!-- Pink cosmos -->
+    <circle cx="143" cy="226" r="3" fill="#ff9ec4"/>
+    ${[0,45,90,135,180,225,270,315].map(a=>`<ellipse cx="${143+Math.round(5*Math.cos(a*Math.PI/180))}" cy="${226+Math.round(5*Math.sin(a*Math.PI/180))}" rx="2.5" ry="1.8" fill="#ffb8d8" transform="rotate(${a},${143+Math.round(5*Math.cos(a*Math.PI/180))},${226+Math.round(5*Math.sin(a*Math.PI/180))})" opacity="0.9"/>`).join('')}
+    <!-- Yellow buttercup -->
+    <circle cx="104" cy="268" r="3" fill="#ffe040"/>
+    ${[0,72,144,216,288].map(a=>`<ellipse cx="${104+Math.round(5*Math.cos(a*Math.PI/180))}" cy="${268+Math.round(5*Math.sin(a*Math.PI/180))}" rx="2.8" ry="1.8" fill="#ffec6e" transform="rotate(${a},${104+Math.round(5*Math.cos(a*Math.PI/180))},${268+Math.round(5*Math.sin(a*Math.PI/180))})" opacity="0.9"/>`).join('')}
+    <!-- Mini lavender lower -->
+    <line x1="137" y1="280" x2="137" y2="268" stroke="#5a8a3a" stroke-width="1.2"/>
+    <ellipse cx="137" cy="268" rx="2" ry="3.5" fill="#b07ad8"/>
+    <ellipse cx="134" cy="272" rx="1.8" ry="2.5" fill="#c48ee0"/>
+    <ellipse cx="140" cy="272" rx="1.8" ry="2.5" fill="#c48ee0"/>
+    <!-- Tiny leaves scattered -->
+    <ellipse cx="110" cy="247" rx="3" ry="1.5" fill="#4a8a3a" transform="rotate(-25,110,247)"/>
+    <ellipse cx="130" cy="256" rx="3" ry="1.5" fill="#5a9a3a" transform="rotate(15,130,256)"/>
+    <ellipse cx="150" cy="270" rx="2.5" ry="1.3" fill="#4a8a3a" transform="rotate(-35,150,270)"/>`,
   jacket: (c, _g) => `
     <path d="M72,198 L66,218 L66,286 Q120,296 174,286 L174,218 L168,198 L152,208 Q136,192 120,192 Q104,192 88,208 Z" fill="${c}"/>
     <rect x="116" y="196" width="8" height="90" rx="2" fill="${darken(c,18)}"/>
@@ -1433,43 +1484,101 @@ const HAIR = {
    platform_934: {
     label: 'Andén 9¾',
     svgSky: `
-      <!-- Station ceiling -->
-      <rect x="0" y="0" width="240" height="340" fill="#b0b8c8"/>
-      <!-- Steel roof arches -->
-      <path d="M0,0 Q120,60 240,0" fill="none" stroke="rgba(160,160,180,0.3)" stroke-width="3"/>
-      <path d="M0,20 Q120,80 240,20" fill="none" stroke="rgba(160,160,180,0.2)" stroke-width="2"/>
-      <!-- Steam/smoke clouds -->
-      <ellipse cx="60" cy="100" rx="40" ry="18" fill="rgba(220,220,230,0.12)"/>
-      <ellipse cx="80" cy="88" rx="30" ry="14" fill="rgba(220,220,230,0.1)"/>
-      <ellipse cx="160" cy="110" rx="38" ry="16" fill="rgba(220,220,230,0.1)"/>
-      <ellipse cx="140" cy="96" rx="28" ry="12" fill="rgba(220,220,230,0.09)"/>`,
+      <!-- Station interior — dark Victorian iron ceiling -->
+      <rect x="0" y="0" width="240" height="340" fill="#7a8a9a"/>
+      <!-- Iron girder arches -->
+      <path d="M-10,0 Q120,90 250,0" fill="none" stroke="rgba(60,70,80,0.7)" stroke-width="6"/>
+      <path d="M-10,18 Q120,108 250,18" fill="none" stroke="rgba(60,70,80,0.45)" stroke-width="4"/>
+      <path d="M-10,36 Q120,126 250,36" fill="none" stroke="rgba(60,70,80,0.25)" stroke-width="2.5"/>
+      <!-- Vertical support columns -->
+      <rect x="2" y="0" width="7" height="180" fill="rgba(50,60,70,0.55)"/>
+      <rect x="231" y="0" width="7" height="180" fill="rgba(50,60,70,0.55)"/>
+      <!-- Heavy steam clouds billowing from locomotive -->
+      <ellipse cx="30" cy="110" rx="52" ry="26" fill="rgba(230,235,240,0.22)"/>
+      <ellipse cx="55" cy="94" rx="40" ry="20" fill="rgba(230,235,240,0.18)"/>
+      <ellipse cx="20" cy="130" rx="36" ry="18" fill="rgba(230,235,240,0.14)"/>
+      <ellipse cx="110" cy="120" rx="44" ry="18" fill="rgba(230,235,240,0.12)"/>
+      <ellipse cx="85" cy="105" rx="32" ry="14" fill="rgba(230,235,240,0.10)"/>
+      <!-- Gas lamps on columns -->
+      <rect x="6" y="120" width="5" height="18" fill="rgba(180,160,80,0.7)"/>
+      <ellipse cx="8" cy="118" rx="7" ry="5" fill="rgba(255,220,100,0.5)"/>
+      <rect x="229" y="120" width="5" height="18" fill="rgba(180,160,80,0.7)"/>
+      <ellipse cx="232" cy="118" rx="7" ry="5" fill="rgba(255,220,100,0.5)"/>`,
     svgGround: `
-      <!-- viewBox 0 0 240 140: tren y=0..60, ruedas en y=60, andén y=60..140 -->
-      <!-- Train body -->
-      <rect x="0" y="0" width="210" height="60" rx="8" fill="rgba(180,30,30,0.85)"/>
+      <!-- groundH=180: platform strip y=130..180 (50px), train fills y=0..130 -->
+      <!-- === LOCOMOTIVE (left, large) === -->
+      <!-- Boiler / main body -->
+      <rect x="-4" y="10" width="140" height="90" rx="10" fill="#8B1A1A"/>
+      <rect x="-4" y="10" width="140" height="90" rx="10" fill="rgba(0,0,0,0.15)"/>
+      <!-- Boiler cylinder on top -->
+      <rect x="4" y="4" width="100" height="32" rx="8" fill="#9B2020"/>
+      <!-- Chimney / funnel -->
+      <rect x="14" y="-8" width="16" height="22" rx="3" fill="#2a2a2a"/>
+      <rect x="10" y="-10" width="24" height="7" rx="3" fill="#1a1a1a"/>
+      <!-- Dome -->
+      <ellipse cx="72" cy="8" rx="14" ry="10" fill="#7a1818"/>
+      <!-- Front buffer beam -->
+      <rect x="-4" y="88" width="18" height="12" rx="2" fill="#1a1a1a"/>
+      <!-- Golden trim stripes -->
+      <rect x="-4" y="36" width="140" height="4" fill="rgba(200,160,40,0.7)"/>
+      <rect x="-4" y="82" width="140" height="4" fill="rgba(200,160,40,0.6)"/>
       <!-- Train windows -->
-      <rect x="10" y="10" width="22" height="18" rx="4" fill="rgba(255,240,180,0.5)"/>
-      <rect x="40" y="10" width="22" height="18" rx="4" fill="rgba(255,240,180,0.5)"/>
-      <rect x="70" y="10" width="22" height="18" rx="4" fill="rgba(255,240,180,0.55)"/>
-      <rect x="100" y="10" width="22" height="18" rx="4" fill="rgba(255,240,180,0.45)"/>
-      <rect x="130" y="10" width="22" height="18" rx="4" fill="rgba(255,240,180,0.5)"/>
-      <rect x="160" y="10" width="22" height="18" rx="4" fill="rgba(255,240,180,0.45)"/>
-      <!-- Train bottom stripe -->
-      <rect x="0" y="50" width="210" height="10" fill="rgba(30,30,30,0.6)"/>
-      <!-- Sign 9¾ -->
-      <rect x="192" y="16" width="38" height="22" rx="4" fill="rgba(30,30,30,0.7)"/>
-      <text x="211" y="32" font-size="11" text-anchor="middle" fill="rgba(255,220,80,0.9)" font-weight="bold">9¾</text>
-      <!-- Wheels straddling train/platform boundary -->
-      <circle cx="40" cy="60" r="18" fill="rgba(20,20,20,0.85)"/>
-      <circle cx="40" cy="60" r="9" fill="rgba(100,100,110,0.75)"/>
-      <circle cx="130" cy="60" r="18" fill="rgba(20,20,20,0.85)"/>
-      <circle cx="130" cy="60" r="9" fill="rgba(100,100,110,0.75)"/>
-      <!-- Platform stone -->
-      <rect x="0" y="60" width="240" height="80" fill="rgba(90,80,70,0.9)"/>
-      <line x1="0" y1="68" x2="240" y2="68" stroke="rgba(120,110,90,0.5)" stroke-width="1.5"/>
-      <!-- Platform edge line -->
-      <line x1="0" y1="82" x2="240" y2="82" stroke="rgba(255,255,200,0.25)" stroke-width="2"/>`,
-    groundH: 140,
+      <rect x="30" y="16" width="20" height="16" rx="3" fill="rgba(255,240,160,0.55)"/>
+      <rect x="56" y="16" width="20" height="16" rx="3" fill="rgba(255,240,160,0.50)"/>
+      <rect x="82" y="16" width="20" height="16" rx="3" fill="rgba(255,240,160,0.55)"/>
+      <rect x="108" y="16" width="20" height="16" rx="3" fill="rgba(255,240,160,0.45)"/>
+      <!-- === CARRIAGES (right) === -->
+      <rect x="136" y="28" width="108" height="72" rx="6" fill="#8B1A1A"/>
+      <rect x="136" y="28" width="108" height="72" rx="6" fill="rgba(0,0,0,0.1)"/>
+      <rect x="136" y="34" width="108" height="4" fill="rgba(200,160,40,0.6)"/>
+      <rect x="136" y="92" width="108" height="4" fill="rgba(200,160,40,0.5)"/>
+      <!-- Carriage windows -->
+      <rect x="142" y="38" width="18" height="16" rx="3" fill="rgba(255,240,160,0.50)"/>
+      <rect x="166" y="38" width="18" height="16" rx="3" fill="rgba(255,240,160,0.55)"/>
+      <rect x="190" y="38" width="18" height="16" rx="3" fill="rgba(255,240,160,0.45)"/>
+      <rect x="214" y="38" width="18" height="16" rx="3" fill="rgba(255,240,160,0.50)"/>
+      <!-- Carriage door -->
+      <rect x="156" y="58" width="24" height="42" rx="2" fill="rgba(100,20,20,0.7)"/>
+      <circle cx="178" cy="79" r="3" fill="rgba(200,160,40,0.9)"/>
+      <!-- Coupling between loco and carriage -->
+      <rect x="132" y="96" width="8" height="6" rx="1" fill="#333"/>
+      <!-- === LARGE WHEELS === -->
+      <!-- Locomotive drive wheels (large) -->
+      <circle cx="30" cy="116" r="26" fill="#1a1a1a"/>
+      <circle cx="30" cy="116" r="19" fill="#2a2a2a"/>
+      <circle cx="30" cy="116" r="8" fill="#888"/>
+      <line x1="30" y1="90" x2="30" y2="142" stroke="rgba(150,150,150,0.4)" stroke-width="2"/>
+      <line x1="4" y1="116" x2="56" y2="116" stroke="rgba(150,150,150,0.4)" stroke-width="2"/>
+      <circle cx="88" cy="116" r="26" fill="#1a1a1a"/>
+      <circle cx="88" cy="116" r="19" fill="#2a2a2a"/>
+      <circle cx="88" cy="116" r="8" fill="#888"/>
+      <line x1="88" y1="90" x2="88" y2="142" stroke="rgba(150,150,150,0.4)" stroke-width="2"/>
+      <line x1="62" y1="116" x2="114" y2="116" stroke="rgba(150,150,150,0.4)" stroke-width="2"/>
+      <!-- Connecting rod between drive wheels -->
+      <rect x="28" y="110" width="62" height="5" rx="2" fill="rgba(180,140,40,0.8)"/>
+      <!-- Carriage wheels (smaller) -->
+      <circle cx="158" cy="116" r="18" fill="#1a1a1a"/>
+      <circle cx="158" cy="116" r="12" fill="#2a2a2a"/>
+      <circle cx="158" cy="116" r="5" fill="#777"/>
+      <circle cx="210" cy="116" r="18" fill="#1a1a1a"/>
+      <circle cx="210" cy="116" r="12" fill="#2a2a2a"/>
+      <circle cx="210" cy="116" r="5" fill="#777"/>
+      <!-- === PLATFORM === -->
+      <rect x="0" y="130" width="240" height="50" fill="#7a6e60"/>
+      <!-- Platform surface detail -->
+      <rect x="0" y="130" width="240" height="4" fill="rgba(120,110,90,0.6)"/>
+      <!-- Yellow safety line -->
+      <rect x="0" y="138" width="240" height="3" fill="rgba(255,230,60,0.45)"/>
+      <!-- Stone tiles -->
+      <line x1="40" y1="142" x2="40" y2="180" stroke="rgba(100,90,75,0.4)" stroke-width="1"/>
+      <line x1="80" y1="142" x2="80" y2="180" stroke="rgba(100,90,75,0.4)" stroke-width="1"/>
+      <line x1="120" y1="142" x2="120" y2="180" stroke="rgba(100,90,75,0.4)" stroke-width="1"/>
+      <line x1="160" y1="142" x2="160" y2="180" stroke="rgba(100,90,75,0.4)" stroke-width="1"/>
+      <line x1="200" y1="142" x2="200" y2="180" stroke="rgba(100,90,75,0.4)" stroke-width="1"/>
+      <!-- Sign 9¾ on platform pillar -->
+      <rect x="195" y="90" width="40" height="26" rx="4" fill="rgba(20,20,20,0.8)"/>
+      <text x="215" y="108" font-size="13" text-anchor="middle" fill="rgba(255,220,60,0.95)" font-weight="bold">9¾</text>`,
+    groundH: 180,
   },
   quidditch: {
     label: 'Quidditch',
@@ -1621,9 +1730,81 @@ const HAIR = {
       <circle cx="130" cy="35" r="2" fill="rgba(200,180,150,0.5)"/>`,
     groundH: 80,
   },
+  brick_wall: {
+    label: 'Muro de Ladrillos',
+    svgSky: `
+      <!-- Dark stone ceiling / upper wall -->
+      <rect x="0" y="0" width="240" height="340" fill="#3a2e26"/>
+      <!-- Brick pattern — upper wall (sky layer) -->
+      <!-- Row 1 y=4 -->
+      <rect x="2" y="4" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="38" y="4" width="34" height="14" rx="1" fill="#5e3224"/><rect x="74" y="4" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="110" y="4" width="34" height="14" rx="1" fill="#5e3224"/><rect x="146" y="4" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="182" y="4" width="34" height="14" rx="1" fill="#5e3224"/><rect x="218" y="4" width="20" height="14" rx="1" fill="#6b3a2a"/>
+      <!-- Row 2 y=20 (offset) -->
+      <rect x="2" y="20" width="18" height="14" rx="1" fill="#5e3224"/><rect x="22" y="20" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="58" y="20" width="34" height="14" rx="1" fill="#5e3224"/><rect x="94" y="20" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="130" y="20" width="34" height="14" rx="1" fill="#5e3224"/><rect x="166" y="20" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="202" y="20" width="34" height="14" rx="1" fill="#5e3224"/>
+      <!-- Row 3 y=36 -->
+      <rect x="2" y="36" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="38" y="36" width="34" height="14" rx="1" fill="#5e3224"/><rect x="74" y="36" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="110" y="36" width="34" height="14" rx="1" fill="#5e3224"/><rect x="146" y="36" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="182" y="36" width="34" height="14" rx="1" fill="#5e3224"/><rect x="218" y="36" width="20" height="14" rx="1" fill="#6b3a2a"/>
+      <!-- Row 4 y=52 (offset) -->
+      <rect x="2" y="52" width="18" height="14" rx="1" fill="#5e3224"/><rect x="22" y="52" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="58" y="52" width="34" height="14" rx="1" fill="#5e3224"/><rect x="94" y="52" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="130" y="52" width="34" height="14" rx="1" fill="#5e3224"/><rect x="166" y="52" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="202" y="52" width="34" height="14" rx="1" fill="#5e3224"/>
+      <!-- Row 5 y=68 -->
+      <rect x="2" y="68" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="38" y="68" width="34" height="14" rx="1" fill="#5e3224"/><rect x="74" y="68" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="110" y="68" width="34" height="14" rx="1" fill="#5e3224"/><rect x="146" y="68" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="182" y="68" width="34" height="14" rx="1" fill="#5e3224"/><rect x="218" y="68" width="20" height="14" rx="1" fill="#6b3a2a"/>
+      <!-- Row 6 y=84 (offset) -->
+      <rect x="2" y="84" width="18" height="14" rx="1" fill="#5e3224"/><rect x="22" y="84" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="58" y="84" width="34" height="14" rx="1" fill="#5e3224"/><rect x="94" y="84" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="130" y="84" width="34" height="14" rx="1" fill="#5e3224"/><rect x="166" y="84" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="202" y="84" width="34" height="14" rx="1" fill="#5e3224"/>
+      <!-- Row 7 y=100 -->
+      <rect x="2" y="100" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="38" y="100" width="34" height="14" rx="1" fill="#5e3224"/><rect x="74" y="100" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="110" y="100" width="34" height="14" rx="1" fill="#5e3224"/><rect x="146" y="100" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="182" y="100" width="34" height="14" rx="1" fill="#5e3224"/><rect x="218" y="100" width="20" height="14" rx="1" fill="#6b3a2a"/>
+      <!-- Row 8 y=116 (offset) -->
+      <rect x="2" y="116" width="18" height="14" rx="1" fill="#5e3224"/><rect x="22" y="116" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="58" y="116" width="34" height="14" rx="1" fill="#5e3224"/><rect x="94" y="116" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="130" y="116" width="34" height="14" rx="1" fill="#5e3224"/><rect x="166" y="116" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="202" y="116" width="34" height="14" rx="1" fill="#5e3224"/>
+      <!-- Row 9 y=132 -->
+      <rect x="2" y="132" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="38" y="132" width="34" height="14" rx="1" fill="#5e3224"/><rect x="74" y="132" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="110" y="132" width="34" height="14" rx="1" fill="#5e3224"/><rect x="146" y="132" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="182" y="132" width="34" height="14" rx="1" fill="#5e3224"/><rect x="218" y="132" width="20" height="14" rx="1" fill="#6b3a2a"/>
+      <!-- Row 10 y=148 (offset) -->
+      <rect x="2" y="148" width="18" height="14" rx="1" fill="#5e3224"/><rect x="22" y="148" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="58" y="148" width="34" height="14" rx="1" fill="#5e3224"/><rect x="94" y="148" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="130" y="148" width="34" height="14" rx="1" fill="#5e3224"/><rect x="166" y="148" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="202" y="148" width="34" height="14" rx="1" fill="#5e3224"/>
+      <!-- Row 11 y=164 -->
+      <rect x="2" y="164" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="38" y="164" width="34" height="14" rx="1" fill="#5e3224"/><rect x="74" y="164" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="110" y="164" width="34" height="14" rx="1" fill="#5e3224"/><rect x="146" y="164" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="182" y="164" width="34" height="14" rx="1" fill="#5e3224"/><rect x="218" y="164" width="20" height="14" rx="1" fill="#6b3a2a"/>
+      <!-- Row 12 y=180 (offset) -->
+      <rect x="2" y="180" width="18" height="14" rx="1" fill="#5e3224"/><rect x="22" y="180" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="58" y="180" width="34" height="14" rx="1" fill="#5e3224"/><rect x="94" y="180" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="130" y="180" width="34" height="14" rx="1" fill="#5e3224"/><rect x="166" y="180" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="202" y="180" width="34" height="14" rx="1" fill="#5e3224"/>
+      <!-- Row 13 y=196 -->
+      <rect x="2" y="196" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="38" y="196" width="34" height="14" rx="1" fill="#5e3224"/><rect x="74" y="196" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="110" y="196" width="34" height="14" rx="1" fill="#5e3224"/><rect x="146" y="196" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="182" y="196" width="34" height="14" rx="1" fill="#5e3224"/><rect x="218" y="196" width="20" height="14" rx="1" fill="#6b3a2a"/>
+      <!-- Row 14 y=212 (offset) -->
+      <rect x="2" y="212" width="18" height="14" rx="1" fill="#5e3224"/><rect x="22" y="212" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="58" y="212" width="34" height="14" rx="1" fill="#5e3224"/><rect x="94" y="212" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="130" y="212" width="34" height="14" rx="1" fill="#5e3224"/><rect x="166" y="212" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="202" y="212" width="34" height="14" rx="1" fill="#5e3224"/>
+      <!-- Row 15 y=228 -->
+      <rect x="2" y="228" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="38" y="228" width="34" height="14" rx="1" fill="#5e3224"/><rect x="74" y="228" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="110" y="228" width="34" height="14" rx="1" fill="#5e3224"/><rect x="146" y="228" width="34" height="14" rx="1" fill="#6b3a2a"/><rect x="182" y="228" width="34" height="14" rx="1" fill="#5e3224"/><rect x="218" y="228" width="20" height="14" rx="1" fill="#6b3a2a"/>
+      <!-- Mortar overlay / darkening effect -->
+      <rect x="0" y="0" width="240" height="340" fill="rgba(20,12,8,0.28)"/>
+      <!-- Moss/damp patches -->
+      <ellipse cx="30" cy="60" rx="14" ry="6" fill="rgba(40,80,30,0.22)"/>
+      <ellipse cx="170" cy="130" rx="10" ry="5" fill="rgba(40,80,30,0.18)"/>
+      <ellipse cx="110" cy="190" rx="12" ry="4" fill="rgba(40,80,30,0.15)"/>
+      <!-- Torches / wall lamps -->
+      <rect x="28" y="240" width="6" height="22" rx="1" fill="rgba(120,80,30,0.8)"/>
+      <ellipse cx="31" cy="238" rx="7" ry="9" fill="rgba(255,160,40,0.5)"/>
+      <ellipse cx="31" cy="234" rx="4" ry="6" fill="rgba(255,220,100,0.6)"/>
+      <rect x="206" y="240" width="6" height="22" rx="1" fill="rgba(120,80,30,0.8)"/>
+      <ellipse cx="209" cy="238" rx="7" ry="9" fill="rgba(255,160,40,0.5)"/>
+      <ellipse cx="209" cy="234" rx="4" ry="6" fill="rgba(255,220,100,0.6)"/>`,
+    svgGround: `
+      <!-- Cobblestone alley floor -->
+      <rect x="0" y="0" width="240" height="80" fill="#4a3e34"/>
+      <!-- Cobble stones -->
+      <ellipse cx="20" cy="20" rx="14" ry="9" fill="rgba(80,65,50,0.7)"/>
+      <ellipse cx="55" cy="15" rx="16" ry="8" fill="rgba(70,55,42,0.7)"/>
+      <ellipse cx="95" cy="22" rx="15" ry="9" fill="rgba(85,68,52,0.65)"/>
+      <ellipse cx="135" cy="14" rx="14" ry="8" fill="rgba(75,60,46,0.7)"/>
+      <ellipse cx="175" cy="20" rx="16" ry="9" fill="rgba(80,65,50,0.65)"/>
+      <ellipse cx="215" cy="16" rx="14" ry="8" fill="rgba(70,55,42,0.7)"/>
+      <ellipse cx="10" cy="45" rx="13" ry="8" fill="rgba(75,60,46,0.6)"/>
+      <ellipse cx="45" cy="50" rx="15" ry="9" fill="rgba(80,65,50,0.6)"/>
+      <ellipse cx="85" cy="44" rx="16" ry="8" fill="rgba(70,55,42,0.65)"/>
+      <ellipse cx="125" cy="52" rx="14" ry="9" fill="rgba(85,68,52,0.6)"/>
+      <ellipse cx="165" cy="46" rx="15" ry="8" fill="rgba(75,60,46,0.65)"/>
+      <ellipse cx="205" cy="50" rx="13" ry="9" fill="rgba(80,65,50,0.6)"/>
+      <ellipse cx="30" cy="68" rx="14" ry="7" fill="rgba(70,55,42,0.6)"/>
+      <ellipse cx="70" cy="72" rx="16" ry="7" fill="rgba(80,65,50,0.55)"/>
+      <ellipse cx="110" cy="66" rx="15" ry="8" fill="rgba(75,60,46,0.6)"/>
+      <ellipse cx="150" cy="70" rx="14" ry="7" fill="rgba(70,55,42,0.55)"/>
+      <ellipse cx="190" cy="65" rx="16" ry="8" fill="rgba(85,68,52,0.6)"/>
+      <!-- Puddle / wet reflection -->
+      <ellipse cx="120" cy="38" rx="28" ry="9" fill="rgba(50,70,90,0.25)"/>`,
+    groundH: 80,
+  },
 };
-
-/* ---------- COLOR HELPERS ---------- */
 function darken(hex, amount) {
   let c = hex.replace('#', '');
   if (c.length === 3) c = c.split('').map(x => x + x).join('');
@@ -2361,6 +2542,8 @@ function buildPanel() {
     { color: '#5c3317', title: 'Muy oscura' },
     { color: '#ffe0f0', title: 'Rosa kawaii' },
     { color: '#b8f0e0', title: 'Menta kawaii' },
+    { color: '#a8d8f0', title: 'Azul kawaii' },
+    { color: '#a8e6b8', title: 'Verde kawaii' },
   ];
 
   const sections = [
@@ -3430,16 +3613,35 @@ const AudioManager = {
 
   playBgMusic(sceneKey) {
     this.init();
+    if (this.muted) return;
     if (this.currentBg === sceneKey) return; // already playing
     this.stopBg();
     this.currentBg = sceneKey;
     switch (sceneKey) {
+      case 'hogwarts':
+        this.synthHogwarts();
+        break;
       case 'great_hall':
         this.synthHPTheme();
+        break;
+      case 'forbidden_forest':
+        this.synthForest();
+        break;
+      case 'platform_934':
+        this.synthTrain();
         break;
       case 'quidditch':
         this.synthStadium();
         this.currentBg = null; // one-shot, not looping
+        break;
+      case 'park':
+        this.synthPark();
+        break;
+      case 'sunset_beach':
+        this.synthBeach();
+        break;
+      case 'brick_wall':
+        this.synthAlley();
         break;
     }
   },
@@ -3665,9 +3867,234 @@ const AudioManager = {
     shim.connect(sGain); sGain.connect(this.sfxGain);
     shim.start(t); shim.stop(t + 0.5);
   },
-};
+  muted: false,
 
-/* ---------- INIT ---------- */
+  toggleMute() {
+    this.muted = !this.muted;
+    if (this.muted) {
+      if (this.bgGain) this.bgGain.gain.linearRampToValueAtTime(0.001, (this.ctx ? this.ctx.currentTime : 0) + 0.3);
+    } else {
+      if (this.bgGain) this.bgGain.gain.linearRampToValueAtTime(0.3, (this.ctx ? this.ctx.currentTime : 0) + 0.3);
+      // Restart current bg if any
+      const scene = this.currentBg;
+      if (scene) { this.currentBg = null; this.playBgMusic(scene); }
+    }
+    return this.muted;
+  },
+
+  // Hogwarts — mysterious, slower version of HP theme (lower octave, reverb-like)
+  synthHogwarts() {
+    const ctx = this.ctx;
+    const notes = [246.94,329.63,392.00,369.99,329.63,493.88,440.00,369.99,329.63,392.00,369.99,311.13,349.23,246.94];
+    const durations = [0.5,0.75,0.44,0.44,0.75,0.5,1.0,1.0,0.75,0.44,0.44,0.75,0.44,1.25];
+    const totalDuration = durations.reduce((a,b)=>a+b,0);
+    const playLoop = () => {
+      if (this.currentBg !== 'hogwarts') return;
+      let t = ctx.currentTime;
+      const sources = [];
+      notes.forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0, t);
+        gain.gain.linearRampToValueAtTime(0.18, t + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.01, t + durations[i] - 0.02);
+        osc.connect(gain); gain.connect(this.bgGain);
+        osc.start(t); osc.stop(t + durations[i]);
+        sources.push(osc);
+        t += durations[i];
+      });
+      this.bgSources = sources;
+      this._bgTimer = setTimeout(() => playLoop(), totalDuration * 1000 + 300);
+    };
+    playLoop();
+  },
+
+  // Forbidden Forest — wind + owl + rustling leaves loop
+  synthForest() {
+    const ctx = this.ctx;
+    const playLoop = () => {
+      if (this.currentBg !== 'forbidden_forest') return;
+      const dur = 5.0;
+      // Wind: filtered noise
+      const bufSize = ctx.sampleRate * dur;
+      const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
+      const wind = ctx.createBufferSource();
+      wind.buffer = buf;
+      const lp = ctx.createBiquadFilter();
+      lp.type = 'lowpass'; lp.frequency.value = 400;
+      const wGain = ctx.createGain();
+      wGain.gain.setValueAtTime(0, ctx.currentTime);
+      wGain.gain.linearRampToValueAtTime(0.12, ctx.currentTime + 0.8);
+      wGain.gain.setValueAtTime(0.08, ctx.currentTime + 3.0);
+      wGain.gain.linearRampToValueAtTime(0, ctx.currentTime + dur);
+      wind.connect(lp); lp.connect(wGain); wGain.connect(this.bgGain);
+      wind.start(ctx.currentTime); wind.stop(ctx.currentTime + dur);
+      this.bgSources.push(wind);
+      // Owl hoot: two sine bursts
+      [1.0, 1.6].forEach(offset => {
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'sine'; osc.frequency.setValueAtTime(280, ctx.currentTime + offset);
+        osc.frequency.linearRampToValueAtTime(240, ctx.currentTime + offset + 0.3);
+        g.gain.setValueAtTime(0, ctx.currentTime + offset);
+        g.gain.linearRampToValueAtTime(0.14, ctx.currentTime + offset + 0.05);
+        g.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + offset + 0.5);
+        osc.connect(g); g.connect(this.bgGain);
+        osc.start(ctx.currentTime + offset); osc.stop(ctx.currentTime + offset + 0.6);
+        this.bgSources.push(osc);
+      });
+      this._bgTimer = setTimeout(() => playLoop(), (dur - 0.2) * 1000);
+    };
+    playLoop();
+  },
+
+  // Platform 9¾ — steam hiss + distant train whistle loop
+  synthTrain() {
+    const ctx = this.ctx;
+    const playLoop = () => {
+      if (this.currentBg !== 'platform_934') return;
+      const dur = 5.0;
+      // Steam hiss: highpass noise
+      const bufSize = ctx.sampleRate * dur;
+      const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) d[i] = Math.random() * 2 - 1;
+      const steam = ctx.createBufferSource();
+      steam.buffer = buf;
+      const hp = ctx.createBiquadFilter();
+      hp.type = 'highpass'; hp.frequency.value = 3000;
+      const sGain = ctx.createGain();
+      sGain.gain.setValueAtTime(0, ctx.currentTime);
+      sGain.gain.linearRampToValueAtTime(0.07, ctx.currentTime + 0.5);
+      sGain.gain.setValueAtTime(0.05, ctx.currentTime + 3.5);
+      sGain.gain.linearRampToValueAtTime(0, ctx.currentTime + dur);
+      steam.connect(hp); hp.connect(sGain); sGain.connect(this.bgGain);
+      steam.start(ctx.currentTime); steam.stop(ctx.currentTime + dur);
+      this.bgSources.push(steam);
+      // Train whistle: two-tone at 2.0s
+      [[880, 0.4], [1100, 0.3]].forEach(([freq, delay]) => {
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'sine'; osc.frequency.value = freq;
+        const t0 = ctx.currentTime + 2.0 + delay;
+        g.gain.setValueAtTime(0, t0);
+        g.gain.linearRampToValueAtTime(0.15, t0 + 0.05);
+        g.gain.exponentialRampToValueAtTime(0.01, t0 + 0.6);
+        osc.connect(g); g.connect(this.bgGain);
+        osc.start(t0); osc.stop(t0 + 0.7);
+        this.bgSources.push(osc);
+      });
+      this._bgTimer = setTimeout(() => playLoop(), (dur - 0.1) * 1000);
+    };
+    playLoop();
+  },
+
+  // Park — bird chirps loop
+  synthPark() {
+    const ctx = this.ctx;
+    const playLoop = () => {
+      if (this.currentBg !== 'park') return;
+      const dur = 4.0;
+      // 3 bird chirp bursts at random-ish offsets
+      [[0.3, 3200, 3800], [1.2, 2800, 3400], [2.5, 3500, 4200]].forEach(([offset, f1, f2]) => {
+        for (let j = 0; j < 3; j++) {
+          const osc = ctx.createOscillator();
+          const g = ctx.createGain();
+          osc.type = 'sine';
+          const t0 = ctx.currentTime + offset + j * 0.12;
+          osc.frequency.setValueAtTime(f1, t0);
+          osc.frequency.linearRampToValueAtTime(f2, t0 + 0.07);
+          osc.frequency.linearRampToValueAtTime(f1 * 0.9, t0 + 0.13);
+          g.gain.setValueAtTime(0, t0);
+          g.gain.linearRampToValueAtTime(0.12, t0 + 0.02);
+          g.gain.exponentialRampToValueAtTime(0.01, t0 + 0.15);
+          osc.connect(g); g.connect(this.bgGain);
+          osc.start(t0); osc.stop(t0 + 0.18);
+          this.bgSources.push(osc);
+        }
+      });
+      this._bgTimer = setTimeout(() => playLoop(), (dur - 0.2) * 1000);
+    };
+    playLoop();
+  },
+
+  // Sunset Beach — ocean waves loop (LFO-modulated noise)
+  synthBeach() {
+    const ctx = this.ctx;
+    const playLoop = () => {
+      if (this.currentBg !== 'sunset_beach') return;
+      const dur = 6.0;
+      const bufSize = ctx.sampleRate * dur;
+      const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) d[i] = Math.random() * 2 - 1;
+      const src = ctx.createBufferSource();
+      src.buffer = buf;
+      const lp = ctx.createBiquadFilter();
+      lp.type = 'lowpass'; lp.frequency.value = 800;
+      // LFO for wave rhythm
+      const lfo = ctx.createOscillator();
+      const lfoGain = ctx.createGain();
+      lfo.frequency.value = 0.25; // ~one wave every 4s
+      lfoGain.gain.value = 0.08;
+      lfo.connect(lfoGain);
+      const wGain = ctx.createGain();
+      wGain.gain.setValueAtTime(0.04, ctx.currentTime);
+      lfoGain.connect(wGain.gain);
+      src.connect(lp); lp.connect(wGain); wGain.connect(this.bgGain);
+      lfo.start(ctx.currentTime); lfo.stop(ctx.currentTime + dur);
+      src.start(ctx.currentTime); src.stop(ctx.currentTime + dur);
+      this.bgSources.push(src, lfo);
+      this._bgTimer = setTimeout(() => playLoop(), (dur - 0.3) * 1000);
+    };
+    playLoop();
+  },
+
+  // Diagon Alley / Brick Wall — eerie wind + distant chatter loop
+  synthAlley() {
+    const ctx = this.ctx;
+    const playLoop = () => {
+      if (this.currentBg !== 'brick_wall') return;
+      const dur = 5.5;
+      // Low eerie wind
+      const bufSize = ctx.sampleRate * dur;
+      const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) d[i] = Math.random() * 2 - 1;
+      const wind = ctx.createBufferSource();
+      wind.buffer = buf;
+      const bp = ctx.createBiquadFilter();
+      bp.type = 'bandpass'; bp.frequency.value = 200; bp.Q.value = 2;
+      const wGain = ctx.createGain();
+      wGain.gain.setValueAtTime(0, ctx.currentTime);
+      wGain.gain.linearRampToValueAtTime(0.1, ctx.currentTime + 1.0);
+      wGain.gain.setValueAtTime(0.07, ctx.currentTime + 4.0);
+      wGain.gain.linearRampToValueAtTime(0, ctx.currentTime + dur);
+      wind.connect(bp); bp.connect(wGain); wGain.connect(this.bgGain);
+      wind.start(ctx.currentTime); wind.stop(ctx.currentTime + dur);
+      this.bgSources.push(wind);
+      // Distant footsteps: low thud x2
+      [1.5, 2.8].forEach(offset => {
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'sine'; osc.frequency.setValueAtTime(80, ctx.currentTime + offset);
+        osc.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + offset + 0.2);
+        g.gain.setValueAtTime(0.15, ctx.currentTime + offset);
+        g.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + offset + 0.25);
+        osc.connect(g); g.connect(this.bgGain);
+        osc.start(ctx.currentTime + offset); osc.stop(ctx.currentTime + offset + 0.3);
+        this.bgSources.push(osc);
+      });
+      this._bgTimer = setTimeout(() => playLoop(), (dur - 0.2) * 1000);
+    };
+    playLoop();
+  },
+
+};
 // ===== EXPORT PNG (individual doll) =====
 function exportPng() {
   const btn = document.getElementById('btn-save');
@@ -4044,6 +4471,13 @@ function initActionMenu() {
     popup.classList.remove('open');
     shareDoll();
   });
+  document.getElementById('mob-mute').addEventListener('click', () => {
+    popup.classList.remove('open');
+    const muted = AudioManager.toggleMute();
+    document.getElementById('mob-mute').textContent = muted ? '🔇 Música: OFF' : '🎵 Música: ON';
+    const btnMute = document.getElementById('btn-mute');
+    if (btnMute) btnMute.classList.toggle('muted', muted);
+  });
 }
 
 /* ---------- RESIZE HANDLER (Task 11) ---------- */
@@ -4265,6 +4699,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Share button
   document.getElementById('btn-share').addEventListener('click', shareDoll);
+
+  // Mute button (desktop)
+  document.getElementById('btn-mute').addEventListener('click', () => {
+    const muted = AudioManager.toggleMute();
+    document.getElementById('btn-mute').textContent = muted ? '🔇' : '🎵';
+    document.getElementById('btn-mute').classList.toggle('muted', muted);
+    const mobMute = document.getElementById('mob-mute');
+    if (mobMute) mobMute.textContent = muted ? '🔇 Música: OFF' : '🎵 Música: ON';
+  });
 
   // Reset button
   document.getElementById('btn-reset').addEventListener('click', () => {

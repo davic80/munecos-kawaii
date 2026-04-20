@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.2.0] - 2026-04-20
+
+### Added
+- **Andén 9¾ rediseñado.** El tren es ahora protagonista: locomotora victoriana con caldera, chimenea, cúpula, varillas de transmisión, ruedas grandes detalladas y vagones con puerta y manija dorada. El techo de la estación tiene arcos de hierro, columnas y lámparas de gas. La plataforma tiene línea amarilla de seguridad y baldosas.
+- **Nueva escena: Muro de Ladrillos** (estilo Diagon Alley). Pared de ladrillo oscuro con 15 hileras alternas, mortero, parches de musgo, antorchas con llama y suelo de adoquines con charco reflectante.
+- **Música de fondo para todas las escenas.** Cada escena tiene ahora su propio audio sintético en loop (Web Audio API, sin archivos externos): Hogwarts (tema de Hedwig suave), Bosque Prohibido (viento + búho), Andén 9¾ (vapor + silbato de tren), Parque (trinos de pájaros), Playa (olas con LFO), Muro de Ladrillos (viento bajo + pasos).
+- **Botón global de mute (🎵/🔇).** Disponible en el header de escritorio y en el menú de acciones (⋮) de móvil/tablet. Silencia/reactiva toda la música de fondo sin detener los efectos de sonido de varitas y mascotas.
+- **3 vestidos de flores** en la sección Tops: `Dress Rose` (rosas rojas con hojas), `Dress Daisy` (margaritas blancas con centro amarillo), `Dress Wildflower` (flores silvestres multicolor: lavanda, amapola naranja, cosmos rosa, ranúnculo amarillo). El color base del vestido lo elige el usuario; los motivos florales son fijos.
+- **Pieles Azul kawaii y Verde kawaii** añadidas a los presets de piel (`#a8d8f0` y `#a8e6b8`).
+
+---
+
 ## [2.1.2] - 2026-04-16
 
 ### Added

@@ -160,7 +160,22 @@ header h1 {
 }
 .btn-share:hover { opacity: 0.85; }
 
-/* ===== SCENE SAVE BUTTON ===== */
+/* ===== MUTE BUTTON ===== */
+.btn-mute {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.btn-mute:hover { opacity: 0.85; }
+.btn-mute.muted { background: var(--accent); color: #fff; }
+
+
 .btn-scene-save {
   background: var(--surface2);
   color: var(--text);
@@ -853,7 +868,7 @@ header h1 {
 
   /* Hide desktop elements */
   .panel-left, .panel-right, .footer-bar { display: none !important; }
-  .btn-save, .btn-scene-save, .btn-share { display: none !important; }
+  .btn-save, .btn-scene-save, .btn-share, .btn-mute { display: none !important; }
   .slots { display: none !important; }
 
   /* Show mobile elements */
