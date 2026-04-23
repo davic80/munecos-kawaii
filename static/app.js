@@ -3219,11 +3219,7 @@ function buildConfigSection(container) {
     chip.innerHTML = `${miniSvg}<span>${SCENE_LABELS[key] || key}</span>`;
     chip.addEventListener('click', () => {
       sceneState.bgScene = key;
-      if (key === 'great_hall' || key === 'quidditch') {
-        AudioManager.playBgMusic(key);
-      } else {
-        AudioManager.stopBg();
-      }
+      AudioManager.playBgMusic(key);
       saveCollection();
       renderAll();
     });
@@ -3613,6 +3609,7 @@ const AudioManager = {
 
   playBgMusic(sceneKey) {
     this.init();
+    if (this.ctx.state === 'suspended') this.ctx.resume();
     if (this.muted) return;
     if (this.currentBg === sceneKey) return; // already playing
     this.stopBg();
@@ -4775,12 +4772,7 @@ document.addEventListener('DOMContentLoaded', () => {
       chip.innerHTML = `${miniSvg}<span>${SCENE_LABELS[key] || key}</span>`;
       chip.addEventListener('click', () => {
         sceneState.bgScene = key;
-        // Trigger background music for scene
-        if (key === 'great_hall' || key === 'quidditch') {
-          AudioManager.playBgMusic(key);
-        } else {
-          AudioManager.stopBg();
-        }
+        AudioManager.playBgMusic(key);
         saveCollection();
         renderAll();
       });
