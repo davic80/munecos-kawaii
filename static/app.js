@@ -1484,101 +1484,161 @@ const HAIR = {
    platform_934: {
     label: 'Andén 9¾',
     svgSky: `
-      <!-- Station interior — dark Victorian iron ceiling -->
-      <rect x="0" y="0" width="240" height="340" fill="#7a8a9a"/>
-      <!-- Iron girder arches -->
-      <path d="M-10,0 Q120,90 250,0" fill="none" stroke="rgba(60,70,80,0.7)" stroke-width="6"/>
-      <path d="M-10,18 Q120,108 250,18" fill="none" stroke="rgba(60,70,80,0.45)" stroke-width="4"/>
-      <path d="M-10,36 Q120,126 250,36" fill="none" stroke="rgba(60,70,80,0.25)" stroke-width="2.5"/>
-      <!-- Vertical support columns -->
-      <rect x="2" y="0" width="7" height="180" fill="rgba(50,60,70,0.55)"/>
-      <rect x="231" y="0" width="7" height="180" fill="rgba(50,60,70,0.55)"/>
-      <!-- Heavy steam clouds billowing from locomotive -->
-      <ellipse cx="30" cy="110" rx="52" ry="26" fill="rgba(230,235,240,0.22)"/>
-      <ellipse cx="55" cy="94" rx="40" ry="20" fill="rgba(230,235,240,0.18)"/>
-      <ellipse cx="20" cy="130" rx="36" ry="18" fill="rgba(230,235,240,0.14)"/>
-      <ellipse cx="110" cy="120" rx="44" ry="18" fill="rgba(230,235,240,0.12)"/>
-      <ellipse cx="85" cy="105" rx="32" ry="14" fill="rgba(230,235,240,0.10)"/>
-      <!-- Gas lamps on columns -->
-      <rect x="6" y="120" width="5" height="18" fill="rgba(180,160,80,0.7)"/>
-      <ellipse cx="8" cy="118" rx="7" ry="5" fill="rgba(255,220,100,0.5)"/>
-      <rect x="229" y="120" width="5" height="18" fill="rgba(180,160,80,0.7)"/>
-      <ellipse cx="232" cy="118" rx="7" ry="5" fill="rgba(255,220,100,0.5)"/>`,
+      <!-- King's Cross interior — warm amber/grey vault -->
+      <rect x="0" y="0" width="240" height="340" fill="#8a8070"/>
+      <!-- Vaulted ceiling ribs — wide arches -->
+      <path d="M-20,0 Q60,140 140,0"  fill="none" stroke="rgba(40,35,30,0.55)" stroke-width="8"/>
+      <path d="M100,0 Q180,140 260,0" fill="none" stroke="rgba(40,35,30,0.45)" stroke-width="8"/>
+      <!-- Secondary thinner ribs -->
+      <path d="M-20,0 Q60,120 140,0"  fill="none" stroke="rgba(200,185,150,0.18)" stroke-width="3"/>
+      <path d="M100,0 Q180,120 260,0" fill="none" stroke="rgba(200,185,150,0.18)" stroke-width="3"/>
+      <!-- Side walls -->
+      <rect x="0"   y="0" width="14" height="260" fill="rgba(60,50,40,0.5)"/>
+      <rect x="226" y="0" width="14" height="260" fill="rgba(60,50,40,0.5)"/>
+      <!-- Wall bricks on sides -->
+      <rect x="0"  y="30" width="14" height="6" fill="rgba(90,70,55,0.4)"/>
+      <rect x="0"  y="60" width="14" height="6" fill="rgba(90,70,55,0.4)"/>
+      <rect x="0"  y="90" width="14" height="6" fill="rgba(90,70,55,0.4)"/>
+      <rect x="0"  y="120" width="14" height="6" fill="rgba(90,70,55,0.4)"/>
+      <rect x="226" y="30" width="14" height="6" fill="rgba(90,70,55,0.4)"/>
+      <rect x="226" y="60" width="14" height="6" fill="rgba(90,70,55,0.4)"/>
+      <rect x="226" y="90" width="14" height="6" fill="rgba(90,70,55,0.4)"/>
+      <rect x="226" y="120" width="14" height="6" fill="rgba(90,70,55,0.4)"/>
+      <!-- Gas lamps -->
+      <rect x="10" y="100" width="4" height="30" fill="rgba(160,130,60,0.8)"/>
+      <ellipse cx="12" cy="98" rx="9" ry="6" fill="rgba(255,210,80,0.55)"/>
+      <ellipse cx="12" cy="94" rx="5" ry="4" fill="rgba(255,240,140,0.7)"/>
+      <rect x="226" y="100" width="4" height="30" fill="rgba(160,130,60,0.8)"/>
+      <ellipse cx="228" cy="98" rx="9" ry="6" fill="rgba(255,210,80,0.55)"/>
+      <ellipse cx="228" cy="94" rx="5" ry="4" fill="rgba(255,240,140,0.7)"/>
+      <!-- Steam clouds rising (upper half) -->
+      <ellipse cx="50"  cy="60"  rx="45" ry="22" fill="rgba(240,240,245,0.20)"/>
+      <ellipse cx="30"  cy="44"  rx="32" ry="16" fill="rgba(240,240,245,0.15)"/>
+      <ellipse cx="80"  cy="50"  rx="38" ry="18" fill="rgba(240,240,245,0.12)"/>
+      <ellipse cx="160" cy="70"  rx="40" ry="18" fill="rgba(240,240,245,0.10)"/>
+      <ellipse cx="140" cy="50"  rx="28" ry="13" fill="rgba(240,240,245,0.09)"/>
+      <!-- Sign board hanging -->
+      <rect x="80" y="6" width="80" height="20" rx="3" fill="rgba(30,25,20,0.85)"/>
+      <text x="120" y="21" font-size="11" font-weight="bold" text-anchor="middle" fill="rgba(255,215,60,0.95)">PLATFORM 9¾</text>`,
     svgGround: `
-      <!-- groundH=180: platform strip y=130..180 (50px), train fills y=0..130 -->
-      <!-- === LOCOMOTIVE (left, large) === -->
-      <!-- Boiler / main body -->
-      <rect x="-4" y="10" width="140" height="90" rx="10" fill="#8B1A1A"/>
-      <rect x="-4" y="10" width="140" height="90" rx="10" fill="rgba(0,0,0,0.15)"/>
-      <!-- Boiler cylinder on top -->
-      <rect x="4" y="4" width="100" height="32" rx="8" fill="#9B2020"/>
-      <!-- Chimney / funnel -->
-      <rect x="14" y="-8" width="16" height="22" rx="3" fill="#2a2a2a"/>
-      <rect x="10" y="-10" width="24" height="7" rx="3" fill="#1a1a1a"/>
-      <!-- Dome -->
-      <ellipse cx="72" cy="8" rx="14" ry="10" fill="#7a1818"/>
-      <!-- Front buffer beam -->
-      <rect x="-4" y="88" width="18" height="12" rx="2" fill="#1a1a1a"/>
-      <!-- Golden trim stripes -->
-      <rect x="-4" y="36" width="140" height="4" fill="rgba(200,160,40,0.7)"/>
-      <rect x="-4" y="82" width="140" height="4" fill="rgba(200,160,40,0.6)"/>
-      <!-- Train windows -->
-      <rect x="30" y="16" width="20" height="16" rx="3" fill="rgba(255,240,160,0.55)"/>
-      <rect x="56" y="16" width="20" height="16" rx="3" fill="rgba(255,240,160,0.50)"/>
-      <rect x="82" y="16" width="20" height="16" rx="3" fill="rgba(255,240,160,0.55)"/>
-      <rect x="108" y="16" width="20" height="16" rx="3" fill="rgba(255,240,160,0.45)"/>
-      <!-- === CARRIAGES (right) === -->
-      <rect x="136" y="28" width="108" height="72" rx="6" fill="#8B1A1A"/>
-      <rect x="136" y="28" width="108" height="72" rx="6" fill="rgba(0,0,0,0.1)"/>
-      <rect x="136" y="34" width="108" height="4" fill="rgba(200,160,40,0.6)"/>
-      <rect x="136" y="92" width="108" height="4" fill="rgba(200,160,40,0.5)"/>
-      <!-- Carriage windows -->
-      <rect x="142" y="38" width="18" height="16" rx="3" fill="rgba(255,240,160,0.50)"/>
-      <rect x="166" y="38" width="18" height="16" rx="3" fill="rgba(255,240,160,0.55)"/>
-      <rect x="190" y="38" width="18" height="16" rx="3" fill="rgba(255,240,160,0.45)"/>
-      <rect x="214" y="38" width="18" height="16" rx="3" fill="rgba(255,240,160,0.50)"/>
-      <!-- Carriage door -->
-      <rect x="156" y="58" width="24" height="42" rx="2" fill="rgba(100,20,20,0.7)"/>
-      <circle cx="178" cy="79" r="3" fill="rgba(200,160,40,0.9)"/>
-      <!-- Coupling between loco and carriage -->
-      <rect x="132" y="96" width="8" height="6" rx="1" fill="#333"/>
-      <!-- === LARGE WHEELS === -->
-      <!-- Locomotive drive wheels (large) -->
-      <circle cx="30" cy="116" r="26" fill="#1a1a1a"/>
-      <circle cx="30" cy="116" r="19" fill="#2a2a2a"/>
-      <circle cx="30" cy="116" r="8" fill="#888"/>
-      <line x1="30" y1="90" x2="30" y2="142" stroke="rgba(150,150,150,0.4)" stroke-width="2"/>
-      <line x1="4" y1="116" x2="56" y2="116" stroke="rgba(150,150,150,0.4)" stroke-width="2"/>
-      <circle cx="88" cy="116" r="26" fill="#1a1a1a"/>
-      <circle cx="88" cy="116" r="19" fill="#2a2a2a"/>
-      <circle cx="88" cy="116" r="8" fill="#888"/>
-      <line x1="88" y1="90" x2="88" y2="142" stroke="rgba(150,150,150,0.4)" stroke-width="2"/>
-      <line x1="62" y1="116" x2="114" y2="116" stroke="rgba(150,150,150,0.4)" stroke-width="2"/>
-      <!-- Connecting rod between drive wheels -->
-      <rect x="28" y="110" width="62" height="5" rx="2" fill="rgba(180,140,40,0.8)"/>
-      <!-- Carriage wheels (smaller) -->
-      <circle cx="158" cy="116" r="18" fill="#1a1a1a"/>
-      <circle cx="158" cy="116" r="12" fill="#2a2a2a"/>
-      <circle cx="158" cy="116" r="5" fill="#777"/>
-      <circle cx="210" cy="116" r="18" fill="#1a1a1a"/>
-      <circle cx="210" cy="116" r="12" fill="#2a2a2a"/>
-      <circle cx="210" cy="116" r="5" fill="#777"/>
-      <!-- === PLATFORM === -->
-      <rect x="0" y="130" width="240" height="50" fill="#7a6e60"/>
-      <!-- Platform surface detail -->
-      <rect x="0" y="130" width="240" height="4" fill="rgba(120,110,90,0.6)"/>
-      <!-- Yellow safety line -->
-      <rect x="0" y="138" width="240" height="3" fill="rgba(255,230,60,0.45)"/>
-      <!-- Stone tiles -->
-      <line x1="40" y1="142" x2="40" y2="180" stroke="rgba(100,90,75,0.4)" stroke-width="1"/>
-      <line x1="80" y1="142" x2="80" y2="180" stroke="rgba(100,90,75,0.4)" stroke-width="1"/>
-      <line x1="120" y1="142" x2="120" y2="180" stroke="rgba(100,90,75,0.4)" stroke-width="1"/>
-      <line x1="160" y1="142" x2="160" y2="180" stroke="rgba(100,90,75,0.4)" stroke-width="1"/>
-      <line x1="200" y1="142" x2="200" y2="180" stroke="rgba(100,90,75,0.4)" stroke-width="1"/>
-      <!-- Sign 9¾ on platform pillar -->
-      <rect x="195" y="90" width="40" height="26" rx="4" fill="rgba(20,20,20,0.8)"/>
-      <text x="215" y="108" font-size="13" text-anchor="middle" fill="rgba(255,220,60,0.95)" font-weight="bold">9¾</text>`,
-    groundH: 180,
+      <!-- groundH=160 total. Layout:
+           y=0..100  = train (locomotive left + carriages right)
+           y=100..110 = rail level / wheels bottom
+           y=110..160 = stone platform
+      -->
+      <!-- === RAILS (below wheels) === -->
+      <rect x="0" y="98" width="240" height="4" fill="#3a3530"/>
+      <rect x="0" y="94" width="240" height="2" fill="#5a5048"/>
+      <!-- Rail sleepers -->
+      <rect x="10"  y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
+      <rect x="34"  y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
+      <rect x="58"  y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
+      <rect x="82"  y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
+      <rect x="106" y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
+      <rect x="130" y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
+      <rect x="154" y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
+      <rect x="178" y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
+      <rect x="202" y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
+      <rect x="226" y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
+
+      <!-- === LOCOMOTIVE (left, large, side view) === -->
+      <!-- Smoke box front face -->
+      <rect x="0" y="28" width="22" height="66" rx="4" fill="#1e1e1e"/>
+      <circle cx="11" cy="60" r="8" fill="#2a2a2a"/>
+      <circle cx="11" cy="60" r="5" fill="#111"/>
+      <!-- Front buffer -->
+      <rect x="0" y="84" width="22" height="6" rx="2" fill="#444"/>
+      <rect x="2" y="85" width="6" height="4" rx="1" fill="#666"/>
+      <rect x="14" y="85" width="6" height="4" rx="1" fill="#666"/>
+      <!-- Boiler body -->
+      <rect x="18" y="36" width="100" height="58" rx="6" fill="#9B1C1C"/>
+      <!-- Boiler top cylinder -->
+      <rect x="22" y="28" width="82" height="26" rx="8" fill="#B22020"/>
+      <!-- Chimney/funnel -->
+      <rect x="24" y="10" width="14" height="22" rx="3" fill="#1a1a1a"/>
+      <rect x="20" y="8"  width="22" height="7"  rx="3" fill="#111"/>
+      <!-- Steam puff from chimney -->
+      <ellipse cx="31" cy="4"  rx="10" ry="6" fill="rgba(230,230,240,0.5)"/>
+      <ellipse cx="22" cy="0"  rx="7"  ry="5" fill="rgba(230,230,240,0.4)"/>
+      <ellipse cx="40" cy="1"  rx="8"  ry="5" fill="rgba(230,230,240,0.35)"/>
+      <!-- Safety valve dome -->
+      <ellipse cx="70" cy="29" rx="10" ry="7" fill="#881818"/>
+      <!-- Cab (driver's cabin) -->
+      <rect x="100" y="18" width="30" height="76" rx="4" fill="#7a1414"/>
+      <!-- Cab window -->
+      <rect x="104" y="24" width="18" height="14" rx="3" fill="rgba(255,240,160,0.6)"/>
+      <!-- Golden trim lines -->
+      <rect x="18" y="60" width="112" height="3" fill="rgba(210,170,40,0.75)"/>
+      <rect x="18" y="84" width="112" height="3" fill="rgba(210,170,40,0.65)"/>
+      <!-- Boiler side windows -->
+      <rect x="36"  y="42" width="16" height="12" rx="2" fill="rgba(255,240,160,0.45)"/>
+      <rect x="58"  y="42" width="16" height="12" rx="2" fill="rgba(255,240,160,0.50)"/>
+      <rect x="80"  y="42" width="16" height="12" rx="2" fill="rgba(255,240,160,0.45)"/>
+      <!-- Drive wheels (large, 3) -->
+      <circle cx="38"  cy="98" r="24" fill="#111"/>
+      <circle cx="38"  cy="98" r="17" fill="#1e1e1e"/>
+      <circle cx="38"  cy="98" r="6"  fill="#777"/>
+      <line x1="38" y1="74"  x2="38" y2="122" stroke="rgba(160,160,160,0.35)" stroke-width="2"/>
+      <line x1="14" y1="98"  x2="62" y2="98"  stroke="rgba(160,160,160,0.35)" stroke-width="2"/>
+      <circle cx="72"  cy="98" r="24" fill="#111"/>
+      <circle cx="72"  cy="98" r="17" fill="#1e1e1e"/>
+      <circle cx="72"  cy="98" r="6"  fill="#777"/>
+      <circle cx="106" cy="98" r="22" fill="#111"/>
+      <circle cx="106" cy="98" r="15" fill="#1e1e1e"/>
+      <circle cx="106" cy="98" r="5"  fill="#777"/>
+      <!-- Connecting rod -->
+      <rect x="36" y="93" width="72" height="5" rx="2" fill="rgba(190,150,30,0.85)"/>
+
+      <!-- === CARRIAGES (right of locomotive) === -->
+      <!-- Carriage 1 -->
+      <rect x="132" y="38" width="56" height="56" rx="5" fill="#8B1A1A"/>
+      <rect x="132" y="44" width="56" height="3"  fill="rgba(210,170,40,0.6)"/>
+      <rect x="132" y="88" width="56" height="3"  fill="rgba(210,170,40,0.55)"/>
+      <rect x="138" y="50" width="16" height="12" rx="2" fill="rgba(255,240,160,0.55)"/>
+      <rect x="160" y="50" width="16" height="12" rx="2" fill="rgba(255,240,160,0.50)"/>
+      <!-- Door carriage 1 -->
+      <rect x="148" y="62" width="16" height="32" rx="2" fill="rgba(110,15,15,0.75)"/>
+      <circle cx="162" cy="78" r="2.5" fill="rgba(210,170,40,0.9)"/>
+      <!-- Wheels carriage 1 -->
+      <circle cx="148" cy="98" r="16" fill="#111"/>
+      <circle cx="148" cy="98" r="11" fill="#1e1e1e"/>
+      <circle cx="148" cy="98" r="4"  fill="#666"/>
+      <circle cx="172" cy="98" r="16" fill="#111"/>
+      <circle cx="172" cy="98" r="11" fill="#1e1e1e"/>
+      <circle cx="172" cy="98" r="4"  fill="#666"/>
+      <!-- Carriage 2 -->
+      <rect x="190" y="42" width="50" height="52" rx="5" fill="#8B1A1A"/>
+      <rect x="190" y="48" width="50" height="3"  fill="rgba(210,170,40,0.55)"/>
+      <rect x="190" y="88" width="50" height="3"  fill="rgba(210,170,40,0.5)"/>
+      <rect x="196" y="54" width="14" height="11" rx="2" fill="rgba(255,240,160,0.50)"/>
+      <rect x="216" y="54" width="14" height="11" rx="2" fill="rgba(255,240,160,0.45)"/>
+      <circle cx="206" cy="98" r="14" fill="#111"/>
+      <circle cx="206" cy="98" r="9"  fill="#1e1e1e"/>
+      <circle cx="206" cy="98" r="4"  fill="#666"/>
+      <circle cx="228" cy="98" r="14" fill="#111"/>
+      <circle cx="228" cy="98" r="9"  fill="#1e1e1e"/>
+      <circle cx="228" cy="98" r="4"  fill="#666"/>
+      <!-- Coupling hooks between units -->
+      <rect x="128" y="88" width="8" height="5" rx="1" fill="#444"/>
+      <rect x="186" y="88" width="8" height="5" rx="1" fill="#444"/>
+
+      <!-- === STONE PLATFORM === -->
+      <rect x="0" y="110" width="240" height="50" fill="#6e6458"/>
+      <rect x="0" y="110" width="240" height="5"  fill="rgba(110,100,80,0.7)"/>
+      <!-- Yellow safety edge line -->
+      <rect x="0" y="118" width="240" height="3" fill="rgba(255,225,50,0.5)"/>
+      <!-- Tile joints -->
+      <line x1="48"  y1="122" x2="48"  y2="160" stroke="rgba(90,80,65,0.4)" stroke-width="1"/>
+      <line x1="96"  y1="122" x2="96"  y2="160" stroke="rgba(90,80,65,0.4)" stroke-width="1"/>
+      <line x1="144" y1="122" x2="144" y2="160" stroke="rgba(90,80,65,0.4)" stroke-width="1"/>
+      <line x1="192" y1="122" x2="192" y2="160" stroke="rgba(90,80,65,0.4)" stroke-width="1"/>
+      <line x1="0"   y1="140" x2="240" y2="140" stroke="rgba(90,80,65,0.3)" stroke-width="1"/>
+      <!-- Luggage trolley passing through wall -->
+      <rect x="98" y="112" width="26" height="28" rx="2" fill="rgba(120,90,50,0.7)"/>
+      <rect x="100" y="108" width="22" height="8" rx="1" fill="rgba(100,75,40,0.8)"/>
+      <circle cx="104" cy="142" r="4" fill="#333"/>
+      <circle cx="120" cy="142" r="4" fill="#333"/>`,
+    groundH: 160,
   },
   quidditch: {
     label: 'Quidditch',
@@ -1915,7 +1975,7 @@ const SCENE_BG = {
   hogwarts:         '#0d1530',
   great_hall:       '#1a1200',
   forbidden_forest: '#0a1a0a',
-  platform_934:     '#b0b8c8',
+  platform_934:     '#8a8070',
   quidditch:        '#4a9fd4',
   park:             '#87CEEB',
   sunset_beach:     '#1a0533',
