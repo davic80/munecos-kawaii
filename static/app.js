@@ -2415,6 +2415,10 @@ function renderSceneDolls() {
       // Render doll SVG into its layer
       const layers = wrap.querySelector('.doll-layers');
       renderDoll(layers, d);
+      // Apply per-doll scale (0 = 1×, −50 = 0.5×, +50 = 1.5×)
+      const ds = 1 + (d.dollScale || 0) / 100;
+      layers.style.transform = `scale(${ds})`;
+      layers.style.transformOrigin = 'center bottom';
       // Position
       const pos = getDefaultDollPos(i);
       const x = (d.dollX !== null && d.dollX !== undefined) ? d.dollX : pos.x;
@@ -2441,8 +2445,12 @@ function renderSceneDolls() {
 
 /* Render just the active doll's SVG (for live slider/preview updates) */
 function renderActiveDoll() {
-  const wrap = document.querySelector(`#scene-dolls .doll-wrap[data-slot="${activeSlot}"] .doll-layers`);
-  if (wrap) renderDoll(wrap, doll);
+  const layers = document.querySelector(`#scene-dolls .doll-wrap[data-slot="${activeSlot}"] .doll-layers`);
+  if (!layers) return;
+  renderDoll(layers, doll);
+  const ds = 1 + (doll.dollScale || 0) / 100;
+  layers.style.transform = `scale(${ds})`;
+  layers.style.transformOrigin = 'center bottom';
 }
 
 /* ---------- BACKGROUND SCENE LAYER ---------- */
@@ -2557,8 +2565,8 @@ function defaultDoll(idx) {
     hairFlip: false, hatFlip: false, wandFlip: false, lefthandFlip: false, scarf2Flip: false, tattooFlip: false,
     // background scene
     bgScene: null,
-    // doll position in canvas (null = default: centered X, base at 90% height)
-    dollX: null, dollY: null,
+    // doll position and scale in canvas
+    dollX: null, dollY: null, dollScale: 0,
     // pet fields
     pet: null, petOutfit: null, petPosition: 'floor', petScale: PET_SCALE_DEFAULT,
     // whether this doll is placed in the shared scene
@@ -2962,6 +2970,9 @@ function syncRightPanel() {
   // Desktop right panel
   const desktopName = document.getElementById('doll-name');
   if (desktopName) desktopName.value = doll.name;
+  const dsInput = document.getElementById('doll-scale-input');
+  const dsVal   = document.getElementById('doll-scale-val');
+  if (dsInput) { const v = doll.dollScale || 0; dsInput.value = v; dsVal.textContent = `${v > 0 ? '+' : ''}${v}%`; }
   const bgEl = document.getElementById('bg-color');
   if (bgEl) bgEl.value = sceneState.bgColor || '#1a2a4a';
   document.querySelectorAll('#scene-picker .scene-chip').forEach(c => {
@@ -3621,6 +3632,30 @@ function buildConfigSection(container) {
     renderSceneDolls();
   });
   bodyEl.appendChild(nameInput);
+
+  // -- Doll scale slider --
+  const dsLabel = document.createElement('h3');
+  dsLabel.textContent = 'Tamaño del muñeco';
+  dsLabel.style.cssText = 'font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);border-bottom:1px solid var(--border);padding:6px 0;margin-top:10px;';
+  bodyEl.appendChild(dsLabel);
+
+  const dsRow = document.createElement('div');
+  dsRow.className = 'scale-row';
+  dsRow.innerHTML = `<span class="scale-icon">⤢</span><input type="range" min="-50" max="50" step="1" value="${doll.dollScale || 0}" id="mob-doll-scale-input"/><span class="scale-val" id="mob-doll-scale-val">${(doll.dollScale || 0) > 0 ? '+' : ''}${doll.dollScale || 0}%</span>`;
+  const mobDsInp = dsRow.querySelector('input');
+  const mobDsVal = dsRow.querySelector('.scale-val');
+  mobDsInp.addEventListener('input', e => {
+    const v = parseInt(e.target.value, 10);
+    doll.dollScale = v;
+    mobDsVal.textContent = `${v > 0 ? '+' : ''}${v}%`;
+    // sync desktop
+    const di = document.getElementById('doll-scale-input');
+    const dv = document.getElementById('doll-scale-val');
+    if (di) { di.value = v; dv.textContent = `${v > 0 ? '+' : ''}${v}%`; }
+    saveCollection();
+    renderActiveDoll();
+  });
+  bodyEl.appendChild(dsRow);
 
   // -- Background color --
   const bgLabel = document.createElement('h3');
@@ -5236,6 +5271,19 @@ document.addEventListener('DOMContentLoaded', () => {
         renderAll();
       }
     }
+  });
+
+  // Doll scale slider (desktop right panel)
+  document.getElementById('doll-scale-input').addEventListener('input', e => {
+    const v = parseInt(e.target.value, 10);
+    doll.dollScale = v;
+    document.getElementById('doll-scale-val').textContent = `${v > 0 ? '+' : ''}${v}%`;
+    // sync mobile slider if present
+    const mi = document.getElementById('mob-doll-scale-input');
+    const mv = document.getElementById('mob-doll-scale-val');
+    if (mi) { mi.value = v; mv.textContent = `${v > 0 ? '+' : ''}${v}%`; }
+    saveCollection();
+    renderActiveDoll();
   });
 
   // Name input
