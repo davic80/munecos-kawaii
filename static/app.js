@@ -267,6 +267,10 @@ const NOSES = {
     <circle cx="124" cy="141" r="1.8" fill="rgba(180,100,60,0.4)"/>
     <circle cx="131" cy="144" r="2" fill="rgba(180,100,60,0.45)"/>
     <circle cx="120" cy="143" r="1.5" fill="rgba(180,100,60,0.3)"/>`,
+  // Snake — two narrow diagonal slits (Voldemort / Nagini style)
+  snake: `
+    <line x1="113" y1="138" x2="117" y2="146" stroke="rgba(0,0,0,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="123" y1="138" x2="127" y2="146" stroke="rgba(0,0,0,0.28)" stroke-width="1.8" stroke-linecap="round"/>`,
 };
 
 // ---- MOUTH ----
@@ -1309,12 +1313,9 @@ function renderPet(petKey, outfitKey, position, petScaleVal) {
   const leashLine = position === 'leash'
     ? `<path d="M56,258 Q90,290 ${pos.tx},${pos.ty - 5}" fill="none" stroke="#8b6914" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="4,2"/>`
     : '';
-  // pet scale (uses scaleWrap around pet center after positioning)
-  let petSvg = `<g transform="translate(${pos.tx},${pos.ty}) scale(${pos.s})">${inner}</g>`;
-  if (petScaleVal) {
-    const s = 1 + petScaleVal / 100;
-    petSvg = `<g transform="translate(${pos.tx},${pos.ty}) scale(${s * pos.s}) translate(${-pos.tx},${-pos.ty})"><g transform="translate(${pos.tx},${pos.ty})">${inner}</g></g>`;
-  }
+  // pet scale: base is 1.75× (75% added), slider adds -50..+50 on top
+  const s = 1 + (75 + petScaleVal) / 100;
+  let petSvg = `<g transform="translate(${pos.tx},${pos.ty}) scale(${s * pos.s}) translate(${-pos.tx},${-pos.ty})"><g transform="translate(${pos.tx},${pos.ty})">${inner}</g></g>`;
   return `<g class="pet-layer" data-pet="${petKey}">${leashLine}${petSvg}</g>`;
 }
 
@@ -2486,12 +2487,15 @@ function applyBgColor() {
 const COLLECTION_KEY = 'munecos_kawaii_collection';
 const SCENE_STATE_KEY = 'munecos_kawaii_scene';
 const MAX_SLOTS = 8;
-const PET_SCALE_MIN = 75;
-const PET_SCALE_MAX = 200;
+const PET_SCALE_MIN = -50;
+const PET_SCALE_MAX = 50;
+const PET_SCALE_DEFAULT = 0; // renders at 1.75× (old +75% base)
 
 function normalizePetScale(value) {
-  const n = Number(value);
-  if (!Number.isFinite(n)) return PET_SCALE_MIN;
+  let n = Number(value);
+  if (!Number.isFinite(n)) return PET_SCALE_DEFAULT;
+  // Migrate old 75..200 absolute range to new -50..+50 additive range
+  if (n > PET_SCALE_MAX) n = n - 75;
   return Math.min(PET_SCALE_MAX, Math.max(PET_SCALE_MIN, Math.round(n)));
 }
 
@@ -2556,7 +2560,7 @@ function defaultDoll(idx) {
     // doll position in canvas (null = default: centered X, base at 90% height)
     dollX: null, dollY: null,
     // pet fields
-    pet: null, petOutfit: null, petPosition: 'floor', petScale: PET_SCALE_MIN,
+    pet: null, petOutfit: null, petPosition: 'floor', petScale: PET_SCALE_DEFAULT,
     // whether this doll is placed in the shared scene
     inScene: idx === 0,
   };
@@ -3269,7 +3273,7 @@ function buildPanel() {
               doll.pet = null;
               doll.petOutfit = null;
               doll.petPosition = 'floor';
-              doll.petScale = PET_SCALE_MIN;
+              doll.petScale = PET_SCALE_DEFAULT;
             } else {
               doll.pet = pt.key;
             }
