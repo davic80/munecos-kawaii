@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.4.1] - 2026-04-26
+
+### Changed
+- **Andén 9¾** completamente rehecha desde cero: perspectiva frontal del muro de ladrillo victoriano con la barrera mágica como elemento central. Portal en arco gótico con capas de brillo violeta/índigo y líneas de ripple. Cartel «PLATFORM 9¾» colgante con cadenas y soporte de hierro. Columnas de hierro fundido, arco de estación victoriana, lámparas de gas. Trolley de equipaje con baúl y jaula de lechuza entrando a través del muro (ruedas en el andén, parte superior emergiendo en la zona de la barrera). Suelo de piedra con línea de seguridad amarilla, plumas de lechuza y caja de Bertie Bott's en el andén.
+
+---
+
 ## [2.3.2] - 2026-04-25
 
 ### Changed
