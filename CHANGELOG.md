@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.0] - 2026-04-25
+
+### Added
+- **4 nuevas escenas HP con audio sintetizado.** `Ministerio de Magia` (atrio dorado, chimeneas Floo con llamas verdes, suelo de mosaico), `Hogsmeade` (pueblo nevado, Three Broomsticks, farolas de gas), `Cabaña de Hagrid` (exterior de piedra con huerto, calabazas, Fang durmiendo) y `Caldero Chorreante` (taberna oscura de Diagon Alley, barriles, chimenea encendida). Cada escena tiene su propia música sintetizada en loop (Web Audio API, sin archivos externos).
+- **3 mascotas HP.** `Lechuza` (estilo Hedwig: cuerpo crema, ojos ámbar, penachos de orejas), `Serpiente` (Nagini: cuerpo enroscado verde con pupila hendida y lengua bífida) y `Niffler` (criatura de Animales Fantásticos: cuerpo oscuro, hocico de ornitorrinco, barriga dorada con monedas). Cada mascota tiene sus 4 trajes de casa y sonido sintetizado propio (hoot, hiss, chitter).
+- **Nariz de serpiente.** Nueva variante `snake` en el selector de nariz: dos rayas diagonales finas (estilo Voldemort / parsel).
+- **Slider de tamaño del muñeco (por slot).** Nuevo control `⤢ Tamaño del muñeco` en el panel derecho (escritorio) y en la sección Configuración (móvil). Rango −50 % .. +50 %, 0 % = tamaño normal. Escala el SVG completo del muñeco anclado en la base (pies fijos). Persiste en `localStorage` por slot.
+
+### Changed
+- **Pet scale redefinido como −50..+50 relativo al tamaño base 1.75×.** El slider de tamaño de mascota usa ahora el mismo rango aditivo que el resto de categorías. El valor 0 corresponde a 1.75× (el antiguo mínimo), −50 a 1.25× y +50 a 2.25×. Los valores guardados con el formato anterior (75–200) se migran automáticamente.
+
+---
+
 ## [2.2.0] - 2026-04-20
 
 ### Added
