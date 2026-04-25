@@ -590,18 +590,19 @@ header h1 {
 
 /* reset button */
 .btn-random {
-  background: linear-gradient(135deg, #7c3aed 0%, #e94560 100%);
+  background: #1a56c4;
   color: #fff;
-  border: none;
+  border: 1px solid #2563eb;
   border-radius: var(--radius);
   padding: 9px 8px;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.2s, transform 0.1s;
-  letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.1s;
+  width: 100%;
+  margin-bottom: 10px;
 }
-.btn-random:hover  { opacity: 0.88; }
+.btn-random:hover  { background: #2563eb; }
 .btn-random:active { transform: scale(0.97); }
 
 .btn-reset {

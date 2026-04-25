@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.5.1] - 2026-04-26
+
+### Fixed
+- **Botón Sorpresa**: movido al panel izquierdo (encima de la sección «Rasgos»), creado dinámicamente dentro de `buildPanel()` para que persista al cambiar de muñeco. El listener anterior en DOMContentLoaded apuntaba a un elemento del panel derecho estático que en mobile no estaba disponible.
+- Estilo cambiado a azul sólido (`#1a56c4`) con ancho completo, coherente con el panel izquierdo.
+
+---
+
 ## [2.5.0] - 2026-04-26
 
 ### Added

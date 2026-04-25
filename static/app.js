@@ -3221,6 +3221,14 @@ function buildPanel() {
     : document.getElementById('left-panel');
   target.innerHTML = '';
 
+  // Random button above Rasgos
+  const rndBtn = document.createElement('button');
+  rndBtn.className = 'btn-random';
+  rndBtn.id = 'btn-random';
+  rndBtn.textContent = '🎲 Sorpresa';
+  rndBtn.addEventListener('click', randomizeDoll);
+  target.appendChild(rndBtn);
+
   const SKIN_PRESETS = [
     { color: '#fde8d0', title: 'Clara' },
     { color: '#f5c5a3', title: 'Media-clara' },
@@ -5589,8 +5597,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobMute) mobMute.textContent = muted ? '🔇 Música: OFF' : '🎵 Música: ON';
   });
 
-  // Random button
-  document.getElementById('btn-random').addEventListener('click', randomizeDoll);
+  // mob-random (mobile action menu)
   document.getElementById('mob-random').addEventListener('click', () => {
     randomizeDoll();
     document.getElementById('action-menu-popup').classList.remove('open');
