@@ -1178,6 +1178,117 @@ const PETS = {
       <ellipse cx="5" cy="16" rx="4" ry="2.5" fill="#808080"/>
     </g>`;
   },
+
+  owl: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const bandana = h ? `
+      <rect x="-6" y="-3" width="12" height="5" rx="2" fill="${h.c1}" opacity="0.9"/>
+      <rect x="-6" y="-1.5" width="12" height="2" fill="${h.c2}" opacity="0.85"/>` : '';
+    return `<g>
+      <!-- Wings -->
+      <ellipse cx="-11" cy="7" rx="5" ry="9" fill="#d0cbc4" transform="rotate(-15,-11,7)"/>
+      <ellipse cx="11" cy="7" rx="5" ry="9" fill="#d0cbc4" transform="rotate(15,11,7)"/>
+      <!-- Body -->
+      <ellipse cx="0" cy="7" rx="12" ry="12" fill="#ede8e0"/>
+      <!-- Belly feathers -->
+      <ellipse cx="0" cy="10" rx="6" ry="7" fill="rgba(180,170,155,0.35)"/>
+      ${bandana}
+      <!-- Head -->
+      <circle cx="0" cy="-9" r="11" fill="#e8e2d8"/>
+      <!-- Ear tufts -->
+      <polygon points="-7,-18 -5,-27 -2,-18" fill="#c0b8a8"/>
+      <polygon points="2,-18 5,-27 7,-18" fill="#c0b8a8"/>
+      <!-- Facial disc -->
+      <ellipse cx="0" cy="-9" rx="8" ry="7" fill="rgba(200,190,175,0.4)"/>
+      <!-- Eyes (big amber) -->
+      <circle cx="-4" cy="-10" r="4" fill="#e8b830"/>
+      <circle cx="-4" cy="-10" r="2.2" fill="#111"/>
+      <circle cx="-2.7" cy="-11.2" r="1" fill="#fff"/>
+      <circle cx="4" cy="-10" r="4" fill="#e8b830"/>
+      <circle cx="4" cy="-10" r="2.2" fill="#111"/>
+      <circle cx="5.3" cy="-11.2" r="1" fill="#fff"/>
+      <!-- Beak -->
+      <polygon points="-2,-6.5 0,-4 2,-6.5" fill="#d4a020"/>
+      <!-- Talons -->
+      <ellipse cx="-4" cy="18" rx="3.5" ry="2" fill="#c8982a"/>
+      <ellipse cx="4" cy="18" rx="3.5" ry="2" fill="#c8982a"/>
+    </g>`;
+  },
+
+  snake: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const collar = h ? `
+      <rect x="-4" y="-15" width="8" height="3.5" rx="1.5" fill="${h.c1}" opacity="0.9" transform="rotate(-10,0,-13)"/>
+      <rect x="-4" y="-14" width="8" height="1.5" fill="${h.c2}" opacity="0.85" transform="rotate(-10,0,-13)"/>` : '';
+    return `<g>
+      <!-- Coiled body lower loop -->
+      <path d="M-12,14 Q-16,5 -8,-1 Q0,-7 8,-1 Q16,5 12,14"
+            fill="none" stroke="#3a8a30" stroke-width="9" stroke-linecap="round"/>
+      <path d="M-12,14 Q-16,5 -8,-1 Q0,-7 8,-1 Q16,5 12,14"
+            fill="none" stroke="#4aaa40" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+      <!-- Upper body -->
+      <path d="M8,-1 Q12,-7 8,-13" fill="none" stroke="#3a8a30" stroke-width="8" stroke-linecap="round"/>
+      ${collar}
+      <!-- Head (flat oval, tilted) -->
+      <ellipse cx="6" cy="-17" rx="8" ry="5" fill="#3a8a30" transform="rotate(-20,6,-17)"/>
+      <ellipse cx="6" cy="-19" rx="6.5" ry="3" fill="#2a6a20" transform="rotate(-20,6,-17)"/>
+      <!-- Eyes (slit) -->
+      <ellipse cx="10" cy="-20" rx="1.8" ry="2.2" fill="#f0c040" transform="rotate(-20,10,-20)"/>
+      <ellipse cx="10" cy="-20" rx="0.5" ry="1.7" fill="#111" transform="rotate(-20,10,-20)"/>
+      <!-- Forked tongue -->
+      <path d="M13,-15 L18,-12" fill="none" stroke="#e03030" stroke-width="1" stroke-linecap="round"/>
+      <path d="M18,-12 L21,-10 M18,-12 L21,-14" fill="none" stroke="#e03030" stroke-width="0.9" stroke-linecap="round"/>
+    </g>`;
+  },
+
+  niffler: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const sash = h ? `
+      <path d="M-9,1 Q0,-5 9,1 L8,5 Q0,-1 -8,5 Z" fill="${h.c1}" opacity="0.85"/>
+      <path d="M-9,2.5 Q0,-3.5 9,2.5" fill="none" stroke="${h.c2}" stroke-width="1.5" opacity="0.85"/>` : '';
+    return `<g>
+      <!-- Body -->
+      <ellipse cx="0" cy="6" rx="14" ry="13" fill="#2a2018"/>
+      <ellipse cx="0" cy="6" rx="14" ry="13" fill="rgba(80,60,40,0.3)"/>
+      <!-- Belly pouch (golden) -->
+      <ellipse cx="0" cy="9" rx="8" ry="7" fill="#b8962a" opacity="0.75"/>
+      <ellipse cx="0" cy="7" rx="5" ry="3" fill="rgba(255,220,80,0.3)"/>
+      ${sash}
+      <!-- Head -->
+      <circle cx="0" cy="-7" r="11" fill="#2a2018"/>
+      <circle cx="0" cy="-7" r="11" fill="rgba(80,60,40,0.25)"/>
+      <!-- Platypus bill -->
+      <ellipse cx="0" cy="-1" rx="9" ry="5" fill="#8a7040"/>
+      <ellipse cx="0" cy="0" rx="8" ry="3.5" fill="#a08050"/>
+      <!-- Nostrils -->
+      <circle cx="-3" cy="-0.5" r="1.2" fill="rgba(0,0,0,0.35)"/>
+      <circle cx="3" cy="-0.5" r="1.2" fill="rgba(0,0,0,0.35)"/>
+      <!-- Eyes (small, shiny) -->
+      <circle cx="-5" cy="-9" r="2.8" fill="#1a1a1a"/>
+      <circle cx="-4.2" cy="-10" r="1" fill="#fff"/>
+      <circle cx="5" cy="-9" r="2.8" fill="#1a1a1a"/>
+      <circle cx="5.8" cy="-10" r="1" fill="#fff"/>
+      <!-- Ears (small round) -->
+      <circle cx="-9" cy="-14" r="4" fill="#2a2018"/>
+      <circle cx="-9" cy="-14" r="2.5" fill="#3a2a20"/>
+      <circle cx="9" cy="-14" r="4" fill="#2a2018"/>
+      <circle cx="9" cy="-14" r="2.5" fill="#3a2a20"/>
+      <!-- Front paws -->
+      <ellipse cx="-7" cy="17" rx="4" ry="2.5" fill="#3a2a18"/>
+      <ellipse cx="7" cy="17" rx="4" ry="2.5" fill="#3a2a18"/>
+      <!-- Claws -->
+      <line x1="-10" y1="18" x2="-10" y2="20" stroke="#555" stroke-width="0.8"/>
+      <line x1="-7.5" y1="19" x2="-7.5" y2="21" stroke="#555" stroke-width="0.8"/>
+      <line x1="-5" y1="19" x2="-5" y2="21" stroke="#555" stroke-width="0.8"/>
+      <line x1="5" y1="19" x2="5" y2="21" stroke="#555" stroke-width="0.8"/>
+      <line x1="7.5" y1="19" x2="7.5" y2="21" stroke="#555" stroke-width="0.8"/>
+      <line x1="10" y1="18" x2="10" y2="20" stroke="#555" stroke-width="0.8"/>
+      <!-- Gold coins in belly -->
+      <circle cx="0" cy="9" r="3" fill="rgba(255,200,30,0.5)"/>
+      <circle cx="-4" cy="11" r="2" fill="rgba(255,200,30,0.4)"/>
+      <circle cx="4" cy="7" r="2" fill="rgba(255,200,30,0.4)"/>
+    </g>`;
+  },
 };
 
 // Pet position configs: { tx, ty, scale, leash? }
@@ -3136,9 +3247,12 @@ function buildPanel() {
       // Special type: pet picker (toggle chips + position + outfit + scale)
       if (sub.type === 'pet') {
         const petTypes = [
-          { key: 'rat', emoji: '🐀', label: 'Rata' },
-          { key: 'toad', emoji: '🐸', label: 'Sapo' },
-          { key: 'cat', emoji: '🐱', label: 'Gato' },
+          { key: 'rat',     emoji: '🐀', label: 'Rata' },
+          { key: 'toad',    emoji: '🐸', label: 'Sapo' },
+          { key: 'cat',     emoji: '🐱', label: 'Gato' },
+          { key: 'owl',     emoji: '🦉', label: 'Lechuza' },
+          { key: 'snake',   emoji: '🐍', label: 'Serpiente' },
+          { key: 'niffler', emoji: '🦔', label: 'Niffler' },
         ];
         const petGrid = document.createElement('div');
         petGrid.className = 'item-grid pet-type-grid';
@@ -3759,9 +3873,12 @@ const AudioManager = {
   playAnimalSound(petKey) {
     this.init();
     switch (petKey) {
-      case 'rat': this.synthRat(); break;
-      case 'toad': this.synthToad(); break;
-      case 'cat': this.synthCat(); break;
+      case 'rat':     this.synthRat();     break;
+      case 'toad':    this.synthToad();    break;
+      case 'cat':     this.synthCat();     break;
+      case 'owl':     this.synthOwl();     break;
+      case 'snake':   this.synthSnake();   break;
+      case 'niffler': this.synthNiffler(); break;
     }
   },
 
@@ -3853,6 +3970,82 @@ const AudioManager = {
     vibGain.connect(osc.frequency);
     vib.start(ctx.currentTime);
     vib.stop(ctx.currentTime + 0.6);
+  },
+
+  synthOwl() {
+    const ctx = this.ctx;
+    // First hoot: "hoo" descending
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(280, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(210, ctx.currentTime + 0.45);
+    gain.gain.setValueAtTime(0.01, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.35, ctx.currentTime + 0.06);
+    gain.gain.setValueAtTime(0.35, ctx.currentTime + 0.32);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+    osc.connect(gain);
+    gain.connect(this.sfxGain);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.5);
+    // Second hoot
+    const osc2 = ctx.createOscillator();
+    const gain2 = ctx.createGain();
+    osc2.type = 'sine';
+    osc2.frequency.setValueAtTime(260, ctx.currentTime + 0.65);
+    osc2.frequency.exponentialRampToValueAtTime(190, ctx.currentTime + 1.15);
+    gain2.gain.setValueAtTime(0, ctx.currentTime);
+    gain2.gain.setValueAtTime(0.01, ctx.currentTime + 0.65);
+    gain2.gain.linearRampToValueAtTime(0.3, ctx.currentTime + 0.71);
+    gain2.gain.setValueAtTime(0.3, ctx.currentTime + 1.02);
+    gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.2);
+    osc2.connect(gain2);
+    gain2.connect(this.sfxGain);
+    osc2.start(ctx.currentTime + 0.65);
+    osc2.stop(ctx.currentTime + 1.2);
+  },
+
+  synthSnake() {
+    const ctx = this.ctx;
+    // Bandpass-filtered noise → hiss
+    const bufferSize = Math.floor(ctx.sampleRate * 0.8);
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+    const source = ctx.createBufferSource();
+    source.buffer = buffer;
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.value = 3200;
+    filter.Q.value = 0.7;
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0.01, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.55, ctx.currentTime + 0.1);
+    gain.gain.setValueAtTime(0.55, ctx.currentTime + 0.5);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.8);
+    source.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.sfxGain);
+    source.start(ctx.currentTime);
+    source.stop(ctx.currentTime + 0.8);
+  },
+
+  synthNiffler() {
+    const ctx = this.ctx;
+    // Rapid chattering chirps
+    [0, 0.1, 0.2, 0.3, 0.42].forEach((t, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(900 + i * 70, ctx.currentTime + t);
+      osc.frequency.exponentialRampToValueAtTime(650, ctx.currentTime + t + 0.07);
+      gain.gain.setValueAtTime(0.15, ctx.currentTime + t);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + t + 0.09);
+      osc.connect(gain);
+      gain.connect(this.sfxGain);
+      osc.start(ctx.currentTime + t);
+      osc.stop(ctx.currentTime + t + 0.09);
+    });
   },
 
   // Hedwig's Theme: B4 E5 G5 F#5 E5 B5 A5 F#5 E5 G5 F#5 D#5 F5 B4
