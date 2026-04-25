@@ -1864,8 +1864,290 @@ const HAIR = {
       <ellipse cx="120" cy="38" rx="28" ry="9" fill="rgba(50,70,90,0.25)"/>`,
     groundH: 80,
   },
+
+  /* ===== HP EXTRA SCENES ===== */
+  ministry: {
+    label: 'Ministerio',
+    svgSky: `
+      <!-- Ministry of Magic interior — golden atrium -->
+      <rect x="0" y="0" width="240" height="340" fill="#2a2010"/>
+      <!-- Gold-tiled walls -->
+      <rect x="0"   y="0" width="18" height="340" fill="#3a2e10"/>
+      <rect x="222" y="0" width="18" height="340" fill="#3a2e10"/>
+      <!-- Wall tile grid left -->
+      ${[0,24,48,72,96,120,144,168,192,216,240,264,288,312].map(y=>`<rect x="1" y="${y}" width="16" height="22" rx="1" fill="rgba(180,140,40,0.18)"/>`).join('')}
+      <!-- Wall tile grid right -->
+      ${[0,24,48,72,96,120,144,168,192,216,240,264,288,312].map(y=>`<rect x="223" y="${y}" width="16" height="22" rx="1" fill="rgba(180,140,40,0.18)"/>`).join('')}
+      <!-- Ceiling — black with gold stars -->
+      <rect x="0" y="0" width="240" height="60" fill="#0a0808"/>
+      <circle cx="40"  cy="25" r="1.5" fill="rgba(255,215,60,0.8)"/>
+      <circle cx="70"  cy="15" r="1"   fill="rgba(255,215,60,0.6)"/>
+      <circle cx="100" cy="30" r="1.5" fill="rgba(255,215,60,0.7)"/>
+      <circle cx="130" cy="12" r="1"   fill="rgba(255,215,60,0.8)"/>
+      <circle cx="160" cy="28" r="1.5" fill="rgba(255,215,60,0.6)"/>
+      <circle cx="190" cy="18" r="1"   fill="rgba(255,215,60,0.7)"/>
+      <circle cx="220" cy="32" r="1.5" fill="rgba(255,215,60,0.6)"/>
+      <!-- Gold fireplace portals (Floo Network) -->
+      <rect x="20"  y="160" width="44" height="100" rx="22 22 4 4" fill="#1a1208"/>
+      <rect x="22"  y="162" width="40" height="96"  rx="20 20 2 2" fill="#0f0a04"/>
+      <rect x="24"  y="200" width="36" height="58"  rx="2"          fill="rgba(0,180,80,0.18)"/>
+      <ellipse cx="42" cy="200" rx="16" ry="8" fill="rgba(0,220,100,0.25)"/>
+      <rect x="176" y="160" width="44" height="100" rx="22 22 4 4" fill="#1a1208"/>
+      <rect x="178" y="162" width="40" height="96"  rx="20 20 2 2" fill="#0f0a04"/>
+      <rect x="180" y="200" width="36" height="58"  rx="2"          fill="rgba(0,180,80,0.18)"/>
+      <ellipse cx="198" cy="200" rx="16" ry="8" fill="rgba(0,220,100,0.25)"/>
+      <!-- Floo flames -->
+      <path d="M30,258 Q34,240 38,254 Q42,238 46,252 Q50,240 54,256" fill="none" stroke="rgba(0,255,100,0.5)" stroke-width="2"/>
+      <path d="M186,258 Q190,240 194,254 Q198,238 202,252 Q206,240 210,256" fill="none" stroke="rgba(0,255,100,0.5)" stroke-width="2"/>
+      <!-- Central gold statue pedestal -->
+      <rect x="98" y="200" width="44" height="100" fill="#2a2010"/>
+      <rect x="94" y="198" width="52" height="8"   rx="2" fill="rgba(200,160,30,0.6)"/>
+      <!-- Statue silhouette -->
+      <rect x="114" y="130" width="12" height="70" fill="rgba(200,160,30,0.35)"/>
+      <circle cx="120" cy="124" r="10" fill="rgba(200,160,30,0.30)"/>
+      <path d="M108,160 Q120,150 132,160" fill="rgba(200,160,30,0.25)"/>
+      <!-- Ministry seal on floor -->
+      <circle cx="120" cy="340" r="35" fill="rgba(180,140,30,0.12)"/>
+      <circle cx="120" cy="340" r="28" fill="none" stroke="rgba(180,140,30,0.2)" stroke-width="1.5"/>`,
+    svgGround: `
+      <!-- Black & gold mosaic floor -->
+      <rect x="0" y="0" width="240" height="80" fill="#1a1408"/>
+      <!-- Mosaic tiles -->
+      ${Array.from({length:8},(_,col)=>Array.from({length:5},(_,row)=>`<rect x="${col*30+1}" y="${row*16+1}" width="28" height="14" rx="1" fill="${(col+row)%2===0?'rgba(180,140,30,0.18)':'rgba(255,255,255,0.04)'}"/>`).join('')).join('')}
+      <!-- Central seal -->
+      <circle cx="120" cy="40" r="30" fill="none" stroke="rgba(180,140,30,0.3)" stroke-width="1.5"/>
+      <circle cx="120" cy="40" r="20" fill="none" stroke="rgba(180,140,30,0.2)" stroke-width="1"/>
+      <text x="120" y="45" font-size="10" text-anchor="middle" fill="rgba(180,140,30,0.45)" font-weight="bold">M</text>`,
+    groundH: 80,
+  },
+
+  hogsmeade: {
+    label: 'Hogsmeade',
+    svgSky: `
+      <!-- Winter sky — deep blue-grey, snowing -->
+      <rect x="0" y="0" width="240" height="340" fill="#3a4a5a"/>
+      <!-- Cloud layer -->
+      <ellipse cx="50"  cy="30" rx="40" ry="18" fill="rgba(200,210,220,0.25)"/>
+      <ellipse cx="130" cy="22" rx="50" ry="16" fill="rgba(200,210,220,0.20)"/>
+      <ellipse cx="210" cy="35" rx="36" ry="14" fill="rgba(200,210,220,0.22)"/>
+      <!-- Snowflakes -->
+      <circle cx="20"  cy="55"  r="1.5" fill="rgba(255,255,255,0.7)"/>
+      <circle cx="55"  cy="80"  r="1"   fill="rgba(255,255,255,0.6)"/>
+      <circle cx="90"  cy="45"  r="1.5" fill="rgba(255,255,255,0.8)"/>
+      <circle cx="125" cy="70"  r="1"   fill="rgba(255,255,255,0.7)"/>
+      <circle cx="160" cy="50"  r="1.5" fill="rgba(255,255,255,0.6)"/>
+      <circle cx="195" cy="85"  r="1"   fill="rgba(255,255,255,0.8)"/>
+      <circle cx="230" cy="60"  r="1.5" fill="rgba(255,255,255,0.7)"/>
+      <circle cx="35"  cy="110" r="1"   fill="rgba(255,255,255,0.5)"/>
+      <circle cx="75"  cy="130" r="1.5" fill="rgba(255,255,255,0.6)"/>
+      <circle cx="115" cy="100" r="1"   fill="rgba(255,255,255,0.7)"/>
+      <circle cx="155" cy="120" r="1.5" fill="rgba(255,255,255,0.5)"/>
+      <circle cx="200" cy="105" r="1"   fill="rgba(255,255,255,0.6)"/>
+      <!-- The Three Broomsticks inn (left) -->
+      <rect x="0" y="120" width="80" height="160" fill="#5a3a20"/>
+      <rect x="0" y="100" width="80" height="24"  fill="#4a2e18"/>
+      <!-- Inn roof with snow -->
+      <polygon points="0,100 40,70 80,100" fill="#3a2a18"/>
+      <polygon points="0,100 40,70 80,100" fill="rgba(230,240,255,0.6)"/>
+      <rect x="0" y="98" width="80" height="5" fill="rgba(230,240,255,0.7)"/>
+      <!-- Inn windows (warm glow) -->
+      <rect x="8"  y="130" width="20" height="16" rx="2" fill="rgba(255,200,80,0.7)"/>
+      <rect x="52" y="130" width="20" height="16" rx="2" fill="rgba(255,200,80,0.65)"/>
+      <rect x="8"  y="165" width="20" height="16" rx="2" fill="rgba(255,200,80,0.6)"/>
+      <rect x="52" y="165" width="20" height="16" rx="2" fill="rgba(255,200,80,0.65)"/>
+      <!-- Inn door -->
+      <rect x="28" y="230" width="24" height="50" rx="2" fill="#3a2010"/>
+      <circle cx="50" cy="255" r="2" fill="rgba(200,160,40,0.9)"/>
+      <!-- Inn sign -->
+      <rect x="12" y="115" width="56" height="14" rx="2" fill="#3a2010"/>
+      <text x="40" y="125" font-size="6" text-anchor="middle" fill="rgba(255,200,80,0.9)" font-weight="bold">THREE BROOMSTICKS</text>
+      <!-- Honeydukes (right) -->
+      <rect x="160" y="130" width="80" height="150" fill="#8a3a5a"/>
+      <rect x="160" y="110" width="80" height="24"  fill="#7a2a4a"/>
+      <polygon points="160,110 200,80 240,110" fill="#6a1a3a"/>
+      <polygon points="160,110 200,80 240,110" fill="rgba(230,240,255,0.55)"/>
+      <rect x="160" y="108" width="80" height="5" fill="rgba(230,240,255,0.7)"/>
+      <rect x="168" y="140" width="20" height="16" rx="2" fill="rgba(255,180,200,0.7)"/>
+      <rect x="212" y="140" width="20" height="16" rx="2" fill="rgba(255,180,200,0.65)"/>
+      <rect x="172" y="235" width="22" height="45" rx="2" fill="#5a1a2a"/>
+      <rect x="164" y="125" width="72" height="14" rx="2" fill="#5a1a2a"/>
+      <text x="200" y="135" font-size="6" text-anchor="middle" fill="rgba(255,180,200,0.95)" font-weight="bold">HONEYDUKES</text>
+      <!-- Cobblestone road (middle) -->
+      <rect x="80" y="200" width="80" height="140" fill="#3a3530"/>
+      <!-- Snow on road -->
+      <rect x="80" y="200" width="80" height="8" fill="rgba(230,240,255,0.4)"/>
+      <!-- Snow on roofs strip -->
+      <rect x="80" y="120" width="80" height="80" fill="#3a4a5a"/>
+      <!-- Middle building -->
+      <rect x="86" y="150" width="68" height="130" fill="#4a4a3a"/>
+      <polygon points="82,152 120,118 158,152" fill="#3a3a2a"/>
+      <polygon points="82,152 120,118 158,152" fill="rgba(230,240,255,0.5)"/>
+      <rect x="100" y="162" width="16" height="14" rx="2" fill="rgba(255,220,100,0.6)"/>
+      <rect x="124" y="162" width="16" height="14" rx="2" fill="rgba(255,220,100,0.55)"/>`,
+    svgGround: `
+      <!-- Snow-covered cobblestone street -->
+      <rect x="0" y="0" width="240" height="80" fill="#c8d4e0"/>
+      <!-- Cobble hints under snow -->
+      <ellipse cx="20"  cy="35" rx="12" ry="7" fill="rgba(150,160,170,0.3)"/>
+      <ellipse cx="55"  cy="28" rx="14" ry="6" fill="rgba(150,160,170,0.25)"/>
+      <ellipse cx="95"  cy="38" rx="13" ry="7" fill="rgba(150,160,170,0.3)"/>
+      <ellipse cx="140" cy="28" rx="12" ry="6" fill="rgba(150,160,170,0.25)"/>
+      <ellipse cx="180" cy="35" rx="14" ry="7" fill="rgba(150,160,170,0.3)"/>
+      <ellipse cx="220" cy="28" rx="12" ry="6" fill="rgba(150,160,170,0.25)"/>
+      <!-- Fresh snow on top -->
+      <rect x="0" y="0" width="240" height="12" fill="rgba(230,240,255,0.8)"/>
+      <!-- Footprints -->
+      <ellipse cx="100" cy="45" rx="4" ry="6" fill="rgba(120,130,145,0.3)" transform="rotate(-15,100,45)"/>
+      <ellipse cx="112" cy="52" rx="4" ry="6" fill="rgba(120,130,145,0.3)" transform="rotate(10,112,52)"/>
+      <ellipse cx="126" cy="46" rx="4" ry="6" fill="rgba(120,130,145,0.3)" transform="rotate(-10,126,46)"/>`,
+    groundH: 80,
+  },
+
+  hagrid_hut: {
+    label: 'Cabaña Hagrid',
+    svgSky: `
+      <!-- Overcast sky, twilight mood -->
+      <rect x="0" y="0" width="240" height="340" fill="#3a4a30"/>
+      <!-- Sky gradient overlay -->
+      <rect x="0" y="0" width="240" height="120" fill="rgba(20,30,15,0.4)"/>
+      <!-- Clouds -->
+      <ellipse cx="60"  cy="40" rx="50" ry="20" fill="rgba(50,60,40,0.6)"/>
+      <ellipse cx="180" cy="30" rx="45" ry="18" fill="rgba(50,60,40,0.55)"/>
+      <ellipse cx="120" cy="55" rx="40" ry="15" fill="rgba(50,60,40,0.4)"/>
+      <!-- Moon (half) -->
+      <circle cx="210" cy="50" r="18" fill="rgba(220,220,180,0.25)"/>
+      <circle cx="218" cy="50" r="18" fill="#3a4a30"/>
+      <!-- Forbidden Forest silhouette (dark trees) -->
+      <rect x="0" y="150" width="240" height="190" fill="rgba(15,25,10,0.85)"/>
+      <!-- Tree silhouettes left -->
+      <polygon points="0,260 12,180 24,260"   fill="#1a2810"/>
+      <polygon points="10,260 25,160 40,260"  fill="#1e2e12"/>
+      <polygon points="25,260 42,170 58,260"  fill="#1a2810"/>
+      <polygon points="5,260  18,190 32,260"  fill="#162210"/>
+      <!-- Tree silhouettes right -->
+      <polygon points="180,260 196,165 212,260" fill="#1a2810"/>
+      <polygon points="196,260 214,175 232,260" fill="#1e2e12"/>
+      <polygon points="215,260 230,185 245,260" fill="#1a2810"/>
+      <!-- Hagrid's hut (centre-left) -->
+      <rect x="30" y="175" width="90" height="120" rx="3" fill="#5a4530"/>
+      <!-- Hut roof -->
+      <polygon points="24,178 75,130 126,178" fill="#4a3828"/>
+      <!-- Roof thatch lines -->
+      <line x1="35" y1="175" x2="75" y2="135" stroke="rgba(80,60,35,0.5)" stroke-width="2"/>
+      <line x1="50" y1="175" x2="75" y2="133" stroke="rgba(80,60,35,0.4)" stroke-width="2"/>
+      <line x1="65" y1="175" x2="75" y2="132" stroke="rgba(80,60,35,0.3)" stroke-width="2"/>
+      <line x1="85" y1="175" x2="75" y2="132" stroke="rgba(80,60,35,0.3)" stroke-width="2"/>
+      <line x1="100" y1="175" x2="75" y2="133" stroke="rgba(80,60,35,0.4)" stroke-width="2"/>
+      <line x1="115" y1="175" x2="75" y2="135" stroke="rgba(80,60,35,0.5)" stroke-width="2"/>
+      <!-- Chimney with smoke -->
+      <rect x="85" y="130" width="12" height="36" rx="2" fill="#4a3020"/>
+      <ellipse cx="91" cy="128" rx="8"  ry="6"  fill="rgba(120,120,120,0.4)"/>
+      <ellipse cx="86" cy="120" rx="6"  ry="5"  fill="rgba(120,120,120,0.3)"/>
+      <ellipse cx="96" cy="114" rx="5"  ry="4"  fill="rgba(120,120,120,0.25)"/>
+      <!-- Hut window (warm glow) -->
+      <rect x="44" y="192" width="24" height="20" rx="2" fill="rgba(255,200,80,0.65)"/>
+      <rect x="46" y="194" width="10" height="16" rx="1" fill="rgba(255,220,100,0.55)"/>
+      <rect x="58" y="194" width="10" height="16" rx="1" fill="rgba(255,220,100,0.55)"/>
+      <!-- Hut door (huge, for Hagrid) -->
+      <rect x="75" y="228" width="36" height="67" rx="4" fill="#3a2818"/>
+      <circle cx="108" cy="262" r="3"  fill="rgba(180,140,60,0.9)"/>
+      <!-- Pumpkins near door -->
+      <ellipse cx="70" cy="290" rx="10" ry="8"  fill="#c8620a"/>
+      <rect    x="69" y="280"  width="2" height="6" fill="#3a5a20"/>
+      <ellipse cx="58" cy="293" rx="8" ry="6" fill="#d06a10"/>
+      <rect    x="57" y="285" width="2" height="5" fill="#3a5a20"/>`,
+    svgGround: `
+      <!-- Muddy grass path -->
+      <rect x="0" y="0" width="240" height="80" fill="#3a4a28"/>
+      <!-- Grass tufts -->
+      <rect x="0"   y="0" width="240" height="8" fill="rgba(50,70,30,0.6)"/>
+      <line x1="15"  y1="8" x2="12"  y2="0" stroke="#4a6a2a" stroke-width="2"/>
+      <line x1="18"  y1="8" x2="20"  y2="1" stroke="#3a5a22" stroke-width="1.5"/>
+      <line x1="40"  y1="8" x2="38"  y2="0" stroke="#4a6a2a" stroke-width="2"/>
+      <line x1="70"  y1="8" x2="72"  y2="1" stroke="#3a5a22" stroke-width="1.5"/>
+      <line x1="100" y1="8" x2="98"  y2="0" stroke="#4a6a2a" stroke-width="2"/>
+      <line x1="140" y1="8" x2="142" y2="1" stroke="#3a5a22" stroke-width="1.5"/>
+      <line x1="170" y1="8" x2="168" y2="0" stroke="#4a6a2a" stroke-width="2"/>
+      <line x1="200" y1="8" x2="202" y2="1" stroke="#3a5a22" stroke-width="1.5"/>
+      <line x1="225" y1="8" x2="223" y2="0" stroke="#4a6a2a" stroke-width="2"/>
+      <!-- Mud path -->
+      <path d="M90,0 Q120,40 150,80 L110,80 Q80,40 50,0 Z" fill="rgba(60,40,20,0.5)"/>
+      <!-- Small rocks -->
+      <ellipse cx="30"  cy="55" rx="5" ry="3" fill="rgba(80,70,60,0.6)"/>
+      <ellipse cx="180" cy="48" rx="4" ry="2.5" fill="rgba(80,70,60,0.5)"/>
+      <ellipse cx="210" cy="62" rx="6" ry="3"   fill="rgba(80,70,60,0.55)"/>`,
+    groundH: 80,
+  },
+
+  leaky_cauldron: {
+    label: 'Caldero Chorreante',
+    svgSky: `
+      <!-- Dark pub interior -->
+      <rect x="0" y="0" width="240" height="340" fill="#1e1508"/>
+      <!-- Wooden ceiling beams -->
+      <rect x="0"   y="0"  width="240" height="12" fill="#2a1e0c"/>
+      <rect x="0"   y="30" width="240" height="8"  fill="#2a1e0c"/>
+      <rect x="0"   y="60" width="240" height="6"  fill="#261c0a"/>
+      <rect x="30"  y="0"  width="8"   height="80" fill="#241a08"/>
+      <rect x="100" y="0"  width="8"   height="80" fill="#241a08"/>
+      <rect x="170" y="0"  width="8"   height="80" fill="#241a08"/>
+      <!-- Stone walls -->
+      <rect x="0"   y="80" width="18" height="260" fill="#2a2418"/>
+      <rect x="222" y="80" width="18" height="260" fill="#2a2418"/>
+      <!-- Stone blocks left -->
+      ${[80,106,132,158,184,210,236,262,288,314].map(y=>`<rect x="1" y="${y}" width="16" height="22" rx="1" fill="rgba(60,50,35,0.5)"/>`).join('')}
+      <!-- Stone blocks right -->
+      ${[80,106,132,158,184,210,236,262,288,314].map(y=>`<rect x="223" y="${y}" width="16" height="22" rx="1" fill="rgba(60,50,35,0.5)"/>`).join('')}
+      <!-- Candles hanging (chandelier) -->
+      <line x1="120" y1="0" x2="120" y2="50" stroke="rgba(120,90,40,0.6)" stroke-width="2"/>
+      <rect x="90" y="48" width="60" height="4" rx="1" fill="rgba(100,75,35,0.8)"/>
+      <!-- Candle flames on chandelier -->
+      ${[96,106,116,126,136,146].map(x=>`<rect x="${x}" y="40" width="3" height="10" rx="1" fill="rgba(120,80,30,0.9)"/><ellipse cx="${x+1.5}" cy="38" rx="3" ry="4" fill="rgba(255,180,40,0.6)"/><ellipse cx="${x+1.5}" cy="36" rx="2" ry="3" fill="rgba(255,220,100,0.7)"/>`).join('')}
+      <!-- Bar counter (background) -->
+      <rect x="18" y="200" width="100" height="140" fill="#2e2010"/>
+      <rect x="16" y="198" width="104" height="8"   rx="2" fill="#3a2a12"/>
+      <!-- Barrels on shelves -->
+      <rect x="24" y="110" width="60" height="8" fill="rgba(60,40,20,0.7)"/>
+      <ellipse cx="36" cy="109" rx="8"  ry="10" fill="#5a3a1a"/>
+      <ellipse cx="36" cy="109" rx="5"  ry="7"  fill="#4a2e14"/>
+      <ellipse cx="56" cy="109" rx="8"  ry="10" fill="#5a3a1a"/>
+      <ellipse cx="56" cy="109" rx="5"  ry="7"  fill="#4a2e14"/>
+      <ellipse cx="75" cy="109" rx="7"  ry="9"  fill="#5a3a1a"/>
+      <ellipse cx="75" cy="109" rx="4"  ry="6"  fill="#4a2e14"/>
+      <!-- Bottles on shelf -->
+      <rect x="150" y="100" width="70" height="6" fill="rgba(60,40,20,0.7)"/>
+      ${[155,163,172,181,190,200,210].map((x,i)=>`<rect x="${x}" y="${88+i%2*4}" width="6" height="14" rx="2" fill="${['rgba(100,50,20,0.8)','rgba(40,80,40,0.8)','rgba(80,60,20,0.7)','rgba(60,40,80,0.8)','rgba(100,30,30,0.8)','rgba(40,60,80,0.7)','rgba(80,50,30,0.8)'][i]}"/>`).join('')}
+      <!-- Fireplace (right wall) -->
+      <rect x="170" y="185" width="55" height="100" rx="4" fill="#1a1208"/>
+      <rect x="165" y="183" width="65" height="10"  rx="2" fill="#2a1e0c"/>
+      <rect x="172" y="220" width="51" height="65"  rx="2" fill="#0e0a04"/>
+      <!-- Fire glow -->
+      <path d="M178,282 Q185,255 192,270 Q198,248 204,265 Q210,250 216,275 Q218,285 178,285 Z" fill="rgba(200,80,10,0.45)"/>
+      <path d="M181,282 Q187,260 193,272 Q199,252 205,268 Q210,255 214,278 Z" fill="rgba(255,150,20,0.4)"/>
+      <ellipse cx="197" cy="278" rx="20" ry="8" fill="rgba(255,100,0,0.2)"/>
+      <!-- Cauldron on bar -->
+      <ellipse cx="70" cy="200" rx="20" ry="10" fill="#1a1a1a"/>
+      <rect    x="50" y="200"  width="40" height="18" rx="0 0 8 8" fill="#222"/>
+      <ellipse cx="70" cy="218" rx="20" ry="8"  fill="#1a1a1a"/>
+      <ellipse cx="70" cy="200" rx="18" ry="7"  fill="rgba(0,180,80,0.3)"/>`,
+    svgGround: `
+      <!-- Dark wooden floor -->
+      <rect x="0" y="0" width="240" height="80" fill="#2a1e0c"/>
+      <!-- Floor planks -->
+      ${[0,30,60,90,120,150,180,210].map(x=>`<rect x="${x}" y="0" width="28" height="80" rx="0" fill="rgba(50,35,15,${x%60===0?'0.15':'0.08'})"/>`).join('')}
+      <!-- Plank horizontal grain lines -->
+      <line x1="0" y1="20" x2="240" y2="20" stroke="rgba(50,35,15,0.3)" stroke-width="1"/>
+      <line x1="0" y1="40" x2="240" y2="40" stroke="rgba(50,35,15,0.25)" stroke-width="1"/>
+      <line x1="0" y1="60" x2="240" y2="60" stroke="rgba(50,35,15,0.2)"  stroke-width="1"/>
+      <!-- Fireplace glow on floor -->
+      <ellipse cx="197" cy="5" rx="38" ry="12" fill="rgba(200,80,10,0.12)"/>
+      <!-- Scattered straw/sawdust -->
+      <line x1="40"  y1="35" x2="52"  y2="32" stroke="rgba(120,90,40,0.3)" stroke-width="1"/>
+      <line x1="80"  y1="55" x2="70"  y2="60" stroke="rgba(120,90,40,0.25)" stroke-width="1"/>
+      <line x1="150" y1="44" x2="162" y2="40" stroke="rgba(120,90,40,0.3)"  stroke-width="1"/>`,
+    groundH: 80,
+  },
 };
-function darken(hex, amount) {
   let c = hex.replace('#', '');
   if (c.length === 3) c = c.split('').map(x => x + x).join('');
   const num = parseInt(c, 16);
@@ -1979,6 +2261,11 @@ const SCENE_BG = {
   quidditch:        '#4a9fd4',
   park:             '#87CEEB',
   sunset_beach:     '#1a0533',
+  brick_wall:       '#3a2e26',
+  ministry:         '#2a2010',
+  hogsmeade:        '#3a4a5a',
+  hagrid_hut:       '#3a4a30',
+  leaky_cauldron:   '#1e1508',
 };
 
 /* ---------- DOLL POSITION ---------- */
@@ -3269,6 +3556,8 @@ function buildConfigSection(container) {
     hogwarts: 'Hogwarts', great_hall: 'Gran Comedor',
     forbidden_forest: 'Bosque Prohibido', platform_934: 'Andén 9¾',
     quidditch: 'Quidditch', park: 'Parque', sunset_beach: 'Playa',
+    brick_wall: 'Muro de Ladrillos', ministry: 'Ministerio',
+    hogsmeade: 'Hogsmeade', hagrid_hut: 'Cabaña Hagrid', leaky_cauldron: 'Caldero Chorreante',
   };
   Object.keys(BG_SCENES).forEach(key => {
     const scene = BG_SCENES[key];
@@ -3699,6 +3988,18 @@ const AudioManager = {
         break;
       case 'brick_wall':
         this.synthAlley();
+        break;
+      case 'ministry':
+        this.synthMinistry();
+        break;
+      case 'hogsmeade':
+        this.synthHogsmeade();
+        break;
+      case 'hagrid_hut':
+        this.synthHagrid();
+        break;
+      case 'leaky_cauldron':
+        this.synthLeakyCauldron();
         break;
     }
   },
@@ -4822,6 +5123,11 @@ document.addEventListener('DOMContentLoaded', () => {
       quidditch:        'Quidditch',
       park:             'Parque',
       sunset_beach:     'Playa',
+      brick_wall:       'Muro de Ladrillos',
+      ministry:         'Ministerio',
+      hogsmeade:        'Hogsmeade',
+      hagrid_hut:       'Cabaña Hagrid',
+      leaky_cauldron:   'Caldero Chorreante',
     };
     Object.keys(BG_SCENES).forEach(key => {
       const scene = BG_SCENES[key];
