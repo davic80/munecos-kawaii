@@ -1596,8 +1596,87 @@ const HAIR = {
    platform_934: {
     label: 'Andén 9¾',
     svgSky: `
-      <!-- King's Cross interior — warm amber/grey vault -->
-      <rect x="0" y="0" width="240" height="340" fill="#8a8070"/>
+      <!-- King's Cross — Victorian iron-and-glass roof + brick wall -->
+      <rect x="0" y="0" width="240" height="340" fill="#7a6555"/>
+
+      <!-- === GLASS ROOF (top 55 px) === -->
+      <rect x="0" y="0" width="240" height="55" fill="#b8ccd8"/>
+      <!-- Iron arch left -->
+      <path d="M0,55 Q55,5 110,55" fill="rgba(35,50,30,0.75)"/>
+      <!-- Iron arch right -->
+      <path d="M130,55 Q185,5 240,55" fill="rgba(35,50,30,0.75)"/>
+      <!-- Iron columns -->
+      <rect x="0"   y="0" width="7"  height="260" fill="rgba(30,48,28,0.85)"/>
+      <rect x="107" y="0" width="6"  height="200" fill="rgba(30,48,28,0.80)"/>
+      <rect x="127" y="0" width="6"  height="200" fill="rgba(30,48,28,0.80)"/>
+      <rect x="233" y="0" width="7"  height="260" fill="rgba(30,48,28,0.85)"/>
+      <!-- Horizontal iron beam at roof base -->
+      <rect x="0" y="50" width="240" height="7" fill="rgba(30,48,28,0.80)"/>
+      <!-- Rivet dots on beam -->
+      <circle cx="25"  cy="53" r="2" fill="rgba(20,35,20,0.7)"/>
+      <circle cx="60"  cy="53" r="2" fill="rgba(20,35,20,0.7)"/>
+      <circle cx="120" cy="53" r="2" fill="rgba(20,35,20,0.7)"/>
+      <circle cx="180" cy="53" r="2" fill="rgba(20,35,20,0.7)"/>
+      <circle cx="215" cy="53" r="2" fill="rgba(20,35,20,0.7)"/>
+
+      <!-- === BRICK WALL BACKDROP === -->
+      <rect x="7" y="57" width="226" height="283" fill="#6a2f1e"/>
+      <!-- Brick rows (odd offset) — row height 14 -->
+      <rect x="7"   y="57"  width="30" height="12" rx="1" fill="rgba(95,40,22,0.55)"/>
+      <rect x="39"  y="57"  width="32" height="12" rx="1" fill="rgba(85,35,20,0.55)"/>
+      <rect x="73"  y="57"  width="30" height="12" rx="1" fill="rgba(95,40,22,0.55)"/>
+      <rect x="105" y="57"  width="30" height="12" rx="1" fill="rgba(85,35,20,0.55)"/>
+      <rect x="137" y="57"  width="32" height="12" rx="1" fill="rgba(95,40,22,0.55)"/>
+      <rect x="171" y="57"  width="30" height="12" rx="1" fill="rgba(85,35,20,0.55)"/>
+      <rect x="203" y="57"  width="30" height="12" rx="1" fill="rgba(95,40,22,0.55)"/>
+      <rect x="22"  y="71"  width="32" height="12" rx="1" fill="rgba(85,35,20,0.55)"/>
+      <rect x="56"  y="71"  width="30" height="12" rx="1" fill="rgba(95,40,22,0.55)"/>
+      <rect x="88"  y="71"  width="32" height="12" rx="1" fill="rgba(85,35,20,0.55)"/>
+      <rect x="122" y="71"  width="30" height="12" rx="1" fill="rgba(95,40,22,0.55)"/>
+      <rect x="154" y="71"  width="32" height="12" rx="1" fill="rgba(85,35,20,0.55)"/>
+      <rect x="188" y="71"  width="30" height="12" rx="1" fill="rgba(95,40,22,0.55)"/>
+      <rect x="7"   y="85"  width="30" height="12" rx="1" fill="rgba(95,40,22,0.50)"/>
+      <rect x="39"  y="85"  width="32" height="12" rx="1" fill="rgba(85,35,20,0.50)"/>
+      <rect x="73"  y="85"  width="30" height="12" rx="1" fill="rgba(95,40,22,0.50)"/>
+      <rect x="105" y="85"  width="50" height="12" rx="1" fill="rgba(85,35,20,0.50)"/>
+      <rect x="157" y="85"  width="32" height="12" rx="1" fill="rgba(95,40,22,0.50)"/>
+      <rect x="191" y="85"  width="42" height="12" rx="1" fill="rgba(85,35,20,0.50)"/>
+      <rect x="22"  y="99"  width="32" height="12" rx="1" fill="rgba(85,35,20,0.45)"/>
+      <rect x="56"  y="99"  width="30" height="12" rx="1" fill="rgba(95,40,22,0.45)"/>
+      <rect x="88"  y="99"  width="32" height="12" rx="1" fill="rgba(85,35,20,0.45)"/>
+      <rect x="122" y="99"  width="30" height="12" rx="1" fill="rgba(95,40,22,0.45)"/>
+      <rect x="154" y="99"  width="32" height="12" rx="1" fill="rgba(85,35,20,0.45)"/>
+      <rect x="188" y="99"  width="30" height="12" rx="1" fill="rgba(95,40,22,0.45)"/>
+      <rect x="7"   y="113" width="30" height="12" rx="1" fill="rgba(85,35,20,0.4)"/>
+      <rect x="39"  y="113" width="32" height="12" rx="1" fill="rgba(95,40,22,0.4)"/>
+      <rect x="73"  y="113" width="30" height="12" rx="1" fill="rgba(85,35,20,0.4)"/>
+      <rect x="105" y="113" width="50" height="12" rx="1" fill="rgba(95,40,22,0.4)"/>
+      <rect x="157" y="113" width="32" height="12" rx="1" fill="rgba(85,35,20,0.4)"/>
+      <rect x="191" y="113" width="42" height="12" rx="1" fill="rgba(95,40,22,0.4)"/>
+
+      <!-- === HANGING SIGN === -->
+      <line x1="85"  y1="50" x2="85"  y2="62" stroke="rgba(160,130,60,0.7)" stroke-width="1.5"/>
+      <line x1="155" y1="50" x2="155" y2="62" stroke="rgba(160,130,60,0.7)" stroke-width="1.5"/>
+      <rect x="72" y="62" width="96" height="26" rx="4" fill="#120e08"/>
+      <rect x="73" y="63" width="94" height="24" rx="3" fill="none" stroke="rgba(200,160,40,0.55)" stroke-width="1.2"/>
+      <text x="120" y="79" font-size="10" font-weight="bold" text-anchor="middle" fill="rgba(255,215,60,0.95)">PLATFORM 9¾</text>
+
+      <!-- === GAS LAMPS === -->
+      <rect x="8"   y="92" width="5" height="36" fill="rgba(160,130,60,0.8)"/>
+      <ellipse cx="10" cy="90" rx="11" ry="7" fill="rgba(255,205,75,0.5)"/>
+      <ellipse cx="10" cy="86" rx="6"  ry="5" fill="rgba(255,240,130,0.65)"/>
+      <rect x="227" y="92" width="5" height="36" fill="rgba(160,130,60,0.8)"/>
+      <ellipse cx="230" cy="90" rx="11" ry="7" fill="rgba(255,205,75,0.5)"/>
+      <ellipse cx="230" cy="86" rx="6"  ry="5" fill="rgba(255,240,130,0.65)"/>
+
+      <!-- === STEAM CLOUDS === -->
+      <ellipse cx="50"  cy="38" rx="40" ry="16" fill="rgba(235,238,245,0.22)"/>
+      <ellipse cx="28"  cy="28" rx="28" ry="14" fill="rgba(235,238,245,0.18)"/>
+      <ellipse cx="82"  cy="32" rx="36" ry="15" fill="rgba(235,238,245,0.15)"/>
+      <ellipse cx="170" cy="40" rx="42" ry="17" fill="rgba(235,238,245,0.18)"/>
+      <ellipse cx="148" cy="28" rx="30" ry="13" fill="rgba(235,238,245,0.14)"/>
+      <ellipse cx="210" cy="32" rx="26" ry="12" fill="rgba(235,238,245,0.15)"/>
+      <ellipse cx="120" cy="20" rx="50" ry="14" fill="rgba(235,238,245,0.10)"/>
       <!-- Vaulted ceiling ribs — wide arches -->
       <path d="M-20,0 Q60,140 140,0"  fill="none" stroke="rgba(40,35,30,0.55)" stroke-width="8"/>
       <path d="M100,0 Q180,140 260,0" fill="none" stroke="rgba(40,35,30,0.45)" stroke-width="8"/>
@@ -1633,124 +1712,308 @@ const HAIR = {
       <rect x="80" y="6" width="80" height="20" rx="3" fill="rgba(30,25,20,0.85)"/>
       <text x="120" y="21" font-size="11" font-weight="bold" text-anchor="middle" fill="rgba(255,215,60,0.95)">PLATFORM 9¾</text>`,
     svgGround: `
-      <!-- groundH=160 total. Layout:
-           y=0..100  = train (locomotive left + carriages right)
-           y=100..110 = rail level / wheels bottom
-           y=110..160 = stone platform
-      -->
-      <!-- === RAILS (below wheels) === -->
-      <rect x="0" y="98" width="240" height="4" fill="#3a3530"/>
-      <rect x="0" y="94" width="240" height="2" fill="#5a5048"/>
-      <!-- Rail sleepers -->
-      <rect x="10"  y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
-      <rect x="34"  y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
-      <rect x="58"  y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
-      <rect x="82"  y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
-      <rect x="106" y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
-      <rect x="130" y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
-      <rect x="154" y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
-      <rect x="178" y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
-      <rect x="202" y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
-      <rect x="226" y="94" width="6" height="10" fill="rgba(80,60,40,0.7)"/>
+      <!-- groundH=140. y=0..90=train, y=90..100=rails, y=100..140=platform -->
 
-      <!-- === LOCOMOTIVE (left, large, side view) === -->
+      <!-- === LOCOMOTIVE (full side view, left) === -->
       <!-- Smoke box front face -->
-      <rect x="0" y="28" width="22" height="66" rx="4" fill="#1e1e1e"/>
-      <circle cx="11" cy="60" r="8" fill="#2a2a2a"/>
-      <circle cx="11" cy="60" r="5" fill="#111"/>
-      <!-- Front buffer -->
-      <rect x="0" y="84" width="22" height="6" rx="2" fill="#444"/>
-      <rect x="2" y="85" width="6" height="4" rx="1" fill="#666"/>
-      <rect x="14" y="85" width="6" height="4" rx="1" fill="#666"/>
+      <rect x="0"  y="22" width="20" height="68" rx="4" fill="#1e1e1e"/>
+      <circle cx="10" cy="56" r="9" fill="#2a2a2a"/>
+      <circle cx="10" cy="56" r="5" fill="#111"/>
+      <!-- Front buffer beam -->
+      <rect x="0"  y="82" width="20" height="6" rx="2" fill="#444"/>
+      <rect x="1"  y="83" width="6"  height="4" rx="1" fill="#666"/>
+      <rect x="13" y="83" width="6"  height="4" rx="1" fill="#666"/>
       <!-- Boiler body -->
-      <rect x="18" y="36" width="100" height="58" rx="6" fill="#9B1C1C"/>
+      <rect x="16" y="30" width="104" height="58" rx="6" fill="#9B1C1C"/>
       <!-- Boiler top cylinder -->
-      <rect x="22" y="28" width="82" height="26" rx="8" fill="#B22020"/>
-      <!-- Chimney/funnel -->
-      <rect x="24" y="10" width="14" height="22" rx="3" fill="#1a1a1a"/>
-      <rect x="20" y="8"  width="22" height="7"  rx="3" fill="#111"/>
-      <!-- Steam puff from chimney -->
-      <ellipse cx="31" cy="4"  rx="10" ry="6" fill="rgba(230,230,240,0.5)"/>
-      <ellipse cx="22" cy="0"  rx="7"  ry="5" fill="rgba(230,230,240,0.4)"/>
-      <ellipse cx="40" cy="1"  rx="8"  ry="5" fill="rgba(230,230,240,0.35)"/>
-      <!-- Safety valve dome -->
-      <ellipse cx="70" cy="29" rx="10" ry="7" fill="#881818"/>
-      <!-- Cab (driver's cabin) -->
-      <rect x="100" y="18" width="30" height="76" rx="4" fill="#7a1414"/>
-      <!-- Cab window -->
-      <rect x="104" y="24" width="18" height="14" rx="3" fill="rgba(255,240,160,0.6)"/>
-      <!-- Golden trim lines -->
-      <rect x="18" y="60" width="112" height="3" fill="rgba(210,170,40,0.75)"/>
-      <rect x="18" y="84" width="112" height="3" fill="rgba(210,170,40,0.65)"/>
-      <!-- Boiler side windows -->
-      <rect x="36"  y="42" width="16" height="12" rx="2" fill="rgba(255,240,160,0.45)"/>
-      <rect x="58"  y="42" width="16" height="12" rx="2" fill="rgba(255,240,160,0.50)"/>
-      <rect x="80"  y="42" width="16" height="12" rx="2" fill="rgba(255,240,160,0.45)"/>
-      <!-- Drive wheels (large, 3) -->
-      <circle cx="38"  cy="98" r="24" fill="#111"/>
-      <circle cx="38"  cy="98" r="17" fill="#1e1e1e"/>
-      <circle cx="38"  cy="98" r="6"  fill="#777"/>
-      <line x1="38" y1="74"  x2="38" y2="122" stroke="rgba(160,160,160,0.35)" stroke-width="2"/>
-      <line x1="14" y1="98"  x2="62" y2="98"  stroke="rgba(160,160,160,0.35)" stroke-width="2"/>
-      <circle cx="72"  cy="98" r="24" fill="#111"/>
-      <circle cx="72"  cy="98" r="17" fill="#1e1e1e"/>
-      <circle cx="72"  cy="98" r="6"  fill="#777"/>
-      <circle cx="106" cy="98" r="22" fill="#111"/>
-      <circle cx="106" cy="98" r="15" fill="#1e1e1e"/>
-      <circle cx="106" cy="98" r="5"  fill="#777"/>
+      <rect x="20" y="22" width="84"  height="24" rx="8" fill="#B22020"/>
+      <!-- Chimney -->
+      <rect x="22" y="4"  width="14" height="20" rx="3" fill="#1a1a1a"/>
+      <rect x="18" y="2"  width="22" height="6"  rx="3" fill="#111"/>
+      <!-- Steam from chimney -->
+      <ellipse cx="29" cy="0"  rx="12" ry="7"  fill="rgba(230,232,242,0.55)"/>
+      <ellipse cx="18" cy="-4" rx="9"  ry="6"  fill="rgba(230,232,242,0.42)"/>
+      <ellipse cx="42" cy="-2" rx="10" ry="6"  fill="rgba(230,232,242,0.38)"/>
+      <!-- Safety dome -->
+      <ellipse cx="68" cy="23" rx="10" ry="7" fill="#881818"/>
+      <!-- Cab -->
+      <rect x="100" y="12" width="32" height="76" rx="4" fill="#7a1414"/>
+      <rect x="104" y="18" width="20" height="16" rx="3" fill="rgba(255,240,150,0.6)"/>
+      <!-- Golden trim -->
+      <rect x="16" y="56" width="116" height="3" fill="rgba(210,170,40,0.75)"/>
+      <rect x="16" y="80" width="116" height="3" fill="rgba(210,170,40,0.65)"/>
+      <!-- Boiler portholes -->
+      <rect x="34" y="36" width="16" height="12" rx="2" fill="rgba(255,240,150,0.45)"/>
+      <rect x="56" y="36" width="16" height="12" rx="2" fill="rgba(255,240,150,0.50)"/>
+      <rect x="78" y="36" width="16" height="12" rx="2" fill="rgba(255,240,150,0.45)"/>
+      <!-- Drive wheels (3 large) -->
+      <circle cx="36"  cy="92" r="26" fill="#111"/>
+      <circle cx="36"  cy="92" r="18" fill="#1e1e1e"/>
+      <circle cx="36"  cy="92" r="7"  fill="#666"/>
+      <line x1="36" y1="66"  x2="36" y2="118" stroke="rgba(160,160,160,0.3)" stroke-width="2"/>
+      <line x1="10" y1="92"  x2="62" y2="92"  stroke="rgba(160,160,160,0.3)" stroke-width="2"/>
+      <circle cx="72"  cy="92" r="26" fill="#111"/>
+      <circle cx="72"  cy="92" r="18" fill="#1e1e1e"/>
+      <circle cx="72"  cy="92" r="7"  fill="#666"/>
+      <circle cx="108" cy="92" r="22" fill="#111"/>
+      <circle cx="108" cy="92" r="15" fill="#1e1e1e"/>
+      <circle cx="108" cy="92" r="5"  fill="#666"/>
       <!-- Connecting rod -->
-      <rect x="36" y="93" width="72" height="5" rx="2" fill="rgba(190,150,30,0.85)"/>
+      <rect x="34" y="87" width="76" height="5" rx="2" fill="rgba(200,155,30,0.85)"/>
 
-      <!-- === CARRIAGES (right of locomotive) === -->
+      <!-- === CARRIAGES === -->
       <!-- Carriage 1 -->
-      <rect x="132" y="38" width="56" height="56" rx="5" fill="#8B1A1A"/>
-      <rect x="132" y="44" width="56" height="3"  fill="rgba(210,170,40,0.6)"/>
-      <rect x="132" y="88" width="56" height="3"  fill="rgba(210,170,40,0.55)"/>
-      <rect x="138" y="50" width="16" height="12" rx="2" fill="rgba(255,240,160,0.55)"/>
-      <rect x="160" y="50" width="16" height="12" rx="2" fill="rgba(255,240,160,0.50)"/>
-      <!-- Door carriage 1 -->
-      <rect x="148" y="62" width="16" height="32" rx="2" fill="rgba(110,15,15,0.75)"/>
-      <circle cx="162" cy="78" r="2.5" fill="rgba(210,170,40,0.9)"/>
-      <!-- Wheels carriage 1 -->
-      <circle cx="148" cy="98" r="16" fill="#111"/>
-      <circle cx="148" cy="98" r="11" fill="#1e1e1e"/>
-      <circle cx="148" cy="98" r="4"  fill="#666"/>
-      <circle cx="172" cy="98" r="16" fill="#111"/>
-      <circle cx="172" cy="98" r="11" fill="#1e1e1e"/>
-      <circle cx="172" cy="98" r="4"  fill="#666"/>
+      <rect x="134" y="34" width="56" height="56" rx="5" fill="#8B1A1A"/>
+      <rect x="134" y="40" width="56" height="3"  fill="rgba(210,170,40,0.65)"/>
+      <rect x="134" y="84" width="56" height="3"  fill="rgba(210,170,40,0.55)"/>
+      <rect x="140" y="46" width="16" height="12" rx="2" fill="rgba(255,240,150,0.55)"/>
+      <rect x="162" y="46" width="16" height="12" rx="2" fill="rgba(255,240,150,0.50)"/>
+      <rect x="148" y="58" width="16" height="30" rx="2" fill="rgba(100,12,12,0.8)"/>
+      <circle cx="162" cy="74" r="2.5" fill="rgba(210,170,40,0.9)"/>
+      <circle cx="148" cy="92" r="16" fill="#111"/>
+      <circle cx="148" cy="92" r="11" fill="#1e1e1e"/>
+      <circle cx="148" cy="92" r="4"  fill="#666"/>
+      <circle cx="172" cy="92" r="16" fill="#111"/>
+      <circle cx="172" cy="92" r="11" fill="#1e1e1e"/>
+      <circle cx="172" cy="92" r="4"  fill="#666"/>
       <!-- Carriage 2 -->
-      <rect x="190" y="42" width="50" height="52" rx="5" fill="#8B1A1A"/>
-      <rect x="190" y="48" width="50" height="3"  fill="rgba(210,170,40,0.55)"/>
-      <rect x="190" y="88" width="50" height="3"  fill="rgba(210,170,40,0.5)"/>
-      <rect x="196" y="54" width="14" height="11" rx="2" fill="rgba(255,240,160,0.50)"/>
-      <rect x="216" y="54" width="14" height="11" rx="2" fill="rgba(255,240,160,0.45)"/>
-      <circle cx="206" cy="98" r="14" fill="#111"/>
-      <circle cx="206" cy="98" r="9"  fill="#1e1e1e"/>
-      <circle cx="206" cy="98" r="4"  fill="#666"/>
-      <circle cx="228" cy="98" r="14" fill="#111"/>
-      <circle cx="228" cy="98" r="9"  fill="#1e1e1e"/>
-      <circle cx="228" cy="98" r="4"  fill="#666"/>
-      <!-- Coupling hooks between units -->
-      <rect x="128" y="88" width="8" height="5" rx="1" fill="#444"/>
-      <rect x="186" y="88" width="8" height="5" rx="1" fill="#444"/>
+      <rect x="192" y="38" width="48" height="52" rx="5" fill="#8B1A1A"/>
+      <rect x="192" y="44" width="48" height="3"  fill="rgba(210,170,40,0.55)"/>
+      <rect x="192" y="84" width="48" height="3"  fill="rgba(210,170,40,0.50)"/>
+      <rect x="198" y="50" width="14" height="11" rx="2" fill="rgba(255,240,150,0.50)"/>
+      <rect x="218" y="50" width="14" height="11" rx="2" fill="rgba(255,240,150,0.45)"/>
+      <circle cx="206" cy="92" r="14" fill="#111"/>
+      <circle cx="206" cy="92" r="9"  fill="#1e1e1e"/>
+      <circle cx="206" cy="92" r="4"  fill="#666"/>
+      <circle cx="228" cy="92" r="14" fill="#111"/>
+      <circle cx="228" cy="92" r="9"  fill="#1e1e1e"/>
+      <circle cx="228" cy="92" r="4"  fill="#666"/>
+      <!-- Coupling hooks -->
+      <rect x="130" y="82" width="8" height="5" rx="1" fill="#444"/>
+      <rect x="188" y="82" width="8" height="5" rx="1" fill="#444"/>
+
+      <!-- === RAILS === -->
+      <rect x="0" y="97"  width="240" height="5" fill="#3a3530"/>
+      <rect x="0" y="94"  width="240" height="3" fill="#5a5048"/>
+      <rect x="10"  y="93" width="6" height="11" fill="rgba(80,60,40,0.7)"/>
+      <rect x="34"  y="93" width="6" height="11" fill="rgba(80,60,40,0.7)"/>
+      <rect x="58"  y="93" width="6" height="11" fill="rgba(80,60,40,0.7)"/>
+      <rect x="82"  y="93" width="6" height="11" fill="rgba(80,60,40,0.7)"/>
+      <rect x="106" y="93" width="6" height="11" fill="rgba(80,60,40,0.7)"/>
+      <rect x="130" y="93" width="6" height="11" fill="rgba(80,60,40,0.7)"/>
+      <rect x="154" y="93" width="6" height="11" fill="rgba(80,60,40,0.7)"/>
+      <rect x="178" y="93" width="6" height="11" fill="rgba(80,60,40,0.7)"/>
+      <rect x="202" y="93" width="6" height="11" fill="rgba(80,60,40,0.7)"/>
+      <rect x="226" y="93" width="6" height="11" fill="rgba(80,60,40,0.7)"/>
 
       <!-- === STONE PLATFORM === -->
-      <rect x="0" y="110" width="240" height="50" fill="#6e6458"/>
-      <rect x="0" y="110" width="240" height="5"  fill="rgba(110,100,80,0.7)"/>
-      <!-- Yellow safety edge line -->
-      <rect x="0" y="118" width="240" height="3" fill="rgba(255,225,50,0.5)"/>
+      <rect x="0" y="102" width="240" height="38" fill="#6e6458"/>
+      <rect x="0" y="102" width="240" height="5"  fill="rgba(110,100,80,0.7)"/>
+      <!-- Yellow safety line -->
+      <rect x="0" y="110" width="240" height="3" fill="rgba(255,225,50,0.5)"/>
       <!-- Tile joints -->
-      <line x1="48"  y1="122" x2="48"  y2="160" stroke="rgba(90,80,65,0.4)" stroke-width="1"/>
-      <line x1="96"  y1="122" x2="96"  y2="160" stroke="rgba(90,80,65,0.4)" stroke-width="1"/>
-      <line x1="144" y1="122" x2="144" y2="160" stroke="rgba(90,80,65,0.4)" stroke-width="1"/>
-      <line x1="192" y1="122" x2="192" y2="160" stroke="rgba(90,80,65,0.4)" stroke-width="1"/>
-      <line x1="0"   y1="140" x2="240" y2="140" stroke="rgba(90,80,65,0.3)" stroke-width="1"/>
-      <!-- Luggage trolley passing through wall -->
-      <rect x="98" y="112" width="26" height="28" rx="2" fill="rgba(120,90,50,0.7)"/>
-      <rect x="100" y="108" width="22" height="8" rx="1" fill="rgba(100,75,40,0.8)"/>
-      <circle cx="104" cy="142" r="4" fill="#333"/>
-      <circle cx="120" cy="142" r="4" fill="#333"/>`,
-    groundH: 160,
+      <line x1="48"  y1="114" x2="48"  y2="140" stroke="rgba(90,80,65,0.4)" stroke-width="1"/>
+      <line x1="96"  y1="114" x2="96"  y2="140" stroke="rgba(90,80,65,0.4)" stroke-width="1"/>
+      <line x1="144" y1="114" x2="144" y2="140" stroke="rgba(90,80,65,0.4)" stroke-width="1"/>
+      <line x1="192" y1="114" x2="192" y2="140" stroke="rgba(90,80,65,0.4)" stroke-width="1"/>
+      <line x1="0"   y1="126" x2="240" y2="126" stroke="rgba(90,80,65,0.3)" stroke-width="1"/>
+      <!-- Luggage trolley half-in-wall -->
+      <rect x="100" y="104" width="28" height="26" rx="2" fill="rgba(120,88,48,0.75)"/>
+      <rect x="102" y="100" width="24" height="8"  rx="1" fill="rgba(100,74,38,0.85)"/>
+      <circle cx="107" cy="132" r="5" fill="#2a2a2a"/>
+      <circle cx="122" cy="132" r="5" fill="#2a2a2a"/>
+      <!-- Owl cage beside trolley -->
+      <rect x="68" y="114" width="20" height="22" rx="2" fill="none" stroke="rgba(180,140,58,0.65)" stroke-width="1.5"/>
+      <line x1="78" y1="114" x2="78" y2="136" stroke="rgba(180,140,58,0.55)" stroke-width="1"/>
+      <ellipse cx="78" cy="122" rx="5" ry="4" fill="rgba(240,234,218,0.65)"/>
+      <!-- Trunk / luggage -->
+      <rect x="158" y="118" width="34" height="18" rx="3" fill="rgba(98,68,48,0.7)"/>
+      <rect x="160" y="120" width="4"  height="14" fill="rgba(78,52,32,0.75)"/>
+      <rect x="188" y="120" width="4"  height="14" fill="rgba(78,52,32,0.75)"/>
+      <rect x="160" y="126" width="30" height="2"  fill="rgba(160,118,58,0.55)"/>`,
+    groundH: 140,
+  },
+  potions_class: {
+    label: 'Aula de Pociones',
+    svgSky: `
+      <!-- Dungeon Potions Classroom -->
+      <rect x="0" y="0" width="240" height="340" fill="#0a080f"/>
+
+      <!-- Vaulted stone ceiling ribs -->
+      <path d="M-10,0 Q80,200 170,0" fill="none" stroke="rgba(70,60,85,0.6)" stroke-width="12"/>
+      <path d="M70,0 Q160,190 250,0" fill="none" stroke="rgba(70,60,85,0.5)" stroke-width="12"/>
+      <path d="M-10,0 Q80,200 170,0" fill="none" stroke="rgba(100,90,115,0.18)" stroke-width="4"/>
+      <path d="M70,0 Q160,190 250,0" fill="none" stroke="rgba(100,90,115,0.15)" stroke-width="4"/>
+      <!-- Stone ceiling frieze -->
+      <rect x="0" y="0" width="240" height="22" fill="rgba(38,32,48,0.9)"/>
+      <polygon points="115,0 125,0 130,22 110,22" fill="rgba(55,47,68,0.5)"/>
+
+      <!-- === LEFT STONE WALL === -->
+      <rect x="0" y="40" width="18" height="300" fill="rgba(32,27,42,0.95)"/>
+      <rect x="0" y="58"  width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="0" y="80"  width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="0" y="102" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="0" y="124" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="0" y="146" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="0" y="168" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="0" y="190" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+
+      <!-- Left shelf 1 + bottles -->
+      <rect x="0" y="88" width="68" height="5" fill="rgba(75,55,35,0.9)"/>
+      <rect x="3"  y="68" width="7" height="22" rx="2" fill="rgba(30,100,45,0.85)"/>
+      <rect x="3"  y="66" width="7" height="4"  rx="1" fill="rgba(40,120,55,0.7)"/>
+      <rect x="13" y="72" width="6" height="18" rx="2" fill="rgba(90,20,120,0.85)"/>
+      <rect x="13" y="70" width="6" height="4"  rx="1" fill="rgba(110,30,140,0.7)"/>
+      <rect x="22" y="66" width="8" height="24" rx="2" fill="rgba(160,45,20,0.85)"/>
+      <rect x="22" y="64" width="8" height="4"  rx="1" fill="rgba(190,55,25,0.7)"/>
+      <rect x="33" y="70" width="6" height="20" rx="2" fill="rgba(40,70,160,0.85)"/>
+      <rect x="33" y="68" width="6" height="4"  rx="1" fill="rgba(55,90,185,0.7)"/>
+      <rect x="42" y="67" width="8" height="23" rx="2" fill="rgba(190,130,20,0.85)"/>
+      <rect x="42" y="65" width="8" height="4"  rx="1" fill="rgba(215,155,25,0.7)"/>
+      <rect x="53" y="72" width="6" height="18" rx="2" fill="rgba(25,120,90,0.85)"/>
+      <rect x="62" y="69" width="5" height="21" rx="2" fill="rgba(130,20,60,0.8)"/>
+
+      <!-- Left shelf 2 + bottles -->
+      <rect x="0" y="148" width="68" height="5" fill="rgba(75,55,35,0.9)"/>
+      <rect x="3"  y="128" width="7" height="22" rx="2" fill="rgba(110,160,30,0.8)"/>
+      <rect x="3"  y="126" width="7" height="4"  rx="1" fill="rgba(130,185,35,0.65)"/>
+      <rect x="13" y="132" width="6" height="18" rx="2" fill="rgba(60,15,90,0.85)"/>
+      <rect x="22" y="126" width="8" height="24" rx="2" fill="rgba(20,40,150,0.8)"/>
+      <rect x="33" y="130" width="6" height="20" rx="2" fill="rgba(155,25,45,0.85)"/>
+      <rect x="42" y="127" width="8" height="23" rx="2" fill="rgba(40,130,65,0.8)"/>
+      <rect x="53" y="132" width="6" height="18" rx="2" fill="rgba(170,140,20,0.75)"/>
+      <rect x="62" y="129" width="5" height="21" rx="2" fill="rgba(30,80,140,0.75)"/>
+
+      <!-- Left shelf 3 + bottles -->
+      <rect x="0" y="208" width="68" height="5" fill="rgba(75,55,35,0.9)"/>
+      <rect x="3"  y="188" width="7" height="22" rx="2" fill="rgba(35,90,170,0.8)"/>
+      <rect x="13" y="192" width="6" height="18" rx="2" fill="rgba(130,25,90,0.8)"/>
+      <rect x="22" y="186" width="8" height="24" rx="2" fill="rgba(60,150,35,0.75)"/>
+      <rect x="33" y="190" width="6" height="20" rx="2" fill="rgba(185,80,20,0.8)"/>
+      <rect x="42" y="188" width="8" height="22" rx="2" fill="rgba(80,20,120,0.75)"/>
+      <rect x="53" y="193" width="6" height="17" rx="2" fill="rgba(200,160,25,0.7)"/>
+
+      <!-- === RIGHT STONE WALL === -->
+      <rect x="222" y="40" width="18" height="300" fill="rgba(32,27,42,0.95)"/>
+      <rect x="222" y="58"  width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="222" y="80"  width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="222" y="102" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="222" y="124" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="222" y="146" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="222" y="168" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="222" y="190" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+
+      <!-- Right shelf 1 + bottles -->
+      <rect x="172" y="88" width="68" height="5" fill="rgba(75,55,35,0.9)"/>
+      <rect x="174" y="68" width="7" height="22" rx="2" fill="rgba(185,55,20,0.85)"/>
+      <rect x="174" y="66" width="7" height="4"  rx="1" fill="rgba(215,70,25,0.7)"/>
+      <rect x="184" y="72" width="6" height="18" rx="2" fill="rgba(40,110,190,0.85)"/>
+      <rect x="193" y="66" width="8" height="24" rx="2" fill="rgba(100,25,130,0.85)"/>
+      <rect x="204" y="70" width="6" height="20" rx="2" fill="rgba(30,130,55,0.85)"/>
+      <rect x="213" y="68" width="7" height="22" rx="2" fill="rgba(175,135,25,0.8)"/>
+
+      <!-- Right shelf 2 + bottles -->
+      <rect x="172" y="148" width="68" height="5" fill="rgba(75,55,35,0.9)"/>
+      <rect x="174" y="128" width="7" height="22" rx="2" fill="rgba(130,150,20,0.8)"/>
+      <rect x="184" y="132" width="6" height="18" rx="2" fill="rgba(85,18,110,0.85)"/>
+      <rect x="193" y="126" width="8" height="24" rx="2" fill="rgba(165,55,30,0.8)"/>
+      <rect x="204" y="130" width="6" height="20" rx="2" fill="rgba(22,110,195,0.8)"/>
+      <rect x="213" y="128" width="7" height="22" rx="2" fill="rgba(50,145,70,0.75)"/>
+
+      <!-- === FLOATING CANDLES === -->
+      <rect x="90"  y="32" width="4" height="16" rx="1" fill="rgba(235,225,200,0.85)"/>
+      <ellipse cx="92"    cy="30" rx="4"   ry="5"   fill="rgba(255,170,30,0.50)"/>
+      <ellipse cx="92"    cy="27" rx="2.5" ry="3.5" fill="rgba(255,235,120,0.70)"/>
+      <rect x="112" y="24" width="4" height="16" rx="1" fill="rgba(235,225,200,0.80)"/>
+      <ellipse cx="114"   cy="22" rx="4"   ry="5"   fill="rgba(255,170,30,0.45)"/>
+      <ellipse cx="114"   cy="19" rx="2.5" ry="3.5" fill="rgba(255,235,120,0.65)"/>
+      <rect x="133" y="35" width="4" height="16" rx="1" fill="rgba(235,225,200,0.85)"/>
+      <ellipse cx="135"   cy="33" rx="4"   ry="5"   fill="rgba(255,170,30,0.50)"/>
+      <ellipse cx="135"   cy="30" rx="2.5" ry="3.5" fill="rgba(255,235,120,0.70)"/>
+      <rect x="70"  y="40" width="3" height="14" rx="1" fill="rgba(235,225,200,0.70)"/>
+      <ellipse cx="71.5"  cy="38" rx="3.5" ry="4.5" fill="rgba(255,170,30,0.40)"/>
+      <ellipse cx="71.5"  cy="35" rx="2"   ry="3"   fill="rgba(255,235,120,0.55)"/>
+      <rect x="157" y="38" width="3" height="14" rx="1" fill="rgba(235,225,200,0.70)"/>
+      <ellipse cx="158.5" cy="36" rx="3.5" ry="4.5" fill="rgba(255,170,30,0.40)"/>
+      <ellipse cx="158.5" cy="33" rx="2"   ry="3"   fill="rgba(255,235,120,0.55)"/>
+
+      <!-- === BLACKBOARD === -->
+      <rect x="68" y="52" width="104" height="68" rx="4" fill="rgba(18,38,18,0.85)"/>
+      <rect x="70" y="54" width="100" height="64" rx="3" fill="rgba(28,52,24,0.6)"/>
+      <rect x="67" y="51"  width="106" height="4" rx="1" fill="rgba(80,55,30,0.75)"/>
+      <rect x="67" y="116" width="106" height="4" rx="1" fill="rgba(80,55,30,0.75)"/>
+      <rect x="67" y="51"  width="4" height="69" rx="1" fill="rgba(80,55,30,0.75)"/>
+      <rect x="169" y="51" width="4" height="69" rx="1" fill="rgba(80,55,30,0.75)"/>
+      <text x="120" y="68" font-size="6" font-weight="bold" text-anchor="middle" fill="rgba(245,245,235,0.55)">Amortentia</text>
+      <line x1="78" y1="76" x2="162" y2="76" stroke="rgba(240,240,230,0.35)" stroke-width="1.5"/>
+      <line x1="78" y1="83" x2="155" y2="83" stroke="rgba(240,240,230,0.30)" stroke-width="1.5"/>
+      <line x1="78" y1="90" x2="148" y2="90" stroke="rgba(240,240,230,0.25)" stroke-width="1.5"/>
+      <line x1="78" y1="97" x2="142" y2="97" stroke="rgba(240,240,230,0.20)" stroke-width="1.5"/>
+
+      <!-- === CAULDRON AMBIENT GLOW (visible at bottom of sky layer) === -->
+      <ellipse cx="82" cy="285" rx="65" ry="45" fill="rgba(40,200,70,0.07)"/>
+      <ellipse cx="82" cy="308" rx="45" ry="30" fill="rgba(60,220,90,0.09)"/>
+      <ellipse cx="82" cy="328" rx="30" ry="20" fill="rgba(80,240,100,0.11)"/>`,
+    svgGround: `
+      <!-- groundH=100. y=0..100=floor+props -->
+
+      <!-- === STONE FLOOR === -->
+      <rect x="0" y="0" width="240" height="100" fill="#252030"/>
+      <line x1="60"  y1="0" x2="60"  y2="100" stroke="rgba(50,42,65,0.5)" stroke-width="1"/>
+      <line x1="120" y1="0" x2="120" y2="100" stroke="rgba(50,42,65,0.5)" stroke-width="1"/>
+      <line x1="180" y1="0" x2="180" y2="100" stroke="rgba(50,42,65,0.5)" stroke-width="1"/>
+      <line x1="0" y1="50" x2="240" y2="50" stroke="rgba(50,42,65,0.4)" stroke-width="1"/>
+
+      <!-- === IRON CAULDRON === -->
+      <!-- Steam wisps (negative y = above ground boundary, visible in scene) -->
+      <ellipse cx="82" cy="-18" rx="18" ry="12" fill="rgba(60,220,90,0.18)"/>
+      <ellipse cx="70" cy="-28" rx="14" ry="10" fill="rgba(60,220,90,0.14)"/>
+      <ellipse cx="95" cy="-24" rx="16" ry="10" fill="rgba(60,220,90,0.12)"/>
+      <ellipse cx="80" cy="-10" rx="22" ry="9"  fill="rgba(60,220,90,0.22)"/>
+      <!-- Cauldron rim -->
+      <ellipse cx="82" cy="18" rx="30" ry="10" fill="#111"/>
+      <!-- Bubbling liquid -->
+      <ellipse cx="82" cy="18" rx="27" ry="8"  fill="rgba(30,160,55,0.7)"/>
+      <ellipse cx="74" cy="16" rx="7"  ry="4"  fill="rgba(60,220,80,0.55)"/>
+      <ellipse cx="92" cy="17" rx="5"  ry="3"  fill="rgba(50,200,70,0.50)"/>
+      <!-- Cauldron body -->
+      <path d="M52,18 Q45,60 52,72 Q62,82 82,84 Q102,82 112,72 Q119,60 112,18" fill="#1a1a1e"/>
+      <!-- Rim highlight ring -->
+      <ellipse cx="82" cy="18" rx="30" ry="10" fill="none" stroke="rgba(90,85,100,0.6)" stroke-width="2"/>
+      <!-- Legs -->
+      <rect x="58" y="82" width="6" height="14" rx="2" fill="#111"/>
+      <rect x="79" y="84" width="6" height="12" rx="2" fill="#111"/>
+      <rect x="100" y="82" width="6" height="14" rx="2" fill="#111"/>
+      <ellipse cx="61" cy="96" rx="5" ry="2" fill="rgba(50,45,60,0.8)"/>
+      <ellipse cx="82" cy="96" rx="5" ry="2" fill="rgba(50,45,60,0.8)"/>
+      <ellipse cx="103" cy="96" rx="5" ry="2" fill="rgba(50,45,60,0.8)"/>
+      <!-- Floor glow under cauldron -->
+      <ellipse cx="82" cy="97" rx="35" ry="5" fill="rgba(40,180,60,0.12)"/>
+
+      <!-- Small bottles near cauldron -->
+      <rect x="124" y="68" width="6" height="18" rx="2" fill="rgba(100,20,120,0.8)"/>
+      <rect x="124" y="66" width="6" height="4"  rx="1" fill="rgba(120,30,140,0.65)"/>
+      <rect x="133" y="72" width="5" height="14" rx="2" fill="rgba(25,120,50,0.8)"/>
+      <rect x="133" y="70" width="5" height="4"  rx="1" fill="rgba(35,145,60,0.65)"/>
+
+      <!-- === WORKBENCH (right) === -->
+      <rect x="152" y="28" width="82" height="42" rx="3" fill="rgba(55,40,25,0.9)"/>
+      <rect x="150" y="26" width="86" height="6"  rx="2" fill="rgba(75,55,32,0.95)"/>
+      <rect x="154" y="68" width="8"  height="30" fill="rgba(45,30,18,0.9)"/>
+      <rect x="222" y="68" width="8"  height="30" fill="rgba(45,30,18,0.9)"/>
+      <!-- Mortar & pestle -->
+      <ellipse cx="168" cy="26" rx="10" ry="6" fill="rgba(80,75,85,0.85)"/>
+      <ellipse cx="168" cy="24" rx="9"  ry="4" fill="rgba(100,95,105,0.70)"/>
+      <rect x="166" y="8"  width="4" height="18" rx="2" fill="rgba(100,95,105,0.80)"/>
+      <ellipse cx="168" cy="7" rx="5" ry="3" fill="rgba(110,105,115,0.75)"/>
+      <!-- Ingredient jars -->
+      <rect x="186" y="10" width="10" height="18" rx="3" fill="rgba(35,95,55,0.8)"/>
+      <rect x="186" y="8"  width="10" height="5"  rx="1" fill="rgba(70,130,80,0.6)"/>
+      <rect x="200" y="12" width="10" height="16" rx="3" fill="rgba(150,55,25,0.8)"/>
+      <rect x="200" y="10" width="10" height="5"  rx="1" fill="rgba(185,75,35,0.6)"/>
+      <rect x="214" y="9"  width="10" height="17" rx="3" fill="rgba(45,45,130,0.8)"/>
+      <rect x="214" y="7"  width="10" height="5"  rx="1" fill="rgba(65,65,160,0.6)"/>`,
+    groundH: 100,
   },
   quidditch: {
     label: 'Quidditch',
@@ -2380,6 +2643,7 @@ const SCENE_BG = {
   hogsmeade:        '#3a4a5a',
   hagrid_hut:       '#3a4a30',
   leaky_cauldron:   '#1e1508',
+  potions_class:    '#0a080f',
 };
 
 /* ---------- DOLL POSITION ---------- */
@@ -3713,6 +3977,7 @@ function buildConfigSection(container) {
     quidditch: 'Quidditch', park: 'Parque', sunset_beach: 'Playa',
     brick_wall: 'Muro de Ladrillos', ministry: 'Ministerio',
     hogsmeade: 'Hogsmeade', hagrid_hut: 'Cabaña Hagrid', leaky_cauldron: 'Caldero Chorreante',
+    potions_class: 'Aula de Pociones',
   };
   Object.keys(BG_SCENES).forEach(key => {
     const scene = BG_SCENES[key];
@@ -4233,6 +4498,9 @@ const AudioManager = {
       case 'leaky_cauldron':
         this.synthLeakyCauldron();
         break;
+      case 'potions_class':
+        this.synthPotions();
+        break;
     }
   },
 
@@ -4680,6 +4948,66 @@ const AudioManager = {
         this.bgSources.push(osc);
       });
       this._bgTimer = setTimeout(() => playLoop(), (dur - 0.2) * 1000);
+    };
+    playLoop();
+  },
+
+  synthPotions() {
+    const ctx = this.ctx;
+    const playLoop = () => {
+      if (this.currentBg !== 'potions_class') return;
+      const dur = 6;
+      // Cauldron bubble: filtered noise with slow LFO tremolo
+      const bufSize = ctx.sampleRate * dur;
+      const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) d[i] = Math.random() * 2 - 1;
+      const noise = ctx.createBufferSource();
+      noise.buffer = buf;
+      const lpf = ctx.createBiquadFilter();
+      lpf.type = 'lowpass'; lpf.frequency.value = 160; lpf.Q.value = 9;
+      const noiseGain = ctx.createGain();
+      noiseGain.gain.setValueAtTime(0, ctx.currentTime);
+      noiseGain.gain.linearRampToValueAtTime(0.14, ctx.currentTime + 0.6);
+      noiseGain.gain.setValueAtTime(0.11, ctx.currentTime + dur - 0.8);
+      noiseGain.gain.linearRampToValueAtTime(0, ctx.currentTime + dur);
+      // Slow LFO for bubbling rhythm
+      const lfo = ctx.createOscillator();
+      lfo.type = 'sine'; lfo.frequency.value = 0.65;
+      const lfoGain = ctx.createGain();
+      lfoGain.gain.value = 0.07;
+      lfo.connect(lfoGain); lfoGain.connect(noiseGain.gain);
+      noise.connect(lpf); lpf.connect(noiseGain); noiseGain.connect(this.bgGain);
+      noise.start(ctx.currentTime); noise.stop(ctx.currentTime + dur);
+      lfo.start(ctx.currentTime); lfo.stop(ctx.currentTime + dur);
+      this.bgSources.push(noise, lfo);
+      // Mystical low drone
+      const drone = ctx.createOscillator();
+      drone.type = 'sine'; drone.frequency.value = 55;
+      const droneGain = ctx.createGain();
+      droneGain.gain.setValueAtTime(0, ctx.currentTime);
+      droneGain.gain.linearRampToValueAtTime(0.055, ctx.currentTime + 1.2);
+      droneGain.gain.setValueAtTime(0.04, ctx.currentTime + dur - 1);
+      droneGain.gain.linearRampToValueAtTime(0, ctx.currentTime + dur);
+      drone.connect(droneGain); droneGain.connect(this.bgGain);
+      drone.start(ctx.currentTime); drone.stop(ctx.currentTime + dur);
+      this.bgSources.push(drone);
+      // Occasional bubble pops within the loop window
+      [1.2, 2.6, 4.1].forEach(offset => {
+        if (offset >= dur) return;
+        const pop = ctx.createOscillator();
+        const popGain = ctx.createGain();
+        const t = ctx.currentTime + offset;
+        pop.type = 'sine';
+        pop.frequency.setValueAtTime(180 + Math.random() * 80, t);
+        pop.frequency.exponentialRampToValueAtTime(75, t + 0.09);
+        popGain.gain.setValueAtTime(0.10, t);
+        popGain.gain.exponentialRampToValueAtTime(0.001, t + 0.11);
+        pop.connect(popGain); popGain.connect(this.bgGain);
+        pop.start(t); pop.stop(t + 0.13);
+        this.bgSources.push(pop);
+      });
+      this._bgTimer = setTimeout(() => playLoop(), (dur - 0.15) * 1000);
     };
     playLoop();
   },
@@ -5373,6 +5701,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hogsmeade:        'Hogsmeade',
       hagrid_hut:       'Cabaña Hagrid',
       leaky_cauldron:   'Caldero Chorreante',
+      potions_class:    'Aula de Pociones',
     };
     Object.keys(BG_SCENES).forEach(key => {
       const scene = BG_SCENES[key];

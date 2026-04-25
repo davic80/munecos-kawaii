@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.2] - 2026-04-25
+
+### Changed
+- **Andén 9¾** completamente rediseñado: techo victoriano de hierro y cristal con arcos y vigas remachadas, muro de ladrillo rojo, señal «PLATFORM 9¾» colgante, lámparas de gas y nubes de vapor. Locomotora del Hogwarts Express mejorada (frontal, caldera, cabina, ruedas motrices, biela), vagones con ventanas y puertas, raíles con traviesas, andén de piedra con línea amarilla de seguridad, trolley con jaula de lechuza y baúl.
+
+### Added
+- **Nueva escena: Aula de Pociones** — mazmorra con techo abovedado, estantes en ambas paredes repletos de pociones de colores, cinco velas flotantes, pizarra con «Amortentia», caldero de hierro con líquido burbujeante verde y vapor, banco de trabajo con mortero, mano de mortero y tarros de ingredientes. Audio: borboteo de caldero con drone místico a 55 Hz y «pops» de burbuja aleatorios.
+
+---
+
 ## [2.3.1] - 2026-04-25
 
 ### Fixed
