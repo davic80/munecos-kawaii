@@ -2260,6 +2260,8 @@ const HAIR = {
     groundH: 80,
   },
 };
+
+function darken(hex, amount) {
   let c = hex.replace('#', '');
   if (c.length === 3) c = c.split('').map(x => x + x).join('');
   const num = parseInt(c, 16);
@@ -3885,8 +3887,6 @@ function buildPreviewSvg(cat, value, d) {
   const svgFull = `<svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
   return `<div style="width:44px;height:44px;">${svgFull}</div>`;
 }
-
-function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
 function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 

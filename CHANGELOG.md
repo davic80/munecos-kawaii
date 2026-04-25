@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.1] - 2026-04-25
+
+### Fixed
+- **SyntaxError crítico.** La cabecera `function darken(hex, amount)` había quedado borrada al mergear las nuevas escenas en `BG_SCENES`, dejando el cuerpo de la función huérfano. Esto rompía la carga del script completo: panel izquierdo vacío y muñecos sin renderizar.
+- **`capitalize` declarada dos veces.** Declaración duplicada eliminada (no causaba error en sí, pero generaba ruido en el parseado).
+
+---
+
 ## [2.3.0] - 2026-04-25
 
 ### Added
