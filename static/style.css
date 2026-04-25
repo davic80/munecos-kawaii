@@ -589,6 +589,21 @@ header h1 {
 .skin-custom-row label { font-size: 0.72rem; color: var(--text-muted); }
 
 /* reset button */
+.btn-random {
+  background: linear-gradient(135deg, #7c3aed 0%, #e94560 100%);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 9px 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  letter-spacing: 0.02em;
+}
+.btn-random:hover  { opacity: 0.88; }
+.btn-random:active { transform: scale(0.97); }
+
 .btn-reset {
   background: var(--surface2);
   color: var(--text-muted);
@@ -937,7 +952,7 @@ header h1 {
     padding: 10px 12px;
     min-height: 48px;
   }
-  .btn-reset, .btn-toggle-scene {
+  .btn-random, .btn-reset, .btn-toggle-scene {
     min-height: 48px;
     font-size: 0.9rem;
   }

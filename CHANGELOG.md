@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.5.0] - 2026-04-26
+
+### Added
+- **Botón 🎲 Sorpresa**: genera aleatoriamente rasgos, ropa y extras de Harry Potter para el muñeco activo. Disponible en el panel derecho (escritorio) y en el menú de acciones (móvil). Preserva el nombre, la posición en escena y la escala del muñeco.
+  - Siempre aleatoriza: tono de piel, género, ojos, cejas, nariz, boca, coloretes, cabello, camiseta, pantalón, zapatos.
+  - Con probabilidad: varita (60%), capa (45%), bufanda de casa HP (38%), mascota (32%), cinturón (40%), sombrero (30%), gafas (25%), escoba (18%), objeto mano izquierda (15%), tatuaje (10%).
+
+---
+
 ## [2.4.1] - 2026-04-26
 
 ### Changed

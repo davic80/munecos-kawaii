@@ -2729,6 +2729,66 @@ function defaultDoll(idx) {
   };
 }
 
+function randomizeDoll() {
+  const pick    = obj => { const k = Object.keys(obj); return k[k.length * Math.random() | 0]; };
+  const pickArr = arr => arr[arr.length * Math.random() | 0];
+  const chance  = p   => Math.random() < p;
+
+  const SKIN_TONES  = ['#fde8d0','#f5c5a3','#e8a87c','#d4895e','#c87941','#a0622a','#7d4315','#4a2a10'];
+  const HAIR_COLORS = ['#3d2b1f','#1a1010','#8b4513','#c87941','#ffd700','#ff6b6b','#9b59b6','#3498db','#2ecc71','#e74c3c','#ff8c00','#c0c0c0','#ff69b4','#00ced1'];
+  const EYE_COLORS  = ['#3a7bd5','#2ecc71','#9b59b6','#e74c3c','#f39c12','#1abc9c','#5a3a1a','#1a3a6b','#c06060','#40a060'];
+  const VIVID       = ['#e94560','#3a7bd5','#7c3aed','#2ecc71','#ff6b6b','#ffd700','#ff8c00','#00ced1','#ff69b4','#9b59b6','#e67e22','#1abc9c','#e74c3c','#f39c12'];
+  const DARKS       = ['#1a1a2e','#2c2c54','#1e3a2f','#2d1b44','#1c2833','#3d1a1a','#2d2d2d','#3a1a1a'];
+  const SHOE_COLORS = ['#222','#444','#8b4513','#c0c0c0','#1a1a2e','#3d1a1a','#f0f0f0'];
+
+  // Preserve scene / position data
+  const keep = { name: doll.name, inScene: doll.inScene, dollX: doll.dollX, dollY: doll.dollY, dollScale: doll.dollScale };
+  collection[activeSlot] = defaultDoll(activeSlot);
+  Object.assign(collection[activeSlot], keep);
+  doll = collection[activeSlot];
+
+  // === TRAITS ===
+  doll.skin      = pickArr(SKIN_TONES);
+  doll.gender    = chance(0.55) ? 'girl' : 'boy';
+  doll.eyes      = pick(EYES);
+  doll.eyeColor  = pickArr(EYE_COLORS);
+  doll.lashColor = chance(0.5) ? '#1a1010' : '#3d2b1f';
+  doll.brows     = pick(BROWS);
+  doll.browColor = pickArr(['#3d2b1f','#1a1010','#6b3a2a','#8b4513']);
+  doll.nose      = pick(NOSES);
+  doll.mouth     = pick(MOUTHS);
+  doll.cheeks    = chance(0.72) ? pick(CHEEKS) : null;
+
+  // === HAIR ===
+  doll.hair      = pick(HAIR);
+  doll.hairColor = pickArr(HAIR_COLORS);
+  doll.hairFlip  = chance(0.3);
+
+  // === CLOTHING ===
+  doll.top         = pick(TOPS);
+  doll.topColor    = pickArr(VIVID);
+  doll.bottom      = pick(BOTTOMS);
+  doll.bottomColor = pickArr(VIVID);
+  doll.shoes       = pick(SHOES);
+  doll.shoesColor  = pickArr(SHOE_COLORS);
+
+  // === HP EXTRAS (probabilistic) ===
+  if (chance(0.60)) doll.wand = pick(WANDS);
+  if (chance(0.45)) { doll.cape = pick(CAPES); doll.capeColor = pickArr([...DARKS, ...VIVID]); }
+  if (chance(0.30)) { doll.hat  = pick(HATS);  doll.hatColor  = pickArr([...DARKS, ...VIVID]); }
+  if (chance(0.25)) { doll.glasses = pick(GLASSES); doll.glassesColor = pickArr(['#1a1010','#8b4513','#ffd700','#c0c0c0','#444']); }
+  if (chance(0.40)) { doll.belt = pick(BELTS); doll.beltColor = pickArr(['#1a1010','#8b4513','#ffd700','#c0c0c0']); }
+  if (chance(0.38)) doll.scarf = pickArr(['gryffindor','slytherin','ravenclaw','hufflepuff']);
+  if (chance(0.32)) { doll.pet = pick(PETS); doll.petPosition = pickArr(['floor','righthand','lefthand','leash']); }
+  if (chance(0.18)) doll.broom = pick(BROOMS);
+  if (chance(0.15) && !doll.broom) { doll.lefthand = pick(LEFTHAND); doll.lefthandColor = pickArr(VIVID); }
+  if (chance(0.10)) { doll.tattoo = pick(TATTOOS); doll.tattooColor = pickArr(['#1a1010','#8b4513','#e74c3c','#3498db','#2ecc71']); }
+
+  buildPanel();
+  renderAll();
+  saveCollection();
+}
+
 function loadCollection() {
   try {
     const raw = localStorage.getItem(COLLECTION_KEY);
@@ -5527,6 +5587,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-mute').classList.toggle('muted', muted);
     const mobMute = document.getElementById('mob-mute');
     if (mobMute) mobMute.textContent = muted ? '🔇 Música: OFF' : '🎵 Música: ON';
+  });
+
+  // Random button
+  document.getElementById('btn-random').addEventListener('click', randomizeDoll);
+  document.getElementById('mob-random').addEventListener('click', () => {
+    randomizeDoll();
+    document.getElementById('action-menu-popup').classList.remove('open');
   });
 
   // Reset button
