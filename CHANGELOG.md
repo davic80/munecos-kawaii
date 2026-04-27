@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.6.1] - 2026-04-27
+
+### Changed
+- **Muñeco estándar**: añadidas orejas redondeadas pequeñas a ambos lados de la cabeza.
+- **Elfo doméstico**: orejas completamente rediseñadas al estilo Dobby — grandes solapas que se extienden hacia los lados y caen ligeramente, con detalle de nervio interior.
+
+---
+
 ## [2.6.0] - 2026-04-25
 
 ### Added

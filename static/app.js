@@ -46,12 +46,17 @@ function svgBase(gender, skin, bodyShape) {
        <rect x="121" y="285" width="30" height="48" rx="13" fill="${skin}"/>`
   }
 
-  <!-- ELF EARS (large bat-like, rendered before head so head overlaps base) -->
   ${ isElf ? `
-  <path d="M58,148 Q22,110 44,58 Q62,82 82,118 Z" fill="${skin}"/>
-  <path d="M58,148 Q24,112 46,62" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="2"/>
-  <path d="M182,148 Q218,110 196,58 Q178,82 158,118 Z" fill="${skin}"/>
-  <path d="M182,148 Q216,112 194,62" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="2"/>` : '' }
+  <!-- DOBBY EARS: large drooping bat ears, rendered before head -->
+  <!-- Left ear: wide flap attaching from temple to jaw, tip droops outward-down -->
+  <path d="M56,82 Q4,95 2,135 Q4,162 56,152 Z" fill="${skin}"/>
+  <path d="M56,90 Q16,102 14,132 Q17,152 56,144" fill="none" stroke="rgba(0,0,0,0.09)" stroke-width="2.5"/>
+  <!-- Right ear -->
+  <path d="M184,82 Q236,95 238,135 Q236,162 184,152 Z" fill="${skin}"/>
+  <path d="M184,90 Q224,102 226,132 Q223,152 184,144" fill="none" stroke="rgba(0,0,0,0.09)" stroke-width="2.5"/>` : `
+  <!-- STANDARD EARS: small rounded stubs, head overlaps leaving crescent -->
+  <ellipse cx="49" cy="112" rx="10" ry="13" fill="${skin}"/>
+  <ellipse cx="191" cy="112" rx="10" ry="13" fill="${skin}"/>` }
 
   <!-- HEAD (big funko) -->
   <ellipse cx="120" cy="112" rx="70" ry="77" fill="${skin}"/>
