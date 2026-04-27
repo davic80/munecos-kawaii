@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.6.0] - 2026-04-25
+
+### Added
+- **3 nuevas criaturas mágicas**: Fénix (rojo/dorado con alas desplegadas y cola de llamas), Dragón bebé (verde con alas plegadas y escamas espinosas), Pixie (humanoid azul con alas de libélula, orejas puntiagudas y ojos grandes). Cada criatura tiene su sonido característico.
+- **Forma del muñeco**: nueva subsección «Forma» en Rasgos. Opciones: «Estándar» (Funko clásico) y «Elfo doméstico» (añade orejas batlike grandes a ambos lados de la cabeza). Funciona con ambos géneros (niño/niña).
+- **Tamaño de mascota ampliado**: rango de escala de -50..+50% a **-100..+100%** para todas las mascotas.
+
+---
+
 ## [2.5.1] - 2026-04-26
 
 ### Fixed

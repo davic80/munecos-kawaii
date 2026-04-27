@@ -12,9 +12,10 @@ function isTablet() { return mqTablet.matches; }
 
 /* ---------- SVG DEFINITIONS ---------- */
 
-// Returns the base SVG body/head for a given gender and skin color
-function svgBase(gender, skin) {
+// Returns the base SVG body/head for a given gender, skin color, and optional bodyShape
+function svgBase(gender, skin, bodyShape) {
   const isBoy = gender === 'boy';
+  const isElf = bodyShape === 'elf';
   // Big round head, small body — Funko style
   return `
   <!-- SHADOW -->
@@ -44,6 +45,13 @@ function svgBase(gender, skin) {
     : `<rect x="89" y="285" width="30" height="48" rx="13" fill="${skin}"/>
        <rect x="121" y="285" width="30" height="48" rx="13" fill="${skin}"/>`
   }
+
+  <!-- ELF EARS (large bat-like, rendered before head so head overlaps base) -->
+  ${ isElf ? `
+  <path d="M58,148 Q22,110 44,58 Q62,82 82,118 Z" fill="${skin}"/>
+  <path d="M58,148 Q24,112 46,62" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="2"/>
+  <path d="M182,148 Q218,110 196,58 Q178,82 158,118 Z" fill="${skin}"/>
+  <path d="M182,148 Q216,112 194,62" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="2"/>` : '' }
 
   <!-- HEAD (big funko) -->
   <ellipse cx="120" cy="112" rx="70" ry="77" fill="${skin}"/>
@@ -1291,6 +1299,102 @@ const PETS = {
       <circle cx="0" cy="9" r="3" fill="rgba(255,200,30,0.5)"/>
       <circle cx="-4" cy="11" r="2" fill="rgba(255,200,30,0.4)"/>
       <circle cx="4" cy="7" r="2" fill="rgba(255,200,30,0.4)"/>
+    </g>`;
+  },
+
+  phoenix: (_outfitKey) => {
+    return `<g>
+      <!-- Flame tail feathers -->
+      <path d="M-5,9 Q-10,20 -8,32 Q-3,26 0,20 Q3,26 8,32 Q10,20 5,9 Z" fill="#f39c12"/>
+      <path d="M-2,10 Q-6,22 -4,34 Q0,28 4,34 Q6,22 2,10 Z" fill="#ffd700" opacity="0.85"/>
+      <path d="M-8,12 Q-14,22 -12,30" fill="none" stroke="#e74c3c" stroke-width="1.2" opacity="0.7"/>
+      <path d="M8,12 Q14,22 12,30" fill="none" stroke="#e74c3c" stroke-width="1.2" opacity="0.7"/>
+      <!-- Body -->
+      <ellipse cx="0" cy="-1" rx="9" ry="11" fill="#c0392b"/>
+      <!-- Wings spread -->
+      <path d="M-9,-4 Q-24,-12 -30,-3 Q-24,5 -9,3 Z" fill="#e74c3c"/>
+      <path d="M-9,-4 Q-22,-10 -27,-2" fill="none" stroke="#f39c12" stroke-width="0.9" opacity="0.75"/>
+      <path d="M-9,-2 Q-20,-5 -24,2" fill="none" stroke="#f39c12" stroke-width="0.9" opacity="0.65"/>
+      <path d="M9,-4 Q24,-12 30,-3 Q24,5 9,3 Z" fill="#e74c3c"/>
+      <path d="M9,-4 Q22,-10 27,-2" fill="none" stroke="#f39c12" stroke-width="0.9" opacity="0.75"/>
+      <path d="M9,-2 Q20,-5 24,2" fill="none" stroke="#f39c12" stroke-width="0.9" opacity="0.65"/>
+      <!-- Head -->
+      <circle cx="0" cy="-14" r="7" fill="#e74c3c"/>
+      <!-- Crest -->
+      <path d="M-4,-21 Q0,-30 4,-21" fill="#f39c12" opacity="0.95"/>
+      <path d="M-6,-20 Q-1,-27 3,-23" fill="#e74c3c" opacity="0.8"/>
+      <!-- Beak -->
+      <polygon points="0,-8 -2.5,-6.5 2.5,-6.5" fill="#f39c12"/>
+      <!-- Eye -->
+      <circle cx="-2.5" cy="-15" r="2" fill="#ffd700"/>
+      <circle cx="-2.5" cy="-15" r="1" fill="#111"/>
+      <circle cx="-1.8" cy="-15.6" r="0.5" fill="white"/>
+    </g>`;
+  },
+
+  dragon: (_outfitKey) => {
+    return `<g>
+      <!-- Tail -->
+      <path d="M-13,5 Q-24,10 -26,5 Q-22,0 -13,3 Z" fill="#2e7d32"/>
+      <!-- Spiny back -->
+      <path d="M-9,-6 Q-7,-14 -3,-9 Q-1,-16 3,-9 Q6,-14 9,-7" fill="none" stroke="#1b5e20" stroke-width="1.6"/>
+      <!-- Wing (left, folded) -->
+      <path d="M-5,-6 Q-14,-13 -18,-7 Q-12,-2 -5,-4 Z" fill="#4caf50" opacity="0.9"/>
+      <!-- Body -->
+      <ellipse cx="0" cy="0" rx="13" ry="10" fill="#2e7d32"/>
+      <!-- Belly -->
+      <ellipse cx="-1" cy="2" rx="8" ry="6" fill="#4caf50" opacity="0.65"/>
+      <!-- Head -->
+      <circle cx="13" cy="-7" r="9" fill="#388e3c"/>
+      <!-- Snout -->
+      <ellipse cx="19" cy="-5" rx="5" ry="3.5" fill="#43a047"/>
+      <!-- Eye -->
+      <circle cx="15" cy="-9" r="2.5" fill="#ffd700"/>
+      <circle cx="15" cy="-9" r="1.2" fill="#111"/>
+      <circle cx="15.7" cy="-9.5" r="0.6" fill="white"/>
+      <!-- Nostril -->
+      <circle cx="20.5" cy="-5.5" r="1" fill="#1b5e20"/>
+      <!-- Tiny teeth -->
+      <path d="M17,-2.5 L18.5,-1.5 L20,-2.5" fill="white" stroke="rgba(0,0,0,0.2)" stroke-width="0.4"/>
+      <!-- Legs/feet -->
+      <ellipse cx="-6" cy="9" rx="4" ry="2.5" fill="#1b5e20"/>
+      <ellipse cx="5" cy="9" rx="4" ry="2.5" fill="#1b5e20"/>
+      <!-- Claws -->
+      <line x1="-9" y1="10" x2="-10" y2="12" stroke="#0d3312" stroke-width="0.9"/>
+      <line x1="-6" y1="11" x2="-6" y2="13" stroke="#0d3312" stroke-width="0.9"/>
+      <line x1="-3" y1="11" x2="-2" y2="13" stroke="#0d3312" stroke-width="0.9"/>
+    </g>`;
+  },
+
+  pixie: (_outfitKey) => {
+    return `<g>
+      <!-- Dragonfly wings (behind body) -->
+      <ellipse cx="-11" cy="-5" rx="9" ry="5.5" fill="rgba(187,222,251,0.62)" transform="rotate(-22,-11,-5)"/>
+      <ellipse cx="11" cy="-5" rx="9" ry="5.5" fill="rgba(187,222,251,0.62)" transform="rotate(22,11,-5)"/>
+      <ellipse cx="-10" cy="-1" rx="7" ry="4" fill="rgba(144,202,249,0.48)" transform="rotate(-10,-10,-1)"/>
+      <ellipse cx="10" cy="-1" rx="7" ry="4" fill="rgba(144,202,249,0.48)" transform="rotate(10,10,-1)"/>
+      <!-- Body -->
+      <ellipse cx="0" cy="3" rx="6" ry="8.5" fill="#1565c0"/>
+      <!-- Head -->
+      <circle cx="0" cy="-9" r="8" fill="#1e88e5"/>
+      <!-- Big pointy ears -->
+      <path d="M-8,-11 Q-16,-20 -8,-7" fill="#1565c0"/>
+      <path d="M8,-11 Q16,-20 8,-7" fill="#1565c0"/>
+      <!-- Large imp eyes -->
+      <ellipse cx="-3" cy="-10" rx="2.8" ry="3.2" fill="#fff176"/>
+      <ellipse cx="3" cy="-10" rx="2.8" ry="3.2" fill="#fff176"/>
+      <circle cx="-3" cy="-10" r="1.5" fill="#111"/>
+      <circle cx="3" cy="-10" r="1.5" fill="#111"/>
+      <circle cx="-2.4" cy="-10.6" r="0.5" fill="white"/>
+      <circle cx="3.6" cy="-10.6" r="0.5" fill="white"/>
+      <!-- Mischievous grin -->
+      <path d="M-3,-5 Q0,-3 3,-5" fill="none" stroke="#0d47a1" stroke-width="0.9"/>
+      <!-- Arms -->
+      <line x1="-6" y1="0" x2="-13" y2="5" stroke="#1565c0" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="6" y1="0" x2="13" y2="5" stroke="#1565c0" stroke-width="1.8" stroke-linecap="round"/>
+      <!-- Legs -->
+      <line x1="-3" y1="11" x2="-4" y2="18" stroke="#0d47a1" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="3" y1="11" x2="4" y2="18" stroke="#0d47a1" stroke-width="1.8" stroke-linecap="round"/>
     </g>`;
   },
 };
@@ -2650,8 +2754,8 @@ function applyBgColor() {
 const COLLECTION_KEY = 'munecos_kawaii_collection';
 const SCENE_STATE_KEY = 'munecos_kawaii_scene';
 const MAX_SLOTS = 8;
-const PET_SCALE_MIN = -50;
-const PET_SCALE_MAX = 50;
+const PET_SCALE_MIN = -100;
+const PET_SCALE_MAX = 100;
 const PET_SCALE_DEFAULT = 0; // renders at 1.75× (old +75% base)
 
 function normalizePetScale(value) {
@@ -2722,6 +2826,8 @@ function defaultDoll(idx) {
     bgScene: null,
     // doll position and scale in canvas
     dollX: null, dollY: null, dollScale: 0,
+    // bodyShape: null = standard Funko, 'elf' = house elf (large ears)
+    bodyShape: null,
     // pet fields
     pet: null, petOutfit: null, petPosition: 'floor', petScale: PET_SCALE_DEFAULT,
     // whether this doll is placed in the shared scene
@@ -2860,7 +2966,7 @@ function renderDoll(container, d) {
   const parts = [];
   // broom_back renders BEHIND everything (below svgBase / body)
   if (d.broom) parts.push(broomLayer((BROOMS[d.broom] || {}).back || ''));
-  parts.push(svgBase(d.gender, d.skin));
+  parts.push(svgBase(d.gender, d.skin, d.bodyShape));
   if (d.hair)    parts.push(layer('hair',    (HAIR[d.hair]    || (() => ''))(d.hairColor    || '#3d2b1f'), true));
   if (d.brows)   parts.push(layer('brows',   (BROWS[d.brows]   || (() => ''))(d.browColor || '#5a3a1a'), false));
   if (d.eyes)    parts.push(layer('eyes',    (EYES[d.eyes]    || EYES.round)(d.eyeColor, d.lashColor || d.hairColor || '#3d2b1f'), false));
@@ -2906,7 +3012,7 @@ function renderAll() {
 
 /* mini SVG for slot tabs */
 function renderMini(d) {
-  const parts = [svgBase(d.gender, d.skin)];
+  const parts = [svgBase(d.gender, d.skin, d.bodyShape)];
   if (d.eyes) parts.push((EYES[d.eyes] || EYES.round)(d.eyeColor, d.lashColor || d.hairColor || '#3d2b1f'));
   if (d.top) parts.push((TOPS[d.top] || (() => ''))(d.topColor, d.gender));
   if (d.scarf) parts.push(svgScarf(d.scarf));
@@ -3260,6 +3366,14 @@ function buildPanel() {
           ],
         },
         {
+          label: 'Forma', cat: 'bodyShape',
+          type: 'bodyShape',
+          items: [
+            { value: null,  label: 'Estándar', icon: '🧸' },
+            { value: 'elf', label: 'Elfo doméstico', icon: '🧝' },
+          ],
+        },
+        {
           label: 'Ojos', cat: 'eyes', colorField: 'eyeColor', colorFieldLabel: 'Color ojos', colorField2: 'lashColor', colorField2Label: 'Color pestañas', scaleField: 'eyesScale', yOffsetField: 'eyesYOffset',
           items: Object.keys(EYES).map(k => ({ value: k, label: k })),
         },
@@ -3482,6 +3596,28 @@ function buildPanel() {
         return; // gender subsection done
       }
 
+      // Special type: bodyShape picker
+      if (sub.type === 'bodyShape') {
+        const bsGrid = document.createElement('div');
+        bsGrid.className = 'item-grid';
+        sub.items.forEach(item => {
+          const chip = document.createElement('div');
+          const isActive = (doll.bodyShape || null) === item.value;
+          chip.className = 'item-chip' + (isActive ? ' equipped' : '');
+          chip.innerHTML = `<span style="font-size:1.2rem">${item.icon}</span><span>${item.label}</span>`;
+          chip.addEventListener('click', () => {
+            doll.bodyShape = item.value;
+            bsGrid.querySelectorAll('.item-chip').forEach(c => c.classList.remove('equipped'));
+            chip.classList.add('equipped');
+            saveCollection();
+            renderAll();
+          });
+          bsGrid.appendChild(chip);
+        });
+        body.appendChild(bsGrid);
+        return; // bodyShape subsection done
+      }
+
       // Special type: pet picker (toggle chips + position + outfit + scale)
       if (sub.type === 'pet') {
         const petTypes = [
@@ -3491,6 +3627,9 @@ function buildPanel() {
           { key: 'owl',     emoji: '🦉', label: 'Lechuza' },
           { key: 'snake',   emoji: '🐍', label: 'Serpiente' },
           { key: 'niffler', emoji: '🦔', label: 'Niffler' },
+          { key: 'phoenix', emoji: '🔥', label: 'Fénix' },
+          { key: 'dragon',  emoji: '🐲', label: 'Dragón' },
+          { key: 'pixie',   emoji: '✨', label: 'Pixie' },
         ];
         const petGrid = document.createElement('div');
         petGrid.className = 'item-grid pet-type-grid';
@@ -4140,6 +4279,9 @@ const AudioManager = {
       case 'owl':     this.synthOwl();     break;
       case 'snake':   this.synthSnake();   break;
       case 'niffler': this.synthNiffler(); break;
+      case 'phoenix': this.synthPhoenix(); break;
+      case 'dragon':  this.synthDragon();  break;
+      case 'pixie':   this.synthPixie();   break;
     }
   },
 
@@ -4307,6 +4449,109 @@ const AudioManager = {
       osc.start(ctx.currentTime + t);
       osc.stop(ctx.currentTime + t + 0.09);
     });
+  },
+
+  synthPhoenix() {
+    const ctx = this.ctx;
+    // Rising melodic cry: two harmonic oscillators sweep upward
+    [0, 0.18].forEach((delay, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(600 + i * 200, ctx.currentTime + delay);
+      osc.frequency.exponentialRampToValueAtTime(1800 + i * 300, ctx.currentTime + delay + 0.5);
+      osc.frequency.exponentialRampToValueAtTime(1200 + i * 150, ctx.currentTime + delay + 0.8);
+      gain.gain.setValueAtTime(0, ctx.currentTime + delay);
+      gain.gain.linearRampToValueAtTime(0.3 - i * 0.05, ctx.currentTime + delay + 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + delay + 0.85);
+      osc.connect(gain);
+      gain.connect(this.sfxGain);
+      osc.start(ctx.currentTime + delay);
+      osc.stop(ctx.currentTime + delay + 0.9);
+    });
+    // Short bright harmonic shimmer
+    const osc3 = ctx.createOscillator();
+    const g3 = ctx.createGain();
+    osc3.type = 'triangle';
+    osc3.frequency.setValueAtTime(3200, ctx.currentTime + 0.1);
+    osc3.frequency.exponentialRampToValueAtTime(4800, ctx.currentTime + 0.35);
+    g3.gain.setValueAtTime(0.12, ctx.currentTime + 0.1);
+    g3.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+    osc3.connect(g3);
+    g3.connect(this.sfxGain);
+    osc3.start(ctx.currentTime + 0.1);
+    osc3.stop(ctx.currentTime + 0.5);
+  },
+
+  synthDragon() {
+    const ctx = this.ctx;
+    // Low growl: sawtooth with descending frequency + distortion-like overtones
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(95, ctx.currentTime);
+    osc.frequency.linearRampToValueAtTime(55, ctx.currentTime + 0.45);
+    osc.frequency.linearRampToValueAtTime(80, ctx.currentTime + 0.7);
+    gain.gain.setValueAtTime(0.45, ctx.currentTime);
+    gain.gain.setValueAtTime(0.45, ctx.currentTime + 0.35);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.75);
+    // Bandpass to shape growl character
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.value = 220;
+    filter.Q.value = 1.5;
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.sfxGain);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.8);
+    // Brief rumble noise burst
+    const bufLen = Math.floor(ctx.sampleRate * 0.3);
+    const buf = ctx.createBuffer(1, bufLen, ctx.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < bufLen; i++) data[i] = (Math.random() * 2 - 1) * 0.6;
+    const noise = ctx.createBufferSource();
+    noise.buffer = buf;
+    const nf = ctx.createBiquadFilter();
+    nf.type = 'lowpass';
+    nf.frequency.value = 200;
+    const ng = ctx.createGain();
+    ng.gain.setValueAtTime(0.25, ctx.currentTime + 0.05);
+    ng.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+    noise.connect(nf);
+    nf.connect(ng);
+    ng.connect(this.sfxGain);
+    noise.start(ctx.currentTime + 0.05);
+    noise.stop(ctx.currentTime + 0.35);
+  },
+
+  synthPixie() {
+    const ctx = this.ctx;
+    // Rapid high-pitched giggle: quick descending bursts
+    [0, 0.12, 0.24, 0.38].forEach((t, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(3400 - i * 80, ctx.currentTime + t);
+      osc.frequency.exponentialRampToValueAtTime(2200, ctx.currentTime + t + 0.09);
+      gain.gain.setValueAtTime(0.22, ctx.currentTime + t);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + t + 0.11);
+      osc.connect(gain);
+      gain.connect(this.sfxGain);
+      osc.start(ctx.currentTime + t);
+      osc.stop(ctx.currentTime + t + 0.12);
+    });
+    // Tiny glittery chime at end
+    const chime = ctx.createOscillator();
+    const cg = ctx.createGain();
+    chime.type = 'sine';
+    chime.frequency.value = 5200;
+    cg.gain.setValueAtTime(0.14, ctx.currentTime + 0.5);
+    cg.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.7);
+    chime.connect(cg);
+    cg.connect(this.sfxGain);
+    chime.start(ctx.currentTime + 0.5);
+    chime.stop(ctx.currentTime + 0.75);
   },
 
   // Hedwig's Theme: B4 E5 G5 F#5 E5 B5 A5 F#5 E5 G5 F#5 D#5 F5 B4
