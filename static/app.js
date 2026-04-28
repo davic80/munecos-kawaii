@@ -38,12 +38,44 @@ function svgBase(gender, skin, bodyShape) {
        <ellipse cx="176" cy="234" rx="15" ry="32" fill="${skin}" transform="rotate(8,176,234)"/>`
   }
 
+  <!-- HANDS (kawaii finger bumps at wrist bottom) -->
+  ${ isBoy
+    ? `<circle cx="65" cy="272" r="3" fill="${skin}"/>
+       <circle cx="71" cy="274" r="3" fill="${skin}"/>
+       <circle cx="77" cy="272" r="3" fill="${skin}"/>
+       <circle cx="162" cy="272" r="3" fill="${skin}"/>
+       <circle cx="168" cy="274" r="3" fill="${skin}"/>
+       <circle cx="174" cy="272" r="3" fill="${skin}"/>`
+    : `<circle cx="55" cy="268" r="2.5" fill="${skin}"/>
+       <circle cx="61" cy="270" r="2.5" fill="${skin}"/>
+       <circle cx="67" cy="268" r="2.5" fill="${skin}"/>
+       <circle cx="173" cy="268" r="2.5" fill="${skin}"/>
+       <circle cx="179" cy="270" r="2.5" fill="${skin}"/>
+       <circle cx="185" cy="268" r="2.5" fill="${skin}"/>`
+  }
+
   <!-- LEGS -->
   ${ isBoy
     ? `<rect x="84" y="282" width="32" height="52" rx="13" fill="${skin}"/>
        <rect x="122" y="282" width="32" height="52" rx="13" fill="${skin}"/>`
     : `<rect x="90" y="283" width="28" height="50" rx="12" fill="${skin}"/>
        <rect x="122" y="283" width="28" height="50" rx="12" fill="${skin}"/>`
+  }
+
+  <!-- TOES (kawaii toe bumps at foot bottom) -->
+  ${ isBoy
+    ? `<circle cx="91" cy="336" r="4" fill="${skin}"/>
+       <circle cx="100" cy="338" r="4" fill="${skin}"/>
+       <circle cx="109" cy="336" r="4" fill="${skin}"/>
+       <circle cx="129" cy="336" r="4" fill="${skin}"/>
+       <circle cx="138" cy="338" r="4" fill="${skin}"/>
+       <circle cx="147" cy="336" r="4" fill="${skin}"/>`
+    : `<circle cx="96" cy="335" r="3.5" fill="${skin}"/>
+       <circle cx="104" cy="337" r="3.5" fill="${skin}"/>
+       <circle cx="112" cy="335" r="3.5" fill="${skin}"/>
+       <circle cx="128" cy="335" r="3.5" fill="${skin}"/>
+       <circle cx="136" cy="337" r="3.5" fill="${skin}"/>
+       <circle cx="144" cy="335" r="3.5" fill="${skin}"/>`
   }
 
   ${ isElf ? `
@@ -786,61 +818,83 @@ const WANDS = {
       <polygon points="0,-84 7,-68 0,-72" fill="#b8a4e0"/>
       <line x1="-3" y1="-68" x2="-3" y2="-16" stroke="#d4c8f0" stroke-width="1" opacity="0.6"/>
     </g>`,
-  // Socks held in hand (Dobby-style) — cuff at grip, tube up, rounded toe at tip
+  // Christmas stockings held by the cuff — hang downward from the hand
+  // rotate(-38) makes +y go down-right so the stocking hangs naturally
   sock_grey: `
-    <g transform="translate(184,258) rotate(38)">
-      <rect x="-7" y="-14" width="14" height="14" rx="4" fill="#888888"/>
-      <line x1="-7" y1="-7" x2="7" y2="-7" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
-      <rect x="-6" y="-55" width="12" height="41" rx="4" fill="#cccccc"/>
-      <ellipse cx="0" cy="-59" rx="7" ry="9" fill="#bbbbbb"/>
+    <g transform="translate(184,258) rotate(-38)">
+      <path d="M-6,10 L-6,50 Q-6,62 2,64 L14,64 Q22,64 22,56 Q22,48 16,48 L6,48 L6,10 Z" fill="#cccccc"/>
+      <ellipse cx="-2" cy="58" rx="5" ry="6" fill="rgba(0,0,0,0.13)"/>
+      <ellipse cx="19" cy="54" rx="5" ry="6" fill="rgba(0,0,0,0.10)"/>
+      <rect x="-9" y="-2" width="18" height="16" rx="7" fill="#e8e8e8"/>
+      <line x1="-9" y1="5" x2="9" y2="5" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+      <line x1="-9" y1="10" x2="9" y2="10" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
     </g>`,
   sock_brown: `
-    <g transform="translate(184,258) rotate(38)">
-      <rect x="-7" y="-14" width="14" height="14" rx="4" fill="#7a5230"/>
-      <line x1="-7" y1="-7" x2="7" y2="-7" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
-      <rect x="-6" y="-55" width="12" height="41" rx="4" fill="#c28840"/>
-      <ellipse cx="0" cy="-59" rx="7" ry="9" fill="#b07838"/>
+    <g transform="translate(184,258) rotate(-38)">
+      <path d="M-6,10 L-6,50 Q-6,62 2,64 L14,64 Q22,64 22,56 Q22,48 16,48 L6,48 L6,10 Z" fill="#c28840"/>
+      <ellipse cx="-2" cy="58" rx="5" ry="6" fill="rgba(0,0,0,0.14)"/>
+      <ellipse cx="19" cy="54" rx="5" ry="6" fill="rgba(0,0,0,0.11)"/>
+      <rect x="-9" y="-2" width="18" height="16" rx="7" fill="#f0deb0"/>
+      <line x1="-9" y1="5" x2="9" y2="5" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+      <line x1="-9" y1="10" x2="9" y2="10" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
     </g>`,
   sock_gryffindor: `
-    <g transform="translate(184,258) rotate(38)">
-      <rect x="-7" y="-14" width="14" height="14" rx="4" fill="#740001"/>
-      <line x1="-7" y1="-7" x2="7" y2="-7" stroke="#d3a625" stroke-width="1.8"/>
-      <rect x="-6" y="-55" width="12" height="41" rx="4" fill="#740001"/>
-      <rect x="-6" y="-50" width="12" height="4" fill="#d3a625" opacity="0.9"/>
-      <rect x="-6" y="-40" width="12" height="4" fill="#d3a625" opacity="0.9"/>
-      <rect x="-6" y="-30" width="12" height="4" fill="#d3a625" opacity="0.9"/>
-      <ellipse cx="0" cy="-59" rx="7" ry="9" fill="#740001"/>
+    <g transform="translate(184,258) rotate(-38)">
+      <path d="M-6,10 L-6,50 Q-6,62 2,64 L14,64 Q22,64 22,56 Q22,48 16,48 L6,48 L6,10 Z" fill="#740001"/>
+      <rect x="-6" y="16" width="12" height="4" fill="#d3a625"/>
+      <rect x="-6" y="28" width="12" height="4" fill="#d3a625"/>
+      <rect x="-6" y="40" width="12" height="4" fill="#d3a625"/>
+      <ellipse cx="-2" cy="58" rx="5" ry="6" fill="rgba(0,0,0,0.18)"/>
+      <ellipse cx="19" cy="54" rx="5" ry="6" fill="rgba(0,0,0,0.14)"/>
+      <rect x="-9" y="-2" width="18" height="16" rx="7" fill="#f5f5f5"/>
+      <line x1="-9" y1="5" x2="9" y2="5" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+      <line x1="-9" y1="10" x2="9" y2="10" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
     </g>`,
   sock_slytherin: `
-    <g transform="translate(184,258) rotate(38)">
-      <rect x="-7" y="-14" width="14" height="14" rx="4" fill="#1a472a"/>
-      <line x1="-7" y1="-7" x2="7" y2="-7" stroke="#aaaaaa" stroke-width="1.8"/>
-      <rect x="-6" y="-55" width="12" height="41" rx="4" fill="#1a472a"/>
-      <rect x="-6" y="-50" width="12" height="4" fill="#aaaaaa" opacity="0.9"/>
-      <rect x="-6" y="-40" width="12" height="4" fill="#aaaaaa" opacity="0.9"/>
-      <rect x="-6" y="-30" width="12" height="4" fill="#aaaaaa" opacity="0.9"/>
-      <ellipse cx="0" cy="-59" rx="7" ry="9" fill="#1a472a"/>
+    <g transform="translate(184,258) rotate(-38)">
+      <path d="M-6,10 L-6,50 Q-6,62 2,64 L14,64 Q22,64 22,56 Q22,48 16,48 L6,48 L6,10 Z" fill="#1a472a"/>
+      <rect x="-6" y="16" width="12" height="4" fill="#aaaaaa"/>
+      <rect x="-6" y="28" width="12" height="4" fill="#aaaaaa"/>
+      <rect x="-6" y="40" width="12" height="4" fill="#aaaaaa"/>
+      <ellipse cx="-2" cy="58" rx="5" ry="6" fill="rgba(0,0,0,0.18)"/>
+      <ellipse cx="19" cy="54" rx="5" ry="6" fill="rgba(0,0,0,0.14)"/>
+      <rect x="-9" y="-2" width="18" height="16" rx="7" fill="#f5f5f5"/>
+      <line x1="-9" y1="5" x2="9" y2="5" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+      <line x1="-9" y1="10" x2="9" y2="10" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
     </g>`,
   sock_ravenclaw: `
-    <g transform="translate(184,258) rotate(38)">
-      <rect x="-7" y="-14" width="14" height="14" rx="4" fill="#0e1a40"/>
-      <line x1="-7" y1="-7" x2="7" y2="-7" stroke="#aaaaaa" stroke-width="1.8"/>
-      <rect x="-6" y="-55" width="12" height="41" rx="4" fill="#0e1a40"/>
-      <rect x="-6" y="-50" width="12" height="4" fill="#aaaaaa" opacity="0.9"/>
-      <rect x="-6" y="-40" width="12" height="4" fill="#aaaaaa" opacity="0.9"/>
-      <rect x="-6" y="-30" width="12" height="4" fill="#aaaaaa" opacity="0.9"/>
-      <ellipse cx="0" cy="-59" rx="7" ry="9" fill="#0e1a40"/>
+    <g transform="translate(184,258) rotate(-38)">
+      <path d="M-6,10 L-6,50 Q-6,62 2,64 L14,64 Q22,64 22,56 Q22,48 16,48 L6,48 L6,10 Z" fill="#0e1a40"/>
+      <rect x="-6" y="16" width="12" height="4" fill="#aaaaaa"/>
+      <rect x="-6" y="28" width="12" height="4" fill="#aaaaaa"/>
+      <rect x="-6" y="40" width="12" height="4" fill="#aaaaaa"/>
+      <ellipse cx="-2" cy="58" rx="5" ry="6" fill="rgba(0,0,0,0.18)"/>
+      <ellipse cx="19" cy="54" rx="5" ry="6" fill="rgba(0,0,0,0.14)"/>
+      <rect x="-9" y="-2" width="18" height="16" rx="7" fill="#f5f5f5"/>
+      <line x1="-9" y1="5" x2="9" y2="5" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+      <line x1="-9" y1="10" x2="9" y2="10" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
     </g>`,
   sock_hufflepuff: `
-    <g transform="translate(184,258) rotate(38)">
-      <rect x="-7" y="-14" width="14" height="14" rx="4" fill="#ecb939"/>
-      <line x1="-7" y1="-7" x2="7" y2="-7" stroke="#372e29" stroke-width="1.8"/>
-      <rect x="-6" y="-55" width="12" height="41" rx="4" fill="#ecb939"/>
-      <rect x="-6" y="-50" width="12" height="4" fill="#372e29" opacity="0.9"/>
-      <rect x="-6" y="-40" width="12" height="4" fill="#372e29" opacity="0.9"/>
-      <rect x="-6" y="-30" width="12" height="4" fill="#372e29" opacity="0.9"/>
-      <ellipse cx="0" cy="-59" rx="7" ry="9" fill="#ecb939"/>
+    <g transform="translate(184,258) rotate(-38)">
+      <path d="M-6,10 L-6,50 Q-6,62 2,64 L14,64 Q22,64 22,56 Q22,48 16,48 L6,48 L6,10 Z" fill="#ecb939"/>
+      <rect x="-6" y="16" width="12" height="4" fill="#372e29"/>
+      <rect x="-6" y="28" width="12" height="4" fill="#372e29"/>
+      <rect x="-6" y="40" width="12" height="4" fill="#372e29"/>
+      <ellipse cx="-2" cy="58" rx="5" ry="6" fill="rgba(0,0,0,0.15)"/>
+      <ellipse cx="19" cy="54" rx="5" ry="6" fill="rgba(0,0,0,0.12)"/>
+      <rect x="-9" y="-2" width="18" height="16" rx="7" fill="#f5f5f5"/>
+      <line x1="-9" y1="5" x2="9" y2="5" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+      <line x1="-9" y1="10" x2="9" y2="10" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
     </g>`,
+};
+
+const WAND_LABELS = {
+  sock_grey:       'Calcetín gris',
+  sock_brown:      'Calcetín marrón',
+  sock_gryffindor: 'Calcetín Gryffindor',
+  sock_slytherin:  'Calcetín Slytherin',
+  sock_ravenclaw:  'Calcetín Ravenclaw',
+  sock_hufflepuff: 'Calcetín Hufflepuff',
 };
 
 // ---- HP BROOMS ----
@@ -3975,7 +4029,7 @@ function buildPanel() {
         {
           label: 'Varita', cat: 'wand', scaleField: 'wandScale', yOffsetField: 'wandYOffset',
           flipField: 'wandFlip',
-          items: Object.keys(WANDS).map(k => ({ value: k, label: k })),
+          items: Object.keys(WANDS).map(k => ({ value: k, label: WAND_LABELS[k] || k.replace(/_/g, ' ') })),
         },
         {
           label: 'Objeto mano izq.', cat: 'lefthand',

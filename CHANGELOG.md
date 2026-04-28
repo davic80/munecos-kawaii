@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.8.2] - 2026-04-28
+
+### Changed
+- **Calcetines de Navidad**: los seis calcetines-varita (gris, marrón, casas HP) rediseñados como medias navideñas con forma de calcetín — caña larga, talón curvo y punta redondeada que cae hacia abajo (rotate −38°, colgados del puño).
+- **Nombres sin guión bajo**: los calcetines-varita ahora se llaman "Calcetín gris", "Calcetín marrón", "Calcetín Gryffindor", etc. en lugar de `sock_grey`, `sock_brown`…
+- **Detalle de manos**: tres pequeños bultos kawaii en la muñeca de cada brazo representan los dedos (chico r=3, chica r=2.5).
+- **Detalle de pies**: tres pequeños bultos kawaii en la parte inferior de cada pierna representan los dedos del pie (chico r=4, chica r=3.5); quedan cubiertos por el calzado al equiparlo.
+
+---
+
 ## [2.8.1] - 2026-04-28
 
 ### Changed
