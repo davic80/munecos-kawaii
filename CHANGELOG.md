@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.8.1] - 2026-04-28
+
+### Changed
+- **Cuerpo más delgado**: el torso pasó de 96 px a 78 px de ancho (chico) y 74 px (chica), reduciendo el volumen lateral.
+- **Hombros redondos**: el cuerpo usa ahora un `path` con curva Bézier en la unión cuello-hombro, eliminando la esquina cuadrada del `rect` anterior.
+- **Brazos mejorados (chico)**: sustituidos los rectángulos por paths cónicos — más anchos en el hombro (~25 px) y más estrechos en la muñeca (~21 px) — con transición suave hacia el cuerpo.
+- **Brazos mejorados (chica)**: elipses más esbeltas (rx 17→15, ry 34→32) y reposicionadas para unirse sin hueco al torso rediseñado.
+- **Piernas ajustadas**: ligeramente más estrechas (34→32 px chico, 30→28 px chica) con una separación de 6 px en el centro que da mayor definición.
+- **Zapatos y calcetines**: coordenadas alineadas con las nuevas posiciones de las piernas para que encajen correctamente con todos los tipos de calzado.
+
+---
+
 ## [2.8.0] - 2026-04-28
 
 ### Added

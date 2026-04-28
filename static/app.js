@@ -16,34 +16,34 @@ function isTablet() { return mqTablet.matches; }
 function svgBase(gender, skin, bodyShape) {
   const isBoy = gender === 'boy';
   const isElf = bodyShape === 'elf';
-  // Big round head, small body — Funko style
+  // Big round head, slim body — Funko style with rounded shoulders
   return `
   <!-- SHADOW -->
-  <ellipse cx="120" cy="328" rx="55" ry="10" fill="rgba(0,0,0,0.18)"/>
+  <ellipse cx="120" cy="328" rx="50" ry="9" fill="rgba(0,0,0,0.18)"/>
 
   <!-- NECK -->
-  <rect x="105" y="178" width="30" height="22" rx="6" fill="${skin}"/>
+  <rect x="107" y="178" width="26" height="22" rx="6" fill="${skin}"/>
 
   <!-- BODY -->
   ${ isBoy
-    ? `<rect x="72" y="196" width="96" height="90" rx="22" fill="${skin}"/>`
-    : `<path d="M72,196 Q72,280 90,288 Q120,298 150,288 Q168,280 168,196 Z" fill="${skin}"/>`
+    ? `<path d="M94,197 Q82,197 81,210 L81,270 Q81,285 97,286 Q120,290 143,286 Q159,285 159,270 L159,210 Q158,197 146,197 Z" fill="${skin}"/>`
+    : `<path d="M96,197 Q84,197 83,210 L83,252 Q83,265 90,274 Q104,283 120,284 Q136,283 150,274 Q157,265 157,252 L157,210 Q156,197 144,197 Z" fill="${skin}"/>`
   }
 
   <!-- ARMS -->
   ${ isBoy
-    ? `<rect x="38" y="200" width="36" height="62" rx="18" fill="${skin}"/>
-       <rect x="166" y="200" width="36" height="62" rx="18" fill="${skin}"/>`
-    : `<ellipse cx="56" cy="232" rx="17" ry="34" fill="${skin}" transform="rotate(-8,56,232)"/>
-       <ellipse cx="184" cy="232" rx="17" ry="34" fill="${skin}" transform="rotate(8,184,232)"/>`
+    ? `<path d="M81,205 Q61,200 56,215 L60,262 Q62,269 70,269 Q78,269 81,263 Z" fill="${skin}"/>
+       <path d="M159,205 Q179,200 184,215 L180,262 Q178,269 170,269 Q162,269 159,263 Z" fill="${skin}"/>`
+    : `<ellipse cx="64"  cy="234" rx="15" ry="32" fill="${skin}" transform="rotate(-8,64,234)"/>
+       <ellipse cx="176" cy="234" rx="15" ry="32" fill="${skin}" transform="rotate(8,176,234)"/>`
   }
 
   <!-- LEGS -->
   ${ isBoy
-    ? `<rect x="86" y="282" width="34" height="52" rx="14" fill="${skin}"/>
-       <rect x="120" y="282" width="34" height="52" rx="14" fill="${skin}"/>`
-    : `<rect x="89" y="285" width="30" height="48" rx="13" fill="${skin}"/>
-       <rect x="121" y="285" width="30" height="48" rx="13" fill="${skin}"/>`
+    ? `<rect x="84" y="282" width="32" height="52" rx="13" fill="${skin}"/>
+       <rect x="122" y="282" width="32" height="52" rx="13" fill="${skin}"/>`
+    : `<rect x="90" y="283" width="28" height="50" rx="12" fill="${skin}"/>
+       <rect x="122" y="283" width="28" height="50" rx="12" fill="${skin}"/>`
   }
 
   ${ isElf ? `
@@ -445,53 +445,53 @@ const BOTTOMS = {
 // ---- SHOES ----
 const SHOES = {
   sneaker: (c) => `
-    <ellipse cx="104" cy="334" rx="22" ry="10" fill="${c}"/>
-    <ellipse cx="136" cy="334" rx="22" ry="10" fill="${c}"/>
-    <rect x="87" y="326" width="32" height="10" rx="4" fill="${darken(c,20)}"/>
-    <rect x="121" y="326" width="32" height="10" rx="4" fill="${darken(c,20)}"/>`,
+    <ellipse cx="100" cy="334" rx="22" ry="10" fill="${c}"/>
+    <ellipse cx="138" cy="334" rx="22" ry="10" fill="${c}"/>
+    <rect x="84" y="326" width="32" height="10" rx="4" fill="${darken(c,20)}"/>
+    <rect x="122" y="326" width="32" height="10" rx="4" fill="${darken(c,20)}"/>`,
   boot: (c) => `
-    <rect x="87" y="316" width="32" height="22" rx="6" fill="${c}"/>
-    <rect x="121" y="316" width="32" height="22" rx="6" fill="${c}"/>
-    <ellipse cx="103" cy="336" rx="20" ry="6" fill="${darken(c,15)}"/>
-    <ellipse cx="137" cy="336" rx="20" ry="6" fill="${darken(c,15)}"/>`,
+    <rect x="84" y="316" width="32" height="22" rx="6" fill="${c}"/>
+    <rect x="122" y="316" width="32" height="22" rx="6" fill="${c}"/>
+    <ellipse cx="100" cy="336" rx="20" ry="6" fill="${darken(c,15)}"/>
+    <ellipse cx="138" cy="336" rx="20" ry="6" fill="${darken(c,15)}"/>`,
   sandal: (c) => `
-    <ellipse cx="104" cy="335" rx="22" ry="6" fill="${c}"/>
-    <ellipse cx="136" cy="335" rx="22" ry="6" fill="${c}"/>
-    <line x1="89" y1="328" x2="119" y2="328" stroke="${darken(c,25)}" stroke-width="3"/>
+    <ellipse cx="100" cy="335" rx="22" ry="6" fill="${c}"/>
+    <ellipse cx="138" cy="335" rx="22" ry="6" fill="${c}"/>
+    <line x1="85" y1="328" x2="115" y2="328" stroke="${darken(c,25)}" stroke-width="3"/>
     <line x1="123" y1="328" x2="153" y2="328" stroke="${darken(c,25)}" stroke-width="3"/>`,
   // Heel — high-heel silhouette
   heel: (c) => `
-    <path d="M85,328 Q87,338 107,338 Q123,338 125,328 L125,322 Q107,320 85,328 Z" fill="${c}"/>
-    <path d="M119,328 Q121,338 141,338 Q157,338 159,328 L159,322 Q141,320 119,328 Z" fill="${c}"/>
-    <rect x="85" y="328" width="6" height="14" rx="3" fill="${darken(c,20)}"/>
-    <rect x="119" y="328" width="6" height="14" rx="3" fill="${darken(c,20)}"/>`,
+    <path d="M82,328 Q84,338 104,338 Q120,338 122,328 L122,322 Q104,320 82,328 Z" fill="${c}"/>
+    <path d="M120,328 Q122,338 142,338 Q158,338 160,328 L160,322 Q142,320 120,328 Z" fill="${c}"/>
+    <rect x="82" y="328" width="6" height="14" rx="3" fill="${darken(c,20)}"/>
+    <rect x="120" y="328" width="6" height="14" rx="3" fill="${darken(c,20)}"/>`,
   // Knee-high boot
   boot_high: (c) => `
-    <rect x="87" y="296" width="30" height="42" rx="6" fill="${c}"/>
-    <rect x="121" y="296" width="30" height="42" rx="6" fill="${c}"/>
-    <ellipse cx="102" cy="337" rx="19" ry="6" fill="${darken(c,15)}"/>
-    <ellipse cx="136" cy="337" rx="19" ry="6" fill="${darken(c,15)}"/>
-    <rect x="87" y="308" width="30" height="4" rx="2" fill="${darken(c,10)}"/>
-    <rect x="121" y="308" width="30" height="4" rx="2" fill="${darken(c,10)}"/>`,
+    <rect x="84" y="296" width="32" height="42" rx="6" fill="${c}"/>
+    <rect x="122" y="296" width="32" height="42" rx="6" fill="${c}"/>
+    <ellipse cx="100" cy="337" rx="20" ry="6" fill="${darken(c,15)}"/>
+    <ellipse cx="138" cy="337" rx="20" ry="6" fill="${darken(c,15)}"/>
+    <rect x="84" y="308" width="32" height="4" rx="2" fill="${darken(c,10)}"/>
+    <rect x="122" y="308" width="32" height="4" rx="2" fill="${darken(c,10)}"/>`,
   // Slipper / loafer — flat round
   slipper: (c) => `
-    <ellipse cx="104" cy="334" rx="22" ry="8" fill="${c}"/>
-    <ellipse cx="136" cy="334" rx="22" ry="8" fill="${c}"/>
-    <path d="M83,330 Q95,322 125,328" fill="none" stroke="${darken(c,18)}" stroke-width="3" stroke-linecap="round"/>
-    <path d="M117,328 Q147,322 159,330" fill="none" stroke="${darken(c,18)}" stroke-width="3" stroke-linecap="round"/>`,
+    <ellipse cx="100" cy="334" rx="22" ry="8" fill="${c}"/>
+    <ellipse cx="138" cy="334" rx="22" ry="8" fill="${c}"/>
+    <path d="M80,330 Q93,322 122,328" fill="none" stroke="${darken(c,18)}" stroke-width="3" stroke-linecap="round"/>
+    <path d="M120,328 Q149,322 160,330" fill="none" stroke="${darken(c,18)}" stroke-width="3" stroke-linecap="round"/>`,
 };
 
 // ---- SOCKS ----
 // Positioned at the lower leg ankles, above shoes. c = primary color, c2 = secondary (stripes/checks)
 const SOCKS = {
   plain: (c, _c2, gender) => {
-    const [lx, rx, y, w] = gender === 'girl' ? [89,121,313,30] : [86,120,312,34];
+    const [lx, rx, y, w] = gender === 'girl' ? [90,122,313,28] : [84,122,312,32];
     return `
       <rect x="${lx}" y="${y}" width="${w}" height="18" rx="5" fill="${c}"/>
       <rect x="${rx}" y="${y}" width="${w}" height="18" rx="5" fill="${c}"/>`;
   },
   striped: (c, c2, gender) => {
-    const [lx, rx, y, w] = gender === 'girl' ? [89,121,313,30] : [86,120,312,34];
+    const [lx, rx, y, w] = gender === 'girl' ? [90,122,313,28] : [84,122,312,32];
     const sc2 = c2 || '#ffffff';
     return `
       <rect x="${lx}" y="${y}" width="${w}" height="18" rx="5" fill="${c}"/>
@@ -502,7 +502,7 @@ const SOCKS = {
       <rect x="${rx}" y="${y+12}" width="${w}" height="4" fill="${sc2}" opacity="0.85"/>`;
   },
   checkered: (c, c2, gender) => {
-    const [lx, rx, y, w] = gender === 'girl' ? [89,121,313,30] : [86,120,312,34];
+    const [lx, rx, y, w] = gender === 'girl' ? [90,122,313,28] : [84,122,312,32];
     const sc2 = c2 || '#ffffff';
     const hw = Math.round(w / 2);
     return `
