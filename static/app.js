@@ -60,6 +60,19 @@ function svgBase(gender, skin, bodyShape) {
 
   <!-- HEAD (big funko) -->
   <ellipse cx="120" cy="112" rx="70" ry="77" fill="${skin}"/>
+  ${ isElf ? `
+  <!-- Elf wrinkles: subtle, kawaii -->
+  <path d="M98,78 Q120,73 142,78" fill="none" stroke="rgba(0,0,0,0.10)" stroke-width="0.9" stroke-linecap="round"/>
+  <path d="M107,87 Q120,83 133,87" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M76,122 Q72,117 75,112" fill="none" stroke="rgba(0,0,0,0.09)" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M164,122 Q168,117 165,112" fill="none" stroke="rgba(0,0,0,0.09)" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M100,144 Q96,153 99,161" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M140,144 Q144,153 141,161" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M109,183 Q120,179 131,183" fill="none" stroke="rgba(0,0,0,0.07)" stroke-width="0.9" stroke-linecap="round"/>
+  <path d="M88,222 Q100,218 112,222" fill="none" stroke="rgba(0,0,0,0.07)" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M128,222 Q140,218 152,222" fill="none" stroke="rgba(0,0,0,0.07)" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M98,252 Q120,247 142,252" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="0.8" stroke-linecap="round"/>
+  ` : '' }
   `;
 }
 
@@ -468,6 +481,40 @@ const SHOES = {
     <path d="M117,328 Q147,322 159,330" fill="none" stroke="${darken(c,18)}" stroke-width="3" stroke-linecap="round"/>`,
 };
 
+// ---- SOCKS ----
+// Positioned at the lower leg ankles, above shoes. c = primary color, c2 = secondary (stripes/checks)
+const SOCKS = {
+  plain: (c, _c2, gender) => {
+    const [lx, rx, y, w] = gender === 'girl' ? [89,121,313,30] : [86,120,312,34];
+    return `
+      <rect x="${lx}" y="${y}" width="${w}" height="18" rx="5" fill="${c}"/>
+      <rect x="${rx}" y="${y}" width="${w}" height="18" rx="5" fill="${c}"/>`;
+  },
+  striped: (c, c2, gender) => {
+    const [lx, rx, y, w] = gender === 'girl' ? [89,121,313,30] : [86,120,312,34];
+    const sc2 = c2 || '#ffffff';
+    return `
+      <rect x="${lx}" y="${y}" width="${w}" height="18" rx="5" fill="${c}"/>
+      <rect x="${rx}" y="${y}" width="${w}" height="18" rx="5" fill="${c}"/>
+      <rect x="${lx}" y="${y+4}" width="${w}" height="4" fill="${sc2}" opacity="0.85"/>
+      <rect x="${rx}" y="${y+4}" width="${w}" height="4" fill="${sc2}" opacity="0.85"/>
+      <rect x="${lx}" y="${y+12}" width="${w}" height="4" fill="${sc2}" opacity="0.85"/>
+      <rect x="${rx}" y="${y+12}" width="${w}" height="4" fill="${sc2}" opacity="0.85"/>`;
+  },
+  checkered: (c, c2, gender) => {
+    const [lx, rx, y, w] = gender === 'girl' ? [89,121,313,30] : [86,120,312,34];
+    const sc2 = c2 || '#ffffff';
+    const hw = Math.round(w / 2);
+    return `
+      <rect x="${lx}" y="${y}" width="${w}" height="18" rx="5" fill="${c}"/>
+      <rect x="${rx}" y="${y}" width="${w}" height="18" rx="5" fill="${c}"/>
+      <rect x="${lx}" y="${y}" width="${hw}" height="9" fill="${sc2}" opacity="0.76"/>
+      <rect x="${lx+hw}" y="${y+9}" width="${hw}" height="9" fill="${sc2}" opacity="0.76"/>
+      <rect x="${rx}" y="${y}" width="${hw}" height="9" fill="${sc2}" opacity="0.76"/>
+      <rect x="${rx+hw}" y="${y+9}" width="${hw}" height="9" fill="${sc2}" opacity="0.76"/>`;
+  },
+};
+
 // ---- HATS ----
 const HATS = {
   beanie: (c) => `
@@ -738,6 +785,61 @@ const WANDS = {
       <polygon points="0,-84 -7,-68 0,-72" fill="#d4c8f0"/>
       <polygon points="0,-84 7,-68 0,-72" fill="#b8a4e0"/>
       <line x1="-3" y1="-68" x2="-3" y2="-16" stroke="#d4c8f0" stroke-width="1" opacity="0.6"/>
+    </g>`,
+  // Socks held in hand (Dobby-style) — cuff at grip, tube up, rounded toe at tip
+  sock_grey: `
+    <g transform="translate(184,258) rotate(38)">
+      <rect x="-7" y="-14" width="14" height="14" rx="4" fill="#888888"/>
+      <line x1="-7" y1="-7" x2="7" y2="-7" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+      <rect x="-6" y="-55" width="12" height="41" rx="4" fill="#cccccc"/>
+      <ellipse cx="0" cy="-59" rx="7" ry="9" fill="#bbbbbb"/>
+    </g>`,
+  sock_brown: `
+    <g transform="translate(184,258) rotate(38)">
+      <rect x="-7" y="-14" width="14" height="14" rx="4" fill="#7a5230"/>
+      <line x1="-7" y1="-7" x2="7" y2="-7" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+      <rect x="-6" y="-55" width="12" height="41" rx="4" fill="#c28840"/>
+      <ellipse cx="0" cy="-59" rx="7" ry="9" fill="#b07838"/>
+    </g>`,
+  sock_gryffindor: `
+    <g transform="translate(184,258) rotate(38)">
+      <rect x="-7" y="-14" width="14" height="14" rx="4" fill="#740001"/>
+      <line x1="-7" y1="-7" x2="7" y2="-7" stroke="#d3a625" stroke-width="1.8"/>
+      <rect x="-6" y="-55" width="12" height="41" rx="4" fill="#740001"/>
+      <rect x="-6" y="-50" width="12" height="4" fill="#d3a625" opacity="0.9"/>
+      <rect x="-6" y="-40" width="12" height="4" fill="#d3a625" opacity="0.9"/>
+      <rect x="-6" y="-30" width="12" height="4" fill="#d3a625" opacity="0.9"/>
+      <ellipse cx="0" cy="-59" rx="7" ry="9" fill="#740001"/>
+    </g>`,
+  sock_slytherin: `
+    <g transform="translate(184,258) rotate(38)">
+      <rect x="-7" y="-14" width="14" height="14" rx="4" fill="#1a472a"/>
+      <line x1="-7" y1="-7" x2="7" y2="-7" stroke="#aaaaaa" stroke-width="1.8"/>
+      <rect x="-6" y="-55" width="12" height="41" rx="4" fill="#1a472a"/>
+      <rect x="-6" y="-50" width="12" height="4" fill="#aaaaaa" opacity="0.9"/>
+      <rect x="-6" y="-40" width="12" height="4" fill="#aaaaaa" opacity="0.9"/>
+      <rect x="-6" y="-30" width="12" height="4" fill="#aaaaaa" opacity="0.9"/>
+      <ellipse cx="0" cy="-59" rx="7" ry="9" fill="#1a472a"/>
+    </g>`,
+  sock_ravenclaw: `
+    <g transform="translate(184,258) rotate(38)">
+      <rect x="-7" y="-14" width="14" height="14" rx="4" fill="#0e1a40"/>
+      <line x1="-7" y1="-7" x2="7" y2="-7" stroke="#aaaaaa" stroke-width="1.8"/>
+      <rect x="-6" y="-55" width="12" height="41" rx="4" fill="#0e1a40"/>
+      <rect x="-6" y="-50" width="12" height="4" fill="#aaaaaa" opacity="0.9"/>
+      <rect x="-6" y="-40" width="12" height="4" fill="#aaaaaa" opacity="0.9"/>
+      <rect x="-6" y="-30" width="12" height="4" fill="#aaaaaa" opacity="0.9"/>
+      <ellipse cx="0" cy="-59" rx="7" ry="9" fill="#0e1a40"/>
+    </g>`,
+  sock_hufflepuff: `
+    <g transform="translate(184,258) rotate(38)">
+      <rect x="-7" y="-14" width="14" height="14" rx="4" fill="#ecb939"/>
+      <line x1="-7" y1="-7" x2="7" y2="-7" stroke="#372e29" stroke-width="1.8"/>
+      <rect x="-6" y="-55" width="12" height="41" rx="4" fill="#ecb939"/>
+      <rect x="-6" y="-50" width="12" height="4" fill="#372e29" opacity="0.9"/>
+      <rect x="-6" y="-40" width="12" height="4" fill="#372e29" opacity="0.9"/>
+      <rect x="-6" y="-30" width="12" height="4" fill="#372e29" opacity="0.9"/>
+      <ellipse cx="0" cy="-59" rx="7" ry="9" fill="#ecb939"/>
     </g>`,
 };
 
@@ -1517,6 +1619,111 @@ const PETS = {
       <line x1="5" y1="16" x2="4" y2="19" stroke="#c8a830" stroke-width="1.2" stroke-linecap="round"/>
       <line x1="7.5" y1="17" x2="7" y2="20" stroke="#c8a830" stroke-width="1.2" stroke-linecap="round"/>
       <line x1="10" y1="16" x2="11" y2="19" stroke="#c8a830" stroke-width="1.2" stroke-linecap="round"/>
+    </g>`;
+  },
+
+  mandragora: (_outfitKey) => {
+    return `<g>
+      <!-- Root tendrils -->
+      <line x1="-8" y1="18" x2="-14" y2="27" stroke="#8b4513" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="-3" y1="21" x2="-6" y2="30" stroke="#8b4513" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="2" y1="22" x2="2" y2="32" stroke="#8b4513" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="7" y1="21" x2="10" y2="30" stroke="#8b4513" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="12" y1="18" x2="18" y2="26" stroke="#8b4513" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Body (carrot-like root) -->
+      <path d="M-10,-6 Q-13,8 -10,20 Q0,26 10,20 Q13,8 10,-6 Z" fill="#c8a46e"/>
+      <path d="M-7,-2 Q-9,8 -7,16" fill="none" stroke="rgba(0,0,0,0.10)" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M6,0 Q7,10 5,17" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1.2" stroke-linecap="round"/>
+      <!-- Head -->
+      <circle cx="0" cy="-14" r="12" fill="#c8a46e"/>
+      <!-- Screaming open mouth -->
+      <ellipse cx="0" cy="-9" rx="6" ry="5" fill="#2a0e00"/>
+      <!-- Distressed eyes -->
+      <ellipse cx="-4.5" cy="-17" rx="3" ry="3.5" fill="white"/>
+      <circle cx="-4.5" cy="-17" r="1.8" fill="#5a3a1a"/>
+      <circle cx="-3.8" cy="-17.8" r="0.6" fill="white"/>
+      <ellipse cx="4.5" cy="-17" rx="3" ry="3.5" fill="white"/>
+      <circle cx="4.5" cy="-17" r="1.8" fill="#5a3a1a"/>
+      <circle cx="5.2" cy="-17.8" r="0.6" fill="white"/>
+      <!-- Furrowed brows -->
+      <path d="M-7.5,-22 Q-4.5,-20 -1.5,-22" fill="none" stroke="#5a3a1a" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M1.5,-22 Q4.5,-20 7.5,-22" fill="none" stroke="#5a3a1a" stroke-width="1.2" stroke-linecap="round"/>
+      <!-- Leaves on head -->
+      <path d="M-1,-24 Q-16,-40 -11,-52 Q-2,-38 0,-26" fill="#2d8a20"/>
+      <path d="M1,-24 Q16,-40 11,-52 Q2,-38 0,-26" fill="#3aaa28"/>
+      <path d="M0,-25 Q-5,-44 0,-54 Q5,-44 0,-25" fill="#4cc035" opacity="0.85"/>
+      <line x1="-6" y1="-30" x2="-10" y2="-46" stroke="rgba(255,255,255,0.28)" stroke-width="0.8"/>
+      <line x1="6" y1="-30" x2="10" y2="-46" stroke="rgba(255,255,255,0.28)" stroke-width="0.8"/>
+    </g>`;
+  },
+
+  acromantula: (_outfitKey) => {
+    return `<g>
+      <!-- 8 legs -->
+      <path d="M-10,-1 Q-22,-4 -28,3" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M-10,1 Q-22,5 -30,14" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M-9,4 Q-20,12 -25,22" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M-7,7 Q-15,17 -18,27" fill="none" stroke="#1a1a1a" stroke-width="1.7" stroke-linecap="round"/>
+      <path d="M10,-1 Q22,-4 28,3" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M10,1 Q22,5 30,14" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M9,4 Q20,12 25,22" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M7,7 Q15,17 18,27" fill="none" stroke="#1a1a1a" stroke-width="1.7" stroke-linecap="round"/>
+      <!-- Abdomen -->
+      <ellipse cx="-8" cy="7" rx="14" ry="12" fill="#2a1a10"/>
+      <ellipse cx="-8" cy="7" rx="9" ry="7" fill="rgba(60,40,20,0.4)"/>
+      <!-- Cephalothorax -->
+      <circle cx="7" cy="-5" r="11" fill="#2a1a10"/>
+      <!-- 6 red eyes -->
+      <circle cx="3" cy="-9" r="2" fill="#e83020" opacity="0.92"/>
+      <circle cx="8" cy="-11" r="2" fill="#e83020" opacity="0.92"/>
+      <circle cx="13" cy="-9" r="2" fill="#e83020" opacity="0.92"/>
+      <circle cx="3" cy="-5" r="1.5" fill="#b02010" opacity="0.8"/>
+      <circle cx="13" cy="-5" r="1.5" fill="#b02010" opacity="0.8"/>
+      <circle cx="8" cy="-4" r="1.5" fill="#b02010" opacity="0.8"/>
+      <circle cx="3.6" cy="-9.6" r="0.6" fill="rgba(255,255,255,0.7)"/>
+      <circle cx="8.6" cy="-11.6" r="0.6" fill="rgba(255,255,255,0.7)"/>
+      <!-- Chelicera fangs -->
+      <path d="M4,-1 Q5,3 4,6" fill="none" stroke="#f0f0f0" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M10,-1 Q9,3 10,6" fill="none" stroke="#f0f0f0" stroke-width="1.6" stroke-linecap="round"/>
+    </g>`;
+  },
+
+  grindylow: (_outfitKey) => {
+    return `<g>
+      <!-- Long webbed fingers -->
+      <path d="M-9,4 Q-17,12 -20,22" fill="none" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M-7,6 Q-13,16 -14,26" fill="none" stroke="#2e7d32" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M9,4 Q17,12 20,22" fill="none" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M7,6 Q13,16 14,26" fill="none" stroke="#2e7d32" stroke-width="1.4" stroke-linecap="round"/>
+      <!-- Body -->
+      <ellipse cx="0" cy="6" rx="10" ry="12" fill="#388e3c"/>
+      <!-- Gill slits -->
+      <path d="M-8,-1 Q-11,3 -8,7" fill="none" stroke="#1b5e20" stroke-width="1.2" opacity="0.85"/>
+      <path d="M-6,-2 Q-9,3 -6,8" fill="none" stroke="#1b5e20" stroke-width="1.0" opacity="0.7"/>
+      <path d="M8,-1 Q11,3 8,7" fill="none" stroke="#1b5e20" stroke-width="1.2" opacity="0.85"/>
+      <path d="M6,-2 Q9,3 6,8" fill="none" stroke="#1b5e20" stroke-width="1.0" opacity="0.7"/>
+      <!-- Head -->
+      <circle cx="0" cy="-10" r="11" fill="#43a047"/>
+      <!-- Horns -->
+      <path d="M-5,-20 Q-8,-29 -4,-22" fill="#2e7d32"/>
+      <path d="M5,-20 Q8,-29 4,-22" fill="#2e7d32"/>
+      <!-- Big yellow-green eyes -->
+      <ellipse cx="-4" cy="-12" rx="3.5" ry="4" fill="#c6ff00"/>
+      <circle cx="-4" cy="-12" r="2" fill="#111"/>
+      <circle cx="-3.3" cy="-12.8" r="0.7" fill="white"/>
+      <ellipse cx="4" cy="-12" rx="3.5" ry="4" fill="#c6ff00"/>
+      <circle cx="4" cy="-12" r="2" fill="#111"/>
+      <circle cx="4.7" cy="-12.8" r="0.7" fill="white"/>
+      <!-- Mouth with teeth -->
+      <path d="M-4,-6 Q0,-4 4,-6" fill="none" stroke="#1b5e20" stroke-width="0.9"/>
+      <line x1="-2" y1="-6" x2="-2" y2="-3" stroke="#d0f5d0" stroke-width="1"/>
+      <line x1="0" y1="-5.5" x2="0" y2="-2.5" stroke="#d0f5d0" stroke-width="1"/>
+      <line x1="2" y1="-6" x2="2" y2="-3" stroke="#d0f5d0" stroke-width="1"/>
+      <!-- Webbed legs -->
+      <line x1="-4" y1="17" x2="-6" y2="25" stroke="#2e7d32" stroke-width="2" stroke-linecap="round"/>
+      <line x1="4" y1="17" x2="6" y2="25" stroke="#2e7d32" stroke-width="2" stroke-linecap="round"/>
+      <path d="M-9,25 Q-6,28 -3,25" fill="#2e7d32" opacity="0.8"/>
+      <path d="M3,25 Q6,28 9,25" fill="#2e7d32" opacity="0.8"/>
     </g>`;
   },
 };
@@ -2637,6 +2844,175 @@ const HAIR = {
       <line x1="150" y1="44" x2="162" y2="40" stroke="rgba(120,90,40,0.3)"  stroke-width="1"/>`,
     groundH: 80,
   },
+
+  private_drive: {
+    label: 'Privet Drive',
+    svgSky: `
+      <!-- Day sky -->
+      <rect x="0" y="0" width="240" height="340" fill="#87ceeb"/>
+      <!-- Clouds -->
+      <ellipse cx="55" cy="28" rx="26" ry="13" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="74" cy="22" rx="18" ry="11" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="175" cy="42" rx="22" ry="11" fill="rgba(255,255,255,0.82)"/>
+      <ellipse cx="194" cy="36" rx="16" ry="9" fill="rgba(255,255,255,0.82)"/>
+      <!-- Roof (dark grey tiles) -->
+      <polygon points="10,132 120,58 230,132" fill="#3a3a3a"/>
+      <line x1="10" y1="132" x2="120" y2="58" stroke="#2a2a2a" stroke-width="1.2"/>
+      <line x1="230" y1="132" x2="120" y2="58" stroke="#2a2a2a" stroke-width="1.2"/>
+      <!-- Chimney -->
+      <rect x="58" y="62" width="18" height="36" rx="2" fill="#b06050"/>
+      <rect x="55" y="60" width="24" height="6" rx="2" fill="#8a4a3a"/>
+      <!-- House facade (red brick) -->
+      <rect x="20" y="130" width="200" height="210" fill="#c0705a"/>
+      <!-- Brick rows hint -->
+      <line x1="20" y1="145" x2="220" y2="145" stroke="rgba(180,120,100,0.2)" stroke-width="0.8"/>
+      <line x1="20" y1="160" x2="220" y2="160" stroke="rgba(180,120,100,0.2)" stroke-width="0.8"/>
+      <line x1="20" y1="175" x2="220" y2="175" stroke="rgba(180,120,100,0.2)" stroke-width="0.8"/>
+      <line x1="20" y1="190" x2="220" y2="190" stroke="rgba(180,120,100,0.2)" stroke-width="0.8"/>
+      <line x1="20" y1="205" x2="220" y2="205" stroke="rgba(180,120,100,0.2)" stroke-width="0.8"/>
+      <!-- Vertical brick breaks -->
+      <line x1="48" y1="130" x2="48" y2="210" stroke="rgba(180,120,100,0.12)" stroke-width="0.6"/>
+      <line x1="76" y1="130" x2="76" y2="210" stroke="rgba(180,120,100,0.12)" stroke-width="0.6"/>
+      <line x1="164" y1="130" x2="164" y2="210" stroke="rgba(180,120,100,0.12)" stroke-width="0.6"/>
+      <line x1="192" y1="130" x2="192" y2="210" stroke="rgba(180,120,100,0.12)" stroke-width="0.6"/>
+      <!-- Upstairs windows -->
+      <rect x="36" y="146" width="44" height="48" rx="3" fill="#c8dff0"/>
+      <rect x="36" y="146" width="44" height="48" rx="3" fill="none" stroke="#8a6a4a" stroke-width="3"/>
+      <line x1="58" y1="146" x2="58" y2="194" stroke="#8a6a4a" stroke-width="2"/>
+      <line x1="36" y1="170" x2="80" y2="170" stroke="#8a6a4a" stroke-width="2"/>
+      <path d="M36,146 Q42,162 38,194" fill="rgba(240,220,200,0.65)"/>
+      <path d="M80,146 Q74,162 78,194" fill="rgba(240,220,200,0.65)"/>
+      <rect x="160" y="146" width="44" height="48" rx="3" fill="#c8dff0"/>
+      <rect x="160" y="146" width="44" height="48" rx="3" fill="none" stroke="#8a6a4a" stroke-width="3"/>
+      <line x1="182" y1="146" x2="182" y2="194" stroke="#8a6a4a" stroke-width="2"/>
+      <line x1="160" y1="170" x2="204" y2="170" stroke="#8a6a4a" stroke-width="2"/>
+      <path d="M160,146 Q170,164 162,194" fill="rgba(240,220,200,0.75)"/>
+      <path d="M204,146 Q194,164 202,194" fill="rgba(240,220,200,0.75)"/>
+      <!-- Front door (black) -->
+      <rect x="96" y="212" width="48" height="68" rx="3" fill="#1a1a1a"/>
+      <rect x="100" y="216" width="18" height="18" rx="2" fill="#282828"/>
+      <rect x="122" y="216" width="18" height="18" rx="2" fill="#282828"/>
+      <rect x="100" y="238" width="18" height="18" rx="2" fill="#282828"/>
+      <rect x="122" y="238" width="18" height="18" rx="2" fill="#282828"/>
+      <circle cx="120" cy="262" r="4" fill="#d4a017"/>
+      <circle cx="120" cy="262" r="2" fill="#b8880c"/>
+      <!-- Ground floor windows -->
+      <rect x="30" y="214" width="54" height="44" rx="3" fill="#c8dff0"/>
+      <rect x="30" y="214" width="54" height="44" rx="3" fill="none" stroke="#8a6a4a" stroke-width="3"/>
+      <line x1="57" y1="214" x2="57" y2="258" stroke="#8a6a4a" stroke-width="2"/>
+      <line x1="30" y1="236" x2="84" y2="236" stroke="#8a6a4a" stroke-width="2"/>
+      <rect x="156" y="214" width="54" height="44" rx="3" fill="#c8dff0"/>
+      <rect x="156" y="214" width="54" height="44" rx="3" fill="none" stroke="#8a6a4a" stroke-width="3"/>
+      <line x1="183" y1="214" x2="183" y2="258" stroke="#8a6a4a" stroke-width="2"/>
+      <line x1="156" y1="236" x2="210" y2="236" stroke="#8a6a4a" stroke-width="2"/>`,
+    svgGround: `
+      <!-- Perfect manicured lawn -->
+      <rect x="0" y="0" width="240" height="80" fill="#5aaa3a"/>
+      <rect x="0" y="0" width="240" height="80" fill="url(#stripe)" opacity="0.18"/>
+      <line x1="0" y1="0" x2="240" y2="0" stroke="rgba(40,100,20,0.15)" stroke-width="20"/>
+      <line x1="0" y1="20" x2="240" y2="20" stroke="rgba(40,100,20,0.12)" stroke-width="18"/>
+      <line x1="0" y1="40" x2="240" y2="40" stroke="rgba(40,100,20,0.10)" stroke-width="18"/>
+      <line x1="0" y1="60" x2="240" y2="60" stroke="rgba(40,100,20,0.12)" stroke-width="18"/>
+      <!-- Front path -->
+      <rect x="96" y="0" width="48" height="32" fill="#c8c0b0"/>
+      <line x1="96" y1="10" x2="144" y2="10" stroke="rgba(150,140,120,0.4)" stroke-width="0.8"/>
+      <line x1="96" y1="20" x2="144" y2="20" stroke="rgba(150,140,120,0.4)" stroke-width="0.8"/>
+      <!-- Flower beds -->
+      <rect x="18" y="0" width="74" height="16" rx="0" fill="#6a3010"/>
+      <circle cx="30" cy="7" r="5" fill="#e94560"/><line x1="30" y1="0" x2="30" y2="14" stroke="#4a7a2a" stroke-width="1.5"/>
+      <circle cx="44" cy="7" r="5" fill="#ff8c00"/><line x1="44" y1="0" x2="44" y2="14" stroke="#4a7a2a" stroke-width="1.5"/>
+      <circle cx="58" cy="7" r="5" fill="#ffd700"/><line x1="58" y1="0" x2="58" y2="14" stroke="#4a7a2a" stroke-width="1.5"/>
+      <circle cx="72" cy="7" r="5" fill="#ff69b4"/><line x1="72" y1="0" x2="72" y2="14" stroke="#4a7a2a" stroke-width="1.5"/>
+      <circle cx="84" cy="7" r="4" fill="#cc4488"/><line x1="84" y1="0" x2="84" y2="14" stroke="#4a7a2a" stroke-width="1.5"/>
+      <rect x="148" y="0" width="74" height="16" rx="0" fill="#6a3010"/>
+      <circle cx="160" cy="7" r="5" fill="#ff69b4"/><line x1="160" y1="0" x2="160" y2="14" stroke="#4a7a2a" stroke-width="1.5"/>
+      <circle cx="174" cy="7" r="5" fill="#e94560"/><line x1="174" y1="0" x2="174" y2="14" stroke="#4a7a2a" stroke-width="1.5"/>
+      <circle cx="188" cy="7" r="5" fill="#ffd700"/><line x1="188" y1="0" x2="188" y2="14" stroke="#4a7a2a" stroke-width="1.5"/>
+      <circle cx="202" cy="7" r="5" fill="#ff8c00"/><line x1="202" y1="0" x2="202" y2="14" stroke="#4a7a2a" stroke-width="1.5"/>
+      <circle cx="214" cy="7" r="4" fill="#e94560"/><line x1="214" y1="0" x2="214" y2="14" stroke="#4a7a2a" stroke-width="1.5"/>`,
+    groundH: 80,
+  },
+
+  madriguera: {
+    label: 'La Madriguera',
+    svgSky: `
+      <!-- Warm sunset sky -->
+      <rect x="0" y="0" width="240" height="340" fill="#e8904a"/>
+      <rect x="0" y="0" width="240" height="120" fill="rgba(220,140,60,0.5)"/>
+      <rect x="0" y="200" width="240" height="140" fill="rgba(100,60,20,0.3)"/>
+      <!-- Sun low on horizon -->
+      <circle cx="190" cy="180" r="22" fill="rgba(255,230,80,0.7)"/>
+      <circle cx="190" cy="180" r="16" fill="rgba(255,220,60,0.9)"/>
+      <!-- Clouds (warm-tinted) -->
+      <ellipse cx="50" cy="60" rx="30" ry="14" fill="rgba(255,200,150,0.6)"/>
+      <ellipse cx="70" cy="54" rx="22" ry="12" fill="rgba(255,200,150,0.55)"/>
+      <ellipse cx="160" cy="80" rx="26" ry="12" fill="rgba(255,180,120,0.5)"/>
+      <!-- The Burrow — tall crooked house -->
+      <!-- Foundation / ground floor (widest) -->
+      <rect x="60" y="240" width="80" height="100" rx="2" fill="#c8aa6e"/>
+      <!-- 2nd floor (slightly narrower, offset) -->
+      <rect x="66" y="196" width="68" height="50" rx="2" fill="#d4b878" transform="rotate(-1,100,220)"/>
+      <!-- 3rd floor -->
+      <rect x="72" y="156" width="58" height="44" rx="2" fill="#c8aa6e" transform="rotate(1.5,101,178)"/>
+      <!-- 4th floor (narrow) -->
+      <rect x="78" y="124" width="46" height="36" rx="2" fill="#d4b878" transform="rotate(-2,101,142)"/>
+      <!-- Roof (pointy, uneven) -->
+      <polygon points="70,126 101,94 134,128" fill="#5a3a1a"/>
+      <!-- Chimney (wonky) -->
+      <rect x="105" y="88" width="14" height="30" rx="2" fill="#b06040" transform="rotate(4,112,103)"/>
+      <rect x="103" y="86" width="18" height="5" rx="1" fill="#8a4a30" transform="rotate(4,112,89)"/>
+      <!-- Smoke -->
+      <circle cx="116" cy="80" r="5" fill="rgba(200,180,160,0.4)"/>
+      <circle cx="120" cy="72" r="4" fill="rgba(200,180,160,0.3)"/>
+      <circle cx="118" cy="64" r="3" fill="rgba(200,180,160,0.2)"/>
+      <!-- Windows on each floor -->
+      <rect x="68" y="252" width="20" height="20" rx="2" fill="#f5e8c8"/>
+      <rect x="68" y="252" width="20" height="20" rx="2" fill="none" stroke="#7a5a2a" stroke-width="2"/>
+      <line x1="78" y1="252" x2="78" y2="272" stroke="#7a5a2a" stroke-width="1.5"/>
+      <line x1="68" y1="262" x2="88" y2="262" stroke="#7a5a2a" stroke-width="1.5"/>
+      <rect x="112" y="252" width="20" height="20" rx="2" fill="#f5e8c8"/>
+      <rect x="112" y="252" width="20" height="20" rx="2" fill="none" stroke="#7a5a2a" stroke-width="2"/>
+      <line x1="122" y1="252" x2="122" y2="272" stroke="#7a5a2a" stroke-width="1.5"/>
+      <line x1="112" y1="262" x2="132" y2="262" stroke="#7a5a2a" stroke-width="1.5"/>
+      <!-- Front door (arched, old wood) -->
+      <path d="M90,340 L90,278 Q100,266 110,278 L110,340" fill="#7a5a2a"/>
+      <circle cx="107" cy="295" r="3" fill="#c8a020"/>
+      <!-- 2nd floor window -->
+      <rect x="74" y="207" width="18" height="18" rx="2" fill="#f5e8c8"/>
+      <rect x="74" y="207" width="18" height="18" rx="2" fill="none" stroke="#7a5a2a" stroke-width="2"/>
+      <rect x="104" y="207" width="18" height="18" rx="2" fill="#ffe8a0"/>
+      <rect x="104" y="207" width="18" height="18" rx="2" fill="none" stroke="#7a5a2a" stroke-width="2"/>
+      <!-- 3rd floor window -->
+      <rect x="80" y="168" width="16" height="16" rx="2" fill="#f5e8c8"/>
+      <rect x="80" y="168" width="16" height="16" rx="2" fill="none" stroke="#7a5a2a" stroke-width="2"/>
+      <!-- Enchanted washing line -->
+      <line x1="20" y1="200" x2="60" y2="210" stroke="#8a7050" stroke-width="1.2"/>
+      <rect x="22" y="192" width="8" height="14" rx="1" fill="#e94560" opacity="0.85"/>
+      <rect x="32" y="194" width="8" height="12" rx="1" fill="#3a7bd5" opacity="0.85"/>
+      <rect x="42" y="196" width="7" height="10" rx="1" fill="#ffd700" opacity="0.85"/>
+      <rect x="50" y="198" width="8" height="11" rx="1" fill="#2e7d32" opacity="0.85"/>`,
+    svgGround: `
+      <!-- Countryside grass -->
+      <rect x="0" y="0" width="240" height="80" fill="#5a8a30"/>
+      <!-- Hill bumps -->
+      <ellipse cx="40" cy="0" rx="60" ry="20" fill="rgba(70,110,40,0.4)"/>
+      <ellipse cx="200" cy="0" rx="50" ry="16" fill="rgba(70,110,40,0.35)"/>
+      <!-- Garden gnome hint -->
+      <ellipse cx="30" cy="32" rx="8" ry="10" fill="#c84820"/>
+      <circle cx="30" cy="20" r="6" fill="#f5c5a3"/>
+      <rect x="26" y="8" width="8" height="12" rx="3" fill="#e63030"/>
+      <!-- Magical items on ground -->
+      <circle cx="190" cy="38" r="4" fill="#ffd700" opacity="0.7"/>
+      <circle cx="196" cy="42" r="3" fill="#e94560" opacity="0.6"/>
+      <!-- Wildflowers -->
+      <circle cx="155" cy="28" r="3" fill="#e94560"/>
+      <circle cx="162" cy="22" r="3" fill="#ffd700"/>
+      <circle cx="170" cy="30" r="3" fill="#ff69b4"/>
+      <line x1="155" y1="28" x2="155" y2="42" stroke="#4a7a2a" stroke-width="1.2"/>
+      <line x1="162" y1="22" x2="162" y2="38" stroke="#4a7a2a" stroke-width="1.2"/>
+      <line x1="170" y1="30" x2="170" y2="44" stroke="#4a7a2a" stroke-width="1.2"/>`,
+    groundH: 80,
+  },
 };
 
 function darken(hex, amount) {
@@ -2682,6 +3058,7 @@ const CATEGORY_YOFFSET_MAP = {
   lefthand: 'lefthandYOffset',
   broom:   'broomYOffset',
   tattoo:  'tattooYOffset',
+  sock:    'sockYOffset',
 };
 
 // X-offset field map (horizontal repositioning — only for categories that support it)
@@ -2708,6 +3085,7 @@ const CATEGORY_SCALE_MAP = {
     broom:   'broomScale',
     tattoo:  'tattooScale',
     pet:     'petScale',
+    sock:    'sockScale',
   };
 
 // SVG origin point for each category's scale transform
@@ -2730,6 +3108,7 @@ const CATEGORY_SCALE_ORIGIN = {
     broom:   [120, 288],
     tattoo:  [120, 145],
     pet:     [170, 308],
+    sock:    [120, 323],
   };
 
 // Rotation field map (only for categories that support rotation)
@@ -2759,6 +3138,8 @@ const SCENE_BG = {
   hagrid_hut:       '#3a4a30',
   leaky_cauldron:   '#1e1508',
   potions_class:    '#0a080f',
+  private_drive:    '#d4e8d4',
+  madriguera:       '#87CEEB',
 };
 
 /* ---------- DOLL POSITION ---------- */
@@ -2912,7 +3293,7 @@ function defaultDoll(idx) {
     mouth: 'smile',
     top: null, topColor: '#e94560',
     bottom: null, bottomColor: '#3a7bd5',
-    shoes: null, shoesColor: '#444444',
+    shoes: null, shoesColor: '#444444', sock: null, sockColor: '#ffffff', sockColor2: '#cccccc',
     hat: null, hatColor: '#7c3aed',
     cape: null, capeColor: '#1e1e1e',
     glasses: null, glassesColor: '#222222',
@@ -2932,12 +3313,12 @@ function defaultDoll(idx) {
     eyesScale: 0, browsScale: 0, noseScale: 0, mouthScale: 0, cheeksScale: 0,
     hairScale: 0, topScale: 0,   bottomScale: 0, shoesScale: 0,
     hatScale: 0,  capeScale: 0,  glassesScale: 0, beltScale: 0,
-    wandScale: 0, lefthandScale: 0, broomScale: 0, tattooScale: 0,
+    wandScale: 0, lefthandScale: 0, broomScale: 0, tattooScale: 0, sockScale: 0,
     // yOffset fields: -15..+15 (0 = normal position, in SVG px)
     eyesYOffset: 0, browsYOffset: 0, noseYOffset: 0, mouthYOffset: 0, cheeksYOffset: 0,
     hairYOffset: 0, topYOffset: 0,   bottomYOffset: 0, shoesYOffset: 0,
     hatYOffset: 0,  capeYOffset: 0,  glassesYOffset: 0, beltYOffset: 0,
-    wandYOffset: 0, lefthandYOffset: 0, broomYOffset: 0, tattooYOffset: 0,
+    wandYOffset: 0, lefthandYOffset: 0, broomYOffset: 0, tattooYOffset: 0, sockYOffset: 0,
     // xOffset fields (horizontal repositioning)
     tattooXOffset: 0,
     // rotate fields (degrees, 0 = default angle)
@@ -3050,6 +3431,23 @@ if (collection[0] && collection[0].bgScene && !sceneState.bgScene) {
 let activeSlot = 0;
 let doll = collection[activeSlot];
 
+/* ---------- ELF DIRT OVERLAY ---------- */
+function elfDirtOverlay() {
+  // Irregular brown/ochre stain blobs at varying opacities — pure visual overlay
+  return `
+    <ellipse cx="118" cy="230" rx="18" ry="12" fill="#6b3a10" opacity="0.18"/>
+    <ellipse cx="145" cy="255" rx="10" ry="7"  fill="#7a4010" opacity="0.22"/>
+    <ellipse cx="100" cy="268" rx="12" ry="8"  fill="#5a2e08" opacity="0.16"/>
+    <ellipse cx="128" cy="210" rx="8"  ry="5"  fill="#7a4010" opacity="0.20"/>
+    <ellipse cx="112" cy="295" rx="14" ry="9"  fill="#6b3a10" opacity="0.17"/>
+    <ellipse cx="140" cy="285" rx="8"  ry="6"  fill="#5a2e08" opacity="0.21"/>
+    <ellipse cx="96"  cy="248" rx="7"  ry="5"  fill="#7a4010" opacity="0.14"/>
+    <ellipse cx="122" cy="320" rx="10" ry="6"  fill="#6b3a10" opacity="0.18"/>
+    <ellipse cx="108" cy="185" rx="6"  ry="4"  fill="#5a2e08" opacity="0.13"/>
+    <ellipse cx="135" cy="175" rx="5"  ry="3"  fill="#7a4010" opacity="0.15"/>
+  `;
+}
+
 /* ---------- RENDER DOLL ---------- */
 function renderDoll(container, d) {
   const sc = (cat, svg) => {
@@ -3098,11 +3496,13 @@ function renderDoll(container, d) {
   // tattoo: above skin, below all clothing and accessories
   if (d.tattoo)  parts.push(tattooLayer((TATTOOS[d.tattoo] || (() => ''))(d.tattooColor || '#1a1a2e')));
   if (d.bottom)  parts.push(layer('bottom',  (BOTTOMS[d.bottom] || (() => ''))(d.bottomColor, d.gender), false));
+  if (d.sock)    parts.push(layer('sock',    (SOCKS[d.sock]    || (() => ''))(d.sockColor || '#ffffff', d.sockColor2 || '#cccccc', d.gender), false));
   // broom_front renders in front of bottom/legs but behind belt/top
   if (d.broom)   parts.push(broomLayer((BROOMS[d.broom] || {}).front || ''));
   if (d.belt)    parts.push(layer('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor), false));
   if (d.top)     parts.push(layer('top',     (TOPS[d.top]     || (() => ''))(d.topColor, d.gender), false));
   if (d.shoes)   parts.push(layer('shoes',   (SHOES[d.shoes]  || (() => ''))(d.shoesColor), false));
+  if (d.bodyShape === 'elf') parts.push(elfDirtOverlay());
   if (d.cape)    parts.push(layer('cape',    (CAPES[d.cape]   || (() => ''))(d.capeColor), false));
   if (d.hat)     parts.push(layer('hat',     (HATS[d.hat]     || (() => ''))(d.hatColor), true));
   if (d.glasses) parts.push(layer('glasses', (GLASSES[d.glasses] || (() => ''))(d.glassesColor), false));
@@ -3164,6 +3564,7 @@ const CATEGORY_FIELD_MAP = {
   broom: 'broom',
   tattoo: 'tattoo',
   pet: 'pet',
+  sock: 'sock',
 };
 
 function updateEquipped() {
@@ -3539,6 +3940,13 @@ function buildPanel() {
           items: Object.keys(SHOES).map(k => ({ value: k, label: k })),
         },
         {
+          label: 'Calcetines', cat: 'sock',
+          colorField: 'sockColor', colorFieldLabel: 'Color 1',
+          colorField2: 'sockColor2', colorField2Label: 'Color 2',
+          scaleField: 'sockScale', yOffsetField: 'sockYOffset',
+          items: Object.keys(SOCKS).map(k => ({ value: k, label: k === 'plain' ? 'Lisos' : k === 'striped' ? 'Rayas' : 'Cuadros' })),
+        },
+        {
           label: 'Cinturón', cat: 'belt', colorField: 'beltColor', scaleField: 'beltScale', yOffsetField: 'beltYOffset',
           items: Object.keys(BELTS).map(k => ({ value: k, label: k })),
         },
@@ -3752,9 +4160,12 @@ function buildPanel() {
           { key: 'phoenix', emoji: '🔥', label: 'Fénix' },
           { key: 'dragon',  emoji: '🐲', label: 'Dragón' },
           { key: 'pixie',    emoji: '✨', label: 'Pixie' },
-          { key: 'botruc',   emoji: '🌿', label: 'Botruc' },
-          { key: 'thestral', emoji: '🦇', label: 'Thestral' },
-          { key: 'hipogrifo',emoji: '🦅', label: 'Hipogrifo' },
+          { key: 'botruc',      emoji: '🌿', label: 'Botruc' },
+          { key: 'thestral',    emoji: '🦇', label: 'Thestral' },
+          { key: 'hipogrifo',   emoji: '🦅', label: 'Hipogrifo' },
+          { key: 'mandragora',  emoji: '🌱', label: 'Mandrágora' },
+          { key: 'acromantula', emoji: '🕷️', label: 'Acromántula' },
+          { key: 'grindylow',   emoji: '🌊', label: 'Grindylow' },
         ];
         const petGrid = document.createElement('div');
         petGrid.className = 'item-grid pet-type-grid';
@@ -4407,9 +4818,12 @@ const AudioManager = {
       case 'phoenix': this.synthPhoenix(); break;
       case 'dragon':  this.synthDragon();  break;
       case 'pixie':    this.synthPixie();    break;
-      case 'botruc':   this.synthBotruc();   break;
-      case 'thestral': this.synthThestral(); break;
-      case 'hipogrifo':this.synthHipogrifo();break;
+      case 'botruc':      this.synthBotruc();      break;
+      case 'thestral':    this.synthThestral();    break;
+      case 'hipogrifo':   this.synthHipogrifo();   break;
+      case 'mandragora':  this.synthMandragora();  break;
+      case 'acromantula': this.synthAcromantula(); break;
+      case 'grindylow':   this.synthGrindylow();   break;
     }
   },
 
@@ -4790,6 +5204,81 @@ const AudioManager = {
     lfog.connect(osc2.frequency);
     lfo.start(ctx.currentTime + 0.44);
     lfo.stop(ctx.currentTime + 0.9);
+  },
+
+  synthMandragora() {
+    // Screaming plant: sharp ascending shriek
+    const ctx = this.ctx;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(400, ctx.currentTime);
+    osc.frequency.linearRampToValueAtTime(2800, ctx.currentTime + 0.12);
+    osc.frequency.linearRampToValueAtTime(1800, ctx.currentTime + 0.28);
+    osc.frequency.linearRampToValueAtTime(3200, ctx.currentTime + 0.4);
+    gain.gain.setValueAtTime(0.35, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.value = 2200;
+    filter.Q.value = 2.5;
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.sfxGain);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.55);
+  },
+
+  synthAcromantula() {
+    // Spider: rapid dry clicking bursts
+    const ctx = this.ctx;
+    for (let i = 0; i < 6; i++) {
+      const bufSize = ctx.sampleRate * 0.03;
+      const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let j = 0; j < bufSize; j++) data[j] = (Math.random() * 2 - 1) * (1 - j / bufSize);
+      const src = ctx.createBufferSource();
+      src.buffer = buf;
+      const gain = ctx.createGain();
+      gain.gain.value = 0.28;
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'highpass';
+      filter.frequency.value = 3500;
+      src.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.sfxGain);
+      src.start(ctx.currentTime + i * 0.07);
+    }
+  },
+
+  synthGrindylow() {
+    // Underwater gurgling: sine with rapid tremolo + low filter
+    const ctx = this.ctx;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(220, ctx.currentTime);
+    osc.frequency.linearRampToValueAtTime(340, ctx.currentTime + 0.3);
+    osc.frequency.linearRampToValueAtTime(180, ctx.currentTime + 0.6);
+    gain.gain.setValueAtTime(0.28, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.75);
+    const lfo = ctx.createOscillator();
+    const lfog = ctx.createGain();
+    lfo.frequency.value = 22;
+    lfog.gain.value = 0.22;
+    lfo.connect(lfog);
+    lfog.connect(gain.gain);
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 600;
+    filter.Q.value = 3;
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.sfxGain);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.8);
+    lfo.start(ctx.currentTime);
+    lfo.stop(ctx.currentTime + 0.8);
   },
 
   // Hedwig's Theme: B4 E5 G5 F#5 E5 B5 A5 F#5 E5 G5 F#5 D#5 F5 B4

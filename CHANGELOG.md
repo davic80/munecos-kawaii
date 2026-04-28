@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.8.0] - 2026-04-28
+
+### Added
+- **Elfo doméstico — arrugas kawaii**: la forma de cuerpo elfo ahora incluye 10 trazos suaves (frente, mejillas, nariz, cuello, hombros, codos) para un aspecto arrugado pero adorable.
+- **Elfo doméstico — manchas de suciedad**: al equipar la forma elfo se superponen manchas marrón/ocre translúcidas sobre la ropa (grasa y suciedad, opacidades 0.13–0.22) mediante `elfDirtOverlay()`.
+- **Calcetines (Ropa)**: nueva subcategoría con 3 estilos — Lisos, Rayas, Cuadros — con 2 selectores de color independientes, escala y desplazamiento vertical, compatible con todos los muñecos y géneros.
+- **Calcetines en la mano (Varitas)**: 6 variantes de calcetín sostentables como varita — gris, marrón, Gryffindor, Slytherin, Ravenclaw, Hufflepuff — con los colores característicos de cada casa.
+- **Mandrágora** 🌱: criatura con raíz gruesa, hojas dentadas y cara kawaii asustada. Sonido: chillido agudo ascendente (sawtooth + bandpass, 400→3200 Hz).
+- **Acromántula** 🕷️: araña gigante de 8 patas articuladas, colmillos y ojos múltiples rojizos. Sonido: chasquidos rápidos secos (6 ráfagas de ruido filtrado en highpass).
+- **Grindylow** 🌊: criatura acuática verde con tentáculos, aletas y ojos amarillos. Sonido: gorgoteo acuático (sine con tremolo rápido + lowpass a 600 Hz).
+- **Escena: Privet Drive**: calle suburbana inglesa con aceras, casas adosadas, jardín, árbol y cielo azul claro.
+- **Escena: La Madriguera**: campo inglés con la torre torcida de los Weasley, chimenea, huerto, lago y cielo de tarde.
+
+---
+
 ## [2.7.0] - 2026-04-28
 
 ### Added
