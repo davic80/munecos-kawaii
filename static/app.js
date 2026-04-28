@@ -3486,20 +3486,38 @@ let activeSlot = 0;
 let doll = collection[activeSlot];
 
 /* ---------- ELF DIRT OVERLAY ---------- */
-function elfDirtOverlay() {
-  // Irregular brown/ochre stain blobs at varying opacities — pure visual overlay
-  return `
-    <ellipse cx="118" cy="230" rx="18" ry="12" fill="#6b3a10" opacity="0.18"/>
-    <ellipse cx="145" cy="255" rx="10" ry="7"  fill="#7a4010" opacity="0.22"/>
-    <ellipse cx="100" cy="268" rx="12" ry="8"  fill="#5a2e08" opacity="0.16"/>
-    <ellipse cx="128" cy="210" rx="8"  ry="5"  fill="#7a4010" opacity="0.20"/>
-    <ellipse cx="112" cy="295" rx="14" ry="9"  fill="#6b3a10" opacity="0.17"/>
-    <ellipse cx="140" cy="285" rx="8"  ry="6"  fill="#5a2e08" opacity="0.21"/>
-    <ellipse cx="96"  cy="248" rx="7"  ry="5"  fill="#7a4010" opacity="0.14"/>
-    <ellipse cx="122" cy="320" rx="10" ry="6"  fill="#6b3a10" opacity="0.18"/>
-    <ellipse cx="108" cy="185" rx="6"  ry="4"  fill="#5a2e08" opacity="0.13"/>
-    <ellipse cx="135" cy="175" rx="5"  ry="3"  fill="#7a4010" opacity="0.15"/>
-  `;
+function elfDirtOverlay(d) {
+  // Stain blobs only over equipped clothing — never on bare skin
+  const s = [];
+  if (d.top || d.hoodie || d.vest) {
+    // Torso / top area  y≈200-286
+    s.push(`<ellipse cx="118" cy="225" rx="16" ry="10" fill="#6b3a10" opacity="0.18"/>`);
+    s.push(`<ellipse cx="143" cy="248" rx="9"  ry="6"  fill="#7a4010" opacity="0.21"/>`);
+    s.push(`<ellipse cx="99"  cy="242" rx="10" ry="7"  fill="#5a2e08" opacity="0.16"/>`);
+    s.push(`<ellipse cx="130" cy="208" rx="7"  ry="4"  fill="#7a4010" opacity="0.19"/>`);
+  }
+  if (d.belt) {
+    // Belt area y≈268-284
+    s.push(`<ellipse cx="110" cy="276" rx="8"  ry="4"  fill="#5a2e08" opacity="0.14"/>`);
+    s.push(`<ellipse cx="134" cy="273" rx="6"  ry="3"  fill="#6b3a10" opacity="0.16"/>`);
+  }
+  if (d.bottom) {
+    // Pants / skirt area  y≈282-338
+    s.push(`<ellipse cx="100" cy="300" rx="13" ry="8"  fill="#6b3a10" opacity="0.17"/>`);
+    s.push(`<ellipse cx="138" cy="292" rx="8"  ry="6"  fill="#5a2e08" opacity="0.20"/>`);
+    s.push(`<ellipse cx="120" cy="318" rx="11" ry="7"  fill="#6b3a10" opacity="0.16"/>`);
+  }
+  if (d.shoes) {
+    // Shoe area  y≈316-338
+    s.push(`<ellipse cx="97"  cy="331" rx="9"  ry="5"  fill="#7a4010" opacity="0.14"/>`);
+    s.push(`<ellipse cx="139" cy="331" rx="9"  ry="5"  fill="#5a2e08" opacity="0.15"/>`);
+  }
+  if (d.cape) {
+    // Cape sides
+    s.push(`<ellipse cx="68"  cy="252" rx="7"  ry="5"  fill="#6b3a10" opacity="0.13"/>`);
+    s.push(`<ellipse cx="172" cy="260" rx="7"  ry="5"  fill="#5a2e08" opacity="0.13"/>`);
+  }
+  return s.join('\n');
 }
 
 /* ---------- RENDER DOLL ---------- */
@@ -3556,7 +3574,7 @@ function renderDoll(container, d) {
   if (d.belt)    parts.push(layer('belt',    (BELTS[d.belt]   || (() => ''))(d.beltColor), false));
   if (d.top)     parts.push(layer('top',     (TOPS[d.top]     || (() => ''))(d.topColor, d.gender), false));
   if (d.shoes)   parts.push(layer('shoes',   (SHOES[d.shoes]  || (() => ''))(d.shoesColor), false));
-  if (d.bodyShape === 'elf') parts.push(elfDirtOverlay());
+  if (d.bodyShape === 'elf') { const dirt = elfDirtOverlay(d); if (dirt) parts.push(dirt); }
   if (d.cape)    parts.push(layer('cape',    (CAPES[d.cape]   || (() => ''))(d.capeColor), false));
   if (d.hat)     parts.push(layer('hat',     (HATS[d.hat]     || (() => ''))(d.hatColor), true));
   if (d.glasses) parts.push(layer('glasses', (GLASSES[d.glasses] || (() => ''))(d.glassesColor), false));
