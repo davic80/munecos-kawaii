@@ -3487,36 +3487,78 @@ let doll = collection[activeSlot];
 
 /* ---------- ELF DIRT OVERLAY ---------- */
 function elfDirtOverlay(d) {
-  // Stain blobs only over equipped clothing — never on bare skin
+  // Irregular stain blobs only over equipped clothing — never on bare skin.
+  // Each stain is a rotated/skewed ellipse cluster for an organic, non-uniform look.
   const s = [];
-  if (d.top || d.hoodie || d.vest) {
-    // Torso / top area  y≈200-286
-    s.push(`<ellipse cx="118" cy="225" rx="16" ry="10" fill="#6b3a10" opacity="0.18"/>`);
-    s.push(`<ellipse cx="143" cy="248" rx="9"  ry="6"  fill="#7a4010" opacity="0.21"/>`);
-    s.push(`<ellipse cx="99"  cy="242" rx="10" ry="7"  fill="#5a2e08" opacity="0.16"/>`);
-    s.push(`<ellipse cx="130" cy="208" rx="7"  ry="4"  fill="#7a4010" opacity="0.19"/>`);
+
+  // Helper: irregular stain = overlapping ellipses with slight rotation offsets
+  const stain = (cx, cy, rx, ry, rot, fill, op) =>
+    `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${fill}" opacity="${op}" transform="rotate(${rot},${cx},${cy})"/>`;
+
+  if (d.top) {
+    // Large grease splatter, chest-centre
+    s.push(stain(117, 222, 19, 11, 12,  '#6b3a10', 0.26));
+    s.push(stain(121, 218,  9,  6, -8,  '#3d1a04', 0.20));
+    // Oil drip right side
+    s.push(stain(144, 244, 11,  7, 18,  '#7a4010', 0.28));
+    s.push(stain(147, 252,  5,  9, 5,   '#4a2008', 0.22));
+    // Smear upper left
+    s.push(stain(98,  238, 13,  7, -15, '#5a2e08', 0.24));
+    s.push(stain(93,  234,  5,  4, 20,  '#7a4010', 0.18));
+    // Small specks
+    s.push(stain(129, 208,  7,  4, 30,  '#6b3a10', 0.30));
+    s.push(stain(133, 262,  6,  3, -10, '#3d1a04', 0.25));
+    s.push(stain(108, 256,  8,  5, 8,   '#7a4010', 0.19));
+    s.push(stain(152, 230,  5,  3, -20, '#5a2e08', 0.22));
   }
+
   if (d.belt) {
-    // Belt area y≈268-284
-    s.push(`<ellipse cx="110" cy="276" rx="8"  ry="4"  fill="#5a2e08" opacity="0.14"/>`);
-    s.push(`<ellipse cx="134" cy="273" rx="6"  ry="3"  fill="#6b3a10" opacity="0.16"/>`);
+    s.push(stain(109, 275, 10,  4,  5,  '#5a2e08', 0.27));
+    s.push(stain(106, 278,  4,  3, -12, '#3d1a04', 0.22));
+    s.push(stain(135, 272,  8,  4, -8,  '#6b3a10', 0.28));
+    s.push(stain(140, 276,  4,  2, 15,  '#7a4010', 0.20));
   }
+
   if (d.bottom) {
-    // Pants / skirt area  y≈282-338
-    s.push(`<ellipse cx="100" cy="300" rx="13" ry="8"  fill="#6b3a10" opacity="0.17"/>`);
-    s.push(`<ellipse cx="138" cy="292" rx="8"  ry="6"  fill="#5a2e08" opacity="0.20"/>`);
-    s.push(`<ellipse cx="120" cy="318" rx="11" ry="7"  fill="#6b3a10" opacity="0.16"/>`);
+    // Left leg blotch
+    s.push(stain(97,  298, 15,  9, -12, '#6b3a10', 0.25));
+    s.push(stain(92,  302,  6,  5, 20,  '#3d1a04', 0.22));
+    // Right leg smear
+    s.push(stain(139, 290, 10,  7,  10, '#5a2e08', 0.28));
+    s.push(stain(145, 296,  5,  4, -5,  '#7a4010', 0.24));
+    // Knee area drips
+    s.push(stain(108, 315,  5, 10,  3,  '#6b3a10', 0.26));
+    s.push(stain(112, 322,  4,  6, -8,  '#4a2008', 0.20));
+    s.push(stain(131, 312, 13,  7, 15,  '#5a2e08', 0.22));
+    s.push(stain(136, 325,  6,  4, -15, '#7a4010', 0.25));
+    // Lower specks
+    s.push(stain(120, 306,  4,  3, 25,  '#3d1a04', 0.19));
+    s.push(stain(100, 330,  7,  4,  8,  '#6b3a10', 0.21));
   }
+
   if (d.shoes) {
-    // Shoe area  y≈316-338
-    s.push(`<ellipse cx="97"  cy="331" rx="9"  ry="5"  fill="#7a4010" opacity="0.14"/>`);
-    s.push(`<ellipse cx="139" cy="331" rx="9"  ry="5"  fill="#5a2e08" opacity="0.15"/>`);
+    s.push(stain(96,  330, 11,  5, -10, '#7a4010', 0.30));
+    s.push(stain(91,  333,  5,  3,  18, '#3d1a04', 0.24));
+    s.push(stain(140, 330, 11,  5,  12, '#5a2e08', 0.29));
+    s.push(stain(145, 334,  5,  3, -15, '#4a2008', 0.22));
   }
+
   if (d.cape) {
-    // Cape sides
-    s.push(`<ellipse cx="68"  cy="252" rx="7"  ry="5"  fill="#6b3a10" opacity="0.13"/>`);
-    s.push(`<ellipse cx="172" cy="260" rx="7"  ry="5"  fill="#5a2e08" opacity="0.13"/>`);
+    s.push(stain(66,  248, 10,  6, -20, '#6b3a10', 0.22));
+    s.push(stain(61,  254,  5,  4,  10, '#3d1a04', 0.18));
+    s.push(stain(174, 256, 10,  6,  18, '#5a2e08', 0.22));
+    s.push(stain(178, 264,  4,  3, -12, '#7a4010', 0.19));
   }
+
+  if (d.scarf || d.scarf2) {
+    // Scarf drapes across y≈180-236 on both sides
+    s.push(stain(102, 190,  8,  4, -18, '#6b3a10', 0.28));
+    s.push(stain(97,  194,  4,  3,  10, '#3d1a04', 0.22));
+    s.push(stain(84,  214,  9,  5,  15, '#5a2e08', 0.25));
+    s.push(stain(139, 196,  7,  4, -10, '#7a4010', 0.26));
+    s.push(stain(152, 210,  5,  3,  20, '#4a2008', 0.20));
+  }
+
   return s.join('\n');
 }
 
