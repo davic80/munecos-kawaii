@@ -3550,13 +3550,25 @@ function elfDirtOverlay(d) {
     s.push(stain(178, 264,  4,  3, -12, '#7a4010', 0.19));
   }
 
-  if (d.scarf || d.scarf2) {
-    // Scarf drapes across y≈180-236 on both sides
-    s.push(stain(102, 190,  8,  4, -18, '#6b3a10', 0.28));
-    s.push(stain(97,  194,  4,  3,  10, '#3d1a04', 0.22));
-    s.push(stain(84,  214,  9,  5,  15, '#5a2e08', 0.25));
-    s.push(stain(139, 196,  7,  4, -10, '#7a4010', 0.26));
-    s.push(stain(152, 210,  5,  3,  20, '#4a2008', 0.20));
+  if (d.scarf) {
+    // HP scarf neck band: x=92-148, y=181-195
+    s.push(stain(100, 184,  8,  4,  -8, '#6b3a10', 0.28));
+    s.push(stain(96,  188,  4,  3,  10, '#3d1a04', 0.22));
+    s.push(stain(136, 183,  7,  4, -12, '#7a4010', 0.26));
+    s.push(stain(121, 187,  5,  3,  15, '#5a2e08', 0.20));
+    // Left hanging tail: x=93-109, y=194-235
+    s.push(stain(100, 200,  7,  4, -10, '#6b3a10', 0.25));
+    s.push(stain(97,  206,  4,  3,  18, '#3d1a04', 0.22));
+    s.push(stain(104, 216,  6,  4,  -5, '#5a2e08', 0.28));
+    s.push(stain(99,  223,  4,  3,  12, '#7a4010', 0.20));
+    s.push(stain(105, 231,  5,  3, -15, '#4a2008', 0.24));
+  }
+  if (d.scarf2) {
+    // Free scarf neck band only: x=89-151, y=179-195
+    s.push(stain(105, 182,  9,  4,  12, '#6b3a10', 0.26));
+    s.push(stain(101, 188,  4,  3, -10, '#3d1a04', 0.21));
+    s.push(stain(130, 183,  7,  4, -18, '#7a4010', 0.28));
+    s.push(stain(140, 189,  5,  3,  15, '#5a2e08', 0.22));
   }
 
   return s.join('\n');
