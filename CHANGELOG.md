@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.7.0] - 2026-04-28
+
+### Added
+- **Botruc** 🌿: criatura de ramita con cuerpo leñoso marrón, brazos de palo con tres dedos, patas bífidas, ojos verde brillante y hojitas en la cabeza. Sonido: golpecitos secos de madera (ruido filtrado en resonancia de corteza).
+- **Thestral** 🦇: caballo esquelético oscuro con costillas visibles, cuello largo, alas de murciélago nervadas y ojos blanquecinos espectrales. Sonido: relincho hueco y fantasmal (barrido de ruido + oscilador sine grave).
+- **Hipogrifo** 🦅: mitad trasera de caballo gris (rump, cola, herraduras) y mitad delantera de águila (alas grises, cabeza con pico y corona de plumas, garras doradas). Sonido: chillido de águila seguido de relincho con vibrato.
+
+---
+
 ## [2.6.1] - 2026-04-27
 
 ### Changed

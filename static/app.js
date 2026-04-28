@@ -1402,6 +1402,123 @@ const PETS = {
       <line x1="3" y1="11" x2="4" y2="18" stroke="#0d47a1" stroke-width="1.8" stroke-linecap="round"/>
     </g>`;
   },
+
+  botruc: (_outfitKey) => {
+    return `<g>
+      <!-- Body (twig) -->
+      <ellipse cx="0" cy="3" rx="3" ry="10" fill="#7a5c3a"/>
+      <line x1="-1" y1="-2" x2="2" y2="0" stroke="#5c3d1e" stroke-width="0.7" opacity="0.5"/>
+      <line x1="-2" y1="4" x2="1" y2="6" stroke="#5c3d1e" stroke-width="0.7" opacity="0.5"/>
+      <!-- Head -->
+      <ellipse cx="0" cy="-11" rx="5.5" ry="5" fill="#5a8a2a"/>
+      <!-- Arms (long twig fingers) -->
+      <line x1="-3" y1="-1" x2="-13" y2="-6" stroke="#7a5c3a" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="-13" y1="-6" x2="-17" y2="-3" stroke="#7a5c3a" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="-13" y1="-6" x2="-15" y2="-10" stroke="#7a5c3a" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="-13" y1="-6" x2="-11" y2="-11" stroke="#7a5c3a" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="3" y1="-1" x2="13" y2="-6" stroke="#7a5c3a" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="13" y1="-6" x2="17" y2="-3" stroke="#7a5c3a" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="13" y1="-6" x2="15" y2="-10" stroke="#7a5c3a" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="13" y1="-6" x2="11" y2="-11" stroke="#7a5c3a" stroke-width="0.8" stroke-linecap="round"/>
+      <!-- Legs -->
+      <line x1="-2" y1="12" x2="-5" y2="20" stroke="#7a5c3a" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="-5" y1="20" x2="-9" y2="22" stroke="#7a5c3a" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="-5" y1="20" x2="-4" y2="23" stroke="#7a5c3a" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="2" y1="12" x2="5" y2="20" stroke="#7a5c3a" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="5" y1="20" x2="9" y2="22" stroke="#7a5c3a" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="5" y1="20" x2="4" y2="23" stroke="#7a5c3a" stroke-width="0.9" stroke-linecap="round"/>
+      <!-- Eyes (big, bright green) -->
+      <circle cx="-2.5" cy="-12" r="2.2" fill="#a8e060"/>
+      <circle cx="-2.5" cy="-12" r="1.1" fill="#111"/>
+      <circle cx="-1.9" cy="-12.6" r="0.7" fill="white"/>
+      <circle cx="2.5" cy="-12" r="2.2" fill="#a8e060"/>
+      <circle cx="2.5" cy="-12" r="1.1" fill="#111"/>
+      <circle cx="3.1" cy="-12.6" r="0.7" fill="white"/>
+      <!-- Leaf tufts on head -->
+      <ellipse cx="-2" cy="-16" rx="3.5" ry="2" fill="#66bb2a" transform="rotate(-20,-2,-16)"/>
+      <ellipse cx="2" cy="-17" rx="3" ry="1.8" fill="#77cc33" transform="rotate(15,2,-17)"/>
+    </g>`;
+  },
+
+  thestral: (_outfitKey) => {
+    return `<g>
+      <!-- Bat wings (behind body) -->
+      <path d="M-4,-6 Q-18,-22 -26,-13 Q-20,-4 -4,-5 Z" fill="rgba(18,12,28,0.88)"/>
+      <path d="M-4,-6 Q-14,-18 -20,-10" fill="none" stroke="#241830" stroke-width="0.8" opacity="0.7"/>
+      <path d="M-4,-5 Q-11,-13 -16,-7" fill="none" stroke="#241830" stroke-width="0.8" opacity="0.6"/>
+      <path d="M4,-6 Q18,-22 26,-13 Q20,-4 4,-5 Z" fill="rgba(18,12,28,0.88)"/>
+      <path d="M4,-6 Q14,-18 20,-10" fill="none" stroke="#241830" stroke-width="0.8" opacity="0.7"/>
+      <!-- Body (skeletal, gaunt) -->
+      <ellipse cx="0" cy="1" rx="10" ry="8" fill="#18111e"/>
+      <!-- Visible ribs -->
+      <line x1="-7" y1="-3" x2="-5" y2="5" stroke="#281d34" stroke-width="0.9" opacity="0.8"/>
+      <line x1="-3" y1="-4" x2="-2" y2="5" stroke="#281d34" stroke-width="0.9" opacity="0.8"/>
+      <line x1="1" y1="-4" x2="1" y2="5" stroke="#281d34" stroke-width="0.9" opacity="0.7"/>
+      <line x1="5" y1="-4" x2="4" y2="5" stroke="#281d34" stroke-width="0.9" opacity="0.8"/>
+      <!-- Neck -->
+      <path d="M7,-4 Q11,-11 9,-18" fill="none" stroke="#18111e" stroke-width="6" stroke-linecap="round"/>
+      <!-- Head (long, equine) -->
+      <ellipse cx="10" cy="-19" rx="5" ry="4.5" fill="#18111e" transform="rotate(-15,10,-19)"/>
+      <!-- Pale eyes -->
+      <circle cx="13" cy="-21" r="2" fill="#c0e8ff" opacity="0.85"/>
+      <circle cx="13" cy="-21" r="0.8" fill="#e8f8ff"/>
+      <!-- Nostril -->
+      <circle cx="14.5" cy="-17" r="0.8" fill="#0a0812"/>
+      <!-- Wispy mane -->
+      <path d="M7,-7 Q5,-13 7,-20" fill="none" stroke="#201530" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
+      <!-- Tail -->
+      <path d="M-10,1 Q-18,6 -20,14 Q-16,10 -14,15" fill="none" stroke="#18111e" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Thin bony legs -->
+      <line x1="-6" y1="8" x2="-8" y2="19" stroke="#110c18" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="-8" y1="19" x2="-9" y2="22" stroke="#110c18" stroke-width="1.2"/>
+      <line x1="-1" y1="8" x2="-2" y2="19" stroke="#110c18" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="-2" y1="19" x2="-3" y2="22" stroke="#110c18" stroke-width="1.2"/>
+      <line x1="4" y1="7" x2="5" y2="18" stroke="#110c18" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="5" y1="18" x2="6" y2="21" stroke="#110c18" stroke-width="1.2"/>
+      <line x1="8" y1="5" x2="9" y2="16" stroke="#110c18" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="9" y1="16" x2="10" y2="19" stroke="#110c18" stroke-width="1.2"/>
+    </g>`;
+  },
+
+  hipogrifo: (_outfitKey) => {
+    return `<g>
+      <!-- Horse hindquarters -->
+      <ellipse cx="-8" cy="1" rx="10" ry="8" fill="#8a9aa8"/>
+      <!-- Horse tail -->
+      <path d="M-17,0 Q-25,5 -26,13 Q-22,8 -20,14" fill="none" stroke="#7a8a98" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Horse back legs -->
+      <line x1="-14" y1="7" x2="-16" y2="17" stroke="#6a7a88" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="-16" cy="19" rx="3" ry="1.5" fill="#3a3a3a"/>
+      <line x1="-5" y1="8" x2="-5" y2="18" stroke="#6a7a88" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="-5" cy="20" rx="3" ry="1.5" fill="#3a3a3a"/>
+      <!-- Eagle body (front) -->
+      <ellipse cx="5" cy="-1" rx="10" ry="9" fill="#8a8878"/>
+      <!-- Chest feathers -->
+      <path d="M-2,3 Q2,7 8,3 Q4,9 -2,7 Z" fill="#a8a890" opacity="0.6"/>
+      <!-- Wings -->
+      <path d="M2,-5 Q-8,-20 -18,-13 Q-12,-4 2,-4 Z" fill="#7a7868"/>
+      <path d="M2,-5 Q-6,-16 -14,-9" fill="none" stroke="#5a5a4a" stroke-width="0.9" opacity="0.7"/>
+      <path d="M2,-4 Q-4,-11 -10,-6" fill="none" stroke="#5a5a4a" stroke-width="0.9" opacity="0.6"/>
+      <path d="M8,-5 Q18,-20 28,-13 Q22,-4 8,-4 Z" fill="#7a7868"/>
+      <path d="M8,-5 Q16,-16 24,-9" fill="none" stroke="#5a5a4a" stroke-width="0.9" opacity="0.7"/>
+      <!-- Eagle head -->
+      <circle cx="14" cy="-11" r="7" fill="#8a8878"/>
+      <!-- Feather crown -->
+      <path d="M10,-18 Q12,-24 14,-20 Q16,-26 18,-19" fill="#6a6858" opacity="0.9"/>
+      <!-- Beak -->
+      <path d="M18,-9 Q24,-11 22,-6 Q18,-5 17,-8 Z" fill="#d4a828"/>
+      <!-- Eye -->
+      <circle cx="14" cy="-13" r="2.5" fill="#f5a623"/>
+      <circle cx="14" cy="-13" r="1.2" fill="#111"/>
+      <circle cx="14.7" cy="-13.7" r="0.6" fill="white"/>
+      <!-- Eagle front legs / talons -->
+      <line x1="8" y1="7" x2="8" y2="15" stroke="#7a7868" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M5,15 Q8,18 11,15" fill="none" stroke="#c8a830" stroke-width="1.6"/>
+      <line x1="5" y1="16" x2="4" y2="19" stroke="#c8a830" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="7.5" y1="17" x2="7" y2="20" stroke="#c8a830" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="10" y1="16" x2="11" y2="19" stroke="#c8a830" stroke-width="1.2" stroke-linecap="round"/>
+    </g>`;
+  },
 };
 
 // Pet position configs: { tx, ty, scale, leash? }
@@ -3634,7 +3751,10 @@ function buildPanel() {
           { key: 'niffler', emoji: '🦔', label: 'Niffler' },
           { key: 'phoenix', emoji: '🔥', label: 'Fénix' },
           { key: 'dragon',  emoji: '🐲', label: 'Dragón' },
-          { key: 'pixie',   emoji: '✨', label: 'Pixie' },
+          { key: 'pixie',    emoji: '✨', label: 'Pixie' },
+          { key: 'botruc',   emoji: '🌿', label: 'Botruc' },
+          { key: 'thestral', emoji: '🦇', label: 'Thestral' },
+          { key: 'hipogrifo',emoji: '🦅', label: 'Hipogrifo' },
         ];
         const petGrid = document.createElement('div');
         petGrid.className = 'item-grid pet-type-grid';
@@ -4286,7 +4406,10 @@ const AudioManager = {
       case 'niffler': this.synthNiffler(); break;
       case 'phoenix': this.synthPhoenix(); break;
       case 'dragon':  this.synthDragon();  break;
-      case 'pixie':   this.synthPixie();   break;
+      case 'pixie':    this.synthPixie();    break;
+      case 'botruc':   this.synthBotruc();   break;
+      case 'thestral': this.synthThestral(); break;
+      case 'hipogrifo':this.synthHipogrifo();break;
     }
   },
 
@@ -4557,6 +4680,116 @@ const AudioManager = {
     cg.connect(this.sfxGain);
     chime.start(ctx.currentTime + 0.5);
     chime.stop(ctx.currentTime + 0.75);
+  },
+
+  synthBotruc() {
+    const ctx = this.ctx;
+    // Dry woody taps: short noise bursts filtered to bark resonance
+    [0, 0.09, 0.19, 0.31, 0.44].forEach((t, i) => {
+      const bufLen = Math.floor(ctx.sampleRate * 0.04);
+      const buf = ctx.createBuffer(1, bufLen, ctx.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let j = 0; j < bufLen; j++) data[j] = Math.random() * 2 - 1;
+      const noise = ctx.createBufferSource();
+      noise.buffer = buf;
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.value = 800 + i * 120;
+      filter.Q.value = 9;
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.28, ctx.currentTime + t);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + t + 0.045);
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.sfxGain);
+      noise.start(ctx.currentTime + t);
+      noise.stop(ctx.currentTime + t + 0.05);
+    });
+  },
+
+  synthThestral() {
+    const ctx = this.ctx;
+    // Breathy hollow whinny: filtered noise sweep
+    const bufLen = Math.floor(ctx.sampleRate * 0.85);
+    const buf = ctx.createBuffer(1, bufLen, ctx.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < bufLen; i++) data[i] = (Math.random() * 2 - 1) * 0.5;
+    const noise = ctx.createBufferSource();
+    noise.buffer = buf;
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.setValueAtTime(550, ctx.currentTime);
+    filter.frequency.exponentialRampToValueAtTime(1100, ctx.currentTime + 0.3);
+    filter.frequency.exponentialRampToValueAtTime(380, ctx.currentTime + 0.75);
+    filter.Q.value = 4;
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.28, ctx.currentTime + 0.1);
+    gain.gain.linearRampToValueAtTime(0.22, ctx.currentTime + 0.4);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.82);
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.sfxGain);
+    noise.start(ctx.currentTime);
+    noise.stop(ctx.currentTime + 0.88);
+    // Eerie sine undertone
+    const osc = ctx.createOscillator();
+    const og = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(260, ctx.currentTime + 0.05);
+    osc.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.35);
+    osc.frequency.exponentialRampToValueAtTime(180, ctx.currentTime + 0.75);
+    og.gain.setValueAtTime(0, ctx.currentTime + 0.05);
+    og.gain.linearRampToValueAtTime(0.16, ctx.currentTime + 0.15);
+    og.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.8);
+    osc.connect(og);
+    og.connect(this.sfxGain);
+    osc.start(ctx.currentTime + 0.05);
+    osc.stop(ctx.currentTime + 0.85);
+  },
+
+  synthHipogrifo() {
+    const ctx = this.ctx;
+    // Eagle screech: sharp sawtooth descend
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(2200, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(850, ctx.currentTime + 0.28);
+    gain.gain.setValueAtTime(0.32, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.32);
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.value = 1600;
+    filter.Q.value = 1.2;
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.sfxGain);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.35);
+    // Horse whinny: sine sweep with vibrato
+    const osc2 = ctx.createOscillator();
+    const g2 = ctx.createGain();
+    osc2.type = 'sine';
+    osc2.frequency.setValueAtTime(340, ctx.currentTime + 0.32);
+    osc2.frequency.exponentialRampToValueAtTime(660, ctx.currentTime + 0.52);
+    osc2.frequency.exponentialRampToValueAtTime(270, ctx.currentTime + 0.85);
+    g2.gain.setValueAtTime(0, ctx.currentTime + 0.32);
+    g2.gain.linearRampToValueAtTime(0.3, ctx.currentTime + 0.4);
+    g2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.9);
+    osc2.connect(g2);
+    g2.connect(this.sfxGain);
+    osc2.start(ctx.currentTime + 0.32);
+    osc2.stop(ctx.currentTime + 0.95);
+    // Vibrato LFO on the whinny
+    const lfo = ctx.createOscillator();
+    const lfog = ctx.createGain();
+    lfo.frequency.value = 9;
+    lfog.gain.value = 38;
+    lfo.connect(lfog);
+    lfog.connect(osc2.frequency);
+    lfo.start(ctx.currentTime + 0.44);
+    lfo.stop(ctx.currentTime + 0.9);
   },
 
   // Hedwig's Theme: B4 E5 G5 F#5 E5 B5 A5 F#5 E5 G5 F#5 D#5 F5 B4
