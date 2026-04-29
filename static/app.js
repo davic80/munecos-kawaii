@@ -6242,6 +6242,12 @@ const AudioManager = {
       case 'potions_class':
         this.synthPotions();
         break;
+      case 'private_drive':
+        this.synthPrivateDrive();
+        break;
+      case 'madriguera':
+        this.synthMadriguera();
+        break;
     }
   },
 
@@ -6749,6 +6755,297 @@ const AudioManager = {
         this.bgSources.push(pop);
       });
       this._bgTimer = setTimeout(() => playLoop(), (dur - 0.15) * 1000);
+    };
+    playLoop();
+  },
+
+  // Ministry of Magic — low ominous drone + golden metallic bell pings + marble footsteps
+  synthMinistry() {
+    const ctx = this.ctx;
+    const playLoop = () => {
+      if (this.currentBg !== 'ministry') return;
+      const dur = 6.0;
+      // Dark atrium drone (two close oscillators for tension)
+      [65, 69].forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'sine'; osc.frequency.value = freq;
+        g.gain.setValueAtTime(0, ctx.currentTime);
+        g.gain.linearRampToValueAtTime(0.055 - i * 0.01, ctx.currentTime + 0.8);
+        g.gain.setValueAtTime(0.04, ctx.currentTime + dur - 0.8);
+        g.gain.linearRampToValueAtTime(0, ctx.currentTime + dur);
+        osc.connect(g); g.connect(this.bgGain);
+        osc.start(ctx.currentTime); osc.stop(ctx.currentTime + dur);
+        this.bgSources.push(osc);
+      });
+      // Golden bell pings at irregular offsets
+      [0.8, 2.3, 4.1].forEach((offset, i) => {
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.value = [830, 1040, 740][i];
+        const t = ctx.currentTime + offset;
+        g.gain.setValueAtTime(0.12, t);
+        g.gain.exponentialRampToValueAtTime(0.001, t + 1.0);
+        osc.connect(g); g.connect(this.bgGain);
+        osc.start(t); osc.stop(t + 1.1);
+        this.bgSources.push(osc);
+      });
+      // Marble footsteps: two low thuds
+      [1.6, 3.4].forEach(offset => {
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'sine';
+        const t = ctx.currentTime + offset;
+        osc.frequency.setValueAtTime(90, t);
+        osc.frequency.exponentialRampToValueAtTime(45, t + 0.18);
+        g.gain.setValueAtTime(0.13, t);
+        g.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+        osc.connect(g); g.connect(this.bgGain);
+        osc.start(t); osc.stop(t + 0.25);
+        this.bgSources.push(osc);
+      });
+      this._bgTimer = setTimeout(() => playLoop(), (dur - 0.2) * 1000);
+    };
+    playLoop();
+  },
+
+  // Hogsmeade — winter wind + warm distant bells (Three Broomsticks) loop
+  synthHogsmeade() {
+    const ctx = this.ctx;
+    const playLoop = () => {
+      if (this.currentBg !== 'hogsmeade') return;
+      const dur = 5.5;
+      // Soft winter wind (bandpass noise)
+      const bufSize = Math.ceil(ctx.sampleRate * dur);
+      const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) d[i] = Math.random() * 2 - 1;
+      const wind = ctx.createBufferSource();
+      wind.buffer = buf;
+      const bp = ctx.createBiquadFilter();
+      bp.type = 'bandpass'; bp.frequency.value = 350; bp.Q.value = 1.5;
+      const wg = ctx.createGain();
+      wg.gain.setValueAtTime(0, ctx.currentTime);
+      wg.gain.linearRampToValueAtTime(0.07, ctx.currentTime + 0.6);
+      wg.gain.setValueAtTime(0.05, ctx.currentTime + dur - 0.8);
+      wg.gain.linearRampToValueAtTime(0, ctx.currentTime + dur);
+      wind.connect(bp); bp.connect(wg); wg.connect(this.bgGain);
+      wind.start(ctx.currentTime); wind.stop(ctx.currentTime + dur);
+      this.bgSources.push(wind);
+      // Warm pub bells — a gentle 3-note phrase (C-E-G in pentatonic)
+      [[1.0, 523.25], [1.8, 659.25], [2.6, 784.0], [3.8, 659.25]].forEach(([offset, freq]) => {
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'triangle'; osc.frequency.value = freq;
+        const t = ctx.currentTime + offset;
+        g.gain.setValueAtTime(0.10, t);
+        g.gain.exponentialRampToValueAtTime(0.001, t + 0.55);
+        osc.connect(g); g.connect(this.bgGain);
+        osc.start(t); osc.stop(t + 0.6);
+        this.bgSources.push(osc);
+      });
+      this._bgTimer = setTimeout(() => playLoop(), (dur - 0.2) * 1000);
+    };
+    playLoop();
+  },
+
+  // Hagrid's Hut — fireplace crackle + outdoor forest ambience + occasional creak
+  synthHagrid() {
+    const ctx = this.ctx;
+    const playLoop = () => {
+      if (this.currentBg !== 'hagrid_hut') return;
+      const dur = 5.0;
+      // Fireplace crackle: lowpass noise with slight tremolo
+      const bufSize = Math.ceil(ctx.sampleRate * dur);
+      const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) d[i] = Math.random() * 2 - 1;
+      const fire = ctx.createBufferSource();
+      fire.buffer = buf;
+      const lpf = ctx.createBiquadFilter();
+      lpf.type = 'lowpass'; lpf.frequency.value = 500;
+      const fg = ctx.createGain();
+      fg.gain.setValueAtTime(0, ctx.currentTime);
+      fg.gain.linearRampToValueAtTime(0.10, ctx.currentTime + 0.5);
+      fg.gain.setValueAtTime(0.08, ctx.currentTime + dur - 0.6);
+      fg.gain.linearRampToValueAtTime(0, ctx.currentTime + dur);
+      fire.connect(lpf); lpf.connect(fg); fg.connect(this.bgGain);
+      fire.start(ctx.currentTime); fire.stop(ctx.currentTime + dur);
+      this.bgSources.push(fire);
+      // Distant forest: very soft high-passed noise
+      const buf2 = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+      const d2 = buf2.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) d2[i] = Math.random() * 2 - 1;
+      const forest = ctx.createBufferSource();
+      forest.buffer = buf2;
+      const hp = ctx.createBiquadFilter();
+      hp.type = 'highpass'; hp.frequency.value = 3000;
+      const fg2 = ctx.createGain();
+      fg2.gain.value = 0.025;
+      forest.connect(hp); hp.connect(fg2); fg2.connect(this.bgGain);
+      forest.start(ctx.currentTime); forest.stop(ctx.currentTime + dur);
+      this.bgSources.push(forest);
+      // Hut creak: descending low tone
+      const creak = ctx.createOscillator();
+      const cg = ctx.createGain();
+      creak.type = 'sawtooth';
+      const t0 = ctx.currentTime + 2.5;
+      creak.frequency.setValueAtTime(180, t0);
+      creak.frequency.exponentialRampToValueAtTime(120, t0 + 0.35);
+      cg.gain.setValueAtTime(0.06, t0);
+      cg.gain.exponentialRampToValueAtTime(0.001, t0 + 0.4);
+      creak.connect(cg); cg.connect(this.bgGain);
+      creak.start(t0); creak.stop(t0 + 0.45);
+      this.bgSources.push(creak);
+      this._bgTimer = setTimeout(() => playLoop(), (dur - 0.2) * 1000);
+    };
+    playLoop();
+  },
+
+  // Leaky Cauldron — fireplace + low tavern murmur + wood floor creak
+  synthLeakyCauldron() {
+    const ctx = this.ctx;
+    const playLoop = () => {
+      if (this.currentBg !== 'leaky_cauldron') return;
+      const dur = 6.5;
+      // Fireplace crackle
+      const bufSize = Math.ceil(ctx.sampleRate * dur);
+      const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) d[i] = Math.random() * 2 - 1;
+      const fire = ctx.createBufferSource();
+      fire.buffer = buf;
+      const lpf = ctx.createBiquadFilter();
+      lpf.type = 'lowpass'; lpf.frequency.value = 450;
+      const fg = ctx.createGain();
+      fg.gain.setValueAtTime(0, ctx.currentTime);
+      fg.gain.linearRampToValueAtTime(0.09, ctx.currentTime + 0.5);
+      fg.gain.setValueAtTime(0.07, ctx.currentTime + dur - 0.8);
+      fg.gain.linearRampToValueAtTime(0, ctx.currentTime + dur);
+      fire.connect(lpf); lpf.connect(fg); fg.connect(this.bgGain);
+      fire.start(ctx.currentTime); fire.stop(ctx.currentTime + dur);
+      this.bgSources.push(fire);
+      // Tavern murmur: low bandpass noise
+      const buf2 = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+      const d2 = buf2.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) d2[i] = Math.random() * 2 - 1;
+      const murmur = ctx.createBufferSource();
+      murmur.buffer = buf2;
+      const bp = ctx.createBiquadFilter();
+      bp.type = 'bandpass'; bp.frequency.value = 280; bp.Q.value = 1.2;
+      const mg = ctx.createGain();
+      mg.gain.value = 0.04;
+      murmur.connect(bp); bp.connect(mg); mg.connect(this.bgGain);
+      murmur.start(ctx.currentTime); murmur.stop(ctx.currentTime + dur);
+      this.bgSources.push(murmur);
+      // Wood floor creak at 1.8s and 4.2s
+      [1.8, 4.2].forEach(offset => {
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'sawtooth';
+        const t = ctx.currentTime + offset;
+        osc.frequency.setValueAtTime(160, t);
+        osc.frequency.exponentialRampToValueAtTime(100, t + 0.3);
+        g.gain.setValueAtTime(0.05, t);
+        g.gain.exponentialRampToValueAtTime(0.001, t + 0.35);
+        osc.connect(g); g.connect(this.bgGain);
+        osc.start(t); osc.stop(t + 0.4);
+        this.bgSources.push(osc);
+      });
+      this._bgTimer = setTimeout(() => playLoop(), (dur - 0.2) * 1000);
+    };
+    playLoop();
+  },
+
+  // Privet Drive — cheerful suburban birds + a short mundane 4-note melody
+  synthPrivateDrive() {
+    const ctx = this.ctx;
+    const playLoop = () => {
+      if (this.currentBg !== 'private_drive') return;
+      const dur = 4.5;
+      // Garden birds (like park but simpler)
+      [[0.4, 3000, 3600], [1.5, 2600, 3200], [3.0, 3200, 3900]].forEach(([offset, f1, f2]) => {
+        for (let j = 0; j < 2; j++) {
+          const osc = ctx.createOscillator();
+          const g = ctx.createGain();
+          osc.type = 'sine';
+          const t0 = ctx.currentTime + offset + j * 0.14;
+          osc.frequency.setValueAtTime(f1, t0);
+          osc.frequency.linearRampToValueAtTime(f2, t0 + 0.07);
+          osc.frequency.linearRampToValueAtTime(f1 * 0.92, t0 + 0.13);
+          g.gain.setValueAtTime(0, t0);
+          g.gain.linearRampToValueAtTime(0.10, t0 + 0.02);
+          g.gain.exponentialRampToValueAtTime(0.001, t0 + 0.16);
+          osc.connect(g); g.connect(this.bgGain);
+          osc.start(t0); osc.stop(t0 + 0.2);
+          this.bgSources.push(osc);
+        }
+      });
+      // Simple 4-note tune (C-E-G-E, xylophone-ish)
+      [[0.8, 523.25], [1.1, 659.25], [1.4, 784.0], [1.7, 659.25]].forEach(([offset, freq]) => {
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'triangle'; osc.frequency.value = freq;
+        const t = ctx.currentTime + offset;
+        g.gain.setValueAtTime(0.09, t);
+        g.gain.exponentialRampToValueAtTime(0.001, t + 0.28);
+        osc.connect(g); g.connect(this.bgGain);
+        osc.start(t); osc.stop(t + 0.3);
+        this.bgSources.push(osc);
+      });
+      this._bgTimer = setTimeout(() => playLoop(), (dur - 0.2) * 1000);
+    };
+    playLoop();
+  },
+
+  // La Madriguera — warm outdoor wind + magical sparkles + cozy low hum
+  synthMadriguera() {
+    const ctx = this.ctx;
+    const playLoop = () => {
+      if (this.currentBg !== 'madriguera') return;
+      const dur = 5.5;
+      // Countryside wind (soft bandpass noise)
+      const bufSize = Math.ceil(ctx.sampleRate * dur);
+      const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) d[i] = Math.random() * 2 - 1;
+      const wind = ctx.createBufferSource();
+      wind.buffer = buf;
+      const bp = ctx.createBiquadFilter();
+      bp.type = 'bandpass'; bp.frequency.value = 400; bp.Q.value = 1.8;
+      const wg = ctx.createGain();
+      wg.gain.setValueAtTime(0, ctx.currentTime);
+      wg.gain.linearRampToValueAtTime(0.055, ctx.currentTime + 0.7);
+      wg.gain.setValueAtTime(0.04, ctx.currentTime + dur - 0.8);
+      wg.gain.linearRampToValueAtTime(0, ctx.currentTime + dur);
+      wind.connect(bp); bp.connect(wg); wg.connect(this.bgGain);
+      wind.start(ctx.currentTime); wind.stop(ctx.currentTime + dur);
+      this.bgSources.push(wind);
+      // Cozy low hum (magical household)
+      const hum = ctx.createOscillator();
+      const hg = ctx.createGain();
+      hum.type = 'sine'; hum.frequency.value = 82;
+      hg.gain.setValueAtTime(0, ctx.currentTime);
+      hg.gain.linearRampToValueAtTime(0.04, ctx.currentTime + 1.0);
+      hg.gain.setValueAtTime(0.03, ctx.currentTime + dur - 1.0);
+      hg.gain.linearRampToValueAtTime(0, ctx.currentTime + dur);
+      hum.connect(hg); hg.connect(this.bgGain);
+      hum.start(ctx.currentTime); hum.stop(ctx.currentTime + dur);
+      this.bgSources.push(hum);
+      // Magical sparkles — short high-pitch tones (HP-ish scale fragment)
+      [[0.7, 987.77], [1.6, 880.0], [2.8, 1046.5], [4.0, 783.99]].forEach(([offset, freq]) => {
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'triangle'; osc.frequency.value = freq;
+        const t = ctx.currentTime + offset;
+        g.gain.setValueAtTime(0.08, t);
+        g.gain.exponentialRampToValueAtTime(0.001, t + 0.4);
+        osc.connect(g); g.connect(this.bgGain);
+        osc.start(t); osc.stop(t + 0.45);
+        this.bgSources.push(osc);
+      });
+      this._bgTimer = setTimeout(() => playLoop(), (dur - 0.2) * 1000);
     };
     playLoop();
   },

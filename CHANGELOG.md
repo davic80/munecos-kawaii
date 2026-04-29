@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.8.4] - 2026-04-29
+
+### Added
+- **Música para todas las escenas**: implementadas las 6 canciones/ambientes que faltaban:
+  - **Ministerio de Magia** — drone oscuro de bajo + pings metálicos dorados + pasos sobre mármol.
+  - **Hogsmeade** — viento invernal suave + campanas cálidas del Three Broomsticks.
+  - **Cabaña de Hagrid** — crepitar de chimenea + ambiente de bosque lejano + crujido de la cabaña.
+  - **Caldero Chorreante** — chimenea + murmullo de taberna + crujido de suelo de madera.
+  - **Privet Drive** — pájaros del jardín + melodía xilofónica sencilla (C-E-G-E).
+  - **La Madriguera** — viento campestre + zumbido mágico del hogar + destellos mágicos.
+
+---
+
 ## [2.8.3] - 2026-04-29
 
 ### Added
