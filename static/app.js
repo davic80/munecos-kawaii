@@ -1997,6 +1997,53 @@ const HAIR = {
       <rect x="0" y="0" width="240" height="80" fill="rgba(10,14,28,0.92)"/>
       <rect x="0" y="0" width="240" height="8" fill="rgba(20,30,12,0.5)"/>`,
     groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#0d1530"/>
+      <circle cx="40" cy="18" r="1.2" fill="rgba(255,255,220,0.9)"/>
+      <circle cx="110" cy="8" r="1" fill="rgba(255,255,220,0.8)"/>
+      <circle cx="180" cy="22" r="1.2" fill="rgba(255,255,220,0.9)"/>
+      <circle cx="260" cy="10" r="1" fill="rgba(255,255,220,0.7)"/>
+      <circle cx="340" cy="20" r="1.2" fill="rgba(255,255,220,0.9)"/>
+      <circle cx="420" cy="6" r="1" fill="rgba(255,255,220,0.8)"/>
+      <circle cx="80" cy="35" r="0.8" fill="rgba(255,255,220,0.6)"/>
+      <circle cx="390" cy="38" r="0.8" fill="rgba(255,255,220,0.6)"/>
+      <circle cx="462" cy="15" r="1.2" fill="rgba(255,255,220,0.9)"/>
+      <circle cx="310" cy="32" r="1" fill="rgba(255,255,220,0.7)"/>
+      <circle cx="145" cy="45" r="0.8" fill="rgba(255,255,220,0.5)"/>
+      <circle cx="455" cy="44" r="0.8" fill="rgba(255,255,220,0.6)"/>
+      <circle cx="400" cy="30" r="14" fill="rgba(255,250,200,0.22)"/>
+      <circle cx="406" cy="26" r="11" fill="rgba(20,24,50,0.7)"/>
+      <rect x="58" y="180" width="364" height="160" fill="rgba(20,22,40,0.85)"/>
+      <rect x="58" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="76" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="94" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="228" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="286" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="344" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="376" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="398" y="172" width="12" height="12" fill="rgba(20,22,40,0.85)"/>
+      <rect x="8" y="130" width="34" height="210" fill="rgba(18,20,38,0.9)"/>
+      <polygon points="8,130 25,102 42,130" fill="rgba(18,20,38,0.92)"/>
+      <rect x="8" y="122" width="8" height="10" fill="rgba(18,20,38,0.92)"/>
+      <rect x="20" y="122" width="8" height="10" fill="rgba(18,20,38,0.92)"/>
+      <rect x="32" y="122" width="8" height="10" fill="rgba(18,20,38,0.92)"/>
+      <rect x="438" y="140" width="34" height="200" fill="rgba(18,20,38,0.9)"/>
+      <polygon points="438,140 455,110 472,140" fill="rgba(18,20,38,0.92)"/>
+      <rect x="438" y="132" width="8" height="10" fill="rgba(18,20,38,0.92)"/>
+      <rect x="450" y="132" width="8" height="10" fill="rgba(18,20,38,0.92)"/>
+      <rect x="462" y="132" width="8" height="10" fill="rgba(18,20,38,0.92)"/>
+      <rect x="226" y="148" width="24" height="192" fill="rgba(18,20,38,0.88)"/>
+      <polygon points="226,150 238,122 250,150" fill="rgba(18,20,38,0.90)"/>
+      <rect x="86" y="196" width="8" height="11" rx="3" fill="rgba(255,220,100,0.55)"/>
+      <rect x="108" y="208" width="8" height="11" rx="3" fill="rgba(255,220,100,0.45)"/>
+      <rect x="303" y="192" width="8" height="11" rx="3" fill="rgba(255,220,100,0.55)"/>
+      <rect x="344" y="204" width="8" height="11" rx="3" fill="rgba(255,220,100,0.4)"/>
+      <rect x="16" y="158" width="6" height="9" rx="2" fill="rgba(255,220,100,0.5)"/>
+      <rect x="444" y="168" width="6" height="9" rx="2" fill="rgba(255,220,100,0.5)"/>
+      <rect x="232" y="160" width="5" height="8" rx="2" fill="rgba(255,220,100,0.45)"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="rgba(10,14,28,0.92)"/>
+      <rect x="0" y="0" width="480" height="8" fill="rgba(20,30,12,0.5)"/>`,
   },
   great_hall: {
     label: 'Gran Comedor',
@@ -2038,6 +2085,43 @@ const HAIR = {
       <line x1="120" y1="0" x2="120" y2="80" stroke="rgba(60,50,40,0.3)" stroke-width="0.8"/>
       <line x1="180" y1="0" x2="180" y2="80" stroke="rgba(60,50,40,0.3)" stroke-width="0.8"/>`,
     groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#1a1200"/>
+      <path d="M0,0 Q120,30 240,0 Q360,30 480,0 L480,50 Q360,80 240,50 Q120,80 0,50 Z" fill="rgba(30,24,18,0.6)"/>
+      <rect x="55" y="42" width="4" height="14" rx="2" fill="rgba(255,240,200,0.85)"/>
+      <ellipse cx="57" cy="40" rx="3" ry="5" fill="rgba(255,200,60,0.7)"/>
+      <rect x="115" y="28" width="4" height="14" rx="2" fill="rgba(255,240,200,0.85)"/>
+      <ellipse cx="117" cy="26" rx="3" ry="5" fill="rgba(255,200,60,0.7)"/>
+      <rect x="175" y="38" width="4" height="14" rx="2" fill="rgba(255,240,200,0.85)"/>
+      <ellipse cx="177" cy="36" rx="3" ry="5" fill="rgba(255,200,60,0.7)"/>
+      <rect x="238" y="25" width="4" height="14" rx="2" fill="rgba(255,240,200,0.85)"/>
+      <ellipse cx="240" cy="23" rx="3" ry="5" fill="rgba(255,200,60,0.7)"/>
+      <rect x="300" y="38" width="4" height="14" rx="2" fill="rgba(255,240,200,0.85)"/>
+      <ellipse cx="302" cy="36" rx="3" ry="5" fill="rgba(255,200,60,0.7)"/>
+      <rect x="360" y="28" width="4" height="14" rx="2" fill="rgba(255,240,200,0.85)"/>
+      <ellipse cx="362" cy="26" rx="3" ry="5" fill="rgba(255,200,60,0.7)"/>
+      <rect x="420" y="42" width="4" height="14" rx="2" fill="rgba(255,240,200,0.85)"/>
+      <ellipse cx="422" cy="40" rx="3" ry="5" fill="rgba(255,200,60,0.7)"/>
+      <line x1="57" y1="0" x2="57" y2="42" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
+      <line x1="117" y1="0" x2="117" y2="28" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
+      <line x1="177" y1="0" x2="177" y2="38" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
+      <line x1="240" y1="0" x2="240" y2="25" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
+      <line x1="302" y1="0" x2="302" y2="38" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
+      <line x1="362" y1="0" x2="362" y2="28" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
+      <line x1="422" y1="0" x2="422" y2="42" stroke="rgba(180,160,120,0.3)" stroke-width="0.8"/>
+      <rect x="10" y="240" width="200" height="12" rx="4" fill="rgba(80,55,30,0.7)"/>
+      <rect x="270" y="240" width="200" height="12" rx="4" fill="rgba(80,55,30,0.7)"/>
+      <rect x="18" y="250" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
+      <rect x="196" y="250" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
+      <rect x="278" y="250" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>
+      <rect x="456" y="250" width="6" height="20" rx="2" fill="rgba(60,40,20,0.7)"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="rgba(40,34,28,0.9)"/>
+      <line x1="0" y1="12" x2="480" y2="12" stroke="rgba(60,50,40,0.5)" stroke-width="1"/>
+      <line x1="0" y1="40" x2="480" y2="40" stroke="rgba(60,50,40,0.4)" stroke-width="1"/>
+      <line x1="120" y1="0" x2="120" y2="80" stroke="rgba(60,50,40,0.3)" stroke-width="0.8"/>
+      <line x1="240" y1="0" x2="240" y2="80" stroke="rgba(60,50,40,0.3)" stroke-width="0.8"/>
+      <line x1="360" y1="0" x2="360" y2="80" stroke="rgba(60,50,40,0.3)" stroke-width="0.8"/>`,
   },
   forbidden_forest: {
     label: 'Bosque Prohibido',
@@ -2079,6 +2163,38 @@ const HAIR = {
       <ellipse cx="60" cy="20" rx="80" ry="10" fill="rgba(180,200,180,0.07)"/>
       <ellipse cx="190" cy="18" rx="70" ry="9" fill="rgba(180,200,180,0.07)"/>`,
     groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#0a1a0a"/>
+      <circle cx="60" cy="15" r="1" fill="rgba(255,255,220,0.7)"/>
+      <circle cx="140" cy="25" r="1.2" fill="rgba(255,255,220,0.9)"/>
+      <circle cx="220" cy="10" r="1" fill="rgba(255,255,220,0.6)"/>
+      <circle cx="300" cy="20" r="1.2" fill="rgba(255,255,220,0.8)"/>
+      <circle cx="380" cy="12" r="1" fill="rgba(255,255,220,0.7)"/>
+      <circle cx="460" cy="22" r="1.2" fill="rgba(255,255,220,0.8)"/>
+      <circle cx="100" cy="40" r="0.8" fill="rgba(255,255,220,0.5)"/>
+      <circle cx="340" cy="35" r="0.8" fill="rgba(255,255,220,0.5)"/>
+      <circle cx="440" cy="38" r="0.8" fill="rgba(255,255,220,0.6)"/>
+      <circle cx="240" cy="50" r="28" fill="rgba(220,230,210,0.2)"/>
+      <circle cx="240" cy="50" r="22" fill="rgba(230,240,215,0.18)"/>
+      <rect x="0" y="160" width="22" height="180" fill="rgba(15,18,12,0.75)"/>
+      <rect x="458" y="175" width="22" height="165" fill="rgba(15,18,12,0.75)"/>
+      <rect x="90" y="178" width="16" height="162" fill="rgba(15,18,12,0.65)"/>
+      <rect x="240" y="185" width="16" height="155" fill="rgba(15,18,12,0.60)"/>
+      <rect x="370" y="185" width="16" height="155" fill="rgba(15,18,12,0.65)"/>
+      <ellipse cx="11" cy="158" rx="38" ry="50" fill="rgba(10,22,10,0.78)"/>
+      <ellipse cx="469" cy="172" rx="36" ry="46" fill="rgba(10,22,10,0.78)"/>
+      <ellipse cx="98" cy="175" rx="30" ry="42" fill="rgba(10,22,10,0.68)"/>
+      <ellipse cx="248" cy="182" rx="28" ry="40" fill="rgba(10,22,10,0.65)"/>
+      <ellipse cx="378" cy="182" rx="28" ry="40" fill="rgba(10,22,10,0.68)"/>
+      <rect x="158" y="210" width="14" height="130" fill="rgba(12,15,10,0.85)"/>
+      <rect x="306" y="220" width="14" height="120" fill="rgba(12,15,10,0.85)"/>
+      <ellipse cx="165" cy="206" rx="30" ry="48" fill="rgba(8,18,8,0.85)"/>
+      <ellipse cx="313" cy="216" rx="28" ry="44" fill="rgba(8,18,8,0.85)"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="rgba(8,14,8,0.92)"/>
+      <ellipse cx="240" cy="10" rx="260" ry="14" fill="rgba(180,200,180,0.1)"/>
+      <ellipse cx="120" cy="20" rx="140" ry="10" fill="rgba(180,200,180,0.07)"/>
+      <ellipse cx="370" cy="18" rx="130" ry="9" fill="rgba(180,200,180,0.07)"/>`,
   },
    platform_934: {
     label: 'Andén 9¾',
@@ -2208,6 +2324,71 @@ const HAIR = {
       <rect x="44" y="58" width="18" height="12" rx="2" fill="rgba(196,158,58,0.55)"/>
       <rect x="44" y="58" width="18" height="4"  rx="2" fill="rgba(220,178,68,0.45)"/>`,
     groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#3d1e0e"/>
+      ${Array.from({length:26},(_,r)=>{const y=r*13;const off=r%2===0?-2:11;return Array.from({length:20},(_,b)=>{const x=off+b*27;const c=['rgba(92,38,18,0.62)','rgba(76,30,14,0.60)','rgba(108,44,22,0.58)','rgba(84,34,16,0.63)'][(b+r)%4];return `<rect x="${x}" y="${y}" width="25" height="11" rx="1" fill="${c}"/>`;}).join('');}).join('')}
+      <path d="M14,0 Q240,-16 466,0" fill="none" stroke="rgba(45,35,22,0.9)" stroke-width="16"/>
+      <path d="M14,0 Q240,-16 466,0" fill="none" stroke="rgba(68,55,36,0.4)" stroke-width="6"/>
+      <rect x="0" y="0" width="14" height="340" fill="rgba(42,32,20,0.92)"/>
+      <rect x="466" y="0" width="14" height="340" fill="rgba(42,32,20,0.92)"/>
+      <rect x="12" y="0" width="3" height="340" fill="rgba(62,50,30,0.55)"/>
+      <rect x="465" y="0" width="3" height="340" fill="rgba(62,50,30,0.55)"/>
+      <rect x="0" y="0" width="16" height="14" fill="rgba(52,42,26,0.95)"/>
+      <rect x="464" y="0" width="16" height="14" fill="rgba(52,42,26,0.95)"/>
+      <rect x="0" y="326" width="16" height="14" fill="rgba(52,42,26,0.95)"/>
+      <rect x="464" y="326" width="16" height="14" fill="rgba(52,42,26,0.95)"/>
+      <rect x="212" y="27" width="10" height="6" rx="1" fill="rgba(68,55,32,0.88)"/>
+      <rect x="258" y="27" width="10" height="6" rx="1" fill="rgba(68,55,32,0.88)"/>
+      <line x1="217" y1="33" x2="212" y2="50" stroke="rgba(138,110,46,0.78)" stroke-width="1.5"/>
+      <line x1="263" y1="33" x2="268" y2="50" stroke="rgba(138,110,46,0.78)" stroke-width="1.5"/>
+      <rect x="200" y="50" width="120" height="36" rx="4" fill="#120b04"/>
+      <rect x="202" y="52" width="116" height="32" rx="3" fill="none" stroke="rgba(172,138,46,0.68)" stroke-width="1.5"/>
+      <text x="260" y="73" font-size="13" font-weight="bold" text-anchor="middle" fill="rgba(255,218,70,0.96)">PLATFORM 9¾</text>
+      <rect x="8" y="104" width="3" height="24" fill="rgba(142,112,46,0.82)"/>
+      <ellipse cx="9.5" cy="102" rx="9" ry="6" fill="rgba(255,205,75,0.45)"/>
+      <ellipse cx="9.5" cy="98" rx="5" ry="4" fill="rgba(255,240,130,0.58)"/>
+      <rect x="469" y="104" width="3" height="24" fill="rgba(142,112,46,0.82)"/>
+      <ellipse cx="470.5" cy="102" rx="9" ry="6" fill="rgba(255,205,75,0.45)"/>
+      <ellipse cx="470.5" cy="98" rx="5" ry="4" fill="rgba(255,240,130,0.58)"/>
+      <path d="M162,300 Q152,188 260,96 Q308,188 318,300 Z" fill="rgba(140,100,220,0.07)"/>
+      <ellipse cx="260" cy="198" rx="66" ry="98" fill="rgba(95,65,205,0.05)"/>
+      <ellipse cx="260" cy="198" rx="54" ry="80" fill="rgba(115,80,220,0.07)"/>
+      <ellipse cx="260" cy="198" rx="42" ry="63" fill="rgba(135,98,232,0.10)"/>
+      <ellipse cx="260" cy="198" rx="30" ry="46" fill="rgba(155,118,242,0.14)"/>
+      <ellipse cx="260" cy="198" rx="20" ry="31" fill="rgba(175,145,252,0.19)"/>
+      <ellipse cx="260" cy="198" rx="12" ry="19" fill="rgba(200,178,255,0.25)"/>
+      <ellipse cx="260" cy="198" rx="6" ry="10" fill="rgba(228,215,255,0.32)"/>
+      <path d="M222,300 Q212,188 260,96 Q308,188 298,300" fill="none" stroke="rgba(172,145,255,0.24)" stroke-width="2.5"/>
+      <path d="M233,148 Q260,143 287,148" fill="none" stroke="rgba(172,148,255,0.34)" stroke-width="1.5"/>
+      <path d="M227,163 Q260,157 293,163" fill="none" stroke="rgba(172,148,255,0.30)" stroke-width="1.5"/>
+      <path d="M224,178 Q260,171 296,178" fill="none" stroke="rgba(172,148,255,0.27)" stroke-width="1.5"/>
+      <path d="M223,193 Q260,200 297,193" fill="none" stroke="rgba(172,148,255,0.25)" stroke-width="1.5"/>
+      <ellipse cx="253" cy="262" rx="22" ry="7" fill="rgba(150,122,248,0.20)"/>
+      <ellipse cx="253" cy="266" rx="16" ry="4" fill="rgba(175,152,255,0.24)"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="#625648"/>
+      <line x1="96" y1="0" x2="96" y2="80" stroke="rgba(86,74,58,0.45)" stroke-width="1"/>
+      <line x1="192" y1="0" x2="192" y2="80" stroke="rgba(86,74,58,0.45)" stroke-width="1"/>
+      <line x1="288" y1="0" x2="288" y2="80" stroke="rgba(86,74,58,0.45)" stroke-width="1"/>
+      <line x1="384" y1="0" x2="384" y2="80" stroke="rgba(86,74,58,0.45)" stroke-width="1"/>
+      <line x1="0" y1="40" x2="480" y2="40" stroke="rgba(86,74,58,0.38)" stroke-width="1"/>
+      <rect x="0" y="10" width="480" height="3" fill="rgba(255,225,50,0.55)"/>
+      <ellipse cx="253" cy="2" rx="44" ry="9" fill="rgba(125,88,218,0.16)"/>
+      <rect x="236" y="-55" width="4" height="62" rx="1" fill="rgba(78,56,26,0.90)"/>
+      <rect x="262" y="-55" width="4" height="62" rx="1" fill="rgba(78,56,26,0.90)"/>
+      <rect x="236" y="-55" width="30" height="4" rx="1" fill="rgba(88,62,30,0.88)"/>
+      <rect x="234" y="-28" width="36" height="5" rx="2" fill="rgba(92,68,36,0.92)"/>
+      <rect x="237" y="-52" width="28" height="20" rx="2" fill="rgba(86,56,34,0.88)"/>
+      <rect x="238" y="-23" width="22" height="20" rx="1" fill="none" stroke="rgba(165,128,50,0.72)" stroke-width="1.5"/>
+      <ellipse cx="249" cy="-12" rx="4" ry="3.5" fill="rgba(240,234,218,0.68)"/>
+      <circle cx="240" cy="15" r="9" fill="#1a1a1a"/>
+      <circle cx="240" cy="15" r="6" fill="#242424"/>
+      <circle cx="240" cy="15" r="2.5" fill="#585858"/>
+      <circle cx="263" cy="15" r="9" fill="#1a1a1a"/>
+      <circle cx="263" cy="15" r="6" fill="#242424"/>
+      <circle cx="263" cy="15" r="2.5" fill="#585858"/>
+      <rect x="234" y="13" width="36" height="4" rx="1" fill="rgba(46,36,22,0.85)"/>
+      <ellipse cx="253" cy="-1" rx="22" ry="7" fill="rgba(152,124,250,0.26)"/>`,
   },
   potions_class: {
     label: 'Aula de Pociones',
@@ -2390,6 +2571,95 @@ const HAIR = {
       <rect x="214" y="9"  width="10" height="17" rx="3" fill="rgba(45,45,130,0.8)"/>
       <rect x="214" y="7"  width="10" height="5"  rx="1" fill="rgba(65,65,160,0.6)"/>`,
     groundH: 100,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#0a080f"/>
+      <path d="M-10,0 Q160,200 330,0" fill="none" stroke="rgba(70,60,85,0.6)" stroke-width="12"/>
+      <path d="M150,0 Q320,190 490,0" fill="none" stroke="rgba(70,60,85,0.5)" stroke-width="12"/>
+      <rect x="0" y="0" width="480" height="22" fill="rgba(38,32,48,0.9)"/>
+      <rect x="0" y="40" width="18" height="300" fill="rgba(32,27,42,0.95)"/>
+      <rect x="0" y="58"  width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="0" y="80"  width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="0" y="102" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="0" y="124" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="0" y="88" width="68" height="5" fill="rgba(75,55,35,0.9)"/>
+      <rect x="3"  y="68" width="7" height="22" rx="2" fill="rgba(30,100,45,0.85)"/>
+      <rect x="13" y="72" width="6" height="18" rx="2" fill="rgba(90,20,120,0.85)"/>
+      <rect x="22" y="66" width="8" height="24" rx="2" fill="rgba(160,45,20,0.85)"/>
+      <rect x="33" y="70" width="6" height="20" rx="2" fill="rgba(40,70,160,0.85)"/>
+      <rect x="42" y="67" width="8" height="23" rx="2" fill="rgba(190,130,20,0.85)"/>
+      <rect x="53" y="72" width="6" height="18" rx="2" fill="rgba(25,120,90,0.85)"/>
+      <rect x="62" y="69" width="5" height="21" rx="2" fill="rgba(130,20,60,0.8)"/>
+      <rect x="0" y="148" width="68" height="5" fill="rgba(75,55,35,0.9)"/>
+      <rect x="3"  y="128" width="7" height="22" rx="2" fill="rgba(110,160,30,0.8)"/>
+      <rect x="13" y="132" width="6" height="18" rx="2" fill="rgba(60,15,90,0.85)"/>
+      <rect x="22" y="126" width="8" height="24" rx="2" fill="rgba(20,40,150,0.8)"/>
+      <rect x="33" y="130" width="6" height="20" rx="2" fill="rgba(155,25,45,0.85)"/>
+      <rect x="42" y="127" width="8" height="23" rx="2" fill="rgba(40,130,65,0.8)"/>
+      <rect x="462" y="40" width="18" height="300" fill="rgba(32,27,42,0.95)"/>
+      <rect x="462" y="58"  width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="462" y="80"  width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="462" y="102" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="462" y="124" width="18" height="1.5" fill="rgba(55,47,68,0.5)"/>
+      <rect x="412" y="88" width="68" height="5" fill="rgba(75,55,35,0.9)"/>
+      <rect x="414" y="68" width="7" height="22" rx="2" fill="rgba(185,55,20,0.85)"/>
+      <rect x="424" y="72" width="6" height="18" rx="2" fill="rgba(40,110,190,0.85)"/>
+      <rect x="433" y="66" width="8" height="24" rx="2" fill="rgba(100,25,130,0.85)"/>
+      <rect x="444" y="70" width="6" height="20" rx="2" fill="rgba(30,130,55,0.85)"/>
+      <rect x="453" y="68" width="7" height="22" rx="2" fill="rgba(175,135,25,0.8)"/>
+      <rect x="412" y="148" width="68" height="5" fill="rgba(75,55,35,0.9)"/>
+      <rect x="414" y="128" width="7" height="22" rx="2" fill="rgba(130,150,20,0.8)"/>
+      <rect x="424" y="132" width="6" height="18" rx="2" fill="rgba(85,18,110,0.85)"/>
+      <rect x="433" y="126" width="8" height="24" rx="2" fill="rgba(165,55,30,0.8)"/>
+      <rect x="444" y="130" width="6" height="20" rx="2" fill="rgba(22,110,195,0.8)"/>
+      <rect x="453" y="128" width="7" height="22" rx="2" fill="rgba(50,145,70,0.75)"/>
+      <rect x="176" y="52" width="128" height="68" rx="4" fill="rgba(18,38,18,0.85)"/>
+      <rect x="178" y="54" width="124" height="64" rx="3" fill="rgba(28,52,24,0.6)"/>
+      <rect x="175" y="51" width="130" height="4" rx="1" fill="rgba(80,55,30,0.75)"/>
+      <rect x="175" y="116" width="130" height="4" rx="1" fill="rgba(80,55,30,0.75)"/>
+      <rect x="175" y="51" width="4" height="69" rx="1" fill="rgba(80,55,30,0.75)"/>
+      <rect x="301" y="51" width="4" height="69" rx="1" fill="rgba(80,55,30,0.75)"/>
+      <text x="240" y="68" font-size="6" font-weight="bold" text-anchor="middle" fill="rgba(245,245,235,0.55)">Amortentia</text>
+      <line x1="186" y1="76" x2="294" y2="76" stroke="rgba(240,240,230,0.35)" stroke-width="1.5"/>
+      <line x1="186" y1="83" x2="286" y2="83" stroke="rgba(240,240,230,0.30)" stroke-width="1.5"/>
+      <rect x="88"  y="32" width="4" height="16" rx="1" fill="rgba(235,225,200,0.85)"/>
+      <ellipse cx="90" cy="30" rx="4" ry="5" fill="rgba(255,170,30,0.50)"/>
+      <ellipse cx="90" cy="27" rx="2.5" ry="3.5" fill="rgba(255,235,120,0.70)"/>
+      <rect x="150" y="24" width="4" height="16" rx="1" fill="rgba(235,225,200,0.80)"/>
+      <ellipse cx="152" cy="22" rx="4" ry="5" fill="rgba(255,170,30,0.45)"/>
+      <ellipse cx="152" cy="19" rx="2.5" ry="3.5" fill="rgba(255,235,120,0.65)"/>
+      <rect x="240" y="35" width="4" height="16" rx="1" fill="rgba(235,225,200,0.85)"/>
+      <ellipse cx="242" cy="33" rx="4" ry="5" fill="rgba(255,170,30,0.50)"/>
+      <rect x="320" y="24" width="4" height="16" rx="1" fill="rgba(235,225,200,0.80)"/>
+      <ellipse cx="322" cy="22" rx="4" ry="5" fill="rgba(255,170,30,0.45)"/>
+      <rect x="390" y="35" width="4" height="16" rx="1" fill="rgba(235,225,200,0.85)"/>
+      <ellipse cx="392" cy="33" rx="4" ry="5" fill="rgba(255,170,30,0.50)"/>
+      <ellipse cx="164" cy="285" rx="120" ry="45" fill="rgba(40,200,70,0.07)"/>
+      <ellipse cx="164" cy="308" rx="85" ry="30" fill="rgba(60,220,90,0.09)"/>`,
+    groundHWide: 100,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="100" fill="#252030"/>
+      <line x1="120" y1="0" x2="120" y2="100" stroke="rgba(50,42,65,0.5)" stroke-width="1"/>
+      <line x1="240" y1="0" x2="240" y2="100" stroke="rgba(50,42,65,0.5)" stroke-width="1"/>
+      <line x1="360" y1="0" x2="360" y2="100" stroke="rgba(50,42,65,0.5)" stroke-width="1"/>
+      <line x1="0" y1="50" x2="480" y2="50" stroke="rgba(50,42,65,0.4)" stroke-width="1"/>
+      <ellipse cx="164" cy="18" rx="18" ry="12" fill="rgba(60,220,90,0.18)"/>
+      <ellipse cx="150" cy="28" rx="14" ry="10" fill="rgba(60,220,90,0.14)"/>
+      <ellipse cx="178" cy="24" rx="16" ry="10" fill="rgba(60,220,90,0.12)"/>
+      <ellipse cx="164" cy="10" rx="22" ry="9" fill="rgba(60,220,90,0.22)"/>
+      <ellipse cx="164" cy="18" rx="30" ry="10" fill="#111"/>
+      <ellipse cx="164" cy="18" rx="27" ry="8" fill="rgba(30,160,55,0.7)"/>
+      <path d="M134,18 Q127,60 134,72 Q144,82 164,84 Q184,82 194,72 Q201,60 194,18" fill="#1a1a1e"/>
+      <ellipse cx="164" cy="18" rx="30" ry="10" fill="none" stroke="rgba(90,85,100,0.6)" stroke-width="2"/>
+      <rect x="140" y="82" width="6" height="14" rx="2" fill="#111"/>
+      <rect x="161" y="84" width="6" height="12" rx="2" fill="#111"/>
+      <rect x="182" y="82" width="6" height="14" rx="2" fill="#111"/>
+      <rect x="304" y="28" width="82" height="42" rx="3" fill="rgba(55,40,25,0.9)"/>
+      <rect x="302" y="26" width="86" height="6" rx="2" fill="rgba(75,55,32,0.95)"/>
+      <ellipse cx="318" cy="26" rx="10" ry="6" fill="rgba(80,75,85,0.85)"/>
+      <rect x="316" y="8" width="4" height="18" rx="2" fill="rgba(100,95,105,0.80)"/>
+      <rect x="336" y="10" width="10" height="18" rx="3" fill="rgba(35,95,55,0.8)"/>
+      <rect x="350" y="12" width="10" height="16" rx="3" fill="rgba(150,55,25,0.8)"/>
+      <rect x="364" y="9" width="10" height="17" rx="3" fill="rgba(45,45,130,0.8)"/>`,
   },
   quidditch: {
     label: 'Quidditch',
@@ -2445,6 +2715,41 @@ const HAIR = {
       <rect x="9" y="0" width="8" height="20" fill="rgba(160,130,40,0.7)"/>
       <rect x="223" y="0" width="8" height="20" fill="rgba(160,130,40,0.7)"/>`,
     groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#4a9fd4"/>
+      <rect x="0" y="0" width="480" height="120" fill="rgba(30,80,160,0.18)"/>
+      <ellipse cx="70" cy="38" rx="36" ry="16" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="98" cy="30" rx="28" ry="14" fill="rgba(255,255,255,0.92)"/>
+      <ellipse cx="52" cy="44" rx="22" ry="12" fill="rgba(255,255,255,0.8)"/>
+      <ellipse cx="280" cy="55" rx="32" ry="14" fill="rgba(255,255,255,0.85)"/>
+      <ellipse cx="306" cy="46" rx="24" ry="12" fill="rgba(255,255,255,0.9)"/>
+      <ellipse cx="262" cy="60" rx="20" ry="10" fill="rgba(255,255,255,0.78)"/>
+      <ellipse cx="390" cy="38" rx="34" ry="14" fill="rgba(255,255,255,0.85)"/>
+      <ellipse cx="418" cy="28" rx="22" ry="12" fill="rgba(255,255,255,0.9)"/>
+      <ellipse cx="170" cy="20" rx="20" ry="9" fill="rgba(255,255,255,0.7)"/>
+      <circle cx="340" cy="85" r="7" fill="rgba(255,210,40,0.9)"/>
+      <circle cx="340" cy="85" r="4" fill="rgba(255,235,80,0.95)"/>
+      <path d="M330,83 Q323,79 317,83" fill="none" stroke="rgba(255,210,40,0.7)" stroke-width="2"/>
+      <path d="M350,83 Q357,79 363,83" fill="none" stroke="rgba(255,210,40,0.7)" stroke-width="2"/>
+      <rect x="10" y="100" width="6" height="200" fill="rgba(180,150,60,0.8)"/>
+      <circle cx="13" cy="130" r="16" fill="none" stroke="rgba(180,150,60,0.85)" stroke-width="5"/>
+      <circle cx="13" cy="165" r="16" fill="none" stroke="rgba(180,150,60,0.85)" stroke-width="5"/>
+      <circle cx="13" cy="200" r="16" fill="none" stroke="rgba(180,150,60,0.85)" stroke-width="5"/>
+      <rect x="464" y="100" width="6" height="200" fill="rgba(180,150,60,0.8)"/>
+      <circle cx="467" cy="130" r="16" fill="none" stroke="rgba(180,150,60,0.85)" stroke-width="5"/>
+      <circle cx="467" cy="165" r="16" fill="none" stroke="rgba(180,150,60,0.85)" stroke-width="5"/>
+      <circle cx="467" cy="200" r="16" fill="none" stroke="rgba(180,150,60,0.85)" stroke-width="5"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="#2e7d32"/>
+      <polygon points="160,0 320,0 480,80 0,80" fill="rgba(46,120,46,0.6)"/>
+      <line x1="240" y1="0" x2="0" y2="80" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"/>
+      <line x1="240" y1="0" x2="480" y2="80" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"/>
+      <line x1="240" y1="0" x2="120" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+      <line x1="240" y1="0" x2="360" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+      <ellipse cx="240" cy="68" rx="110" ry="10" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <line x1="0" y1="50" x2="480" y2="50" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+      <rect x="7" y="0" width="8" height="20" fill="rgba(160,130,40,0.7)"/>
+      <rect x="465" y="0" width="8" height="20" fill="rgba(160,130,40,0.7)"/>`,
   },
 
   /* ===== GENERIC SCENES ===== */
@@ -2492,6 +2797,41 @@ const HAIR = {
       <circle cx="210" cy="45" r="3" fill="#ffd93d"/>
       <circle cx="215" cy="60" r="2.5" fill="#ff6b6b"/>`,
     groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#87CEEB"/>
+      <rect x="0" y="0" width="480" height="80" fill="rgba(100,180,255,0.15)"/>
+      <ellipse cx="80" cy="40" rx="30" ry="14" fill="rgba(255,255,255,0.9)"/>
+      <ellipse cx="108" cy="34" rx="24" ry="12" fill="rgba(255,255,255,0.92)"/>
+      <ellipse cx="290" cy="50" rx="28" ry="12" fill="rgba(255,255,255,0.85)"/>
+      <ellipse cx="314" cy="44" rx="20" ry="10" fill="rgba(255,255,255,0.9)"/>
+      <ellipse cx="430" cy="42" rx="26" ry="12" fill="rgba(255,255,255,0.85)"/>
+      <ellipse cx="452" cy="36" rx="18" ry="10" fill="rgba(255,255,255,0.9)"/>
+      <circle cx="400" cy="60" r="20" fill="rgba(255,230,80,0.9)"/>
+      <circle cx="400" cy="60" r="14" fill="rgba(255,245,120,0.95)"/>
+      <rect x="28" y="200" width="10" height="60" fill="#6d4c21"/>
+      <ellipse cx="33" cy="190" rx="28" ry="36" fill="#3a8c3a"/>
+      <ellipse cx="26" cy="198" rx="20" ry="28" fill="#2e7d32"/>
+      <ellipse cx="43" cy="196" rx="22" ry="30" fill="#43a047"/>
+      <rect x="390" y="210" width="8" height="50" fill="#6d4c21"/>
+      <ellipse cx="394" cy="202" rx="24" ry="32" fill="#3a8c3a"/>
+      <ellipse cx="386" cy="208" rx="18" ry="24" fill="#2e7d32"/>
+      <ellipse cx="404" cy="206" rx="20" ry="26" fill="#43a047"/>
+      <rect x="200" y="268" width="80" height="6" rx="2" fill="#8d6e4a"/>
+      <rect x="204" y="274" width="4" height="16" fill="#6d4c21"/>
+      <rect x="272" y="274" width="4" height="16" fill="#6d4c21"/>
+      <rect x="198" y="260" width="4" height="12" fill="#6d4c21"/>
+      <rect x="278" y="260" width="4" height="12" fill="#6d4c21"/>
+      <rect x="198" y="258" width="84" height="4" rx="2" fill="#a07850"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="#4CAF50"/>
+      <rect x="0" y="0" width="480" height="20" fill="rgba(60,140,60,0.5)"/>
+      <path d="M200,0 Q240,40 280,80 L200,80 Q160,40 120,0 Z" fill="rgba(180,160,120,0.6)"/>
+      <circle cx="30" cy="30" r="3" fill="#ff6b6b"/>
+      <circle cx="45" cy="28" r="2.5" fill="#ffd93d"/>
+      <circle cx="140" cy="50" r="3" fill="#ff6b6b"/>
+      <circle cx="340" cy="25" r="2.5" fill="#c084fc"/>
+      <circle cx="420" cy="45" r="3" fill="#ffd93d"/>
+      <circle cx="455" cy="60" r="2.5" fill="#ff6b6b"/>`,
   },
 
   sunset_beach: {
@@ -2540,6 +2880,41 @@ const HAIR = {
       <ellipse cx="170" cy="55" rx="3" ry="2" fill="rgba(255,230,200,0.5)" transform="rotate(20,170,55)"/>
       <circle cx="130" cy="35" r="2" fill="rgba(200,180,150,0.5)"/>`,
     groundH: 80,
+    svgSkyWide: `
+      <defs>
+        <linearGradient id="sunset-grad-w" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a0533"/>
+          <stop offset="25%" stop-color="#6b2fa0"/>
+          <stop offset="50%" stop-color="#e8653a"/>
+          <stop offset="75%" stop-color="#f4a636"/>
+          <stop offset="100%" stop-color="#f7d26b"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="480" height="340" fill="url(#sunset-grad-w)"/>
+      <circle cx="240" cy="250" r="30" fill="rgba(255,180,50,0.9)"/>
+      <circle cx="240" cy="250" r="22" fill="rgba(255,220,80,0.95)"/>
+      <rect x="225" y="260" width="30" height="2" rx="1" fill="rgba(255,200,60,0.4)"/>
+      <rect x="210" y="265" width="60" height="1.5" rx="1" fill="rgba(255,200,60,0.3)"/>
+      <rect x="190" y="270" width="100" height="1.5" rx="1" fill="rgba(255,200,60,0.2)"/>
+      <ellipse cx="80" cy="100" rx="32" ry="10" fill="rgba(255,160,80,0.4)"/>
+      <ellipse cx="380" cy="80" rx="26" ry="8" fill="rgba(255,140,60,0.35)"/>
+      <ellipse cx="240" cy="120" rx="24" ry="6" fill="rgba(255,180,100,0.3)"/>
+      <path d="M40,290 Q42,250 38,210" fill="none" stroke="#4a3520" stroke-width="6" stroke-linecap="round"/>
+      <path d="M38,215 Q15,200 5,220" fill="none" stroke="#2e7d32" stroke-width="5" stroke-linecap="round"/>
+      <path d="M38,210 Q55,195 70,210" fill="none" stroke="#388e3c" stroke-width="5" stroke-linecap="round"/>
+      <path d="M38,212 Q25,190 10,195" fill="none" stroke="#43a047" stroke-width="4" stroke-linecap="round"/>
+      <path d="M430,290 Q432,250 428,210" fill="none" stroke="#4a3520" stroke-width="6" stroke-linecap="round"/>
+      <path d="M428,215 Q405,200 395,220" fill="none" stroke="#2e7d32" stroke-width="5" stroke-linecap="round"/>
+      <path d="M428,210 Q445,195 460,210" fill="none" stroke="#388e3c" stroke-width="5" stroke-linecap="round"/>
+      <path d="M428,212 Q415,190 400,195" fill="none" stroke="#43a047" stroke-width="4" stroke-linecap="round"/>
+      <rect x="0" y="260" width="480" height="40" fill="rgba(20,80,140,0.4)"/>
+      <path d="M0,262 Q60,258 120,262 Q180,266 240,262 Q300,258 360,262 Q420,266 480,262" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="#e8c67a"/>
+      <rect x="0" y="0" width="480" height="15" fill="rgba(180,150,80,0.4)"/>
+      <ellipse cx="120" cy="40" rx="4" ry="3" fill="rgba(255,240,210,0.6)" transform="rotate(-15,120,40)"/>
+      <ellipse cx="340" cy="55" rx="3" ry="2" fill="rgba(255,230,200,0.5)" transform="rotate(20,340,55)"/>
+      <circle cx="240" cy="35" r="2" fill="rgba(200,180,150,0.5)"/>`,
   },
   brick_wall: {
     label: 'Muro de Ladrillos',
@@ -2614,6 +2989,34 @@ const HAIR = {
       <!-- Puddle / wet reflection -->
       <ellipse cx="120" cy="38" rx="28" ry="9" fill="rgba(50,70,90,0.25)"/>`,
     groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#3a2e26"/>
+      ${Array.from({length:22},(_,r)=>{const y=r*16;const off=r%2===0?-2:18;return Array.from({length:16},(_,b)=>{const x=off+b*32;const c=['#6b3a2a','#5e3224','#6b3a2a','#5e3224'][(b+r)%4];return `<rect x="${x}" y="${y}" width="30" height="14" rx="1" fill="${c}"/>`;}).join('');}).join('')}
+      <rect x="0" y="0" width="480" height="340" fill="rgba(20,12,8,0.28)"/>
+      <ellipse cx="60" cy="60" rx="18" ry="6" fill="rgba(40,80,30,0.22)"/>
+      <ellipse cx="340" cy="130" rx="14" ry="5" fill="rgba(40,80,30,0.18)"/>
+      <ellipse cx="220" cy="190" rx="16" ry="4" fill="rgba(40,80,30,0.15)"/>
+      <rect x="55" y="240" width="6" height="22" rx="1" fill="rgba(120,80,30,0.8)"/>
+      <ellipse cx="58" cy="238" rx="7" ry="9" fill="rgba(255,160,40,0.5)"/>
+      <ellipse cx="58" cy="234" rx="4" ry="6" fill="rgba(255,220,100,0.6)"/>
+      <rect x="419" y="240" width="6" height="22" rx="1" fill="rgba(120,80,30,0.8)"/>
+      <ellipse cx="422" cy="238" rx="7" ry="9" fill="rgba(255,160,40,0.5)"/>
+      <ellipse cx="422" cy="234" rx="4" ry="6" fill="rgba(255,220,100,0.6)"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="#4a3e34"/>
+      <ellipse cx="40" cy="20" rx="14" ry="9" fill="rgba(80,65,50,0.7)"/>
+      <ellipse cx="110" cy="15" rx="16" ry="8" fill="rgba(70,55,42,0.7)"/>
+      <ellipse cx="190" cy="22" rx="15" ry="9" fill="rgba(85,68,52,0.65)"/>
+      <ellipse cx="270" cy="14" rx="14" ry="8" fill="rgba(75,60,46,0.7)"/>
+      <ellipse cx="350" cy="20" rx="16" ry="9" fill="rgba(80,65,50,0.65)"/>
+      <ellipse cx="435" cy="16" rx="14" ry="8" fill="rgba(70,55,42,0.7)"/>
+      <ellipse cx="20" cy="45" rx="13" ry="8" fill="rgba(75,60,46,0.6)"/>
+      <ellipse cx="90" cy="50" rx="15" ry="9" fill="rgba(80,65,50,0.6)"/>
+      <ellipse cx="170" cy="44" rx="16" ry="8" fill="rgba(70,55,42,0.65)"/>
+      <ellipse cx="250" cy="52" rx="14" ry="9" fill="rgba(85,68,52,0.6)"/>
+      <ellipse cx="330" cy="46" rx="15" ry="8" fill="rgba(75,60,46,0.65)"/>
+      <ellipse cx="410" cy="50" rx="13" ry="9" fill="rgba(80,65,50,0.6)"/>
+      <ellipse cx="240" cy="38" rx="55" ry="9" fill="rgba(50,70,90,0.25)"/>`,
   },
 
   /* ===== HP EXTRA SCENES ===== */
@@ -2670,6 +3073,41 @@ const HAIR = {
       <circle cx="120" cy="40" r="20" fill="none" stroke="rgba(180,140,30,0.2)" stroke-width="1"/>
       <text x="120" y="45" font-size="10" text-anchor="middle" fill="rgba(180,140,30,0.45)" font-weight="bold">M</text>`,
     groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#2a2010"/>
+      <rect x="0" y="0" width="18" height="340" fill="#3a2e10"/>
+      <rect x="462" y="0" width="18" height="340" fill="#3a2e10"/>
+      ${[0,24,48,72,96,120,144,168,192,216,240,264,288,312].map(y=>`<rect x="1" y="${y}" width="16" height="22" rx="1" fill="rgba(180,140,40,0.18)"/>`).join('')}
+      ${[0,24,48,72,96,120,144,168,192,216,240,264,288,312].map(y=>`<rect x="463" y="${y}" width="16" height="22" rx="1" fill="rgba(180,140,40,0.18)"/>`).join('')}
+      <rect x="0" y="0" width="480" height="60" fill="#0a0808"/>
+      <circle cx="80"  cy="25" r="1.5" fill="rgba(255,215,60,0.8)"/>
+      <circle cx="140" cy="15" r="1"   fill="rgba(255,215,60,0.6)"/>
+      <circle cx="200" cy="30" r="1.5" fill="rgba(255,215,60,0.7)"/>
+      <circle cx="260" cy="12" r="1"   fill="rgba(255,215,60,0.8)"/>
+      <circle cx="320" cy="28" r="1.5" fill="rgba(255,215,60,0.6)"/>
+      <circle cx="380" cy="18" r="1"   fill="rgba(255,215,60,0.7)"/>
+      <circle cx="440" cy="32" r="1.5" fill="rgba(255,215,60,0.6)"/>
+      <rect x="20"  y="160" width="44" height="100" rx="22 22 4 4" fill="#1a1208"/>
+      <rect x="22"  y="162" width="40" height="96"  rx="20 20 2 2" fill="#0f0a04"/>
+      <rect x="24"  y="200" width="36" height="58"  rx="2" fill="rgba(0,180,80,0.18)"/>
+      <ellipse cx="42" cy="200" rx="16" ry="8" fill="rgba(0,220,100,0.25)"/>
+      <path d="M30,258 Q34,240 38,254 Q42,238 46,252 Q50,240 54,256" fill="none" stroke="rgba(0,255,100,0.5)" stroke-width="2"/>
+      <rect x="416" y="160" width="44" height="100" rx="22 22 4 4" fill="#1a1208"/>
+      <rect x="418" y="162" width="40" height="96"  rx="20 20 2 2" fill="#0f0a04"/>
+      <rect x="420" y="200" width="36" height="58"  rx="2" fill="rgba(0,180,80,0.18)"/>
+      <ellipse cx="438" cy="200" rx="16" ry="8" fill="rgba(0,220,100,0.25)"/>
+      <path d="M426,258 Q430,240 434,254 Q438,238 442,252 Q446,240 450,256" fill="none" stroke="rgba(0,255,100,0.5)" stroke-width="2"/>
+      <rect x="218" y="200" width="44" height="100" fill="#2a2010"/>
+      <rect x="214" y="198" width="52" height="8" rx="2" fill="rgba(200,160,30,0.6)"/>
+      <rect x="234" y="130" width="12" height="70" fill="rgba(200,160,30,0.35)"/>
+      <circle cx="240" cy="124" r="10" fill="rgba(200,160,30,0.30)"/>
+      <circle cx="240" cy="340" r="35" fill="rgba(180,140,30,0.12)"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="#1a1408"/>
+      ${Array.from({length:16},(_,col)=>Array.from({length:5},(_,row)=>`<rect x="${col*30+1}" y="${row*16+1}" width="28" height="14" rx="1" fill="${(col+row)%2===0?'rgba(180,140,30,0.18)':'rgba(255,255,255,0.04)'}"/>`).join('')).join('')}
+      <circle cx="240" cy="40" r="30" fill="none" stroke="rgba(180,140,30,0.3)" stroke-width="1.5"/>
+      <circle cx="240" cy="40" r="20" fill="none" stroke="rgba(180,140,30,0.2)" stroke-width="1"/>
+      <text x="240" y="45" font-size="10" text-anchor="middle" fill="rgba(180,140,30,0.45)" font-weight="bold">M</text>`,
   },
 
   hogsmeade: {
@@ -2752,6 +3190,61 @@ const HAIR = {
       <ellipse cx="112" cy="52" rx="4" ry="6" fill="rgba(120,130,145,0.3)" transform="rotate(10,112,52)"/>
       <ellipse cx="126" cy="46" rx="4" ry="6" fill="rgba(120,130,145,0.3)" transform="rotate(-10,126,46)"/>`,
     groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#3a4a5a"/>
+      <ellipse cx="80"  cy="30" rx="40" ry="18" fill="rgba(200,210,220,0.25)"/>
+      <ellipse cx="240" cy="22" rx="50" ry="16" fill="rgba(200,210,220,0.20)"/>
+      <ellipse cx="420" cy="35" rx="36" ry="14" fill="rgba(200,210,220,0.22)"/>
+      <circle cx="30"  cy="55"  r="1.5" fill="rgba(255,255,255,0.7)"/>
+      <circle cx="100" cy="80"  r="1"   fill="rgba(255,255,255,0.6)"/>
+      <circle cx="180" cy="45"  r="1.5" fill="rgba(255,255,255,0.8)"/>
+      <circle cx="250" cy="70"  r="1"   fill="rgba(255,255,255,0.7)"/>
+      <circle cx="320" cy="50"  r="1.5" fill="rgba(255,255,255,0.6)"/>
+      <circle cx="395" cy="85"  r="1"   fill="rgba(255,255,255,0.8)"/>
+      <circle cx="460" cy="60"  r="1.5" fill="rgba(255,255,255,0.7)"/>
+      <!-- Three Broomsticks left -->
+      <rect x="0" y="120" width="80" height="160" fill="#5a3a20"/>
+      <rect x="0" y="100" width="80" height="24" fill="#4a2e18"/>
+      <polygon points="0,100 40,70 80,100" fill="#3a2a18"/>
+      <polygon points="0,100 40,70 80,100" fill="rgba(230,240,255,0.6)"/>
+      <rect x="0" y="98" width="80" height="5" fill="rgba(230,240,255,0.7)"/>
+      <rect x="8"  y="130" width="20" height="16" rx="2" fill="rgba(255,200,80,0.7)"/>
+      <rect x="52" y="130" width="20" height="16" rx="2" fill="rgba(255,200,80,0.65)"/>
+      <rect x="28" y="230" width="24" height="50" rx="2" fill="#3a2010"/>
+      <rect x="12" y="115" width="56" height="14" rx="2" fill="#3a2010"/>
+      <text x="40" y="125" font-size="6" text-anchor="middle" fill="rgba(255,200,80,0.9)" font-weight="bold">THREE BROOMSTICKS</text>
+      <!-- Honeydukes right -->
+      <rect x="400" y="130" width="80" height="150" fill="#8a3a5a"/>
+      <rect x="400" y="110" width="80" height="24" fill="#7a2a4a"/>
+      <polygon points="400,110 440,80 480,110" fill="#6a1a3a"/>
+      <polygon points="400,110 440,80 480,110" fill="rgba(230,240,255,0.55)"/>
+      <rect x="400" y="108" width="80" height="5" fill="rgba(230,240,255,0.7)"/>
+      <rect x="408" y="140" width="20" height="16" rx="2" fill="rgba(255,180,200,0.7)"/>
+      <rect x="452" y="140" width="20" height="16" rx="2" fill="rgba(255,180,200,0.65)"/>
+      <rect x="412" y="235" width="22" height="45" rx="2" fill="#5a1a2a"/>
+      <rect x="404" y="125" width="72" height="14" rx="2" fill="#5a1a2a"/>
+      <text x="440" y="135" font-size="6" text-anchor="middle" fill="rgba(255,180,200,0.95)" font-weight="bold">HONEYDUKES</text>
+      <!-- Centre road and building -->
+      <rect x="80" y="200" width="320" height="140" fill="#3a3530"/>
+      <rect x="80" y="200" width="320" height="8" fill="rgba(230,240,255,0.4)"/>
+      <rect x="80" y="120" width="320" height="80" fill="#3a4a5a"/>
+      <rect x="156" y="150" width="168" height="130" fill="#4a4a3a"/>
+      <polygon points="150,152 240,118 330,152" fill="#3a3a2a"/>
+      <polygon points="150,152 240,118 330,152" fill="rgba(230,240,255,0.5)"/>
+      <rect x="210" y="162" width="16" height="14" rx="2" fill="rgba(255,220,100,0.6)"/>
+      <rect x="254" y="162" width="16" height="14" rx="2" fill="rgba(255,220,100,0.55)"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="#c8d4e0"/>
+      <ellipse cx="40"  cy="35" rx="12" ry="7" fill="rgba(150,160,170,0.3)"/>
+      <ellipse cx="110" cy="28" rx="14" ry="6" fill="rgba(150,160,170,0.25)"/>
+      <ellipse cx="190" cy="38" rx="13" ry="7" fill="rgba(150,160,170,0.3)"/>
+      <ellipse cx="280" cy="28" rx="12" ry="6" fill="rgba(150,160,170,0.25)"/>
+      <ellipse cx="360" cy="35" rx="14" ry="7" fill="rgba(150,160,170,0.3)"/>
+      <ellipse cx="440" cy="28" rx="12" ry="6" fill="rgba(150,160,170,0.25)"/>
+      <rect x="0" y="0" width="480" height="12" fill="rgba(230,240,255,0.8)"/>
+      <ellipse cx="200" cy="45" rx="4" ry="6" fill="rgba(120,130,145,0.3)" transform="rotate(-15,200,45)"/>
+      <ellipse cx="224" cy="52" rx="4" ry="6" fill="rgba(120,130,145,0.3)" transform="rotate(10,224,52)"/>
+      <ellipse cx="252" cy="46" rx="4" ry="6" fill="rgba(120,130,145,0.3)" transform="rotate(-10,252,46)"/>`,
   },
 
   hagrid_hut: {
@@ -2828,6 +3321,45 @@ const HAIR = {
       <ellipse cx="180" cy="48" rx="4" ry="2.5" fill="rgba(80,70,60,0.5)"/>
       <ellipse cx="210" cy="62" rx="6" ry="3"   fill="rgba(80,70,60,0.55)"/>`,
     groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#3a4a30"/>
+      <rect x="0" y="0" width="480" height="120" fill="rgba(20,30,15,0.4)"/>
+      <ellipse cx="100" cy="40" rx="50" ry="20" fill="rgba(50,60,40,0.6)"/>
+      <ellipse cx="380" cy="30" rx="45" ry="18" fill="rgba(50,60,40,0.55)"/>
+      <ellipse cx="240" cy="55" rx="40" ry="15" fill="rgba(50,60,40,0.4)"/>
+      <circle cx="430" cy="50" r="18" fill="rgba(220,220,180,0.25)"/>
+      <circle cx="440" cy="50" r="18" fill="#3a4a30"/>
+      <rect x="0" y="150" width="480" height="190" fill="rgba(15,25,10,0.85)"/>
+      <polygon points="0,260 12,180 24,260" fill="#1a2810"/>
+      <polygon points="10,260 25,160 40,260" fill="#1e2e12"/>
+      <polygon points="25,260 42,170 58,260" fill="#1a2810"/>
+      <polygon points="420,260 436,165 452,260" fill="#1a2810"/>
+      <polygon points="436,260 454,175 470,260" fill="#1e2e12"/>
+      <polygon points="455,260 470,185 485,260" fill="#1a2810"/>
+      <!-- Hagrid's hut wider/centred -->
+      <rect x="170" y="175" width="90" height="120" rx="3" fill="#5a4530"/>
+      <polygon points="164,178 215,130 266,178" fill="#4a3828"/>
+      <line x1="175" y1="175" x2="215" y2="135" stroke="rgba(80,60,35,0.5)" stroke-width="2"/>
+      <line x1="200" y1="175" x2="215" y2="133" stroke="rgba(80,60,35,0.4)" stroke-width="2"/>
+      <line x1="230" y1="175" x2="215" y2="133" stroke="rgba(80,60,35,0.4)" stroke-width="2"/>
+      <line x1="255" y1="175" x2="215" y2="135" stroke="rgba(80,60,35,0.5)" stroke-width="2"/>
+      <rect x="225" y="130" width="12" height="36" rx="2" fill="#4a3020"/>
+      <ellipse cx="231" cy="128" rx="8" ry="6" fill="rgba(120,120,120,0.4)"/>
+      <ellipse cx="226" cy="120" rx="6" ry="5" fill="rgba(120,120,120,0.3)"/>
+      <rect x="184" y="192" width="24" height="20" rx="2" fill="rgba(255,200,80,0.65)"/>
+      <rect x="215" y="228" width="36" height="67" rx="4" fill="#3a2818"/>
+      <circle cx="248" cy="262" r="3" fill="rgba(180,140,60,0.9)"/>
+      <ellipse cx="155" cy="290" rx="10" ry="8" fill="#c8620a"/>
+      <rect x="154" y="280" width="2" height="6" fill="#3a5a20"/>
+      <ellipse cx="280" cy="290" rx="8" ry="6" fill="#c8620a"/>
+      <rect x="279" y="282" width="2" height="5" fill="#3a5a20"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="#3a4a28"/>
+      <rect x="0" y="0" width="480" height="8" fill="rgba(50,70,30,0.6)"/>
+      <path d="M180,0 Q240,40 300,80 L220,80 Q160,40 100,0 Z" fill="rgba(60,40,20,0.5)"/>
+      <ellipse cx="60"  cy="55" rx="5" ry="3" fill="rgba(80,70,60,0.6)"/>
+      <ellipse cx="380" cy="48" rx="4" ry="2.5" fill="rgba(80,70,60,0.5)"/>
+      <ellipse cx="430" cy="62" rx="6" ry="3" fill="rgba(80,70,60,0.55)"/>`,
   },
 
   leaky_cauldron: {
@@ -2897,6 +3429,44 @@ const HAIR = {
       <line x1="80"  y1="55" x2="70"  y2="60" stroke="rgba(120,90,40,0.25)" stroke-width="1"/>
       <line x1="150" y1="44" x2="162" y2="40" stroke="rgba(120,90,40,0.3)"  stroke-width="1"/>`,
     groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#1e1508"/>
+      <rect x="0" y="0" width="480" height="12" fill="#2a1e0c"/>
+      <rect x="0" y="30" width="480" height="8" fill="#2a1e0c"/>
+      <rect x="0" y="60" width="480" height="6" fill="#261c0a"/>
+      <rect x="60"  y="0" width="8" height="80" fill="#241a08"/>
+      <rect x="200" y="0" width="8" height="80" fill="#241a08"/>
+      <rect x="340" y="0" width="8" height="80" fill="#241a08"/>
+      <rect x="0"   y="80" width="18" height="260" fill="#2a2418"/>
+      <rect x="462" y="80" width="18" height="260" fill="#2a2418"/>
+      ${[80,106,132,158,184,210,236,262,288,314].map(y=>`<rect x="1" y="${y}" width="16" height="22" rx="1" fill="rgba(60,50,35,0.5)"/>`).join('')}
+      ${[80,106,132,158,184,210,236,262,288,314].map(y=>`<rect x="463" y="${y}" width="16" height="22" rx="1" fill="rgba(60,50,35,0.5)"/>`).join('')}
+      <line x1="240" y1="0" x2="240" y2="50" stroke="rgba(120,90,40,0.6)" stroke-width="2"/>
+      <rect x="180" y="48" width="120" height="4" rx="1" fill="rgba(100,75,35,0.8)"/>
+      ${[186,202,218,234,250,266,282].map(x=>`<rect x="${x}" y="40" width="3" height="10" rx="1" fill="rgba(120,80,30,0.9)"/><ellipse cx="${x+1.5}" cy="38" rx="3" ry="4" fill="rgba(255,180,40,0.6)"/><ellipse cx="${x+1.5}" cy="36" rx="2" ry="3" fill="rgba(255,220,100,0.7)"/>`).join('')}
+      <rect x="18" y="200" width="160" height="140" fill="#2e2010"/>
+      <rect x="16" y="198" width="164" height="8" rx="2" fill="#3a2a12"/>
+      <rect x="24" y="110" width="60" height="8" fill="rgba(60,40,20,0.7)"/>
+      <ellipse cx="36" cy="109" rx="8" ry="10" fill="#5a3a1a"/>
+      <ellipse cx="56" cy="109" rx="8" ry="10" fill="#5a3a1a"/>
+      <ellipse cx="75" cy="109" rx="7" ry="9" fill="#5a3a1a"/>
+      <rect x="310" y="185" width="55" height="100" rx="4" fill="#1a1208"/>
+      <rect x="305" y="183" width="65" height="10" rx="2" fill="#2a1e0c"/>
+      <rect x="312" y="220" width="51" height="65" rx="2" fill="#0e0a04"/>
+      <path d="M318,282 Q325,255 332,270 Q338,248 344,265 Q350,250 356,275 Q358,285 318,285 Z" fill="rgba(200,80,10,0.45)"/>
+      <path d="M321,282 Q327,260 333,272 Q339,252 345,268 Q350,255 354,278 Z" fill="rgba(255,150,20,0.4)"/>
+      <ellipse cx="337" cy="278" rx="20" ry="8" fill="rgba(255,100,0,0.2)"/>
+      <ellipse cx="140" cy="200" rx="20" ry="10" fill="#1a1a1a"/>
+      <rect x="120" y="200" width="40" height="18" rx="0 0 8 8" fill="#222"/>
+      <ellipse cx="140" cy="218" rx="20" ry="8" fill="#1a1a1a"/>
+      <ellipse cx="140" cy="200" rx="18" ry="7" fill="rgba(0,180,80,0.3)"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="#2a1e0c"/>
+      ${[0,60,120,180,240,300,360,420].map(x=>`<rect x="${x}" y="0" width="56" height="80" rx="0" fill="rgba(50,35,15,${x%120===0?'0.15':'0.08'})"/>`).join('')}
+      <line x1="0" y1="20" x2="480" y2="20" stroke="rgba(50,35,15,0.3)" stroke-width="1"/>
+      <line x1="0" y1="40" x2="480" y2="40" stroke="rgba(50,35,15,0.25)" stroke-width="1"/>
+      <line x1="0" y1="60" x2="480" y2="60" stroke="rgba(50,35,15,0.2)" stroke-width="1"/>
+      <ellipse cx="337" cy="5" rx="38" ry="12" fill="rgba(200,80,10,0.12)"/>`,
   },
 
   private_drive: {
@@ -2985,6 +3555,73 @@ const HAIR = {
       <circle cx="202" cy="7" r="5" fill="#ff8c00"/><line x1="202" y1="0" x2="202" y2="14" stroke="#4a7a2a" stroke-width="1.5"/>
       <circle cx="214" cy="7" r="4" fill="#e94560"/><line x1="214" y1="0" x2="214" y2="14" stroke="#4a7a2a" stroke-width="1.5"/>`,
     groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#87ceeb"/>
+      <ellipse cx="80" cy="28" rx="26" ry="13" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="106" cy="22" rx="18" ry="11" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="360" cy="42" rx="22" ry="11" fill="rgba(255,255,255,0.82)"/>
+      <ellipse cx="386" cy="36" rx="16" ry="9" fill="rgba(255,255,255,0.82)"/>
+      <polygon points="20,132 240,58 460,132" fill="#3a3a3a"/>
+      <line x1="20" y1="132" x2="240" y2="58" stroke="#2a2a2a" stroke-width="1.2"/>
+      <line x1="460" y1="132" x2="240" y2="58" stroke="#2a2a2a" stroke-width="1.2"/>
+      <rect x="118" y="62" width="18" height="36" rx="2" fill="#b06050"/>
+      <rect x="115" y="60" width="24" height="6" rx="2" fill="#8a4a3a"/>
+      <rect x="30" y="130" width="400" height="210" fill="#c0705a"/>
+      <line x1="30" y1="145" x2="430" y2="145" stroke="rgba(180,120,100,0.2)" stroke-width="0.8"/>
+      <line x1="30" y1="160" x2="430" y2="160" stroke="rgba(180,120,100,0.2)" stroke-width="0.8"/>
+      <line x1="30" y1="175" x2="430" y2="175" stroke="rgba(180,120,100,0.2)" stroke-width="0.8"/>
+      <line x1="30" y1="190" x2="430" y2="190" stroke="rgba(180,120,100,0.2)" stroke-width="0.8"/>
+      <rect x="56" y="146" width="44" height="48" rx="3" fill="#c8dff0"/>
+      <rect x="56" y="146" width="44" height="48" rx="3" fill="none" stroke="#8a6a4a" stroke-width="3"/>
+      <line x1="78" y1="146" x2="78" y2="194" stroke="#8a6a4a" stroke-width="2"/>
+      <line x1="56" y1="170" x2="100" y2="170" stroke="#8a6a4a" stroke-width="2"/>
+      <rect x="180" y="146" width="44" height="48" rx="3" fill="#c8dff0"/>
+      <rect x="180" y="146" width="44" height="48" rx="3" fill="none" stroke="#8a6a4a" stroke-width="3"/>
+      <line x1="202" y1="146" x2="202" y2="194" stroke="#8a6a4a" stroke-width="2"/>
+      <line x1="180" y1="170" x2="224" y2="170" stroke="#8a6a4a" stroke-width="2"/>
+      <rect x="256" y="146" width="44" height="48" rx="3" fill="#c8dff0"/>
+      <rect x="256" y="146" width="44" height="48" rx="3" fill="none" stroke="#8a6a4a" stroke-width="3"/>
+      <line x1="278" y1="146" x2="278" y2="194" stroke="#8a6a4a" stroke-width="2"/>
+      <line x1="256" y1="170" x2="300" y2="170" stroke="#8a6a4a" stroke-width="2"/>
+      <rect x="380" y="146" width="44" height="48" rx="3" fill="#c8dff0"/>
+      <rect x="380" y="146" width="44" height="48" rx="3" fill="none" stroke="#8a6a4a" stroke-width="3"/>
+      <line x1="402" y1="146" x2="402" y2="194" stroke="#8a6a4a" stroke-width="2"/>
+      <line x1="380" y1="170" x2="424" y2="170" stroke="#8a6a4a" stroke-width="2"/>
+      <rect x="196" y="212" width="88" height="68" rx="3" fill="#1a1a1a"/>
+      <circle cx="240" cy="262" r="4" fill="#d4a017"/>
+      <rect x="40" y="214" width="110" height="44" rx="3" fill="#c8dff0"/>
+      <rect x="40" y="214" width="110" height="44" rx="3" fill="none" stroke="#8a6a4a" stroke-width="3"/>
+      <line x1="95" y1="214" x2="95" y2="258" stroke="#8a6a4a" stroke-width="2"/>
+      <line x1="40" y1="236" x2="150" y2="236" stroke="#8a6a4a" stroke-width="2"/>
+      <rect x="330" y="214" width="110" height="44" rx="3" fill="#c8dff0"/>
+      <rect x="330" y="214" width="110" height="44" rx="3" fill="none" stroke="#8a6a4a" stroke-width="3"/>
+      <line x1="385" y1="214" x2="385" y2="258" stroke="#8a6a4a" stroke-width="2"/>
+      <line x1="330" y1="236" x2="440" y2="236" stroke="#8a6a4a" stroke-width="2"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="#5aaa3a"/>
+      <line x1="0" y1="0" x2="480" y2="0" stroke="rgba(40,100,20,0.15)" stroke-width="20"/>
+      <line x1="0" y1="20" x2="480" y2="20" stroke="rgba(40,100,20,0.12)" stroke-width="18"/>
+      <line x1="0" y1="40" x2="480" y2="40" stroke="rgba(40,100,20,0.10)" stroke-width="18"/>
+      <line x1="0" y1="60" x2="480" y2="60" stroke="rgba(40,100,20,0.12)" stroke-width="18"/>
+      <rect x="196" y="0" width="88" height="32" fill="#c8c0b0"/>
+      <rect x="18" y="0" width="170" height="16" fill="#6a3010"/>
+      <circle cx="30" cy="7" r="5" fill="#e94560"/>
+      <circle cx="50" cy="7" r="5" fill="#ff8c00"/>
+      <circle cx="70" cy="7" r="5" fill="#ffd700"/>
+      <circle cx="90" cy="7" r="5" fill="#ff69b4"/>
+      <circle cx="110" cy="7" r="5" fill="#e94560"/>
+      <circle cx="130" cy="7" r="5" fill="#ff8c00"/>
+      <circle cx="150" cy="7" r="5" fill="#ffd700"/>
+      <circle cx="170" cy="7" r="4" fill="#cc4488"/>
+      <rect x="292" y="0" width="170" height="16" fill="#6a3010"/>
+      <circle cx="304" cy="7" r="5" fill="#ff69b4"/>
+      <circle cx="324" cy="7" r="5" fill="#e94560"/>
+      <circle cx="344" cy="7" r="5" fill="#ffd700"/>
+      <circle cx="364" cy="7" r="5" fill="#ff8c00"/>
+      <circle cx="384" cy="7" r="5" fill="#ff69b4"/>
+      <circle cx="404" cy="7" r="5" fill="#e94560"/>
+      <circle cx="424" cy="7" r="5" fill="#ffd700"/>
+      <circle cx="444" cy="7" r="4" fill="#e94560"/>`,
   },
 
   madriguera: {
@@ -3066,6 +3703,52 @@ const HAIR = {
       <line x1="162" y1="22" x2="162" y2="38" stroke="#4a7a2a" stroke-width="1.2"/>
       <line x1="170" y1="30" x2="170" y2="44" stroke="#4a7a2a" stroke-width="1.2"/>`,
     groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#e8904a"/>
+      <rect x="0" y="0" width="480" height="120" fill="rgba(220,140,60,0.5)"/>
+      <rect x="0" y="200" width="480" height="140" fill="rgba(100,60,20,0.3)"/>
+      <circle cx="400" cy="180" r="22" fill="rgba(255,230,80,0.7)"/>
+      <circle cx="400" cy="180" r="16" fill="rgba(255,220,60,0.9)"/>
+      <ellipse cx="90" cy="60" rx="30" ry="14" fill="rgba(255,200,150,0.6)"/>
+      <ellipse cx="118" cy="54" rx="22" ry="12" fill="rgba(255,200,150,0.55)"/>
+      <ellipse cx="310" cy="80" rx="26" ry="12" fill="rgba(255,180,120,0.5)"/>
+      <!-- The Burrow left side, slightly narrower -->
+      <rect x="40" y="240" width="80" height="100" rx="2" fill="#c8aa6e"/>
+      <rect x="46" y="196" width="68" height="50" rx="2" fill="#d4b878" transform="rotate(-1,80,220)"/>
+      <rect x="52" y="156" width="58" height="44" rx="2" fill="#c8aa6e" transform="rotate(1.5,81,178)"/>
+      <rect x="58" y="124" width="46" height="36" rx="2" fill="#d4b878" transform="rotate(-2,81,142)"/>
+      <polygon points="50,126 81,94 114,128" fill="#5a3a1a"/>
+      <rect x="85" y="88" width="14" height="30" rx="2" fill="#b06040" transform="rotate(4,92,103)"/>
+      <circle cx="96" cy="80" r="5" fill="rgba(200,180,160,0.4)"/>
+      <circle cx="100" cy="72" r="4" fill="rgba(200,180,160,0.3)"/>
+      <rect x="48" y="252" width="20" height="20" rx="2" fill="#f5e8c8"/>
+      <rect x="48" y="252" width="20" height="20" rx="2" fill="none" stroke="#7a5a2a" stroke-width="2"/>
+      <line x1="58" y1="252" x2="58" y2="272" stroke="#7a5a2a" stroke-width="1.5"/>
+      <line x1="48" y1="262" x2="68" y2="262" stroke="#7a5a2a" stroke-width="1.5"/>
+      <rect x="92" y="252" width="20" height="20" rx="2" fill="#f5e8c8"/>
+      <rect x="92" y="252" width="20" height="20" rx="2" fill="none" stroke="#7a5a2a" stroke-width="2"/>
+      <path d="M68,340 L68,278 Q79,266 90,278 L90,340" fill="#7a5a2a"/>
+      <circle cx="87" cy="295" r="3" fill="#c8a020"/>
+      <line x1="0" y1="200" x2="40" y2="210" stroke="#8a7050" stroke-width="1.2"/>
+      <rect x="2" y="192" width="8" height="14" rx="1" fill="#e94560" opacity="0.85"/>
+      <rect x="12" y="194" width="8" height="12" rx="1" fill="#3a7bd5" opacity="0.85"/>
+      <rect x="22" y="196" width="7" height="10" rx="1" fill="#ffd700" opacity="0.85"/>
+      <rect x="30" y="198" width="8" height="11" rx="1" fill="#2e7d32" opacity="0.85"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="#5a8a30"/>
+      <ellipse cx="80" cy="0" rx="100" ry="20" fill="rgba(70,110,40,0.4)"/>
+      <ellipse cx="400" cy="0" rx="90" ry="16" fill="rgba(70,110,40,0.35)"/>
+      <ellipse cx="60" cy="32" rx="8" ry="10" fill="#c84820"/>
+      <circle cx="60" cy="20" r="6" fill="#f5c5a3"/>
+      <rect x="56" y="8" width="8" height="12" rx="3" fill="#e63030"/>
+      <circle cx="380" cy="38" r="4" fill="#ffd700" opacity="0.7"/>
+      <circle cx="388" cy="42" r="3" fill="#e94560" opacity="0.6"/>
+      <circle cx="310" cy="28" r="3" fill="#e94560"/>
+      <circle cx="324" cy="22" r="3" fill="#ffd700"/>
+      <circle cx="340" cy="30" r="3" fill="#ff69b4"/>
+      <line x1="310" y1="28" x2="310" y2="42" stroke="#4a7a2a" stroke-width="1.2"/>
+      <line x1="324" y1="22" x2="324" y2="38" stroke="#4a7a2a" stroke-width="1.2"/>
+      <line x1="340" y1="30" x2="340" y2="44" stroke="#4a7a2a" stroke-width="1.2"/>`,
   },
 };
 
@@ -3277,22 +3960,25 @@ function renderBgScene() {
     el.innerHTML = '';
     return;
   }
-  const scene = BG_SCENES[sceneState.bgScene];
-  const bg    = SCENE_BG[sceneState.bgScene] || '#1a2a4a';
-  const groundH = scene.groundH || 80;
-  // Sky SVG: fills the full canvas anchored to the top (xMidYMin slice)
-  // Ground SVG: fixed height at the bottom (xMidYMax meet), anchored to the bottom edge
+  const scene   = BG_SCENES[sceneState.bgScene];
+  const bg      = SCENE_BG[sceneState.bgScene] || '#1a2a4a';
+  const area    = document.querySelector('.canvas-area');
+  const wide    = area && scene.svgSkyWide && area.clientWidth > area.clientHeight;
+  const svgSky    = wide ? scene.svgSkyWide    : scene.svgSky;
+  const svgGround = wide ? (scene.svgGroundWide || scene.svgGround) : scene.svgGround;
+  const groundH   = wide ? (scene.groundHWide  || scene.groundH || 80) : (scene.groundH || 80);
+  const skyW      = wide ? 480 : 240;
   el.innerHTML = `
-    <svg viewBox="0 0 240 340" preserveAspectRatio="xMidYMin slice"
+    <svg viewBox="0 0 ${skyW} 340" preserveAspectRatio="xMidYMin slice"
       xmlns="http://www.w3.org/2000/svg"
       style="position:absolute;inset:0;width:100%;height:100%;">
-      <rect width="240" height="340" fill="${bg}"/>
-      ${scene.svgSky}
+      <rect width="${skyW}" height="340" fill="${bg}"/>
+      ${svgSky}
     </svg>
-    <svg viewBox="0 0 240 ${groundH}" preserveAspectRatio="none"
+    <svg viewBox="0 0 ${skyW} ${groundH}" preserveAspectRatio="none"
       xmlns="http://www.w3.org/2000/svg"
       style="position:absolute;bottom:0;left:0;width:100%;height:20%;">
-      ${scene.svgGround}
+      ${svgGround}
     </svg>`;
 }
 
@@ -6808,4 +7494,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial render
   renderAll();
+
+  // Re-render background on resize (orientation changes on tablet/desktop)
+  window.addEventListener('resize', () => renderBgScene());
 });

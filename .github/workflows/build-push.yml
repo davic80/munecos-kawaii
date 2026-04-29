@@ -40,6 +40,12 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
 
+      - name: Get app version
+        id: appver
+        run: |
+          V=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')
+          echo "version=${V:-dev}" >> "$GITHUB_OUTPUT"
+
       - name: Build and push
         uses: docker/build-push-action@v7
         with:
@@ -48,7 +54,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: APP_VERSION=${{ steps.meta.outputs.version }}
+          build-args: APP_VERSION=${{ steps.appver.outputs.version }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 

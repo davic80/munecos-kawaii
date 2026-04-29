@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.8.3] - 2026-04-29
+
+### Added
+- **Fondos adaptativos ancho/vertical**: los 15 escenarios de fondo tienen ahora dos variantes de arte SVG — la variante vertical (240 × 340 u) existente para pantallas en retrato, y una nueva variante ancha (480 × 340 u) que se activa automáticamente cuando el área de canvas es más ancha que alta (escritorio / tablet en horizontal). El cambio de variante ocurre también al redimensionar la ventana.
+
+### Fixed
+- **Versión en el footer**: el workflow de CI/CD ahora obtiene la versión con `git describe --tags` en lugar de usar el nombre de rama, evitando que aparezca "vmain" en el footer al construir desde `main`.
+
+---
+
 ## [2.8.2] - 2026-04-28
 
 ### Changed
