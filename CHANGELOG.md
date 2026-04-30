@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.8.7] - 2026-04-30
+
+### Fixed
+- **Brazos femeninos**: centros acercados al cuerpo (cx 64→70 / 176→170) y rotación invertida para que el brazo cuelgue natural — hombro pegado al cuerpo, muñeca hacia afuera.
+
+---
+
 ## [2.8.6] - 2026-04-30
 
 ### Fixed

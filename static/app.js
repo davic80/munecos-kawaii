@@ -34,8 +34,8 @@ function svgBase(gender, skin, bodyShape) {
   ${ isBoy
     ? `<path d="M81,205 Q61,200 56,215 L60,262 Q62,269 70,269 Q78,269 81,263 Z" fill="${skin}"/>
        <path d="M159,205 Q179,200 184,215 L180,262 Q178,269 170,269 Q162,269 159,263 Z" fill="${skin}"/>`
-    : `<ellipse cx="64"  cy="234" rx="12" ry="32" fill="${skin}" transform="rotate(-8,64,234)"/>
-       <ellipse cx="176" cy="234" rx="12" ry="32" fill="${skin}" transform="rotate(8,176,234)"/>`
+    : `<ellipse cx="70"  cy="234" rx="12" ry="32" fill="${skin}" transform="rotate(8,70,234)"/>
+       <ellipse cx="170" cy="234" rx="12" ry="32" fill="${skin}" transform="rotate(-8,170,234)"/>`
   }
 
   <!-- HANDS (kawaii finger bumps at wrist bottom) -->
@@ -46,12 +46,12 @@ function svgBase(gender, skin, bodyShape) {
        <circle cx="162" cy="272" r="3" fill="${skin}"/>
        <circle cx="168" cy="274" r="3" fill="${skin}"/>
        <circle cx="174" cy="272" r="3" fill="${skin}"/>`
-    : `<circle cx="57" cy="268" r="2.5" fill="${skin}"/>
-       <circle cx="61" cy="270" r="2.5" fill="${skin}"/>
-       <circle cx="65" cy="268" r="2.5" fill="${skin}"/>
-       <circle cx="175" cy="268" r="2.5" fill="${skin}"/>
-       <circle cx="179" cy="270" r="2.5" fill="${skin}"/>
-       <circle cx="183" cy="268" r="2.5" fill="${skin}"/>`
+    : `<circle cx="62" cy="268" r="2.5" fill="${skin}"/>
+       <circle cx="66" cy="270" r="2.5" fill="${skin}"/>
+       <circle cx="70" cy="268" r="2.5" fill="${skin}"/>
+       <circle cx="170" cy="268" r="2.5" fill="${skin}"/>
+       <circle cx="174" cy="270" r="2.5" fill="${skin}"/>
+       <circle cx="178" cy="268" r="2.5" fill="${skin}"/>`
   }
 
   <!-- LEGS -->
