@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.8.6] - 2026-04-30
+
+### Fixed
+- **Cuerpo femenino**: brazos más finos (`rx` 15→12), piernas más finas (`width` 28→24), dedos de manos y pies más juntos.
+
+---
+
 ## [2.8.5] - 2026-04-29
 
 ### Fixed
