@@ -1463,7 +1463,11 @@ const PETS = {
     </g>`;
   },
 
-  phoenix: (_outfitKey) => {
+  phoenix: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const sash = h ? `
+      <path d="M-9,-6 Q0,-10 9,-2" fill="none" stroke="${h.c1}" stroke-width="4" stroke-linecap="round"/>
+      <path d="M-9,-6 Q0,-10 9,-2" fill="none" stroke="${h.c2}" stroke-width="1.5" stroke-dasharray="3,3" stroke-linecap="round" opacity="0.85"/>` : '';
     return `<g>
       <!-- Flame tail feathers -->
       <path d="M-5,9 Q-10,20 -8,32 Q-3,26 0,20 Q3,26 8,32 Q10,20 5,9 Z" fill="#f39c12"/>
@@ -1479,6 +1483,7 @@ const PETS = {
       <path d="M9,-4 Q24,-12 30,-3 Q24,5 9,3 Z" fill="#e74c3c"/>
       <path d="M9,-4 Q22,-10 27,-2" fill="none" stroke="#f39c12" stroke-width="0.9" opacity="0.75"/>
       <path d="M9,-2 Q20,-5 24,2" fill="none" stroke="#f39c12" stroke-width="0.9" opacity="0.65"/>
+      ${sash}
       <!-- Head -->
       <circle cx="0" cy="-14" r="7" fill="#e74c3c"/>
       <!-- Crest -->
@@ -1493,7 +1498,11 @@ const PETS = {
     </g>`;
   },
 
-  dragon: (_outfitKey) => {
+  dragon: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const collar = h ? `
+      <rect x="5" y="-13" width="10" height="4" rx="2" fill="${h.c1}" opacity="0.9" transform="rotate(-20,10,-11)"/>
+      <rect x="5" y="-12" width="10" height="1.8" fill="${h.c2}" opacity="0.85" transform="rotate(-20,10,-11)"/>` : '';
     return `<g>
       <!-- Tail -->
       <path d="M-13,5 Q-24,10 -26,5 Q-22,0 -13,3 Z" fill="#2e7d32"/>
@@ -1505,6 +1514,7 @@ const PETS = {
       <ellipse cx="0" cy="0" rx="13" ry="10" fill="#2e7d32"/>
       <!-- Belly -->
       <ellipse cx="-1" cy="2" rx="8" ry="6" fill="#4caf50" opacity="0.65"/>
+      ${collar}
       <!-- Head -->
       <circle cx="13" cy="-7" r="9" fill="#388e3c"/>
       <!-- Snout -->
@@ -1527,7 +1537,11 @@ const PETS = {
     </g>`;
   },
 
-  pixie: (_outfitKey) => {
+  pixie: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const cape = h ? `
+      <path d="M-6,-4 Q0,-8 6,-4 L5,6 Q0,10 -5,6 Z" fill="${h.c1}" opacity="0.85"/>
+      <rect x="-6" y="-4" width="12" height="3" rx="0" fill="${h.c2}" opacity="0.8"/>` : '';
     return `<g>
       <!-- Dragonfly wings (behind body) -->
       <ellipse cx="-11" cy="-5" rx="9" ry="5.5" fill="rgba(187,222,251,0.62)" transform="rotate(-22,-11,-5)"/>
@@ -1536,6 +1550,7 @@ const PETS = {
       <ellipse cx="10" cy="-1" rx="7" ry="4" fill="rgba(144,202,249,0.48)" transform="rotate(10,10,-1)"/>
       <!-- Body -->
       <ellipse cx="0" cy="3" rx="6" ry="8.5" fill="#1565c0"/>
+      ${cape}
       <!-- Head -->
       <circle cx="0" cy="-9" r="8" fill="#1e88e5"/>
       <!-- Big pointy ears -->
@@ -1559,7 +1574,11 @@ const PETS = {
     </g>`;
   },
 
-  botruc: (_outfitKey) => {
+  botruc: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const band = h ? `
+      <ellipse cx="0" cy="1" rx="4" ry="2.5" fill="${h.c1}" opacity="0.9"/>
+      <ellipse cx="0" cy="1" rx="4" ry="1" fill="${h.c2}" opacity="0.8"/>` : '';
     return `<g>
       <!-- Body (twig) -->
       <ellipse cx="0" cy="3" rx="3" ry="10" fill="#7a5c3a"/>
@@ -1567,6 +1586,7 @@ const PETS = {
       <line x1="-2" y1="4" x2="1" y2="6" stroke="#5c3d1e" stroke-width="0.7" opacity="0.5"/>
       <!-- Head -->
       <ellipse cx="0" cy="-11" rx="5.5" ry="5" fill="#5a8a2a"/>
+      ${band}
       <!-- Arms (long twig fingers) -->
       <line x1="-3" y1="-1" x2="-13" y2="-6" stroke="#7a5c3a" stroke-width="1.2" stroke-linecap="round"/>
       <line x1="-13" y1="-6" x2="-17" y2="-3" stroke="#7a5c3a" stroke-width="0.9" stroke-linecap="round"/>
@@ -1596,7 +1616,11 @@ const PETS = {
     </g>`;
   },
 
-  thestral: (_outfitKey) => {
+  thestral: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const ribbon = h ? `
+      <rect x="4" y="-13" width="8" height="3.5" rx="1.5" fill="${h.c1}" opacity="0.9" transform="rotate(-15,8,-11)"/>
+      <rect x="4" y="-12" width="8" height="1.5" fill="${h.c2}" opacity="0.85" transform="rotate(-15,8,-11)"/>` : '';
     return `<g>
       <!-- Bat wings (behind body) -->
       <path d="M-4,-6 Q-18,-22 -26,-13 Q-20,-4 -4,-5 Z" fill="rgba(18,12,28,0.88)"/>
@@ -1613,6 +1637,7 @@ const PETS = {
       <line x1="5" y1="-4" x2="4" y2="5" stroke="#281d34" stroke-width="0.9" opacity="0.8"/>
       <!-- Neck -->
       <path d="M7,-4 Q11,-11 9,-18" fill="none" stroke="#18111e" stroke-width="6" stroke-linecap="round"/>
+      ${ribbon}
       <!-- Head (long, equine) -->
       <ellipse cx="10" cy="-19" rx="5" ry="4.5" fill="#18111e" transform="rotate(-15,10,-19)"/>
       <!-- Pale eyes -->
@@ -1636,7 +1661,11 @@ const PETS = {
     </g>`;
   },
 
-  hipogrifo: (_outfitKey) => {
+  hipogrifo: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const harness = h ? `
+      <path d="M-2,3 Q5,-5 12,2" fill="none" stroke="${h.c1}" stroke-width="4" stroke-linecap="round"/>
+      <path d="M-2,3 Q5,-5 12,2" fill="none" stroke="${h.c2}" stroke-width="1.5" stroke-linecap="round" opacity="0.85"/>` : '';
     return `<g>
       <!-- Horse hindquarters -->
       <ellipse cx="-8" cy="1" rx="10" ry="8" fill="#8a9aa8"/>
@@ -1651,6 +1680,7 @@ const PETS = {
       <ellipse cx="5" cy="-1" rx="10" ry="9" fill="#8a8878"/>
       <!-- Chest feathers -->
       <path d="M-2,3 Q2,7 8,3 Q4,9 -2,7 Z" fill="#a8a890" opacity="0.6"/>
+      ${harness}
       <!-- Wings -->
       <path d="M2,-5 Q-8,-20 -18,-13 Q-12,-4 2,-4 Z" fill="#7a7868"/>
       <path d="M2,-5 Q-6,-16 -14,-9" fill="none" stroke="#5a5a4a" stroke-width="0.9" opacity="0.7"/>
@@ -1676,7 +1706,11 @@ const PETS = {
     </g>`;
   },
 
-  mandragora: (_outfitKey) => {
+  mandragora: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const sash = h ? `
+      <rect x="-10" y="4" width="20" height="6" rx="2" fill="${h.c1}" opacity="0.85"/>
+      <rect x="-10" y="6" width="20" height="2.5" rx="0" fill="${h.c2}" opacity="0.8"/>` : '';
     return `<g>
       <!-- Root tendrils -->
       <line x1="-8" y1="18" x2="-14" y2="27" stroke="#8b4513" stroke-width="1.5" stroke-linecap="round"/>
@@ -1688,6 +1722,7 @@ const PETS = {
       <path d="M-10,-6 Q-13,8 -10,20 Q0,26 10,20 Q13,8 10,-6 Z" fill="#c8a46e"/>
       <path d="M-7,-2 Q-9,8 -7,16" fill="none" stroke="rgba(0,0,0,0.10)" stroke-width="1.4" stroke-linecap="round"/>
       <path d="M6,0 Q7,10 5,17" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1.2" stroke-linecap="round"/>
+      ${sash}
       <!-- Head -->
       <circle cx="0" cy="-14" r="12" fill="#c8a46e"/>
       <!-- Screaming open mouth -->
@@ -1711,7 +1746,11 @@ const PETS = {
     </g>`;
   },
 
-  acromantula: (_outfitKey) => {
+  acromantula: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const band = h ? `
+      <ellipse cx="7" cy="-5" rx="9" ry="4" fill="${h.c1}" opacity="0.75"/>
+      <ellipse cx="7" cy="-4" rx="9" ry="1.8" fill="${h.c2}" opacity="0.7"/>` : '';
     return `<g>
       <!-- 8 legs -->
       <path d="M-10,-1 Q-22,-4 -28,3" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/>
@@ -1727,6 +1766,7 @@ const PETS = {
       <ellipse cx="-8" cy="7" rx="9" ry="7" fill="rgba(60,40,20,0.4)"/>
       <!-- Cephalothorax -->
       <circle cx="7" cy="-5" r="11" fill="#2a1a10"/>
+      ${band}
       <!-- 6 red eyes -->
       <circle cx="3" cy="-9" r="2" fill="#e83020" opacity="0.92"/>
       <circle cx="8" cy="-11" r="2" fill="#e83020" opacity="0.92"/>
@@ -1742,7 +1782,11 @@ const PETS = {
     </g>`;
   },
 
-  grindylow: (_outfitKey) => {
+  grindylow: (outfitKey) => {
+    const h = outfitKey && HP_HOUSES[outfitKey];
+    const collar = h ? `
+      <rect x="-9" y="-3" width="18" height="5" rx="2" fill="${h.c1}" opacity="0.9"/>
+      <rect x="-9" y="-1" width="18" height="2" rx="0" fill="${h.c2}" opacity="0.85"/>` : '';
     return `<g>
       <!-- Long webbed fingers -->
       <path d="M-9,4 Q-17,12 -20,22" fill="none" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round"/>
@@ -1751,6 +1795,7 @@ const PETS = {
       <path d="M7,6 Q13,16 14,26" fill="none" stroke="#2e7d32" stroke-width="1.4" stroke-linecap="round"/>
       <!-- Body -->
       <ellipse cx="0" cy="6" rx="10" ry="12" fill="#388e3c"/>
+      ${collar}
       <!-- Gill slits -->
       <path d="M-8,-1 Q-11,3 -8,7" fill="none" stroke="#1b5e20" stroke-width="1.2" opacity="0.85"/>
       <path d="M-6,-2 Q-9,3 -6,8" fill="none" stroke="#1b5e20" stroke-width="1.0" opacity="0.7"/>
@@ -4382,12 +4427,20 @@ const CATEGORY_FIELD_MAP = {
 function updateEquipped() {
   document.querySelectorAll('.item-chip').forEach(el => {
     const cat = el.dataset.category;
+    if (!cat) return;
     const val = el.dataset.value;
     const field = CATEGORY_FIELD_MAP[cat];
     el.classList.toggle('equipped', doll[field] === val);
   });
   document.querySelectorAll('.gender-chip').forEach(el => {
     el.classList.toggle('equipped', doll.gender === el.dataset.value);
+  });
+  document.querySelectorAll('.pet-pos-chip[data-pos]').forEach(el => {
+    el.classList.toggle('equipped', (doll.petPosition || 'floor') === el.dataset.pos);
+  });
+  document.querySelectorAll('.pet-outfit-chip[data-outfit]').forEach(el => {
+    const key = el.dataset.outfit === 'null' ? null : el.dataset.outfit;
+    el.classList.toggle('equipped', doll.petOutfit === key);
   });
 }
 
@@ -5025,6 +5078,7 @@ function buildPanel() {
           positions.forEach(pos => {
             const chip = document.createElement('div');
             chip.className = 'item-chip pet-pos-chip' + ((doll.petPosition || 'floor') === pos.key ? ' equipped' : '');
+            chip.dataset.pos = pos.key;
             chip.innerHTML = `<span>${pos.label}</span>`;
             chip.addEventListener('click', () => {
               doll.petPosition = pos.key;
@@ -5054,6 +5108,7 @@ function buildPanel() {
           outfits.forEach(o => {
             const chip = document.createElement('div');
             chip.className = 'item-chip pet-outfit-chip' + (doll.petOutfit === o.key ? ' equipped' : '');
+            chip.dataset.outfit = o.key === null ? 'null' : o.key;
             const colorDot = o.key && HP_HOUSES[o.key]
               ? `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${HP_HOUSES[o.key].c1};border:1px solid ${HP_HOUSES[o.key].c2};margin-right:3px;vertical-align:middle;"></span>`
               : '';

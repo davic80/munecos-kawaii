@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.8.5] - 2026-04-29
+
+### Fixed
+- **Trajes de mascotas**: las 9 criaturas que ignoraban el parámetro de traje (phoenix, dragon, pixie, botruc, thestral, hipogrifo, mandragora, acromantula, grindylow) ahora muestran su accesorio de casa al seleccionar un traje (faja/lazo en colores de la casa).
+- **Resaltado de posición y traje**: corregido bug en `updateEquipped()` donde todos los chips de posición y traje aparecían como "equipados" al mismo tiempo. Ahora solo el seleccionado aparece resaltado.
+
+---
+
 ## [2.8.4] - 2026-04-29
 
 ### Added
