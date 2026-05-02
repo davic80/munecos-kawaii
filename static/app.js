@@ -4344,6 +4344,12 @@ function loadHPPreset(preset) {
   const savedScroll = panel ? panel.scrollTop : 0;
   const base = defaultDoll(activeSlot);
   Object.assign(base, { name: preset.label }, preset.doll);
+  // Keep scene position/state so the doll doesn't jump
+  base.inScene = doll.inScene;
+  base.dollX   = doll.dollX;
+  base.dollY   = doll.dollY;
+  base.bgColor = doll.bgColor;
+  base.bgScene = doll.bgScene;
   collection[activeSlot] = base;
   saveCollection();
   buildPanel();
