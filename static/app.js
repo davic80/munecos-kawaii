@@ -4241,6 +4241,7 @@ const HP_PRESETS = [
   { key:'dobby',      emoji:'🧦',  label:'Dobby',            house:'other',      doll:{
     gender:'boy',  skin:'#c8b48a',
     bodyShape:'elf',
+    dollScale:-35,
     hair:null,
     eyes:'round',        eyeColor:'#2a8a20',
     brows:'kawaii',      browColor:'#9a8060', lashColor:'#8a7050',
@@ -4251,6 +4252,7 @@ const HP_PRESETS = [
   }},
   { key:'hagrid',     emoji:'🐉',  label:'Hagrid',           house:'other',      doll:{
     gender:'boy',  skin:'#c87941',
+    dollScale:50,
     hair:'curly',        hairColor:'#181008',
     eyeColor:'#2a1808',  browColor:'#181008', lashColor:'#181008',
     brows:'bushy',
@@ -4265,6 +4267,7 @@ const HP_PRESETS = [
   }},
   { key:'dumbledore', emoji:'⭐',  label:'Dumbledore',       house:'other',      doll:{
     gender:'boy',  skin:'#fde8d0',
+    dollScale:22,
     hair:'long_straight', hairColor:'#e8e8e8',
     eyes:'sparkle',      eyeColor:'#5090c8',
     brows:'bushy',       browColor:'#e0e0e0', lashColor:'#e0e0e0',
@@ -4278,6 +4281,7 @@ const HP_PRESETS = [
   }},
   { key:'snape',      emoji:'🖤',  label:'Snape',            house:'slytherin',  doll:{
     gender:'boy',  skin:'#fde8d0',
+    dollScale:20,
     hair:'long_straight', hairColor:'#0a0808',
     eyeColor:'#111111',  browColor:'#0a0808', lashColor:'#0a0808',
     brows:'angry',       mouth:'line',
@@ -4290,6 +4294,7 @@ const HP_PRESETS = [
   }},
   { key:'sirius',     emoji:'🐾',  label:'Sirius Black',    house:'other',      doll:{
     gender:'boy',  skin:'#e8a87c',
+    dollScale:20,
     hair:'long_straight', hairColor:'#0a0808',
     eyeColor:'#111111',  browColor:'#0a0808', lashColor:'#0a0808',
     brows:'cross',       mouth:'grin',
@@ -4302,6 +4307,7 @@ const HP_PRESETS = [
   }},
   { key:'voldemort',  emoji:'💀',  label:'Voldemort',        house:'slytherin',  doll:{
     gender:'boy',  skin:'#f0ece8',
+    dollScale:22,
     hair:null,
     eyes:'angry_eyes',   eyeColor:'#d02020',
     brows:'angry',       browColor:'#a0a0a0', lashColor:'#a0a0a0',
@@ -4332,11 +4338,16 @@ const HP_PRESETS = [
 ];
 
 function loadHPPreset(preset) {
+  const panel = isMobile()
+    ? document.getElementById('bottom-sheet-content')
+    : document.getElementById('left-panel');
+  const savedScroll = panel ? panel.scrollTop : 0;
   const base = defaultDoll(activeSlot);
   Object.assign(base, { name: preset.label }, preset.doll);
   collection[activeSlot] = base;
   saveCollection();
   buildPanel();
+  if (panel) panel.scrollTop = savedScroll;
   renderAll();
 }
 

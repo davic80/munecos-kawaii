@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.9.1] - 2026-05-02
+
+### Fixed
+- **Escala de personajes**: Hagrid +50% (enorme), Dobby −35% (pequeño), Dumbledore/Voldemort +22%, Snape/Sirius +20%.
+- **Scroll al cargar preset**: al pulsar un personaje HP ya no salta al inicio del panel, mantiene la posición de scroll.
+
+---
+
 ## [2.9.0] - 2026-05-02
 
 ### Added
