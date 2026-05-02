@@ -605,6 +605,30 @@ header h1 {
 .btn-random:hover  { background: #2563eb; }
 .btn-random:active { transform: scale(0.97); }
 
+.undo-redo-row {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+.btn-undo, .btn-redo {
+  flex: 1;
+  background: var(--surface2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 7px 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+.btn-undo:not(:disabled):hover,
+.btn-redo:not(:disabled):hover  { background: var(--surface3, #2a2a4a); color: var(--text); }
+.btn-undo:not(:disabled):active,
+.btn-redo:not(:disabled):active { transform: scale(0.97); }
+.btn-undo:disabled,
+.btn-redo:disabled { opacity: 0.38; cursor: default; }
+
 .hp-presets-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

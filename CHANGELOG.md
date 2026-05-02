@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.9.3] - 2026-05-02
+
+### Added
+- **Deshacer / Rehacer**: dos botones en fila bajo "Sorpresa" — "↩ Deshacer" revierte el último cambio y "↪ Rehacer" lo vuelve a aplicar. Agrupa cambios continuos (sliders, clics rápidos) en una sola entrada mediante debounce de 400 ms. Máximo 30 entradas por slot. Se limpia al cambiar de slot. La posición del muñeco en escena no se ve afectada.
+
+---
+
 ## [2.9.1] - 2026-05-02
 
 ### Fixed

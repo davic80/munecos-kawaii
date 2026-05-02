@@ -4433,9 +4433,87 @@ function loadCollection() {
   return Array.from({ length: MAX_SLOTS }, (_, i) => defaultDoll(i));
 }
 
+/* ---------- UNDO / REDO ---------- */
+const UNDO_STACK = [];
+const REDO_STACK = [];
+const UNDO_MAX = 30;
+let _isUndoing = false;
+let _isRedoing = false;
+let _lastSavedSnap = null;
+let _undoSeriesStart = null;
+let _undoDebounceTimer = null;
+const UNDO_DEBOUNCE_MS = 400;
+
 function saveCollection() {
+  if (!_isUndoing && !_isRedoing) {
+    const current = JSON.stringify(collection[activeSlot]);
+    if (_lastSavedSnap !== null && current !== _lastSavedSnap) {
+      if (_undoSeriesStart === null) _undoSeriesStart = _lastSavedSnap;
+      clearTimeout(_undoDebounceTimer);
+      const snap = _undoSeriesStart;
+      _undoDebounceTimer = setTimeout(() => {
+        if (snap !== JSON.stringify(collection[activeSlot])) {
+          UNDO_STACK.push(JSON.parse(snap));
+          while (UNDO_STACK.length > UNDO_MAX) UNDO_STACK.shift();
+          REDO_STACK.length = 0;
+          updateUndoRedoBtn();
+        }
+        _undoSeriesStart = null;
+      }, UNDO_DEBOUNCE_MS);
+    }
+    _lastSavedSnap = current;
+  }
   localStorage.setItem(COLLECTION_KEY, JSON.stringify(collection));
   localStorage.setItem(SCENE_STATE_KEY, JSON.stringify(sceneState));
+}
+
+function _applyHistoryState(state) {
+  const panel = isMobile()
+    ? document.getElementById('bottom-sheet-content')
+    : document.getElementById('left-panel');
+  const savedScroll = panel ? panel.scrollTop : 0;
+  state.inScene = collection[activeSlot].inScene;
+  state.dollX   = collection[activeSlot].dollX;
+  state.dollY   = collection[activeSlot].dollY;
+  clearTimeout(_undoDebounceTimer);
+  _undoSeriesStart = null;
+  collection[activeSlot] = state;
+  doll = collection[activeSlot];
+  _lastSavedSnap = JSON.stringify(state);
+  saveCollection();
+  updateUndoRedoBtn();
+  buildPanel();
+  if (panel) panel.scrollTop = savedScroll;
+  renderAll();
+}
+
+function undoLast() {
+  if (!UNDO_STACK.length) return;
+  REDO_STACK.push(JSON.parse(JSON.stringify(collection[activeSlot])));
+  while (REDO_STACK.length > UNDO_MAX) REDO_STACK.shift();
+  const prev = UNDO_STACK.pop();
+  _isUndoing = true;
+  _applyHistoryState(prev);
+  _isUndoing = false;
+}
+
+function redoLast() {
+  if (!REDO_STACK.length) return;
+  UNDO_STACK.push(JSON.parse(JSON.stringify(collection[activeSlot])));
+  while (UNDO_STACK.length > UNDO_MAX) UNDO_STACK.shift();
+  const next = REDO_STACK.pop();
+  _isRedoing = true;
+  _applyHistoryState(next);
+  _isRedoing = false;
+}
+
+function updateUndoRedoBtn() {
+  document.querySelectorAll('.btn-undo').forEach(btn => {
+    btn.disabled = UNDO_STACK.length === 0;
+  });
+  document.querySelectorAll('.btn-redo').forEach(btn => {
+    btn.disabled = REDO_STACK.length === 0;
+  });
 }
 
 let collection = loadCollection();
@@ -4449,6 +4527,7 @@ if (collection[0] && collection[0].bgScene && !sceneState.bgScene) {
 }
 let activeSlot = 0;
 let doll = collection[activeSlot];
+_lastSavedSnap = JSON.stringify(collection[activeSlot]);
 
 /* ---------- ELF DIRT OVERLAY ---------- */
 function elfDirtOverlay(d) {
@@ -4898,8 +4977,13 @@ function updateSlotTabs() {
 }
 
 function switchSlot(idx) {
+  UNDO_STACK.length = 0;
+  REDO_STACK.length = 0;
+  clearTimeout(_undoDebounceTimer);
+  _undoSeriesStart = null;
   activeSlot = idx;
   doll = collection[idx];
+  _lastSavedSnap = JSON.stringify(doll);
   buildPanel();
   renderAll();
   const desktopName = document.getElementById('doll-name');
@@ -4956,6 +5040,22 @@ function buildPanel() {
   rndBtn.textContent = '🎲 Sorpresa';
   rndBtn.addEventListener('click', randomizeDoll);
   target.appendChild(rndBtn);
+
+  const undoRedoRow = document.createElement('div');
+  undoRedoRow.className = 'undo-redo-row';
+  const undoBtn = document.createElement('button');
+  undoBtn.className = 'btn-undo';
+  undoBtn.textContent = '↩ Deshacer';
+  undoBtn.disabled = UNDO_STACK.length === 0;
+  undoBtn.addEventListener('click', undoLast);
+  const redoBtn = document.createElement('button');
+  redoBtn.className = 'btn-redo';
+  redoBtn.textContent = '↪ Rehacer';
+  redoBtn.disabled = REDO_STACK.length === 0;
+  redoBtn.addEventListener('click', redoLast);
+  undoRedoRow.appendChild(undoBtn);
+  undoRedoRow.appendChild(redoBtn);
+  target.appendChild(undoRedoRow);
 
   // HP character preset buttons
   const hpLabel = document.createElement('div');
