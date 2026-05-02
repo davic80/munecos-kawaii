@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.9.0] - 2026-05-02
+
+### Added
+- **16 presets de personajes HP**: botones bajo "Sorpresa" que cargan un muñeco fiel a cada personaje. Cada uno tiene pelo, color de piel, ojos, cejas, ropa, capa, accesorios y mascota específicos:
+  - ⚡ Harry Potter — pelo messy negro, ojos verdes, gafas redondas, capa+bufanda Gryffindor, varita de acebo, Nimbus 2000, tatuaje rayo, lechuza Hedwig
+  - 📚 Hermione — pelo largo castaño, capa Gryffindor, varita vid, libro en mano, gato
+  - 🐀 Ron — pelo rojo, pecas, capa Gryffindor, varita de roble, rata Scabbers
+  - 🐍 Draco — pelo rubio platino, capa Slytherin, varita de olmo, grin, serpiente
+  - 🌙 Luna Lovegood — pelo rubio ondulado, ojos sparkle, gafas doradas, capa Ravenclaw, flor en mano
+  - 🌿 Neville — pelo corto marrón, cejas preocupadas, capa Gryffindor, planta en mano
+  - 🔥 Ginny — pelo rojo ondulado, pecas, capa Gryffindor, escoba Cleansweep
+  - 🦅 Cho Chang — pelo negro liso, cejas finas, capa Ravenclaw
+  - ✨ Fleur Delacour — pelo plateado liso, ojos sparkle, uniforme azul Beauxbatons, tacones
+  - 🧦 Dobby — forma elfo, piel beige, ojos verdes, calcetín gris
+  - 🐉 Hagrid — piel morena, pelo rizado negro, cejas pobladas, chaquetón oscuro, hipogrifo Buckbeak
+  - ⭐ Dumbledore — pelo blanco largo, cejas blancas pobladas, traje morado, sombrero mago, varita de saúco
+  - 🖤 Snape — pelo negro liso, cejas enfadadas, boca seria, capa negra, cinturón Slytherin
+  - 🐾 Sirius Black — piel media, pelo negro largo, chaqueta, tatuaje Hallows
+  - 💀 Voldemort — piel blanquísima, calvo, ojos rojos, nariz serpiente, capa negra, varita de saúco, tatuaje Marca Tenebrosa, serpiente Nagini
+  - 🌑 Bellatrix — pelo rizado negro, ojos furiosos, capa negra, tatuaje Marca Tenebrosa
+
+---
+
 ## [2.8.7] - 2026-04-30
 
 ### Fixed

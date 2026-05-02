@@ -4123,6 +4123,223 @@ function defaultDoll(idx) {
   };
 }
 
+/* ---------- HP CHARACTER PRESETS ---------- */
+const HP_PRESETS = [
+  { key:'harry',      emoji:'⚡',  label:'Harry Potter',   house:'gryffindor', doll:{
+    gender:'boy',  skin:'#f5c5a3',
+    hair:'harry',        hairColor:'#181010',
+    eyeColor:'#2a7a38',  browColor:'#181010', lashColor:'#181010',
+    top:'uniform',       topColor:'#1a1a28',
+    bottom:'pants',      bottomColor:'#1a1a28',
+    shoes:'boot',        shoesColor:'#111111',
+    cape:'hp_cape',      capeColor:'#740001',
+    glasses:'hp_round',  glassesColor:'#111111',
+    scarf:'gryffindor',  belt:'gryffindor',
+    wand:'holly',        broom:'nimbus_2000',
+    tattoo:'lightning',
+    pet:'owl', petOutfit:'gryffindor', petPosition:'floor',
+  }},
+  { key:'hermione',   emoji:'📚',  label:'Hermione',        house:'gryffindor', doll:{
+    gender:'girl', skin:'#f5c5a3',
+    hair:'hermione',     hairColor:'#3d2010',
+    eyeColor:'#6a4010',  browColor:'#3d2010', lashColor:'#3d2010',
+    top:'uniform',       topColor:'#1a1a28',
+    bottom:'skirt',      bottomColor:'#1a1a28',
+    shoes:'boot',        shoesColor:'#111111',
+    cape:'hp_cape',      capeColor:'#740001',
+    scarf:'gryffindor',  belt:'gryffindor',
+    wand:'vine',         lefthand:'book',
+    pet:'cat', petOutfit:'gryffindor', petPosition:'floor',
+  }},
+  { key:'ron',        emoji:'🐀',  label:'Ron Weasley',     house:'gryffindor', doll:{
+    gender:'boy',  skin:'#fde8d0',
+    hair:'ron',          hairColor:'#c03020',
+    eyeColor:'#4a6ec0',  browColor:'#c03020', lashColor:'#c03020',
+    cheeks:'freckles',   cheeksColor:'rgba(180,100,60,0.3)',
+    top:'uniform',       topColor:'#1a1a28',
+    bottom:'pants',      bottomColor:'#1a1a28',
+    shoes:'boot',        shoesColor:'#111111',
+    cape:'hp_cape',      capeColor:'#740001',
+    scarf:'gryffindor',  belt:'gryffindor',
+    wand:'oak',
+    pet:'rat', petOutfit:'gryffindor', petPosition:'floor',
+  }},
+  { key:'draco',      emoji:'🐍',  label:'Draco Malfoy',    house:'slytherin',  doll:{
+    gender:'boy',  skin:'#fde8d0',
+    hair:'draco',        hairColor:'#e8dfc8',
+    eyeColor:'#909090',  browColor:'#b0a888', lashColor:'#888888',
+    mouth:'grin',
+    top:'uniform',       topColor:'#1a1a28',
+    bottom:'pants',      bottomColor:'#1a1a28',
+    shoes:'boot',        shoesColor:'#111111',
+    cape:'hp_cape',      capeColor:'#1a472a',
+    scarf:'slytherin',   belt:'slytherin',
+    wand:'elm',
+    pet:'snake', petOutfit:'slytherin', petPosition:'floor',
+  }},
+  { key:'luna',       emoji:'🌙',  label:'Luna Lovegood',   house:'ravenclaw',  doll:{
+    gender:'girl', skin:'#fde8d0',
+    hair:'wavy_long',    hairColor:'#e8d888',
+    eyes:'sparkle',      eyeColor:'#b0c8e8',
+    brows:'raised',      browColor:'#c8b860', lashColor:'#c8b860',
+    top:'uniform',       topColor:'#1a1a28',
+    bottom:'skirt',      bottomColor:'#1a1a28',
+    shoes:'boot',        shoesColor:'#4a5a9a',
+    cape:'hp_cape',      capeColor:'#0e1a40',
+    scarf:'ravenclaw',   belt:'ravenclaw',
+    glasses:'round',     glassesColor:'#ddaa00',
+    wand:'oak',          lefthand:'flower',
+  }},
+  { key:'neville',    emoji:'🌿',  label:'Neville',          house:'gryffindor', doll:{
+    gender:'boy',  skin:'#f5c5a3',
+    hair:'short_spiky',  hairColor:'#5a3a18',
+    eyeColor:'#5a3a18',  browColor:'#5a3a18', lashColor:'#5a3a18',
+    brows:'worried',
+    cheeks:'round',      cheeksColor:'rgba(255,160,140,0.4)',
+    nose:'button',
+    top:'uniform',       topColor:'#1a1a28',
+    bottom:'pants',      bottomColor:'#1a1a28',
+    shoes:'boot',        shoesColor:'#111111',
+    cape:'hp_cape',      capeColor:'#740001',
+    scarf:'gryffindor',  belt:'gryffindor',
+    wand:'oak',          lefthand:'flower',
+  }},
+  { key:'ginny',      emoji:'🔥',  label:'Ginny Weasley',   house:'gryffindor', doll:{
+    gender:'girl', skin:'#fde8d0',
+    hair:'wavy_long',    hairColor:'#c03020',
+    eyeColor:'#5a3018',  browColor:'#c03020', lashColor:'#c03020',
+    cheeks:'freckles',   cheeksColor:'rgba(180,100,60,0.3)',
+    top:'uniform',       topColor:'#1a1a28',
+    bottom:'skirt',      bottomColor:'#1a1a28',
+    shoes:'boot',        shoesColor:'#111111',
+    cape:'hp_cape',      capeColor:'#740001',
+    scarf:'gryffindor',  belt:'gryffindor',
+    wand:'elm',          broom:'cleansweep',
+  }},
+  { key:'cho',        emoji:'🦅',  label:'Cho Chang',        house:'ravenclaw',  doll:{
+    gender:'girl', skin:'#f5c5a3',
+    hair:'long_straight', hairColor:'#111111',
+    eyeColor:'#1a1010',  browColor:'#111111', lashColor:'#111111',
+    brows:'thin',
+    top:'uniform',       topColor:'#1a1a28',
+    bottom:'skirt',      bottomColor:'#1a1a28',
+    shoes:'boot',        shoesColor:'#111111',
+    cape:'hp_cape',      capeColor:'#0e1a40',
+    scarf:'ravenclaw',   belt:'ravenclaw',
+    wand:'willow',
+  }},
+  { key:'fleur',      emoji:'✨',  label:'Fleur Delacour',  house:'other',      doll:{
+    gender:'girl', skin:'#fde8d0',
+    hair:'long_straight', hairColor:'#f0edd8',
+    eyes:'sparkle',      eyeColor:'#80aad8',
+    brows:'thin',        browColor:'#c8c0a0', lashColor:'#c8c0a0',
+    top:'uniform',       topColor:'#4870c0',
+    bottom:'skirt',      bottomColor:'#4870c0',
+    shoes:'heel',        shoesColor:'#c0a8d0',
+    wand:'willow',
+  }},
+  { key:'dobby',      emoji:'🧦',  label:'Dobby',            house:'other',      doll:{
+    gender:'boy',  skin:'#c8b48a',
+    bodyShape:'elf',
+    hair:null,
+    eyes:'round',        eyeColor:'#2a8a20',
+    brows:'kawaii',      browColor:'#9a8060', lashColor:'#8a7050',
+    cheeks:'round',      cheeksColor:'rgba(200,160,100,0.4)',
+    nose:'button',       mouth:'smile',
+    top:null,  bottom:null,  shoes:null,
+    sock:'sock_grey',
+  }},
+  { key:'hagrid',     emoji:'🐉',  label:'Hagrid',           house:'other',      doll:{
+    gender:'boy',  skin:'#c87941',
+    hair:'curly',        hairColor:'#181008',
+    eyeColor:'#2a1808',  browColor:'#181008', lashColor:'#181008',
+    brows:'bushy',
+    cheeks:'soft',       cheeksColor:'rgba(170,110,70,0.3)',
+    nose:'button',       mouth:'grin',
+    top:'jacket',        topColor:'#2a1a08',
+    bottom:'pants',      bottomColor:'#181008',
+    shoes:'boot',        shoesColor:'#080400',
+    cape:'coat',         capeColor:'#100800',
+    wand:'oak',
+    pet:'hipogrifo',     petPosition:'floor',
+  }},
+  { key:'dumbledore', emoji:'⭐',  label:'Dumbledore',       house:'other',      doll:{
+    gender:'boy',  skin:'#fde8d0',
+    hair:'long_straight', hairColor:'#e8e8e8',
+    eyes:'sparkle',      eyeColor:'#5090c8',
+    brows:'bushy',       browColor:'#e0e0e0', lashColor:'#e0e0e0',
+    top:'uniform',       topColor:'#2a1848',
+    bottom:'pants',      bottomColor:'#2a1848',
+    shoes:'boot',        shoesColor:'#111111',
+    hat:'wizard',        hatColor:'#2a1848',
+    cape:'hp_cape',      capeColor:'#2a1848',
+    glasses:'hp_round',  glassesColor:'#888888',
+    wand:'elder',
+  }},
+  { key:'snape',      emoji:'🖤',  label:'Snape',            house:'slytherin',  doll:{
+    gender:'boy',  skin:'#fde8d0',
+    hair:'long_straight', hairColor:'#0a0808',
+    eyeColor:'#111111',  browColor:'#0a0808', lashColor:'#0a0808',
+    brows:'angry',       mouth:'line',
+    top:'uniform',       topColor:'#0a0808',
+    bottom:'pants',      bottomColor:'#0a0808',
+    shoes:'boot',        shoesColor:'#050505',
+    cape:'cloak',        capeColor:'#0a0808',
+    belt:'slytherin',
+    wand:'elm',
+  }},
+  { key:'sirius',     emoji:'🐾',  label:'Sirius Black',    house:'other',      doll:{
+    gender:'boy',  skin:'#e8a87c',
+    hair:'long_straight', hairColor:'#0a0808',
+    eyeColor:'#111111',  browColor:'#0a0808', lashColor:'#0a0808',
+    brows:'cross',       mouth:'grin',
+    top:'jacket',        topColor:'#0a0808',
+    bottom:'pants',      bottomColor:'#0a0808',
+    shoes:'boot',        shoesColor:'#050505',
+    cape:'vest_leather', capeColor:'#1a0800',
+    wand:'oak',
+    tattoo:'deathly_hallows',
+  }},
+  { key:'voldemort',  emoji:'💀',  label:'Voldemort',        house:'slytherin',  doll:{
+    gender:'boy',  skin:'#f0ece8',
+    hair:null,
+    eyes:'angry_eyes',   eyeColor:'#d02020',
+    brows:'angry',       browColor:'#a0a0a0', lashColor:'#a0a0a0',
+    cheeks:'soft',       cheeksColor:'rgba(180,160,160,0.1)',
+    nose:'snake',        mouth:'grin',
+    top:'uniform',       topColor:'#0a0808',
+    bottom:'pants',      bottomColor:'#0a0808',
+    shoes:'boot',        shoesColor:'#050505',
+    cape:'cloak',        capeColor:'#050505',
+    wand:'elder',
+    tattoo:'dark_mark',
+    pet:'snake', petOutfit:'slytherin', petPosition:'floor',
+  }},
+  { key:'bellatrix',  emoji:'🌑',  label:'Bellatrix',        house:'slytherin',  doll:{
+    gender:'girl', skin:'#f5c5a3',
+    hair:'curly',        hairColor:'#0a0808',
+    eyes:'angry_eyes',   eyeColor:'#111111',
+    brows:'angry',       browColor:'#0a0808', lashColor:'#0a0808',
+    mouth:'grin',
+    top:'uniform',       topColor:'#0a0808',
+    bottom:'skirt',      bottomColor:'#0a0808',
+    shoes:'boot',        shoesColor:'#050505',
+    cape:'cloak',        capeColor:'#050505',
+    belt:'slytherin',
+    wand:'elder',
+    tattoo:'dark_mark',
+  }},
+];
+
+function loadHPPreset(preset) {
+  const base = defaultDoll(activeSlot);
+  Object.assign(base, { name: preset.label }, preset.doll);
+  collection[activeSlot] = base;
+  saveCollection();
+  buildPanel();
+  renderAll();
+}
+
 function randomizeDoll() {
   const pick    = obj => { const k = Object.keys(obj); return k[k.length * Math.random() | 0]; };
   const pickArr = arr => arr[arr.length * Math.random() | 0];
@@ -4722,6 +4939,23 @@ function buildPanel() {
   rndBtn.textContent = '🎲 Sorpresa';
   rndBtn.addEventListener('click', randomizeDoll);
   target.appendChild(rndBtn);
+
+  // HP character preset buttons
+  const hpLabel = document.createElement('div');
+  hpLabel.style.cssText = 'font-size:0.6rem;color:var(--text-muted);padding:0 4px 3px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;';
+  hpLabel.textContent = '✨ Personajes HP';
+  target.appendChild(hpLabel);
+  const hpGrid = document.createElement('div');
+  hpGrid.className = 'hp-presets-grid';
+  HP_PRESETS.forEach(preset => {
+    const btn = document.createElement('button');
+    btn.className = 'btn-hp-preset house-' + preset.house;
+    btn.textContent = preset.emoji + ' ' + preset.label;
+    btn.title = preset.label;
+    btn.addEventListener('click', () => loadHPPreset(preset));
+    hpGrid.appendChild(btn);
+  });
+  target.appendChild(hpGrid);
 
   const SKIN_PRESETS = [
     { color: '#fde8d0', title: 'Clara' },

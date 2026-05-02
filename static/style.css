@@ -605,6 +605,37 @@ header h1 {
 .btn-random:hover  { background: #2563eb; }
 .btn-random:active { transform: scale(0.97); }
 
+.hp-presets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  margin-bottom: 10px;
+}
+.btn-hp-preset {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-left: 3px solid #555;
+  border-radius: var(--radius);
+  padding: 5px 6px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background 0.15s, transform 0.1s;
+  line-height: 1.3;
+}
+.btn-hp-preset:hover  { background: var(--surface3, #2a2a3a); }
+.btn-hp-preset:active { transform: scale(0.96); }
+.btn-hp-preset.house-gryffindor { border-left-color: #c03020; }
+.btn-hp-preset.house-slytherin  { border-left-color: #1a7a30; }
+.btn-hp-preset.house-ravenclaw  { border-left-color: #2040a0; }
+.btn-hp-preset.house-hufflepuff { border-left-color: #d4a820; }
+.btn-hp-preset.house-other      { border-left-color: #606070; }
+
 .btn-reset {
   background: var(--surface2);
   color: var(--text-muted);
