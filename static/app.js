@@ -3795,6 +3795,238 @@ const HAIR = {
       <line x1="324" y1="22" x2="324" y2="38" stroke="#4a7a2a" stroke-width="1.2"/>
       <line x1="340" y1="30" x2="340" y2="44" stroke="#4a7a2a" stroke-width="1.2"/>`,
   },
+
+  grimmauld: {
+    label: 'Grimmauld',
+    svgSky: `
+      <!-- 12 Grimmauld Place — dark Victorian interior -->
+      <rect x="0" y="0" width="240" height="340" fill="#14180e"/>
+      <!-- Dark wallpaper — Victorian damask pattern (left & right walls) -->
+      ${Array.from({length:14},(_,row)=>[0,1].map(col=>`<rect x="${col===0?2:222}" y="${row*24}" width="16" height="22" rx="1" fill="rgba(30,50,20,0.55)"/><path d="M${col===0?10:230},${row*24+4} Q${col===0?6:226},${row*24+11} ${col===0?10:230},${row*24+18}" fill="none" stroke="rgba(60,90,30,0.25)" stroke-width="1"/>`).join('')).join('')}
+      <!-- Centre wall — dark with faint pattern -->
+      <rect x="20" y="0" width="200" height="260" fill="#181e12"/>
+      ${Array.from({length:11},(_,row)=>Array.from({length:5},(_,col)=>`<ellipse cx="${col*40+30}" cy="${row*24+12}" rx="6" ry="9" fill="none" stroke="rgba(60,80,30,0.18)" stroke-width="0.8"/>`).join('')).join('')}
+      <!-- Gas lamp left -->
+      <rect x="22" y="60" width="5" height="35" fill="#2a1a08"/>
+      <ellipse cx="24" cy="58" rx="7" ry="10" fill="#1a1008"/>
+      <ellipse cx="24" cy="55" rx="5" ry="6" fill="rgba(200,140,30,0.55)"/>
+      <radialGradient id="glamp1" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="rgba(255,200,80,0.4)"/>
+        <stop offset="100%" stop-color="rgba(255,160,20,0)"/>
+      </radialGradient>
+      <ellipse cx="24" cy="72" rx="28" ry="40" fill="url(#glamp1)"/>
+      <!-- Gas lamp right -->
+      <rect x="213" y="60" width="5" height="35" fill="#2a1a08"/>
+      <ellipse cx="216" cy="58" rx="7" ry="10" fill="#1a1008"/>
+      <ellipse cx="216" cy="55" rx="5" ry="6" fill="rgba(200,140,30,0.55)"/>
+      <radialGradient id="glamp2" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="rgba(255,200,80,0.4)"/>
+        <stop offset="100%" stop-color="rgba(255,160,20,0)"/>
+      </radialGradient>
+      <ellipse cx="216" cy="72" rx="28" ry="40" fill="url(#glamp2)"/>
+      <!-- Portrait of Mrs Black (covered with curtain) left wall -->
+      <rect x="24" y="120" width="46" height="70" rx="2" fill="#2a1e14"/>
+      <rect x="26" y="122" width="42" height="66" rx="1" fill="#1a1208"/>
+      <rect x="24" y="115" width="46" height="10" fill="#3a1a08"/>
+      <!-- Old wooden dresser/cabinet right -->
+      <rect x="170" y="150" width="50" height="110" rx="2" fill="#1e1008"/>
+      <rect x="173" y="153" width="44" height="50" rx="1" fill="#160c06"/>
+      <rect x="173" y="207" width="44" height="50" rx="1" fill="#160c06"/>
+      <circle cx="195" cy="178" r="3" fill="#3a2808"/>
+      <circle cx="195" cy="232" r="3" fill="#3a2808"/>
+      <!-- Cobweb top left -->
+      <path d="M0,0 Q12,8 8,20 Q18,6 0,0" fill="rgba(180,180,160,0.12)"/>
+      <path d="M0,0 L8,20" stroke="rgba(180,180,160,0.15)" stroke-width="0.5"/>
+      <path d="M0,0 L12,8" stroke="rgba(180,180,160,0.12)" stroke-width="0.5"/>
+      <!-- Cobweb top right -->
+      <path d="M240,0 Q228,8 232,20 Q222,6 240,0" fill="rgba(180,180,160,0.12)"/>
+      <!-- Worn rug on floor visible area -->
+      <ellipse cx="120" cy="285" rx="80" ry="18" fill="rgba(80,30,20,0.25)"/>`,
+    svgGround: `
+      <!-- Dark worn wooden floor planks -->
+      <rect x="0" y="0" width="240" height="80" fill="#0e0904"/>
+      ${Array.from({length:8},(_,i)=>`<rect x="${i*30}" y="0" width="29" height="80" fill="${i%2===0?'rgba(30,18,8,0.6)':'rgba(20,12,4,0.6)'}"/>`).join('')}
+      ${Array.from({length:5},(_,i)=>`<line x1="0" y1="${i*20}" x2="240" y2="${i*20}" stroke="rgba(0,0,0,0.3)" stroke-width="0.8"/>`).join('')}`,
+    groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#14180e"/>
+      <rect x="40" y="0" width="400" height="260" fill="#181e12"/>
+      ${Array.from({length:11},(_,row)=>Array.from({length:10},(_,col)=>`<ellipse cx="${col*40+30}" cy="${row*24+12}" rx="6" ry="9" fill="none" stroke="rgba(60,80,30,0.18)" stroke-width="0.8"/>`).join('')).join('')}
+      <rect x="2" y="60" width="5" height="35" fill="#2a1a08"/>
+      <ellipse cx="4" cy="58" rx="7" ry="10" fill="#1a1008"/>
+      <ellipse cx="4" cy="55" rx="5" ry="6" fill="rgba(200,140,30,0.55)"/>
+      <ellipse cx="4" cy="72" rx="28" ry="40" fill="url(#glamp1)"/>
+      <rect x="473" y="60" width="5" height="35" fill="#2a1a08"/>
+      <ellipse cx="476" cy="58" rx="7" ry="10" fill="#1a1008"/>
+      <ellipse cx="476" cy="55" rx="5" ry="6" fill="rgba(200,140,30,0.55)"/>
+      <ellipse cx="476" cy="72" rx="28" ry="40" fill="url(#glamp2)"/>
+      <rect x="44" y="120" width="46" height="70" rx="2" fill="#2a1e14"/>
+      <rect x="46" y="122" width="42" height="66" rx="1" fill="#1a1208"/>
+      <rect x="44" y="115" width="46" height="10" fill="#3a1a08"/>
+      <rect x="390" y="150" width="50" height="110" rx="2" fill="#1e1008"/>
+      <rect x="393" y="153" width="44" height="50" rx="1" fill="#160c06"/>
+      <rect x="393" y="207" width="44" height="50" rx="1" fill="#160c06"/>
+      <circle cx="415" cy="178" r="3" fill="#3a2808"/>
+      <circle cx="415" cy="232" r="3" fill="#3a2808"/>
+      <ellipse cx="240" cy="285" rx="160" ry="18" fill="rgba(80,30,20,0.25)"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="#0e0904"/>
+      ${Array.from({length:16},(_,i)=>`<rect x="${i*30}" y="0" width="29" height="80" fill="${i%2===0?'rgba(30,18,8,0.6)':'rgba(20,12,4,0.6)'}"/>`).join('')}
+      ${Array.from({length:5},(_,i)=>`<line x1="0" y1="${i*20}" x2="480" y2="${i*20}" stroke="rgba(0,0,0,0.3)" stroke-width="0.8"/>`).join('')}`,
+  },
+
+  ariana_portrait: {
+    label: 'Cuadro Ariana',
+    svgSky: `
+      <!-- Hog's Head Inn — stone wall with Ariana's portrait -->
+      <rect x="0" y="0" width="240" height="340" fill="#2a2218"/>
+      <!-- Stone wall texture -->
+      ${[0,28,56,84,112,140,168,196,224].map((y,ri)=>
+        Array.from({length:5},(_,ci)=>{
+          const offset = ri%2===0?0:22;
+          return `<rect x="${ci*44+offset-4}" y="${y}" width="42" height="26" rx="2" fill="rgba(60,50,35,${0.3+((ri+ci)%3)*0.06})"/>`;
+        }).join('')
+      ).join('')}
+      <!-- Mortar lines horizontal -->
+      ${[28,56,84,112,140,168,196,224].map(y=>`<line x1="0" y1="${y}" x2="240" y2="${y}" stroke="rgba(20,16,10,0.5)" stroke-width="1.5"/>`).join('')}
+      <!-- Candle sconces left & right -->
+      <rect x="10" y="100" width="4" height="28" fill="#4a3010"/>
+      <ellipse cx="12" cy="98" rx="4" ry="3" fill="#3a2808"/>
+      <polygon points="12,88 10,100 14,100" fill="rgba(255,200,60,0.9)"/>
+      <radialGradient id="csconce1" cx="50%" cy="80%" r="60%">
+        <stop offset="0%" stop-color="rgba(255,180,60,0.35)"/>
+        <stop offset="100%" stop-color="rgba(255,120,20,0)"/>
+      </radialGradient>
+      <ellipse cx="12" cy="95" rx="30" ry="45" fill="url(#csconce1)"/>
+      <rect x="226" y="100" width="4" height="28" fill="#4a3010"/>
+      <ellipse cx="228" cy="98" rx="4" ry="3" fill="#3a2808"/>
+      <polygon points="228,88 226,100 230,100" fill="rgba(255,200,60,0.9)"/>
+      <radialGradient id="csconce2" cx="50%" cy="80%" r="60%">
+        <stop offset="0%" stop-color="rgba(255,180,60,0.35)"/>
+        <stop offset="100%" stop-color="rgba(255,120,20,0)"/>
+      </radialGradient>
+      <ellipse cx="228" cy="95" rx="30" ry="45" fill="url(#csconce2)"/>
+      <!-- Portrait frame outer (ornate gold) -->
+      <rect x="28" y="14" width="184" height="234" rx="5" fill="#5a3e10"/>
+      <!-- Frame inner bevel -->
+      <rect x="32" y="18" width="176" height="226" rx="4" fill="#7a5620"/>
+      <rect x="36" y="22" width="168" height="218" rx="3" fill="#5a3e10"/>
+      <!-- Frame corner ornaments -->
+      <circle cx="36" cy="22" r="6" fill="#8a6428"/>
+      <circle cx="204" cy="22" r="6" fill="#8a6428"/>
+      <circle cx="36" cy="240" r="6" fill="#8a6428"/>
+      <circle cx="204" cy="240" r="6" fill="#8a6428"/>
+      <!-- Frame top center ornament -->
+      <ellipse cx="120" cy="16" rx="10" ry="6" fill="#8a6428"/>
+      <!-- Painting canvas background (aged ivory) -->
+      <rect x="40" y="26" width="160" height="210" fill="#f0e8d4"/>
+      <!-- Subtle crackle texture -->
+      <rect x="40" y="26" width="160" height="210" fill="rgba(180,140,80,0.08)"/>
+      <!-- Painted sky background inside portrait -->
+      <rect x="40" y="26" width="160" height="90" fill="#c8d8e8"/>
+      <ellipse cx="80" cy="55" rx="30" ry="18" fill="rgba(255,255,255,0.4)"/>
+      <ellipse cx="140" cy="45" rx="22" ry="14" fill="rgba(255,255,255,0.3)"/>
+      <!-- Ariana painted figure — ethereal young girl -->
+      <!-- Her dress/gown (soft lavender-grey) -->
+      <path d="M92,236 Q88,190 90,160 Q96,148 120,148 Q144,148 150,160 Q152,190 148,236 Z" fill="#b8a8c8"/>
+      <path d="M90,160 Q92,168 120,170 Q148,168 150,160 Q144,148 120,148 Q96,148 90,160 Z" fill="#c8b8d8"/>
+      <!-- Waist/bodice detail -->
+      <ellipse cx="120" cy="162" rx="18" ry="8" fill="#a898b8"/>
+      <!-- Arms -->
+      <ellipse cx="86" cy="175" rx="7" ry="22" fill="#c8b8d8" transform="rotate(-8,86,175)"/>
+      <ellipse cx="154" cy="175" rx="7" ry="22" fill="#c8b8d8" transform="rotate(8,154,175)"/>
+      <!-- Hands (pale, clasped) -->
+      <ellipse cx="84" cy="196" rx="6" ry="5" fill="#f0dfc8"/>
+      <ellipse cx="156" cy="196" rx="6" ry="5" fill="#f0dfc8"/>
+      <!-- Neck -->
+      <rect x="114" y="124" width="12" height="26" rx="5" fill="#f0dfc8"/>
+      <!-- Head (oval, pale) -->
+      <ellipse cx="120" cy="112" rx="26" ry="30" fill="#f0dfc8"/>
+      <!-- Long blonde-silver hair (flowing) -->
+      <path d="M95,100 Q80,120 82,155 Q88,180 90,200" fill="none" stroke="#ddd0a0" stroke-width="8" stroke-linecap="round"/>
+      <path d="M145,100 Q160,120 158,155 Q152,180 150,200" fill="none" stroke="#ddd0a0" stroke-width="8" stroke-linecap="round"/>
+      <path d="M97,90 Q90,112 88,140 Q86,160 88,180" fill="none" stroke="#e8dab0" stroke-width="5" stroke-linecap="round"/>
+      <path d="M143,90 Q150,112 152,140 Q154,160 152,180" fill="none" stroke="#e8dab0" stroke-width="5" stroke-linecap="round"/>
+      <!-- Hair top (crown) -->
+      <ellipse cx="120" cy="90" rx="26" ry="14" fill="#ddd0a0"/>
+      <ellipse cx="120" cy="88" rx="22" ry="10" fill="#e8dab0"/>
+      <!-- Eyes (blue, wide, slightly sad) -->
+      <ellipse cx="110" cy="108" rx="6" ry="5" fill="#7aa8d0"/>
+      <ellipse cx="130" cy="108" rx="6" ry="5" fill="#7aa8d0"/>
+      <circle cx="110" cy="108" r="3" fill="#284a70"/>
+      <circle cx="130" cy="108" r="3" fill="#284a70"/>
+      <circle cx="111" cy="107" r="1.2" fill="rgba(255,255,255,0.8)"/>
+      <circle cx="131" cy="107" r="1.2" fill="rgba(255,255,255,0.8)"/>
+      <!-- Brows (fine, soft) -->
+      <path d="M104,100 Q110,97 116,100" fill="none" stroke="#c0a860" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M124,100 Q130,97 136,100" fill="none" stroke="#c0a860" stroke-width="1.2" stroke-linecap="round"/>
+      <!-- Nose (subtle) -->
+      <ellipse cx="120" cy="120" rx="2.5" ry="2" fill="rgba(180,140,100,0.3)"/>
+      <!-- Mouth (small, slightly parted, sad) -->
+      <path d="M114,130 Q120,133 126,130" fill="none" stroke="#b08878" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Ethereal glow around figure -->
+      <radialGradient id="ariana_glow" cx="50%" cy="45%" r="40%">
+        <stop offset="0%" stop-color="rgba(200,210,240,0.18)"/>
+        <stop offset="100%" stop-color="rgba(200,210,240,0)"/>
+      </radialGradient>
+      <rect x="40" y="26" width="160" height="210" fill="url(#ariana_glow)"/>
+      <!-- Painting vignette edges -->
+      <rect x="40" y="26" width="160" height="210" fill="none" stroke="rgba(100,80,40,0.3)" stroke-width="4"/>`,
+    svgGround: `
+      <!-- Stone pub floor -->
+      <rect x="0" y="0" width="240" height="80" fill="#2a1e14"/>
+      ${Array.from({length:6},(_,row)=>Array.from({length:5},(_,col)=>`<rect x="${col*48+1}" y="${row*14+1}" width="46" height="12" rx="1" fill="rgba(60,45,28,${0.4+row*0.05})"/>`).join('')).join('')}
+      <!-- Stone mortar lines -->
+      ${Array.from({length:6},(_,i)=>`<line x1="0" y1="${i*14}" x2="240" y2="${i*14}" stroke="rgba(15,10,5,0.5)" stroke-width="1"/>`).join('')}`,
+    groundH: 80,
+    svgSkyWide: `
+      <rect x="0" y="0" width="480" height="340" fill="#2a2218"/>
+      ${[0,28,56,84,112,140,168,196,224].map((y,ri)=>
+        Array.from({length:11},(_,ci)=>{
+          const offset=ri%2===0?0:22;
+          return `<rect x="${ci*44+offset-4}" y="${y}" width="42" height="26" rx="2" fill="rgba(60,50,35,${0.3+((ri+ci)%3)*0.06})"/>`;
+        }).join('')
+      ).join('')}
+      ${[28,56,84,112,140,168,196,224].map(y=>`<line x1="0" y1="${y}" x2="480" y2="${y}" stroke="rgba(20,16,10,0.5)" stroke-width="1.5"/>`).join('')}
+      <rect x="10" y="100" width="4" height="28" fill="#4a3010"/>
+      <ellipse cx="12" cy="98" rx="4" ry="3" fill="#3a2808"/>
+      <polygon points="12,88 10,100 14,100" fill="rgba(255,200,60,0.9)"/>
+      <ellipse cx="12" cy="95" rx="30" ry="45" fill="url(#csconce1)"/>
+      <rect x="466" y="100" width="4" height="28" fill="#4a3010"/>
+      <ellipse cx="468" cy="98" rx="4" ry="3" fill="#3a2808"/>
+      <polygon points="468,88 466,100 470,100" fill="rgba(255,200,60,0.9)"/>
+      <ellipse cx="468" cy="95" rx="30" ry="45" fill="url(#csconce2)"/>
+      <rect x="148" y="14" width="184" height="234" rx="5" fill="#5a3e10"/>
+      <rect x="152" y="18" width="176" height="226" rx="4" fill="#7a5620"/>
+      <rect x="156" y="22" width="168" height="218" rx="3" fill="#5a3e10"/>
+      <circle cx="156" cy="22" r="6" fill="#8a6428"/>
+      <circle cx="324" cy="22" r="6" fill="#8a6428"/>
+      <circle cx="156" cy="240" r="6" fill="#8a6428"/>
+      <circle cx="324" cy="240" r="6" fill="#8a6428"/>
+      <ellipse cx="240" cy="16" rx="10" ry="6" fill="#8a6428"/>
+      <rect x="160" y="26" width="160" height="210" fill="#f0e8d4"/>
+      <rect x="160" y="26" width="160" height="90" fill="#c8d8e8"/>
+      <ellipse cx="200" cy="55" rx="30" ry="18" fill="rgba(255,255,255,0.4)"/>
+      <path d="M212,236 Q208,190 210,160 Q216,148 240,148 Q264,148 270,160 Q272,190 268,236 Z" fill="#b8a8c8"/>
+      <ellipse cx="206" cy="175" rx="7" ry="22" fill="#c8b8d8" transform="rotate(-8,206,175)"/>
+      <ellipse cx="274" cy="175" rx="7" ry="22" fill="#c8b8d8" transform="rotate(8,274,175)"/>
+      <rect x="234" y="124" width="12" height="26" rx="5" fill="#f0dfc8"/>
+      <ellipse cx="240" cy="112" rx="26" ry="30" fill="#f0dfc8"/>
+      <path d="M215,100 Q200,120 202,155" fill="none" stroke="#ddd0a0" stroke-width="8" stroke-linecap="round"/>
+      <path d="M265,100 Q280,120 278,155" fill="none" stroke="#ddd0a0" stroke-width="8" stroke-linecap="round"/>
+      <ellipse cx="240" cy="90" rx="26" ry="14" fill="#ddd0a0"/>
+      <ellipse cx="230" cy="108" rx="6" ry="5" fill="#7aa8d0"/>
+      <ellipse cx="250" cy="108" rx="6" ry="5" fill="#7aa8d0"/>
+      <circle cx="230" cy="108" r="3" fill="#284a70"/>
+      <circle cx="250" cy="108" r="3" fill="#284a70"/>
+      <circle cx="231" cy="107" r="1.2" fill="rgba(255,255,255,0.8)"/>
+      <circle cx="251" cy="107" r="1.2" fill="rgba(255,255,255,0.8)"/>
+      <path d="M234,130 Q240,133 246,130" fill="none" stroke="#b08878" stroke-width="1.5" stroke-linecap="round"/>`,
+    svgGroundWide: `
+      <rect x="0" y="0" width="480" height="80" fill="#2a1e14"/>
+      ${Array.from({length:10},(_,row)=>Array.from({length:10},(_,col)=>`<rect x="${col*48+1}" y="${row*14+1}" width="46" height="12" rx="1" fill="rgba(60,45,28,${0.4+row*0.04})"/>`).join('')).join('')}
+      ${Array.from({length:6},(_,i)=>`<line x1="0" y1="${i*14}" x2="480" y2="${i*14}" stroke="rgba(15,10,5,0.5)" stroke-width="1"/>`).join('')}`,
+  },
 };
 
 function darken(hex, amount) {
@@ -3922,6 +4154,8 @@ const SCENE_BG = {
   potions_class:    '#0a080f',
   private_drive:    '#d4e8d4',
   madriguera:       '#87CEEB',
+  grimmauld:        '#14180e',
+  ariana_portrait:  '#2a2218',
 };
 
 /* ---------- DOLL POSITION ---------- */
@@ -4136,7 +4370,8 @@ const HP_PRESETS = [
     glasses:'hp_round',  glassesColor:'#111111',
     scarf:'gryffindor',  belt:'gryffindor',
     wand:'holly',        broom:'nimbus_2000',
-    tattoo:'lightning',
+    tattoo:'lightning',  tattooColor:'#8a2010',
+    tattooXOffset:12, tattooYOffset:-68, tattooScale:-35,
     pet:'owl', petOutfit:'gryffindor', petPosition:'floor',
   }},
   { key:'hermione',   emoji:'📚',  label:'Hermione',        house:'gryffindor', doll:{
@@ -4334,6 +4569,29 @@ const HP_PRESETS = [
     belt:'slytherin',
     wand:'elder',
     tattoo:'dark_mark',
+  }},
+  { key:'tonks',      emoji:'💜',  label:'Tonks',            house:'hufflepuff', doll:{
+    gender:'girl', skin:'#fde8d0',
+    hair:'short_spiky',  hairColor:'#d040b0',
+    eyeColor:'#6a3aaa',  browColor:'#d040b0', lashColor:'#c030a0',
+    brows:'raised',
+    cheeks:'soft',       cheeksColor:'rgba(240,140,200,0.28)',
+    nose:'button',       mouth:'smile',
+    top:'uniform',       topColor:'#181820',
+    bottom:'pants',      bottomColor:'#181820',
+    shoes:'boot',        shoesColor:'#0a0a14',
+    cape:'cloak',        capeColor:'#1a1208',
+    wand:'willow',
+  }},
+  { key:'ariana',     emoji:'🕊️', label:'Ariana Dumbledore',house:'other',      doll:{
+    gender:'girl', skin:'#fde8d0',
+    hair:'long_straight', hairColor:'#ddd0a0',
+    eyes:'sparkle',      eyeColor:'#7aa8d0',
+    brows:'raised',      browColor:'#c8b870', lashColor:'#c8b870',
+    cheeks:'soft',       cheeksColor:'rgba(200,180,200,0.22)',
+    top:'uniform',       topColor:'#b8aac8',
+    bottom:'skirt',      bottomColor:'#8878a8',
+    shoes:'boot',        shoesColor:'#786888',
   }},
 ];
 

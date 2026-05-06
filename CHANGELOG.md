@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.9.4] - 2026-05-06
+
+### Added
+- **Nuevos personajes HP**: Tonks (💜 pelo rosa corto, capa oscura de Auror, casa Hufflepuff) y Ariana Dumbledore (🕊️ pelo rubio liso, vestido lavanda, sin varita ni capa).
+- **Escena Grimmauld**: número 12 de Grimmauld Place — interior victoriano oscuro con papel pintado de damasco, lámparas de gas con halo ámbar, suelo de madera, cuadro cubierto de la señora Black.
+- **Escena Cuadro Ariana**: sala de la Cabeza del Jabalí con el gran retrato de Ariana en marco dorado ornamentado; la figura pintada (vestido lavanda, pelo plateado, ojos azules) ocupa el fondo entero para que un muñeco pueda posar delante.
+
+### Fixed
+- **Cicatriz de Harry Potter**: el tatuaje de rayo ahora se posiciona en la frente derecha a escala reducida y en color rojo oscuro (#8a2010), en lugar de estar en el pecho con color negro.
+
+---
+
 ## [2.9.3] - 2026-05-02
 
 ### Added
