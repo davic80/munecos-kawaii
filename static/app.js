@@ -4370,8 +4370,9 @@ const HP_PRESETS = [
     glasses:'hp_round',  glassesColor:'#111111',
     scarf:'gryffindor',  belt:'gryffindor',
     wand:'holly',        broom:'nimbus_2000',
-    tattoo:'lightning',  tattooColor:'#8a2010',
-    tattooXOffset:12, tattooYOffset:-68, tattooScale:-35,
+    tattoo:'lightning',  tattooColor:'#a82010',
+    tattooXOffset:-10, tattooYOffset:-62, tattooScale:-40,
+    hairScale:-18,
     pet:'owl', petOutfit:'gryffindor', petPosition:'floor',
   }},
   { key:'hermione',   emoji:'📚',  label:'Hermione',        house:'gryffindor', doll:{
