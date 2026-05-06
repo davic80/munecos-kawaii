@@ -1856,13 +1856,22 @@ function renderPet(petKey, outfitKey, position, petScaleVal) {
 const HAIR = {
   // Harry Potter — messy short spikes
   harry: (c) => `
-    <ellipse cx="120" cy="60" rx="68" ry="34" fill="${c}"/>
-    <path d="M52,75 Q48,42 62,34 Q72,26 80,38" fill="${c}"/>
-    <path d="M188,75 Q194,50 182,36 Q170,24 160,38" fill="${c}"/>
+    <!-- Main hair mass — fringe parted on Harry's right (viewer's left) to reveal scar -->
+    <path d="M188,72
+      Q190,40 168,26 Q148,16 130,22
+      Q120,10 110,14 Q88,16 68,28 Q52,42 52,72
+      Q52,86 70,92 Q84,94 94,88
+      Q98,80 106,68 Q112,66 118,74
+      Q124,86 140,92 Q158,94 174,90
+      Q184,86 188,78 Z" fill="${c}"/>
+    <!-- Crown spiky strands (messy) -->
     <path d="M88,35 Q86,22 96,18 Q108,14 110,28" fill="${c}"/>
     <path d="M110,32 Q112,16 122,14 Q134,12 132,28" fill="${c}"/>
     <path d="M132,34 Q136,18 148,20 Q158,24 152,36" fill="${c}"/>
-    <path d="M152,42 Q160,28 170,32 Q178,38 168,48" fill="${c}"/>`,
+    <path d="M152,42 Q160,28 170,32 Q178,38 168,48" fill="${c}"/>
+    <!-- Side strands -->
+    <path d="M52,72 Q48,44 62,34 Q72,26 80,38" fill="${c}"/>
+    <path d="M188,72 Q194,50 182,36 Q170,24 160,38" fill="${c}"/>`,
   // Hermione — long bushy/wavy
   hermione: (c) => `
     <ellipse cx="120" cy="58" rx="70" ry="32" fill="${c}"/>
@@ -4370,9 +4379,8 @@ const HP_PRESETS = [
     glasses:'hp_round',  glassesColor:'#111111',
     scarf:'gryffindor',  belt:'gryffindor',
     wand:'holly',        broom:'nimbus_2000',
-    tattoo:'lightning',  tattooColor:'#a82010',
-    tattooXOffset:-10, tattooYOffset:-62, tattooScale:-40,
-    hairScale:-18,
+    tattoo:'lightning',  tattooColor:'#3a1208',
+    tattooXOffset:-14, tattooYOffset:-62, tattooScale:-25,
     pet:'owl', petOutfit:'gryffindor', petPosition:'floor',
   }},
   { key:'hermione',   emoji:'📚',  label:'Hermione',        house:'gryffindor', doll:{
