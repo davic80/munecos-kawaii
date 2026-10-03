@@ -2,7 +2,7 @@
 
 A Funko-style kawaii doll dress-up app. Customize your doll with SVG layers, save up to 4 named dolls, and share your creations.
 
-**Live:** https://munecos.f1madrid.win/
+**Live:** https://munecos.ojoalprecio.com/
 
 ---
 
